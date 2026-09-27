@@ -1,0 +1,92 @@
+UTC=2026-09-25T06:54:01.3572551Z
+Scene=Assets/RoboticsLab/Scenes/RoboticsTrainingRoom.unity
+Real nearest-pickup flow. Props are never manually hidden or reset by this diagnostic.
+PASS: Fresh session contains four visible rack helmets
+PASS: The right-side blue helmet exists as a selectable rack prop
+PASS: The selected blue prop has a blue-dominant shell material
+PASS: HelmetPickup matches the existing fitted physical size (0.201400,0.098610,0.250800)
+PASS: Standing directly in front of HelmetPickup selects that exact helmet
+PASS: SpareHelmetBlue matches the existing fitted physical size (0.201400,0.098610,0.250800)
+PASS: Standing directly in front of SpareHelmetBlue selects that exact helmet
+PASS: SpareHelmetWhite matches the existing fitted physical size (0.201400,0.098610,0.250800)
+PASS: Standing directly in front of SpareHelmetWhite selects that exact helmet
+PASS: SpareHelmetYellow matches the existing fitted physical size (0.201400,0.098610,0.250800)
+PASS: Standing directly in front of SpareHelmetYellow selects that exact helmet
+PASS: No helmet is selectable from far outside the interaction range
+PASS: Returning to the right-side blue helmet selects blue before the real EquipHelmet call
+PASS: EquipHelmet starts the real asynchronous wearing sequence
+PASS: The application and wearing component both reference the nearest blue helmet
+PASS: Appearance transfer preserves the worn helmet hierarchy, local pose, and local scale before animation
+PASS: The actual pickup flow copies every corresponding blue-helmet renderer material
+PASS: The wearing animation completes and the visible character is helmet-equipped
+PASS: Only the selected blue pickup disappears during the real handoff
+PASS: Unselected HelmetPickup remains visible on the rack
+PASS: Unselected SpareHelmetWhite remains visible on the rack
+PASS: Unselected SpareHelmetYellow remains visible on the rack
+PASS: The fitted helmet retains the selected blue material on all corresponding parts
+PASS: Helmet physical dimensions stay constant through handoff and fit: pickup=(0.201400,0.098610,0.250800), fitted=(0.201400,0.098610,0.250800), maxRelativeError=0.000002
+PASS: The inactive picked helmet is excluded from subsequent nearest searches
+PASS: Approaching the wall and opening the lesson activates the learning flow
+PASS: The active lesson is displayed on a world-space WallLearningCanvas
+PASS: The learning canvas belongs to the physical TeachingDisplay
+PASS: The learning camera and canvas event camera use the player's settled wall view
+PASS: The wall has an active GraphicRaycaster and EventSystem
+PASS: The wall lesson has a configured VideoPlayer
+PASS: The wall lesson video decodes and advances frames: 29 -> 31
+PASS: The visible wall video image uses the playing VideoPlayer render texture
+PASS: Captured actual Game-view screenshot WallLesson (1920x1080)
+PASS: Wall button is visible and interactable: OpenText
+PASS: Wall button center projects inside the actual camera viewport: OpenText
+PASS: A screen-point raycast reaches the intended wall button first: OpenText
+PASS: The normal pointer-click handler executes for wall button: OpenText
+PASS: Clicking the wall's text-course button opens the text lesson
+PASS: Captured actual Game-view screenshot WallTextLesson (1920x1080)
+PASS: Wall button is visible and interactable: CompleteTextLesson
+PASS: Wall button center projects inside the actual camera viewport: CompleteTextLesson
+PASS: A screen-point raycast reaches the intended wall button first: CompleteTextLesson
+PASS: The normal pointer-click handler executes for wall button: CompleteTextLesson
+PASS: Clicking the wall's read-complete button enters the quiz through the actual lesson API
+PASS: Captured actual Game-view screenshot WallQuiz (1920x1080)
+PASS: The loaded question bank contains at least one question
+PASS: Wall quiz displays question 1 from the loaded bank
+PASS: Wall button is visible and interactable: Option_2
+PASS: Wall button center projects inside the actual camera viewport: Option_2
+PASS: A screen-point raycast reaches the intended wall button first: Option_2
+PASS: The normal pointer-click handler executes for wall button: Option_2
+PASS: A real wall-button wrong answer shows feedback without scoring or unlocking practice
+PASS: The wall Next button stays disabled after a wrong answer
+PASS: Captured actual Game-view screenshot WallQuizWrongAnswer (1920x1080)
+PASS: Wall button is visible and interactable: Option_1
+PASS: Wall button center projects inside the actual camera viewport: Option_1
+PASS: A screen-point raycast reaches the intended wall button first: Option_1
+PASS: The normal pointer-click handler executes for wall button: Option_1
+PASS: The correct wall-button answer scores question 1
+PASS: Captured actual Game-view screenshot WallQuizCorrectAnswer (1920x1080)
+PASS: Wall button is visible and interactable: NextQuestion
+PASS: Wall button center projects inside the actual camera viewport: NextQuestion
+PASS: A screen-point raycast reaches the intended wall button first: NextQuestion
+PASS: The normal pointer-click handler executes for wall button: NextQuestion
+PASS: Wall quiz displays question 2 from the loaded bank
+PASS: Wall button is visible and interactable: Option_0
+PASS: Wall button center projects inside the actual camera viewport: Option_0
+PASS: A screen-point raycast reaches the intended wall button first: Option_0
+PASS: The normal pointer-click handler executes for wall button: Option_0
+PASS: The correct wall-button answer scores question 2
+PASS: Wall button is visible and interactable: NextQuestion
+PASS: Wall button center projects inside the actual camera viewport: NextQuestion
+PASS: A screen-point raycast reaches the intended wall button first: NextQuestion
+PASS: The normal pointer-click handler executes for wall button: NextQuestion
+PASS: Wall quiz displays question 3 from the loaded bank
+PASS: Wall button is visible and interactable: Option_2
+PASS: Wall button center projects inside the actual camera viewport: Option_2
+PASS: A screen-point raycast reaches the intended wall button first: Option_2
+PASS: The normal pointer-click handler executes for wall button: Option_2
+PASS: The correct wall-button answer scores question 3
+PASS: Wall button is visible and interactable: NextQuestion
+PASS: Wall button center projects inside the actual camera viewport: NextQuestion
+PASS: A screen-point raycast reaches the intended wall button first: NextQuestion
+PASS: The normal pointer-click handler executes for wall button: NextQuestion
+PASS: Completing all questions via wall buttons unlocks practice and exits the learning view
+PASS: The physical wall screen displays the completed-learning page
+PASS: Captured actual Game-view screenshot WallQuizPassed (1920x1080)
+NOTE: The character remains wearing the blue helmet with the wall-screen knowledge check completed. No lesson or quiz flags were set by the diagnostic.

@@ -1,0 +1,9 @@
+Ring gripper authoring / 2026-09-25T07:28:03.8704060Z
+Static geometry checks only. Play-mode grasp, wire clearance and motion require separate validation.
+CONTACT GEOMETRY station=0 scale=(0.105000100, 0.105000100, 0.105000100)
+ leftBounds=min=(-0.446502300, -1.807171000, 0.257000800) max=(-0.146501900, -1.077170000, 0.457001300) rightBounds=min=(0.146500200, -1.807170000, 0.257000700) max=(0.446500800, -1.077170000, 0.457001300)
+ leftFaceBounds=min=(-0.146501900, -1.324395000, 0.262001000) max=(-0.146501900, -1.082170000, 0.452001200) rightFaceBounds=min=(0.146500300, -1.324394000, 0.262001100) max=(0.146500300, -1.082170000, 0.452001300)
+FAIL: System.InvalidOperationException: Expected finger, slider and two attached screws; got 5
+  at RoboticsLab.Editor.LabRingGripAuthoring.MoveJawAssembly (UnityEngine.Transform tool, UnityEngine.Transform jaw, System.Single delta, System.Boolean negativeSide) [0x0010d] in D:\RobotTraining_Unity2022\Assets\RoboticsLab\Editor\LabRingGripAuthoring.cs:185 
+  at RoboticsLab.Editor.LabRingGripAuthoring.BuildStation (RoboticsLab.LabRobotStation station, System.Text.StringBuilder report) [0x004cb] in D:\RobotTraining_Unity2022\Assets\RoboticsLab\Editor\LabRingGripAuthoring.cs:134 
+  at RoboticsLab.Editor.LabRingGripAuthoring.Build () [0x000ed] in D:\RobotTraining_Unity2022\Assets\RoboticsLab\Editor\LabRingGripAuthoring.cs:48 

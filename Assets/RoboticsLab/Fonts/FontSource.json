@@ -1,0 +1,21 @@
+{
+  "font": "NotoSansSC-Regular.ttf",
+  "source_manifest": "https://fonts.google.com/download/list?family=Noto%20Sans%20SC",
+  "download_url": "https://fonts.gstatic.com/s/notosanssc/v40/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_FnYxNbPzS5HE.ttf",
+  "source_filename": "static/NotoSansSC-Regular.ttf",
+  "retrieved_date": "2026-09-24",
+  "bytes": 10559284,
+  "sha256": "d45f67f0a7c0ca3f256950777ce6a61cc7ce5f9696d02900cbbaac25f8aa7d16",
+  "static": true,
+  "outline": "TrueType glyf",
+  "variable_axes": [],
+  "family": "Noto Sans SC",
+  "subfamily": "Regular",
+  "postscript_name": "NotoSansSC-Regular",
+  "weight": 400,
+  "glyph_count": 30898,
+  "unicode_cmap_entries": 30890,
+  "license": "SIL Open Font License 1.1",
+  "source_code_nonascii_characters_checked": 283,
+  "missing_nonascii_characters": []
+}

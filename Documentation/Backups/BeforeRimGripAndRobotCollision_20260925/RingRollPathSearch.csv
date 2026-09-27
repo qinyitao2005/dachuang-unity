@@ -1,0 +1,73 @@
+station,roll,passedPoints,pointCount,maxPositionError,maxAngle,minGap,reason
+0,-180,0,121,0.002035,7.972,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂 near wire segment 85; conservative clearance=-2.800 mm (required 0.350 mm).
+0,-165,0,121,0.001846,12.372,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂 near wire segment 57; conservative clearance=-2.800 mm (required 0.350 mm).
+0,-150,0,121,0.001610,18.227,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂 near wire segment 63; conservative clearance=-2.800 mm (required 0.350 mm).
+0,-135,0,121,0.005125,25.415,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节 near wire segment 37; conservative clearance=-2.800 mm (required 0.350 mm).
+0,-120,0,121,0.012531,33.671,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节 near wire segment 44; conservative clearance=-2.800 mm (required 0.350 mm).
+0,-105,0,121,0.023971,42.421,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节 near wire segment 50; conservative clearance=-2.800 mm (required 0.350 mm).
+0,-90,0,121,0.071704,90.934,-0.002151,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/机加手指1 near wire segment 0; conservative clearance=-2.151 mm (required 0.350 mm).
+0,-75,0,121,0.058217,79.875,-0.002229,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/机加手指1 near wire segment 0; conservative clearance=-2.229 mm (required 0.350 mm).
+0,-60,0,121,0.045219,68.704,-0.001802,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/机加手指1 near wire segment 0; conservative clearance=-1.802 mm (required 0.350 mm).
+0,-45,0,121,0.032871,57.616,0.008619,
+0,-30,0,121,0.021434,47.006,0.018303,
+0,-15,0,121,0.011429,37.701,0.024982,
+0,0,0,121,0.007826,30.667,0.024107,
+0,15,0,121,0.003398,24.102,0.025814,
+0,30,0,121,0.007971,23.373,0.028711,
+0,45,0,121,0.012671,29.412,0.021254,
+0,60,0,121,0.017212,25.831,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 2_3^MHZL2-25D20221218.005 near wire segment 34; conservative clearance=-2.800 mm (required 0.350 mm).
+0,75,0,121,0.011511,15.381,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 1_3^MHZL2-25D20221218.002 near wire segment 42; conservative clearance=-2.800 mm (required 0.350 mm).
+0,90,0,121,0.003477,4.322,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 1_3^MHZL2-25D20221218.002 near wire segment 49; conservative clearance=-2.800 mm (required 0.350 mm).
+0,105,4,121,0.000069,0.000,-0.001729,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 1_3^MHZL2-25D20221218.002 near wire segment 55; conservative clearance=-1.729 mm (required 0.350 mm).
+0,120,11,121,0.000940,1.397,0.003063,
+0,135,9,121,0.000127,1.951,0.005182,
+0,150,0,121,0.000506,1.782,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/机身附件/阀组件-230321/阀安装支架-230321 near wire segment 96; conservative clearance=-2.800 mm (required 0.350 mm).
+0,165,0,121,0.001497,4.788,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂 near wire segment 92; conservative clearance=-2.800 mm (required 0.350 mm).
+1,-180,0,121,0.046427,53.632,0.014240,
+1,-165,0,121,0.059137,65.383,0.012472,
+1,-150,0,121,0.073579,75.877,0.004780,
+1,-135,0,121,0.074742,55.275,0.009498,
+1,-120,0,121,0.079486,61.779,0.011921,
+1,-105,0,121,0.079855,70.774,0.013300,
+1,-90,0,121,0.051764,95.997,0.003181,
+1,-75,0,121,0.045747,86.725,-0.000801,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/DistalJawShoes/Right_MetalShoe near wire segment 0; conservative clearance=-0.801 mm (required 0.350 mm).
+1,-60,0,121,0.046966,72.867,0.045273,
+1,-45,0,121,0.029203,64.557,0.010471,
+1,-30,0,121,0.020328,52.490,0.018561,
+1,-15,0,121,0.012076,40.135,0.026440,
+1,0,0,121,0.005392,27.835,0.033068,
+1,15,0,121,0.002431,16.258,0.037499,
+1,30,0,121,0.000662,5.375,0.038382,
+1,45,9,121,0.000316,2.051,0.007070,
+1,60,5,121,0.000067,0.000,-0.000044,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/机加手指2 near wire segment 29; conservative clearance=-0.044 mm (required 0.350 mm).
+1,75,0,121,0.000064,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 1_3^MHZL2-25D20221218.002 near wire segment 41; conservative clearance=-2.800 mm (required 0.350 mm).
+1,90,0,121,0.000013,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 1_3^MHZL2-25D20221218.002 near wire segment 46; conservative clearance=-2.800 mm (required 0.350 mm).
+1,105,4,121,0.000087,0.000,-0.001785,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 1_3^MHZL2-25D20221218.002 near wire segment 55; conservative clearance=-1.785 mm (required 0.350 mm).
+1,120,0,121,0.001044,1.350,0.025455,
+1,135,0,121,0.011746,14.876,0.032086,
+1,150,0,121,0.022859,28.184,0.025988,
+1,165,0,121,0.034403,41.152,0.020367,
+2,-180,3,121,0.000296,0.478,0.030549,
+2,-165,0,121,0.007386,10.692,0.032137,
+2,-150,0,121,0.016357,21.928,0.024344,
+2,-135,0,121,0.025765,32.601,0.016835,
+2,-120,0,121,0.034758,42.427,0.011588,
+2,-105,0,121,0.041910,50.984,0.008977,
+2,-90,0,121,0.044742,57.521,0.011227,
+2,-75,0,121,0.044619,62.938,0.019073,
+2,-60,0,121,0.025813,90.655,0.013258,
+2,-45,0,121,0.018141,82.694,0.021530,
+2,-30,0,121,0.014458,75.976,0.027884,
+2,-15,0,121,0.026175,67.542,0.017988,
+2,0,0,121,0.021679,53.831,0.023415,
+2,15,0,121,0.015499,39.468,0.029316,
+2,30,0,121,0.009319,24.780,0.030036,
+2,45,0,121,0.003568,9.940,0.023925,
+2,60,5,121,0.000071,0.000,-0.000044,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/机加手指2 near wire segment 29; conservative clearance=-0.044 mm (required 0.350 mm).
+2,75,0,121,0.000000,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/复件 1_3^MHZL2-25D20221218.002 near wire segment 41; conservative clearance=-2.800 mm (required 0.350 mm).
+2,90,0,121,0.000001,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/复件 1_3^MHZL2-25D20221218.002 near wire segment 46; conservative clearance=-2.800 mm (required 0.350 mm).
+2,105,0,121,0.002947,9.341,0.027266,
+2,120,0,121,0.000067,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕 near wire segment 101; conservative clearance=-2.800 mm (required 0.350 mm).
+2,135,0,121,0.000021,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕 near wire segment 89; conservative clearance=-2.800 mm (required 0.350 mm).
+2,150,1,121,0.000018,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕 near wire segment 86; conservative clearance=-2.800 mm (required 0.350 mm).
+2,165,3,121,0.000054,0.000,-0.001025,OriginalAssembly/机械臂/基座/大臂/关节/小臂/机身附件/真空发生器安装组件-230321/真空发生器 旧型号 MS210HSNCASVDPNP-230312 near wire segment 98; conservative clearance=-1.025 mm (required 0.350 mm).

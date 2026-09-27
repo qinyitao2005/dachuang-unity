@@ -1,0 +1,68 @@
+Ring gripper authoring / 2026-09-25T07:37:51.7141313Z
+Static geometry checks only. Play-mode grasp, wire clearance and motion require separate validation.
+CONTACT GEOMETRY station=0 scale=(0.105000100, 0.105000100, 0.105000100)
+ leftBounds=min=(-0.446502300, -1.807171000, 0.257000800) max=(-0.146501900, -1.077170000, 0.457001300) rightBounds=min=(0.146500200, -1.807170000, 0.257000700) max=(0.446500800, -1.077170000, 0.457001300)
+ leftFaceBounds=min=(-0.146501900, -1.324395000, 0.262001000) max=(-0.146501900, -1.082170000, 0.452001200) rightFaceBounds=min=(0.146500300, -1.324394000, 0.262001100) max=(0.146500300, -1.082170000, 0.452001300)
+MOVING LEFT count=4
+ picked=RingGrip_OriginalCAD/机加手指1 parent=RingGrip_OriginalCAD originalRootLocal=(-0.066502620, -1.487169000, 0.357000400)
+ picked=RingGrip_OriginalCAD/component/复件 2_3^MHZL2-25D20221218.004 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.109998900, -0.257166400, 0.357001300)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.012 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.386498900, -1.137172000, 0.357000800)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.013 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.386499900, -1.257168000, 0.356998900)
+MOVING RIGHT count=4
+ picked=RingGrip_OriginalCAD/机加手指2 parent=RingGrip_OriginalCAD originalRootLocal=(0.066499430, -1.487169000, 0.357000400)
+ picked=RingGrip_OriginalCAD/component/复件 2_3^MHZL2-25D20221218.005 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.109997900, -0.257165300, 0.357003800)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.014 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.386501600, -1.137172000, 0.357000100)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.015 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.386500500, -1.257167000, 0.357001800)
+DISTAL SHOES contact=(-0.000000834, -1.826218000, 0.357001000) originalTipY=-1.807171000 attached left/right surfaceX=-0.260001100/0.259999500
+ shoes overlap original legs by 0.8 mm; rubber thickness=2 mm; shoe height/depth=14/12 mm; reach left/right=23.7000/23.7001 mm
+ Ring orientation: tool +X=ring plane normal, tool +Y=ring local +Y/radial towards wrist, tube tangent=tool Z.
+STATION 0 prototype=Assets/RoboticsLab/Generated/OriginalWorkcell2.prefab
+ original=Pointer（换） mountLocal=(-0.0028279, 0.0000000, 0.4310052) mountEuler=(0.00000, 0.00000, 180.00000) worldScale=(0.1050001, 0.1050001, 0.1050001)
+ leftFace=-0.1465019 rightFace=0.1465002 contactLocal=(-0.0000008, -1.8262180, 0.3570010) face triangles=10/10
+ oldGap=0.0307652 m; closedGap=0.0071999 m; leftTravel=0.0111826 m; rightTravel=-0.0111826 m
+ CAD root gap=0.0084000 m; retained CAD meshes=30; additional distal-shoe meshes=4
+ PASS: Real distal shoes attach to the original CAD legs; their rubber inner faces meet the 7.2 mm tube at a TCP 2 mm beyond the original fingertips. Original meshes/materials/scale retained.
+CONTACT GEOMETRY station=1 scale=(0.105000100, 0.105000100, 0.105000100)
+ leftBounds=min=(-0.446503000, -1.807169000, 0.256999300) max=(-0.146502900, -1.077168000, 0.456999400) rightBounds=min=(0.146497700, -1.807168000, 0.256999700) max=(0.446497900, -1.077168000, 0.456999800)
+ leftFaceBounds=min=(-0.146502800, -1.324393000, 0.261999300) max=(-0.146502800, -1.082168000, 0.451999400) rightFaceBounds=min=(0.146497700, -1.324392000, 0.261999700) max=(0.146497700, -1.082168000, 0.451999800)
+MOVING LEFT count=4
+ picked=RingGrip_OriginalCAD/机加手指1 parent=RingGrip_OriginalCAD originalRootLocal=(-0.066500660, -1.487171000, 0.356999900)
+ picked=RingGrip_OriginalCAD/component/复件 2_3^MHZL2-25D20221218.004 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.109999200, -0.257171800, 0.357000400)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.012 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.386500200, -1.137176000, 0.356999000)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.013 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.386503900, -1.257172000, 0.357000100)
+MOVING RIGHT count=4
+ picked=RingGrip_OriginalCAD/机加手指2 parent=RingGrip_OriginalCAD originalRootLocal=(0.066499750, -1.487171000, 0.356999300)
+ picked=RingGrip_OriginalCAD/component/复件 2_3^MHZL2-25D20221218.005 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.110003000, -0.257172300, 0.357000100)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.014 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.386503800, -1.137175000, 0.356999800)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.015 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.386500700, -1.257170000, 0.356999400)
+DISTAL SHOES contact=(-0.000002593, -1.826216000, 0.356999600) originalTipY=-1.807169000 attached left/right surfaceX=-0.260002700/0.259997500
+ shoes overlap original legs by 0.8 mm; rubber thickness=2 mm; shoe height/depth=14/12 mm; reach left/right=23.7000/23.7000 mm
+ Ring orientation: tool +X=ring plane normal, tool +Y=ring local +Y/radial towards wrist, tube tangent=tool Z.
+STATION 1 prototype=Assets/RoboticsLab/Generated/OriginalWorkcell2.prefab
+ original=机器人手爪 mountLocal=(-0.0028279, 0.0000000, 0.4310052) mountEuler=(0.00000, 0.00000, 180.00000) worldScale=(0.1050001, 0.1050001, 0.1050001)
+ leftFace=-0.1465029 rightFace=0.1464977 contactLocal=(-0.0000026, -1.8262160, 0.3569996) face triangles=10/10
+ oldGap=0.0307651 m; closedGap=0.0072000 m; leftTravel=0.0111825 m; rightTravel=-0.0111825 m
+ CAD root gap=0.0084000 m; retained CAD meshes=30; additional distal-shoe meshes=4
+ PASS: Real distal shoes attach to the original CAD legs; their rubber inner faces meet the 7.2 mm tube at a TCP 2 mm beyond the original fingertips. Original meshes/materials/scale retained.
+CONTACT GEOMETRY station=2 scale=(0.105000100, 0.105000100, 0.105000100)
+ leftBounds=min=(-0.446500600, -1.807171000, 0.256998700) max=(-0.146500300, -1.077170000, 0.456998800) rightBounds=min=(0.146492500, -1.807172000, 0.256998900) max=(0.446492900, -1.077172000, 0.456999100)
+ leftFaceBounds=min=(-0.146500300, -1.324395000, 0.261998700) max=(-0.146500200, -1.082170000, 0.451998800) rightFaceBounds=min=(0.146492500, -1.324396000, 0.261998900) max=(0.146492600, -1.082172000, 0.451999100)
+MOVING LEFT count=4
+ picked=RingGrip_OriginalCAD/机加手指1 parent=RingGrip_OriginalCAD originalRootLocal=(-0.066495910, -1.487173000, 0.357000100)
+ picked=RingGrip_OriginalCAD/component/复件 2_3^MHZL2-25D20221218.004 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.110009200, -0.257171100, 0.357001600)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.012 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.386507500, -1.137172000, 0.356998500)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.013 parent=RingGrip_OriginalCAD/component originalRootLocal=(-0.386503700, -1.257172000, 0.357000800)
+MOVING RIGHT count=4
+ picked=RingGrip_OriginalCAD/机加手指2 parent=RingGrip_OriginalCAD originalRootLocal=(0.066496630, -1.487174000, 0.357000600)
+ picked=RingGrip_OriginalCAD/component/复件 2_3^MHZL2-25D20221218.005 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.109998700, -0.257171700, 0.357002700)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.014 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.386507000, -1.137173000, 0.357000400)
+ picked=RingGrip_OriginalCAD/component/内六角圆柱头螺钉_M5X20.015 parent=RingGrip_OriginalCAD/component originalRootLocal=(0.386492500, -1.257173000, 0.357001800)
+DISTAL SHOES contact=(-0.000003889, -1.826220000, 0.356998900) originalTipY=-1.807172000 attached left/right surfaceX=-0.260004000/0.259996400
+ shoes overlap original legs by 0.8 mm; rubber thickness=2 mm; shoe height/depth=14/12 mm; reach left/right=23.7000/23.7000 mm
+ Ring orientation: tool +X=ring plane normal, tool +Y=ring local +Y/radial towards wrist, tube tangent=tool Z.
+STATION 2 prototype=Assets/RoboticsLab/Generated/OriginalWorkcell3.prefab
+ original=机器人手爪 mountLocal=(-0.0028275, 0.0000000, 0.4310053) mountEuler=(0.00000, 0.00000, 0.00000) worldScale=(0.1050001, 0.1050001, 0.1050001)
+ leftFace=-0.1465003 rightFace=0.1464925 contactLocal=(-0.0000039, -1.8262200, 0.3569989) face triangles=10/10
+ oldGap=0.0307643 m; closedGap=0.0072005 m; leftTravel=0.0111821 m; rightTravel=-0.0111821 m
+ CAD root gap=0.0084000 m; retained CAD meshes=30; additional distal-shoe meshes=4
+ PASS: Real distal shoes attach to the original CAD legs; their rubber inner faces meet the 7.2 mm tube at a TCP 2 mm beyond the original fingertips. Original meshes/materials/scale retained.

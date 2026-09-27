@@ -1,0 +1,7 @@
+Head bounds: Center: (-0.01, 1.52, 0.04), Extents: (0.07, 0.11, 0.11)
+Crown bounds: Center: (-0.01, 1.58, 0.03), Extents: (0.07, 0.05, 0.09)
+Helmet world scale: 0.38
+Head local offset: (0.00, 0.13, 0.03)
+Head local rotation: (0.00, 180.00, 0.00)
+Standing body height: 1.72
+Visual local offset: (0.01, 0.02, -0.06)

@@ -1,0 +1,199 @@
+Original equipment inventory / 2026-09-25T04:47:38.7921528Z
+Source: Assets/Scenes/SampleScene.unity
+Source SHA256 unchanged=True active scene unchanged=True
+Bounds include original static mesh geometry and all children, including inactive ones. Mesh and material source counts are summarized without dumping every CAD part.
+
+=== complete configured training cell / 多工位机器人集合/Draw ===
+ROOT world=(0.000000, 0.916000, -1.690000) euler=(0.00000, 0.00000, 0.00000) localScale=(1.050000, 1.050000, 1.050000) lossyScale=(1.050000, 1.050000, 1.050000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(-0.785400, -0.045800, -2.458076) max=(0.748125, 2.077983, -0.543926) size=(1.533525, 2.123783, 1.914150)
+BOUNDS local min=(-0.748000, -0.916000, -0.731500) max=(0.712500, 1.106651, 1.091500)
+Transforms=1913 meshFilters=1751 renderers=1751
+MESH SOURCE Assets/无标题.fbx count=1751
+MATERIAL SOURCE Assets/无标题.fbx slots=2215
+MATERIAL SOURCE Assets/Light_green.mat slots=1
+Console root is located on equipment-local +Z side at (0.00000, -0.20800, 0.88250). This identifies the operating-console side from placement, not a verified front-face normal.
+CHILD 控制台 local=(0.00000, -0.20800, 0.88250) scale=(0.10000, 0.10000, 0.10000) meshes=77 local bounds=(-0.74800, -0.44255, 0.62830) -> (0.66250, 0.01609, 1.09150)
+CHILD 机械臂 local=(0.00000, 0.16300, 0.00000) scale=(1.00000, 1.00000, 1.00000) meshes=84 local bounds=(-0.10664, 0.00400, -0.40983) -> (0.10664, 0.48806, 0.12597)
+CHILD 轨迹模块 local=(0.00000, -0.73000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=225 local bounds=(-0.57000, -0.00300, -0.57000) -> (0.57000, 0.31750, 0.57000)
+CHILD Grabber（换） local=(0.36029, 0.21922, 0.34095) scale=(0.10000, 0.10000, 0.10000) meshes=30 local bounds=(0.33199, 0.03850, 0.32190) -> (0.44073, 0.27870, 0.42038)
+CHILD 得力pen local=(-0.32000, 0.02076, 0.19000) scale=(0.10000, 0.10000, 0.10000) meshes=1 local bounds=(-0.33072, 0.02076, 0.17928) -> (-0.30928, 0.16076, 0.20072)
+CHILD 机器人手爪 local=(-0.33531, 0.25187, -0.36591) scale=(0.10000, 0.10000, 0.10000) meshes=30 local bounds=(-0.41499, 0.07173, -0.44718) -> (-0.30472, 0.31167, -0.34914)
+CHILD 组合换手架-230314 local=(0.42485, 0.00400, -0.42476) scale=(0.10000, 0.10000, 0.10000) meshes=45 local bounds=(0.33305, -0.01200, -0.50091) -> (0.50539, 0.26620, -0.30917)
+CHILD 灯罩 local=(0.00000, 1.07900, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=1 local bounds=(-0.70250, 1.05700, -0.70250) -> (0.70250, 1.10100, 0.70250)
+CHILD 框架 local=(0.00000, -0.91600, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=951 local bounds=(-0.73460, -0.91600, -0.73150) -> (0.71250, 1.10665, 0.70525)
+CHILD 机器人手爪-as-20230311_夹爪2 local=(-0.35075, 0.21922, 0.35075) scale=(0.10000, 0.10000, 0.10000) meshes=30 local bounds=(-0.43072, 0.03950, 0.32132) -> (-0.33272, 0.27870, 0.43072)
+CHILD 台面 local=(0.00000, -0.73000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=277 local bounds=(-0.70250, -0.20650, -0.70250) -> (0.70250, 0.21000, 0.70250)
+SOLVER IK enabled=False at 多工位机器人集合/Draw/机械臂
+  armRoot=多工位机器人集合/Draw/机械臂
+  base=多工位机器人集合/Draw/机械臂/基座 equipment-local=(0.000000, 0.163000, 0.000000) height above complete bounds.minY=1.132950
+  end=多工位机器人集合/Draw/机械臂/基座/大臂/关节/小臂/手腕/小手腕/Pointer（换）/point equipment-local=(-0.013929, 0.190852, -0.317974)
+    JOINT 基座 axis=Z limits=-180..180 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 大臂 axis=Y limits=-20..20 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 关节 axis=Y limits=-20..20 local-to-equipment=(-0.00616, 0.42059, 0.03474)
+    JOINT 小臂 axis=X limits=-20..20 local-to-equipment=(-0.00659, 0.44057, 0.03393)
+    JOINT 手腕 axis=Y limits=-45..45 local-to-equipment=(-0.01648, 0.42863, -0.25565)
+    JOINT 小手腕 axis=Z limits=80..100 local-to-equipment=(-0.01756, 0.35689, -0.32801)
+SOLVER IKnew enabled=True at 多工位机器人集合/Draw/机械臂
+  armRoot=多工位机器人集合/Draw/机械臂
+  base=多工位机器人集合/Draw/机械臂/基座 equipment-local=(0.000000, 0.163000, 0.000000) height above complete bounds.minY=1.132950
+  end=多工位机器人集合/Draw/机械臂/基座/大臂/关节/小臂/手腕/小手腕/Pointer（换）/point equipment-local=(-0.013929, 0.190852, -0.317974)
+    JOINT 基座 axis=Z limits=-180..180 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 大臂 axis=Y limits=-20..20 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 关节 axis=Y limits=-20..20 local-to-equipment=(-0.00616, 0.42059, 0.03474)
+    JOINT 小臂 axis=X limits=-20..20 local-to-equipment=(-0.00659, 0.44057, 0.03393)
+    JOINT 手腕 axis=Y limits=-45..45 local-to-equipment=(-0.01648, 0.42863, -0.25565)
+    JOINT 小手腕 axis=Z limits=80..100 local-to-equipment=(-0.01756, 0.35689, -0.32801)
+
+=== complete configured training cell / 多工位机器人集合/多工位实训平台 1 ===
+ROOT world=(-8.500000, 0.916000, -1.690000) euler=(0.00000, 0.00000, 0.00000) localScale=(1.050000, 1.050000, 1.050000) lossyScale=(1.050000, 1.050000, 1.050000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(-9.285398, -0.045800, -2.458076) max=(-7.751875, 2.077983, -0.543926) size=(1.533524, 2.123783, 1.914150)
+BOUNDS local min=(-0.748000, -0.916000, -0.731500) max=(0.712500, 1.106651, 1.091500)
+Transforms=1906 meshFilters=1751 renderers=1751
+MESH SOURCE Assets/无标题.fbx count=1751
+MATERIAL SOURCE Assets/无标题.fbx slots=2216
+Console root is located on equipment-local +Z side at (0.00000, -0.20800, 0.88250). This identifies the operating-console side from placement, not a verified front-face normal.
+CHILD 控制台 local=(0.00000, -0.20800, 0.88250) scale=(0.10000, 0.10000, 0.10000) meshes=77 local bounds=(-0.74800, -0.44255, 0.62830) -> (0.66250, 0.01609, 1.09150)
+CHILD 机械臂 local=(0.00000, 0.16300, 0.00000) scale=(1.00000, 1.00000, 1.00000) meshes=86 local bounds=(-0.48427, 0.00400, -0.09500) -> (0.08452, 0.49349, 0.09500)
+CHILD 轨迹模块 local=(0.00000, -0.73000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=226 local bounds=(-0.57000, -0.00300, -0.57000) -> (0.57000, 0.31750, 0.57000)
+CHILD 组合换手架-230314 local=(0.42500, 0.00400, -0.42500) scale=(0.10000, 0.10000, 0.10000) meshes=73 local bounds=(0.31045, -0.01200, -0.50349) -> (0.50349, 0.26620, -0.31045)
+CHILD 框架 local=(0.00000, -0.91600, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=952 local bounds=(-0.73460, -0.91600, -0.73150) -> (0.71250, 1.10665, 0.70525)
+CHILD 台面 local=(0.00000, -0.73000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=337 local bounds=(-0.70250, -0.20650, -0.70250) -> (0.70250, 0.27870, 0.70250)
+SOLVER IK enabled=True at 多工位机器人集合/多工位实训平台 1/机械臂/基座
+  armRoot=多工位机器人集合/多工位实训平台 1/机械臂
+  base=多工位机器人集合/多工位实训平台 1/机械臂/基座 equipment-local=(0.000000, 0.163000, 0.000000) height above complete bounds.minY=1.132950
+  end=多工位机器人集合/多工位实训平台 1/机械臂/基座/大臂/关节/小臂/手腕/小手腕/机器人手爪/机加手指1 equipment-local=(-0.449710, 0.267211, 0.012548)
+    JOINT 基座 axis=Z limits=-180..180 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 大臂 axis=Y limits=-20..20 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 关节 axis=Y limits=-20..20 local-to-equipment=(-0.00241, 0.42299, 0.00000)
+    JOINT 小臂 axis=X limits=-20..20 local-to-equipment=(-0.00259, 0.44299, 0.00000)
+    JOINT 手腕 axis=Y limits=-45..45 local-to-equipment=(-0.29258, 0.44031, 0.00000)
+    JOINT 小手腕 axis=Z limits=-20..20 local-to-equipment=(-0.29765, 0.33853, 0.00000)
+    JOINT 机器人手爪 axis=Z limits=0..0 local-to-equipment=(-0.29981, 0.29549, -0.00028)
+
+=== complete configured training cell / 多工位机器人集合/多工位实训平台 2 ===
+ROOT world=(-4.250000, 0.916000, -1.690000) euler=(0.00000, 0.00000, 0.00000) localScale=(1.050000, 1.050000, 1.050000) lossyScale=(1.050000, 1.050000, 1.050000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(-5.035400, -0.045800, -2.458076) max=(-3.501875, 2.077983, -0.543926) size=(1.533525, 2.123783, 1.914150)
+BOUNDS local min=(-0.748000, -0.916000, -0.731500) max=(0.712500, 1.106651, 1.091500)
+Transforms=1908 meshFilters=1751 renderers=1751
+MESH SOURCE Assets/无标题.fbx count=1751
+MATERIAL SOURCE Assets/无标题.fbx slots=2216
+Console root is located on equipment-local +Z side at (0.00000, -0.20800, 0.88250). This identifies the operating-console side from placement, not a verified front-face normal.
+CHILD 控制台 local=(0.00000, -0.20800, 0.88250) scale=(0.10000, 0.10000, 0.10000) meshes=77 local bounds=(-0.74800, -0.44255, 0.62830) -> (0.66250, 0.01609, 1.09150)
+CHILD 机械臂 local=(0.00000, 0.16300, 0.00000) scale=(1.00000, 1.00000, 1.00000) meshes=86 local bounds=(-0.52049, 0.00400, -0.09565) -> (0.09898, 0.51039, 0.09541)
+CHILD 轨迹模块 local=(0.00000, -0.73000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=226 local bounds=(-0.60300, -0.00300, -0.57000) -> (0.57000, 0.31750, 0.57000)
+CHILD 框架 local=(0.00000, -0.91600, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=952 local bounds=(-0.73460, -0.91600, -0.73150) -> (0.71250, 1.10665, 0.70525)
+CHILD 台面 local=(0.00000, -0.73000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=410 local bounds=(-0.70250, -0.20650, -0.70250) -> (0.70250, 0.27870, 0.70250)
+CHILD Target local=(3.56200, 0.14952, 0.01619) scale=(0.95238, 0.95238, 0.95238) meshes=0 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+SOLVER IK enabled=False at 多工位机器人集合/多工位实训平台 2/机械臂
+  armRoot=多工位机器人集合/多工位实训平台 2/机械臂
+  base=多工位机器人集合/多工位实训平台 2/机械臂/基座 equipment-local=(0.000000, 0.163000, 0.000000) height above complete bounds.minY=1.132950
+  end=多工位机器人集合/多工位实训平台 2/机械臂/基座/大臂/关节/小臂/手腕/小手腕/机器人手爪/middle equipment-local=(-0.484389, 0.127825, -0.004658)
+    JOINT 基座 axis=Z limits=-180..180 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 大臂 axis=Y limits=-20..20 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 关节 axis=Y limits=-20..20 local-to-equipment=(-0.08448, 0.40889, -0.00035)
+    JOINT 小臂 axis=X limits=-45..45 local-to-equipment=(-0.10116, 0.41992, -0.00042)
+    JOINT 手腕 axis=Y limits=-100..45 local-to-equipment=(-0.26097, 0.17792, -0.00109)
+    JOINT 小手腕 axis=Z limits=80..100 local-to-equipment=(-0.32193, 0.09626, -0.00138)
+SOLVER IKnew enabled=False at 多工位机器人集合/多工位实训平台 2/机械臂
+  armRoot=多工位机器人集合/多工位实训平台 2/机械臂
+  base=多工位机器人集合/多工位实训平台 2/机械臂/基座 equipment-local=(0.000000, 0.163000, 0.000000) height above complete bounds.minY=1.132950
+  end=多工位机器人集合/多工位实训平台 2/机械臂/基座/大臂/关节/小臂/手腕/小手腕/机器人手爪/middle equipment-local=(-0.484389, 0.127825, -0.004658)
+    JOINT 基座 axis=Z limits=-180..180 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 大臂 axis=Y limits=-20..20 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 关节 axis=Y limits=-20..20 local-to-equipment=(-0.08448, 0.40889, -0.00035)
+    JOINT 小臂 axis=X limits=-45..45 local-to-equipment=(-0.10116, 0.41992, -0.00042)
+    JOINT 手腕 axis=Y limits=-100..45 local-to-equipment=(-0.26097, 0.17792, -0.00109)
+    JOINT 小手腕 axis=Z limits=45..135 local-to-equipment=(-0.32193, 0.09626, -0.00138)
+SOLVER IKnew2 enabled=True at 多工位机器人集合/多工位实训平台 2/机械臂
+  armRoot=多工位机器人集合/多工位实训平台 2/机械臂
+  base=多工位机器人集合/多工位实训平台 2/机械臂/基座 equipment-local=(0.000000, 0.163000, 0.000000) height above complete bounds.minY=1.132950
+  end=多工位机器人集合/多工位实训平台 2/机械臂/基座/大臂/关节/小臂/手腕/小手腕/机器人手爪/middle equipment-local=(-0.484389, 0.127825, -0.004658)
+    JOINT 基座 axis=Z limits=-180..180 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 大臂 axis=Y limits=-30..30 local-to-equipment=(0.00000, 0.16300, 0.00000)
+    JOINT 关节 axis=Y limits=-30..30 local-to-equipment=(-0.08448, 0.40889, -0.00035)
+    JOINT 小臂 axis=X limits=0..0 local-to-equipment=(-0.10116, 0.41992, -0.00042)
+    JOINT 手腕 axis=Y limits=-100..50 local-to-equipment=(-0.26097, 0.17792, -0.00109)
+    JOINT 小手腕 axis=Z limits=80..100 local-to-equipment=(-0.32193, 0.09626, -0.00138)
+
+=== original scene rack instance / 架子/架子 ===
+ROOT world=(8.869999, 0.000001, -9.172800) euler=(0.00000, 0.00000, 0.00000) localScale=(0.100000, 0.060000, 0.050000) lossyScale=(0.053000, 0.028800, 0.024000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(5.954999, 0.000001, -9.748800) max=(11.785000, 2.880001, -8.596800) size=(5.830000, 2.880000, 1.152000)
+BOUNDS local min=(-55.000010, -0.000004, -24.000020) max=(54.999990, 100.000000, 23.999990)
+Transforms=3 meshFilters=2 renderers=2
+MESH SOURCE Assets/架子2.fbx count=2
+MATERIAL SOURCE Resources/unity_builtin_extra slots=1
+MATERIAL SOURCE Assets/架子2.fbx slots=1
+CHILD COMPOUND local=(0.00000, 0.00000, 0.00000) scale=(1.00000, 1.00000, 1.00000) meshes=1 local bounds=(-0.00001, 0.00000, -0.00001) -> (-0.00001, 0.00000, -0.00001)
+CHILD COMPOUND.001 local=(0.00000, 0.00000, 0.00000) scale=(50.00000, 50.00000, 50.00000) meshes=1 local bounds=(-55.00001, 0.00000, -24.00002) -> (54.99999, 100.00000, 23.99999)
+
+=== original scene rack instance / 架子/架子 (1) ===
+ROOT world=(2.934000, 0.000001, -9.172800) euler=(0.00000, 0.00000, 0.00000) localScale=(0.100000, 0.060000, 0.050000) lossyScale=(0.053000, 0.028800, 0.024000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(0.019000, 0.000001, -9.748800) max=(5.849000, 2.880001, -8.596800) size=(5.830000, 2.880000, 1.152000)
+BOUNDS local min=(-55.000000, -0.000004, -24.000000) max=(55.000000, 100.000000, 24.000000)
+Transforms=3 meshFilters=2 renderers=2
+MESH SOURCE Assets/架子2.fbx count=2
+MATERIAL SOURCE Resources/unity_builtin_extra slots=1
+MATERIAL SOURCE Assets/架子2.fbx slots=1
+CHILD COMPOUND local=(0.00000, 0.00000, 0.00000) scale=(1.00000, 1.00000, 1.00000) meshes=1 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+CHILD COMPOUND.001 local=(0.00000, 0.00000, 0.00000) scale=(50.00000, 50.00000, 50.00000) meshes=1 local bounds=(-55.00000, 0.00000, -24.00000) -> (55.00000, 100.00000, 24.00000)
+
+=== original scene rack instance / 架子/架子 (2) ===
+ROOT world=(-3.002000, 0.000001, -9.172800) euler=(0.00000, 0.00000, 0.00000) localScale=(0.100000, 0.060000, 0.050000) lossyScale=(0.053000, 0.028800, 0.024000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(-5.917000, 0.000001, -9.748800) max=(-0.087000, 2.880001, -8.596800) size=(5.829999, 2.880000, 1.152000)
+BOUNDS local min=(-55.000000, -0.000004, -24.000000) max=(55.000000, 100.000000, 24.000000)
+Transforms=3 meshFilters=2 renderers=2
+MESH SOURCE Assets/架子2.fbx count=2
+MATERIAL SOURCE Resources/unity_builtin_extra slots=1
+MATERIAL SOURCE Assets/架子2.fbx slots=1
+CHILD COMPOUND local=(0.00000, 0.00000, 0.00000) scale=(1.00000, 1.00000, 1.00000) meshes=1 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+CHILD COMPOUND.001 local=(0.00000, 0.00000, 0.00000) scale=(50.00000, 50.00000, 50.00000) meshes=1 local bounds=(-55.00000, 0.00000, -24.00000) -> (55.00000, 100.00000, 24.00000)
+
+=== original scene rack instance / 架子/架子 (3) ===
+ROOT world=(-8.938000, 0.000001, -9.172800) euler=(0.00000, 0.00000, 0.00000) localScale=(0.100000, 0.060000, 0.050000) lossyScale=(0.053000, 0.028800, 0.024000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(-11.853000, 0.000001, -9.748800) max=(-6.022999, 2.880001, -8.596800) size=(5.830001, 2.880000, 1.152000)
+BOUNDS local min=(-55.000000, -0.000004, -24.000000) max=(55.000000, 100.000000, 24.000000)
+Transforms=3 meshFilters=2 renderers=2
+MESH SOURCE Assets/架子2.fbx count=2
+MATERIAL SOURCE Resources/unity_builtin_extra slots=1
+MATERIAL SOURCE Assets/架子2.fbx slots=1
+CHILD COMPOUND local=(0.00000, 0.00000, 0.00000) scale=(1.00000, 1.00000, 1.00000) meshes=1 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+CHILD COMPOUND.001 local=(0.00000, 0.00000, 0.00000) scale=(50.00000, 50.00000, 50.00000) meshes=1 local bounds=(-55.00000, 0.00000, -24.00000) -> (55.00000, 100.00000, 24.00000)
+
+=== source FBX asset: Assets/架子.fbx / 架子 ===
+ROOT world=(0.000000, 0.000000, 0.000000) euler=(0.00000, 0.00000, 0.00000) localScale=(1.000000, 1.000000, 1.000000) lossyScale=(1.000000, 1.000000, 1.000000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(-5.500000, 0.000000, -2.400002) max=(5.500000, 10.000000, 2.399999) size=(11.000000, 10.000000, 4.800001)
+BOUNDS local min=(-5.500000, 0.000000, -2.400002) max=(5.500000, 10.000000, 2.399999)
+Transforms=7 meshFilters=2 renderers=2
+MESH SOURCE Assets/架子.fbx count=2
+MATERIAL SOURCE Resources/unity_builtin_extra slots=1
+MATERIAL SOURCE Assets/架子.fbx slots=1
+CHILD Camera local=(-7.35889, 4.95831, 6.92579) scale=(100.00000, 100.00000, 99.99999) meshes=0 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+CHILD Light local=(-4.07625, 5.90386, -1.00545) scale=(100.00000, 100.00000, 100.00000) meshes=0 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+CHILD 架子.empties local=(0.00000, 0.00000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=2 local bounds=(-5.50000, 0.00000, -2.40000) -> (5.50000, 10.00000, 2.40000)
+MESH SOURCE Assets/架子.fbx renderer count=2
+MATERIAL Default-Material path=Resources/unity_builtin_extra localFileId=10303 shader=Standard color=RGBA(1.000, 1.000, 1.000, 1.000)
+MATERIAL ORANGE path=Assets/架子.fbx localFileId=7591209110304339535 shader=Standard color=RGBA(1.000, 0.600, 0.000, 1.000)
+
+=== source FBX asset: Assets/架子2.fbx / 架子2 ===
+ROOT world=(0.000000, 0.000000, 0.000000) euler=(0.00000, 0.00000, 0.00000) localScale=(1.000000, 1.000000, 1.000000) lossyScale=(1.000000, 1.000000, 1.000000)
+AXES right=(1.00, 0.00, 0.00) up=(0.00, 1.00, 0.00) forward=(0.00, 0.00, 1.00)
+BOUNDS world min=(-5.500000, 0.000000, -2.400002) max=(5.500000, 10.000000, 2.399999) size=(11.000000, 10.000000, 4.800001)
+BOUNDS local min=(-5.500000, 0.000000, -2.400002) max=(5.500000, 10.000000, 2.399999)
+Transforms=7 meshFilters=2 renderers=2
+MESH SOURCE Assets/架子2.fbx count=2
+MATERIAL SOURCE Resources/unity_builtin_extra slots=1
+MATERIAL SOURCE Assets/架子2.fbx slots=1
+CHILD Camera local=(-7.35889, 4.95831, 6.92579) scale=(100.00000, 100.00000, 99.99999) meshes=0 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+CHILD Light local=(-4.07625, 5.90386, -1.00545) scale=(100.00000, 100.00000, 100.00000) meshes=0 local bounds=(0.00000, 0.00000, 0.00000) -> (0.00000, 0.00000, 0.00000)
+CHILD 架子.empties local=(0.00000, 0.00000, 0.00000) scale=(0.10000, 0.10000, 0.10000) meshes=2 local bounds=(-5.50000, 0.00000, -2.40000) -> (5.50000, 10.00000, 2.40000)
+MESH SOURCE Assets/架子2.fbx renderer count=2
+MATERIAL Default-Material path=Resources/unity_builtin_extra localFileId=10303 shader=Standard color=RGBA(1.000, 1.000, 1.000, 1.000)
+MATERIAL ORANGE path=Assets/架子2.fbx localFileId=7591209110304339535 shader=Standard color=RGBA(1.000, 0.600, 0.000, 1.000)

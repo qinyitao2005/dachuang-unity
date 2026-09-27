@@ -1,0 +1,81 @@
+Robot/wire collision validation: 2026-09-25T16:09:08
+Actual CAD model copies plus independent geometric fixtures. No source assets or live robot poses are changed.
+PASS: fixture caches exactly its actual rigid-link mesh
+PASS: capsule through a mesh box is rejected; gap=-0.002000
+PASS: remote capsule is clear; gap=2.958000
+PASS: mirrored/nonuniform/sheared mesh bounds retain collision coverage
+PASS: zero-scale box and zero-length capsule are handled without NaN
+PASS: collapsed box does not become an infinite obstacle
+PASS: swept-collision fixture initial pose is statically clear
+PASS: independent midpoint pose actually intersects the wire
+PASS: swept-collision fixture final pose is statically clear
+PASS: sweep detects an intermediate hit with safe endpoints; Sweep sample 25/55: MovingJoint/KnownRigidLink near wire segment 0; conservative clearance=-4.334 mm (required 0.000 mm).
+PASS: rejected sweep restores the original final joint pose
+PASS: retreat fixture starts legally within 0.03 mm of its safety boundary; gap=0.000360
+PASS: retreat endpoint moves the real link away from the wire
+PASS: near-boundary outward retreat is permitted with proven nonintersection; intervals=36 lowerGap=0.000183 
+PASS: accepted retreat sweep preserves the final pose
+PASS: unchanged joint pose skips temporal resampling
+PASS: tiny joint rotations retain a nonzero motion envelope
+PASS: fixed CAD translation cancellation keeps sweep bounds useful; intervals=9 
+PASS: insufficient sampling budget rejects the move instead of dropping collision coverage
+PASS: budget rejection restores the final joint pose
+PASS: rigid ring sweep initial pose is threaded and statically clear; 
+PASS: rigid ring sweep final pose is threaded and statically clear; 
+PASS: actual rigid ring midpoint differs from fake endpoint-centre interpolation by more than 12 mm
+PASS: only the actual rotating ring hits the wire at the independent midpoint; Held ring near wire; conservative clearance=-1.551 mm (required 0.600 mm).
+PASS: shared true-joint sweep catches the ring-only intermediate collision; intervals=241 Sweep sample 34/241: Held ring near wire; conservative clearance=-0.021 mm (required 0.000 mm).
+PASS: ring-only sweep rejection restores the final joint pose
+PASS: rigid ring starts legally close to its 0.6 mm static boundary; gap=0.000630 
+PASS: rigid ring retreat endpoint improves true ring surface clearance
+PASS: near-boundary rigid ring retreat passes without a second safety-margin charge; intervals=43 
+PASS: accepted rigid ring retreat restores the final joint pose
+PASS: no-motion sweep still validates the actual held ring
+PASS: thread/endcap check rejects a physically clear ring beyond the finite wire
+PASS: three authored robot stations are available
+PASS: station 0 has authored ring gripper and retained original tool
+PASS: station 0 caches every actual moving CAD mesh; count=118
+PASS: station 0 excludes the static cabinet and training-cell frame
+PASS: station 0 remote probe remains clear
+PASS: station 0 hidden original tool is skipped while new CAD gripper is active; active=90
+PASS: station 0 includes the gripper body and both CAD fingers; meshes=34
+PASS: station 0 gripper internal capsule is blocked by an actual mesh proxy; 机加手指1 gap=-0.001000
+PASS: station 0 wrist internal capsule is blocked by an actual mesh proxy; 手腕 gap=-0.001000
+PASS: station 0 upper arm internal capsule is blocked by an actual mesh proxy; 大臂 gap=-0.001000
+PASS: station 0 renderer-disabled mesh is skipped without stale collision geometry
+PASS: station 0 cache handles returning to the retained original tool
+PASS: station 0 actual CAD gripper and rigid ring permit a wire through the aperture; ringGap=0.035049 
+PASS: station 0 shared CAD/ring sweep validates a real wrist motion; intervals=1 
+PASS: station 0 shared sweep preserves its actual final wrist pose
+PASS: station 0 a wire through the actual opposite ring rim is rejected; Held ring near wire; conservative clearance=-6.451 mm (required 0.600 mm).
+PASS: station 1 has authored ring gripper and retained original tool
+PASS: station 1 caches every actual moving CAD mesh; count=120
+PASS: station 1 excludes the static cabinet and training-cell frame
+PASS: station 1 remote probe remains clear
+PASS: station 1 hidden original tool is skipped while new CAD gripper is active; active=90
+PASS: station 1 includes the gripper body and both CAD fingers; meshes=34
+PASS: station 1 gripper internal capsule is blocked by an actual mesh proxy; 机加手指1 gap=-0.001000
+PASS: station 1 wrist internal capsule is blocked by an actual mesh proxy; 手腕 gap=-0.001000
+PASS: station 1 upper arm internal capsule is blocked by an actual mesh proxy; 大臂 gap=-0.001000
+PASS: station 1 renderer-disabled mesh is skipped without stale collision geometry
+PASS: station 1 cache handles returning to the retained original tool
+PASS: station 1 actual CAD gripper and rigid ring permit a wire through the aperture; ringGap=0.035049 
+PASS: station 1 shared CAD/ring sweep validates a real wrist motion; intervals=1 
+PASS: station 1 shared sweep preserves its actual final wrist pose
+PASS: station 1 a wire through the actual opposite ring rim is rejected; Held ring near wire; conservative clearance=-6.950 mm (required 0.600 mm).
+PASS: station 2 has authored ring gripper and retained original tool
+PASS: station 2 caches every actual moving CAD mesh; count=120
+PASS: station 2 excludes the static cabinet and training-cell frame
+PASS: station 2 remote probe remains clear
+PASS: station 2 hidden original tool is skipped while new CAD gripper is active; active=90
+PASS: station 2 includes the gripper body and both CAD fingers; meshes=34
+PASS: station 2 gripper internal capsule is blocked by an actual mesh proxy; 机加手指1 gap=-0.001000
+PASS: station 2 wrist internal capsule is blocked by an actual mesh proxy; 手腕 gap=-0.001000
+PASS: station 2 upper arm internal capsule is blocked by an actual mesh proxy; 大臂 gap=-0.001000
+PASS: station 2 renderer-disabled mesh is skipped without stale collision geometry
+PASS: station 2 cache handles returning to the retained original tool
+PASS: station 2 actual CAD gripper and rigid ring permit a wire through the aperture; ringGap=0.035049 
+PASS: station 2 shared CAD/ring sweep validates a real wrist motion; intervals=1 
+PASS: station 2 shared sweep preserves its actual final wrist pose
+PASS: station 2 a wire through the actual opposite ring rim is rejected; Held ring near wire; conservative clearance=-6.950 mm (required 0.600 mm).
+PASS: robot/wire OBB capsule and swept-motion validation completed.

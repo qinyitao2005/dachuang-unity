@@ -1,0 +1,4 @@
+station,roll,passedPoints,pointCount,maxPositionError,maxAngle,minGap,reason
+0,0,16,121,0.001479,3.534,0.001834,
+1,0,0,121,0.000000,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕/RingGrip_OriginalCAD/component/复件 1_3^MHZL2-25D20221218.002 near wire segment 41; conservative clearance=-2.800 mm (required 0.350 mm).
+2,0,0,121,0.000024,0.000,-0.002800,OriginalAssembly/机械臂/基座/大臂/关节/小臂/手腕/小手腕 near wire segment 89; conservative clearance=-2.800 mm (required 0.350 mm).

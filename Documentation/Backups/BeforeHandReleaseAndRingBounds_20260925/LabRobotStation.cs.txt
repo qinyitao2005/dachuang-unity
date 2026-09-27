@@ -1,0 +1,221 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace RoboticsLab
+{
+    /// <summary>Shared adapter for the original robot models and a future pendant UI.</summary>
+    public class LabRobotStation : MonoBehaviour
+    {
+        public int stationIndex;
+        public string displayName = "六轴机械臂";
+        public bool IsOperating { get; private set; }
+        public bool EmergencyStopped { get; private set; }
+        public bool PenDown { get; private set; }
+        public int TrainingMode { get; private set; }
+        public float Progress { get; private set; }
+        public int Contacts { get; private set; }
+        public float Elapsed { get; private set; }
+        public Transform modelRoot, toolTarget, endEffector;
+        public JointConfig[] joints;
+        public Transform drawingBoard, wireRoot, ringRoot, penRoot;
+        public LineRenderer wireRenderer, ringRenderer;
+        public Vector3 exerciseCenter = new Vector3(.65f, 1.25f, 0);
+        public Vector3 workspaceHalfSize = new Vector3(.38f,.36f,.53f);
+        public float moveSpeed = .22f;
+        public float drawingHeight = 1.055f;
+        public float exerciseScale = 1f, tableHeight = .93f;
+        public float ringRadius = .105f, ringTubeRadius = .009f, wireRadius = .007f;
+        public Vector3[] wirePoints;
+        public bool ToolInContact { get; private set; }
+        public float PositionError => toolTarget && endEffector ? Vector3.Distance(toolTarget.position,endEffector.position) : 0;
+        readonly List<LineRenderer> strokes = new List<LineRenderer>();
+        LineRenderer currentStroke;
+        Material lineMaterial;
+        Quaternion[] homeRotations;
+        float[] jointAngles;
+        Vector3 lastInk;
+        float inkLength, contactCooldown;
+        bool previousContact, initialized, ringStarted;
+        int furthestSegment;
+        armProperty legacyState;
+        Transform originalTrajectoryModule;
+        bool originalTrajectoryVisible;
+        Vector3 requestedMotion;
+        const int RingSegments = 64;
+
+        void Start() { Initialize(); ResetExercise(); }
+        void Initialize()
+        {
+            if(initialized) return;
+            initialized=true;
+            if(joints==null)joints=new JointConfig[0];
+            homeRotations=new Quaternion[joints.Length]; jointAngles=new float[joints.Length];
+            for(int i=0;i<joints.Length;i++)if(joints[i]!=null&&joints[i].joint) homeRotations[i]=joints[i].joint.localRotation;
+            if(modelRoot)legacyState=modelRoot.GetComponentInChildren<armProperty>(true);
+            if(modelRoot)foreach(var child in modelRoot.GetComponentsInChildren<Transform>(true))
+                if(child.name=="轨迹模块"){originalTrajectoryModule=child;originalTrajectoryVisible=child.gameObject.activeSelf;break;}
+            lineMaterial=new Material(Shader.Find("Sprites/Default"));
+            if(!toolTarget) {toolTarget=new GameObject("ToolTarget").transform;toolTarget.SetParent(transform,false);}
+            SetMode(TrainingMode);
+        }
+        public void BeginOperation() {Initialize();IsOperating=true;requestedMotion=Vector3.zero;ApplyExerciseVisibility();}
+        public void EndOperation() {IsOperating=false;PenDown=false;requestedMotion=Vector3.zero;currentStroke=null;ApplyExerciseVisibility();if(legacyState)legacyState.armIsMoving=false;}
+        public void SetEmergencyStop(bool stopped) {EmergencyStopped=stopped;requestedMotion=Vector3.zero;if(stopped){PenDown=false;currentStroke=null;}}
+        public void SetMode(int mode)
+        {
+            TrainingMode=Mathf.Clamp(mode,0,1);
+            ApplyExerciseVisibility();
+            if(initialized)ResetExercise();
+        }
+        void ApplyExerciseVisibility()
+        {
+            // Exchange the original trajectory jig for the selected exercise attachment.
+            // Keep the preserved jig in the assembly and restore it when leaving the station.
+            if(originalTrajectoryModule)originalTrajectoryModule.gameObject.SetActive(!IsOperating&&originalTrajectoryVisible);
+            if(drawingBoard)drawingBoard.gameObject.SetActive(IsOperating&&TrainingMode==0);
+            if(wireRoot)wireRoot.gameObject.SetActive(IsOperating&&TrainingMode==1);
+            if(ringRoot)ringRoot.gameObject.SetActive(IsOperating&&TrainingMode==1);
+            if(penRoot)penRoot.gameObject.SetActive(IsOperating&&TrainingMode==0);
+            foreach(var stroke in strokes)if(stroke)stroke.gameObject.SetActive(IsOperating&&TrainingMode==0);
+        }
+        public void SetPen(bool down)
+        {
+            PenDown=down&&IsOperating&&!EmergencyStopped&&TrainingMode==0;
+            if(PenDown&&toolTarget){var p=toolTarget.localPosition;p.y=drawingHeight;toolTarget.localPosition=p;}
+            else currentStroke=null;
+        }
+        public void ClearDrawing()
+        {
+            foreach(var stroke in strokes)if(stroke)Destroy(stroke.gameObject);
+            strokes.Clear(); currentStroke=null; inkLength=0;if(TrainingMode==0)Progress=0;
+        }
+        public void ResetExercise()
+        {
+            if(!initialized){Initialize();return;}
+            PenDown=false; EmergencyStopped=false;Elapsed=0;Progress=0;Contacts=0;ToolInContact=false;
+            previousContact=false;contactCooldown=0;ringStarted=false;furthestSegment=0;requestedMotion=Vector3.zero;
+            ClearDrawing();
+            for(int i=0;i<joints.Length;i++)if(joints[i]!=null&&joints[i].joint){joints[i].joint.localRotation=homeRotations[i];jointAngles[i]=0;}
+            var start=exerciseCenter;
+            if(TrainingMode==0)start.y=drawingHeight+.12f*exerciseScale;
+            else if(wirePoints!=null&&wirePoints.Length>1)start=wirePoints[0];
+            toolTarget.localPosition=start;
+            for(int i=0;i<60;i++)SolveIK(.18f);
+            UpdateToolVisuals();
+        }
+        /// <summary>Call once per frame with world XYZ direction. Time integration happens here once.</summary>
+        public void MoveTool(Vector3 input)
+        {
+            if(!IsOperating||EmergencyStopped||!toolTarget)return;
+            requestedMotion=Vector3.ClampMagnitude(input,1);
+            Vector3 local=toolTarget.localPosition+transform.InverseTransformDirection(requestedMotion)*moveSpeed*Time.deltaTime;
+            local.x=Mathf.Clamp(local.x,exerciseCenter.x-workspaceHalfSize.x,exerciseCenter.x+workspaceHalfSize.x);
+            local.y=Mathf.Clamp(local.y,Mathf.Max(drawingHeight,exerciseCenter.y-workspaceHalfSize.y),exerciseCenter.y+workspaceHalfSize.y);
+            local.z=Mathf.Clamp(local.z,exerciseCenter.z-workspaceHalfSize.z,exerciseCenter.z+workspaceHalfSize.z);
+            if(TrainingMode==0&&PenDown)local.y=drawingHeight;
+            toolTarget.localPosition=local;
+        }
+        void LateUpdate()
+        {
+            if(!initialized)return;
+            if(IsOperating&&!EmergencyStopped){Elapsed+=Time.deltaTime;SolveIK(Time.deltaTime);}
+            if(legacyState)legacyState.armIsMoving=IsOperating&&!EmergencyStopped&&requestedMotion.sqrMagnitude>.001f;
+            UpdateToolVisuals();
+            if(IsOperating&&!EmergencyStopped)
+            {
+                if(TrainingMode==0)UpdateDrawing();else UpdateRing();
+            }
+            requestedMotion=Vector3.zero;
+        }
+        void SolveIK(float dt)
+        {
+            if(!endEffector||!toolTarget||joints.Length==0)return;
+            // CCD walks from wrist to shoulder. Each joint uses its original local hinge axis.
+            for(int pass=0;pass<14;pass++)
+            {
+                if((endEffector.position-toolTarget.position).sqrMagnitude<.000004f)break;
+                for(int i=joints.Length-1;i>=0;i--)
+                {
+                    var c=joints[i]; if(c==null||!c.joint)continue;
+                    Vector3 localAxis=c.axis==JointAxis.X?Vector3.right:c.axis==JointAxis.Z?Vector3.forward:Vector3.up;
+                    Vector3 axis=c.axis==JointAxis.WorldY?Vector3.up:c.joint.TransformDirection(localAxis);
+                    Vector3 a=Vector3.ProjectOnPlane(endEffector.position-c.joint.position,axis);
+                    Vector3 b=Vector3.ProjectOnPlane(toolTarget.position-c.joint.position,axis);
+                    if(a.sqrMagnitude<1e-8f||b.sqrMagnitude<1e-8f)continue;
+                    float step=Mathf.Clamp(Vector3.SignedAngle(a,b,axis),-Mathf.Max(.1f,dt*80),Mathf.Max(.1f,dt*80));
+                    float next=Mathf.Clamp(jointAngles[i]+step,c.minAngle,c.maxAngle);
+                    step=next-jointAngles[i];jointAngles[i]=next;
+                    c.joint.rotation=Quaternion.AngleAxis(step,axis)*c.joint.rotation;
+                }
+            }
+        }
+        void UpdateToolVisuals()
+        {
+            if(!endEffector)return;
+            if(penRoot){penRoot.position=endEffector.position;penRoot.rotation=Quaternion.identity;}
+            if(ringRoot)
+            {
+                ringRoot.position=endEffector.position;
+                // The practice ring is mounted on a passive swivel tool to align with the guide.
+                if(wirePoints!=null&&wirePoints.Length>1)
+                {
+                    int i=Mathf.Clamp(furthestSegment,0,wirePoints.Length-2);
+                    Vector3 tangent=transform.TransformDirection(wirePoints[i+1]-wirePoints[i]).normalized;
+                    ringRoot.rotation=Quaternion.LookRotation(tangent,Vector3.up);
+                }
+            }
+        }
+        void UpdateDrawing()
+        {
+            if(!PenDown||!endEffector){currentStroke=null;return;}
+            Vector3 point=transform.InverseTransformPoint(endEffector.position);
+            if(Mathf.Abs(point.y-drawingHeight)>.03f*exerciseScale){currentStroke=null;return;}
+            point.y=drawingHeight+.003f*exerciseScale;
+            if(currentStroke&&Vector3.Distance(lastInk,point)<.004f*exerciseScale)return;
+            if(!currentStroke)
+            {
+                var go=new GameObject("DrawingStroke");go.transform.SetParent(transform,false);
+                currentStroke=go.AddComponent<LineRenderer>();currentStroke.sharedMaterial=lineMaterial;
+                currentStroke.useWorldSpace=false;currentStroke.widthMultiplier=.007f*exerciseScale;
+                currentStroke.startColor=currentStroke.endColor=new Color(.02f,.24f,.7f);
+                currentStroke.numCapVertices=4;currentStroke.positionCount=1;currentStroke.SetPosition(0,point);
+                strokes.Add(currentStroke);lastInk=point;return;
+            }
+            inkLength+=Vector3.Distance(lastInk,point);lastInk=point;
+            int count=currentStroke.positionCount;currentStroke.positionCount=count+1;currentStroke.SetPosition(count,point);
+            Progress=Mathf.Clamp01(inkLength/(2f*exerciseScale));
+        }
+        void UpdateRing()
+        {
+            if(!ringRoot||wirePoints==null||wirePoints.Length<2)return;
+            contactCooldown=Mathf.Max(0,contactCooldown-Time.deltaTime);
+            Vector3 center=ringRoot.position;float nearest=float.PositiveInfinity;int nearestIndex=0;bool contact=false;
+            // Sphere-to-circle distance on densely subdivided wire segments approximates tube contact,
+            // including both axial separation from the ring plane and radial separation from its rim.
+            for(int i=0;i<wirePoints.Length-1;i++)
+            {
+                Vector3 a=transform.TransformPoint(wirePoints[i]),b=transform.TransformPoint(wirePoints[i+1]);
+                Vector3 segment=b-a;float t=Mathf.Clamp01(Vector3.Dot(center-a,segment)/Mathf.Max(segment.sqrMagnitude,1e-8f));
+                float d=(a+t*segment-center).sqrMagnitude;if(d<nearest){nearest=d;nearestIndex=i;}
+                for(int s=0;s<=3;s++)
+                {
+                    Vector3 q=ringRoot.InverseTransformPoint(Vector3.Lerp(a,b,s/3f));
+                    float radial=Mathf.Sqrt(q.x*q.x+q.y*q.y)-ringRadius;
+                    if(radial*radial+q.z*q.z<=Mathf.Pow(ringTubeRadius+wireRadius,2))contact=true;
+                }
+            }
+            ToolInContact=contact;
+            if(contact&&!previousContact&&contactCooldown<=0){Contacts++;contactCooldown=.25f;}
+            previousContact=contact;
+            if(ringRenderer)ringRenderer.startColor=ringRenderer.endColor=contact?new Color(1,.22f,.14f):new Color(1,.7f,.15f);
+            if(!ringStarted&&nearestIndex<4&&nearest<Mathf.Pow(ringRadius-wireRadius-ringTubeRadius,2))ringStarted=true;
+            if(ringStarted&&!contact&&nearest<Mathf.Pow(ringRadius-wireRadius-ringTubeRadius,2)&&nearestIndex<=furthestSegment+8)
+            {
+                furthestSegment=Mathf.Max(furthestSegment,nearestIndex);
+                Progress=Mathf.Clamp01((float)furthestSegment/(wirePoints.Length-2));
+            }
+        }
+        void OnDestroy(){if(lineMaterial)Destroy(lineMaterial);}
+    }
+}

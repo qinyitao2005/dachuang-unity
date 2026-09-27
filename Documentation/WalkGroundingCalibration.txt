@@ -1,0 +1,77 @@
+Walk floor baseline calibration / 2026-09-25T05:45:56.0390759Z
+Sampling: same runtime Animator controller, root motion disabled, Animator.Play + Update(0), restored visual root before/after every sample.
+Measurement: full-body standard CPU skinning (all vertices); the lowest body surface is the sole in this avatar.
+Samples=65 over a complete Walk cycle, including the loop boundary.
+Idle sole in normalized preview world=-0.092956
+Walk sole range before fixed offset=-0.017426 .. 0.095070
+Fixed walk world Y offset=-0.075530; local Y offset=-0.075530
+Idle visual local Y=0.022956
+Predicted settled-world sole range after offset=0.005000 .. 0.117496
+The prediction assumes the existing Idle fit rests at y=0.005 m. Confirm it with live CPU skinning and screenshots.
+The original clip and every joint curve are untouched; one constant visual-root correction blends with the Walk state transition weight.
+No per-frame foot snapping or bone correction is applied. Natural sole-height variation, including any flight phase, is preserved.
+PHASE 0.00000 rawSoleY=-0.002711 predictedSettledWorldY=0.019715
+PHASE 0.01563 rawSoleY=-0.000947 predictedSettledWorldY=0.021480
+PHASE 0.03125 rawSoleY=-0.011212 predictedSettledWorldY=0.011214
+PHASE 0.04688 rawSoleY=-0.017426 predictedSettledWorldY=0.005000
+PHASE 0.06250 rawSoleY=0.005825 predictedSettledWorldY=0.028252
+PHASE 0.07813 rawSoleY=0.031461 predictedSettledWorldY=0.053887
+PHASE 0.09375 rawSoleY=0.050872 predictedSettledWorldY=0.073298
+PHASE 0.10938 rawSoleY=0.069213 predictedSettledWorldY=0.091639
+PHASE 0.12500 rawSoleY=0.082608 predictedSettledWorldY=0.105034
+PHASE 0.14063 rawSoleY=0.087700 predictedSettledWorldY=0.110126
+PHASE 0.15625 rawSoleY=0.081775 predictedSettledWorldY=0.104202
+PHASE 0.17188 rawSoleY=0.065013 predictedSettledWorldY=0.087439
+PHASE 0.18750 rawSoleY=0.045804 predictedSettledWorldY=0.068230
+PHASE 0.20313 rawSoleY=0.027572 predictedSettledWorldY=0.049999
+PHASE 0.21875 rawSoleY=0.012410 predictedSettledWorldY=0.034836
+PHASE 0.23438 rawSoleY=0.001603 predictedSettledWorldY=0.024029
+PHASE 0.25000 rawSoleY=0.003620 predictedSettledWorldY=0.026047
+PHASE 0.26563 rawSoleY=0.004483 predictedSettledWorldY=0.026909
+PHASE 0.28125 rawSoleY=0.016980 predictedSettledWorldY=0.039406
+PHASE 0.29688 rawSoleY=0.026635 predictedSettledWorldY=0.049061
+PHASE 0.31250 rawSoleY=0.037602 predictedSettledWorldY=0.060029
+PHASE 0.32813 rawSoleY=0.052654 predictedSettledWorldY=0.075080
+PHASE 0.34375 rawSoleY=0.068032 predictedSettledWorldY=0.090458
+PHASE 0.35938 rawSoleY=0.079221 predictedSettledWorldY=0.101648
+PHASE 0.37500 rawSoleY=0.083150 predictedSettledWorldY=0.105577
+PHASE 0.39063 rawSoleY=0.076374 predictedSettledWorldY=0.098800
+PHASE 0.40625 rawSoleY=0.062122 predictedSettledWorldY=0.084548
+PHASE 0.42188 rawSoleY=0.043790 predictedSettledWorldY=0.066216
+PHASE 0.43750 rawSoleY=0.026472 predictedSettledWorldY=0.048899
+PHASE 0.45313 rawSoleY=0.012400 predictedSettledWorldY=0.034826
+PHASE 0.46875 rawSoleY=0.004444 predictedSettledWorldY=0.026870
+PHASE 0.48438 rawSoleY=0.010949 predictedSettledWorldY=0.033375
+PHASE 0.50000 rawSoleY=0.004702 predictedSettledWorldY=0.027128
+PHASE 0.51563 rawSoleY=0.017636 predictedSettledWorldY=0.040063
+PHASE 0.53125 rawSoleY=0.029783 predictedSettledWorldY=0.052209
+PHASE 0.54688 rawSoleY=0.046039 predictedSettledWorldY=0.068465
+PHASE 0.56250 rawSoleY=0.064169 predictedSettledWorldY=0.086595
+PHASE 0.57813 rawSoleY=0.079516 predictedSettledWorldY=0.101942
+PHASE 0.59375 rawSoleY=0.090860 predictedSettledWorldY=0.113286
+PHASE 0.60938 rawSoleY=0.095070 predictedSettledWorldY=0.117496
+PHASE 0.62500 rawSoleY=0.088025 predictedSettledWorldY=0.110451
+PHASE 0.64063 rawSoleY=0.067239 predictedSettledWorldY=0.089665
+PHASE 0.65625 rawSoleY=0.045545 predictedSettledWorldY=0.067972
+PHASE 0.67188 rawSoleY=0.027628 predictedSettledWorldY=0.050054
+PHASE 0.68750 rawSoleY=0.015168 predictedSettledWorldY=0.037595
+PHASE 0.70313 rawSoleY=0.006467 predictedSettledWorldY=0.028893
+PHASE 0.71875 rawSoleY=0.009589 predictedSettledWorldY=0.032015
+PHASE 0.73438 rawSoleY=0.009284 predictedSettledWorldY=0.031711
+PHASE 0.75000 rawSoleY=0.025513 predictedSettledWorldY=0.047939
+PHASE 0.76563 rawSoleY=0.036783 predictedSettledWorldY=0.059209
+PHASE 0.78125 rawSoleY=0.051354 predictedSettledWorldY=0.073781
+PHASE 0.79688 rawSoleY=0.063735 predictedSettledWorldY=0.086161
+PHASE 0.81250 rawSoleY=0.076702 predictedSettledWorldY=0.099128
+PHASE 0.82813 rawSoleY=0.083264 predictedSettledWorldY=0.105690
+PHASE 0.84375 rawSoleY=0.079986 predictedSettledWorldY=0.102412
+PHASE 0.85938 rawSoleY=0.067382 predictedSettledWorldY=0.089808
+PHASE 0.87500 rawSoleY=0.049351 predictedSettledWorldY=0.071777
+PHASE 0.89063 rawSoleY=0.031136 predictedSettledWorldY=0.053562
+PHASE 0.90625 rawSoleY=0.015103 predictedSettledWorldY=0.037529
+PHASE 0.92188 rawSoleY=0.005382 predictedSettledWorldY=0.027808
+PHASE 0.93750 rawSoleY=0.007626 predictedSettledWorldY=0.030053
+PHASE 0.95313 rawSoleY=0.004710 predictedSettledWorldY=0.027137
+PHASE 0.96875 rawSoleY=0.010791 predictedSettledWorldY=0.033217
+PHASE 0.98438 rawSoleY=0.020999 predictedSettledWorldY=0.043425
+PHASE 1.00000 rawSoleY=-0.002711 predictedSettledWorldY=0.019715

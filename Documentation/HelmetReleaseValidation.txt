@@ -1,0 +1,252 @@
+Helmet release validation / 2026-09-25T06:14:46.2499242Z
+Independent baseline: a pre-equipment clone with the same Animator controller, Rebind/Idle/Walk evaluation, and no equipment behaviour.
+Local quaternion and anatomical-axis twist measurements cover upper/lower arms, hands and all mapped fingers including thumbs.
+PASS: Mapped arms, hands and fingers available; count=36
+PASS: Pre-equip live Idle matches the independent Animator baseline
+PASS: The actual training app started the equip sequence
+RELEASE_FRAME t=2.37593 dt=0.15553 frame=165 armFromIdleDeg=142.16610 fingersFromIdleDeg=31.19958 longitudinalTwistFromIdleDeg=97.86958 largestFrameStepDeg=3.69263
+RELEASE_FRAME t=2.53871 dt=0.16278 frame=166 armFromIdleDeg=114.64840 fingersFromIdleDeg=25.19293 longitudinalTwistFromIdleDeg=70.68195 largestFrameStepDeg=27.51769
+CAPTURE HelmetRelease240 atSeconds=2.53871
+RELEASE_FRAME t=2.76355 dt=0.22484 frame=167 armFromIdleDeg=55.69592 fingersFromIdleDeg=12.19579 longitudinalTwistFromIdleDeg=29.52629 largestFrameStepDeg=58.95247
+CAPTURE HelmetRelease270 atSeconds=2.76355
+RELEASE_FRAME t=2.98782 dt=0.22427 frame=168 armFromIdleDeg=7.79966 fingersFromIdleDeg=1.69253 longitudinalTwistFromIdleDeg=3.96088 largestFrameStepDeg=47.89606
+RELEASE_FRAME t=3.14626 dt=0.15844 frame=169 armFromIdleDeg=0.00000 fingersFromIdleDeg=0.00000 longitudinalTwistFromIdleDeg=0.00000 largestFrameStepDeg=7.79966
+CAPTURE HelmetRelease310 atSeconds=3.14626
+RELEASE_FRAME t=3.36688 dt=0.22062 frame=170 armFromIdleDeg=0.00000 fingersFromIdleDeg=0.00000 longitudinalTwistFromIdleDeg=0.00000 largestFrameStepDeg=0.00000
+RELEASE_FRAME t=3.52753 dt=0.16065 frame=171 armFromIdleDeg=0.00000 fingersFromIdleDeg=0.00000 longitudinalTwistFromIdleDeg=0.00000 largestFrameStepDeg=0.00000
+RELEASE_FRAME t=3.69129 dt=0.16376 frame=172 armFromIdleDeg=0.00000 fingersFromIdleDeg=0.00000 longitudinalTwistFromIdleDeg=0.00000 largestFrameStepDeg=0.00000
+RELEASE_FRAME t=3.85532 dt=0.16403 frame=173 armFromIdleDeg=0.00000 fingersFromIdleDeg=0.00000 longitudinalTwistFromIdleDeg=0.00000 largestFrameStepDeg=0.00000
+RELEASE_FRAME t=4.01185 dt=0.15653 frame=174 armFromIdleDeg=0.00000 fingersFromIdleDeg=0.00000 longitudinalTwistFromIdleDeg=0.00000 largestFrameStepDeg=0.00000
+CAPTURE HelmetRelease400 atSeconds=4.01185
+PASS: Equip completed and the helmet remains fitted
+PASS: No >120 degree local-rotation jumps in a live frame shorter than 100ms; count=0
+INFO: maxSequenceFrameStepDeg=60.930900 maxReleaseFrameStepDeg=58.952470 maxReleaseTwistFromIdleDeg=97.869580 (absolute pose angles are reported, not treated as unnatural by themselves)
+POSE Post-release Idle maxLocalErrorDeg=0.000000
+  LeftUpperArm localErrorDeg=0.000000
+  LeftLowerArm localErrorDeg=0.000000
+  LeftHand localErrorDeg=0.000000
+  RightUpperArm localErrorDeg=0.000000
+  RightLowerArm localErrorDeg=0.000000
+  RightHand localErrorDeg=0.000000
+  LeftThumbProximal localErrorDeg=0.000000
+  LeftThumbIntermediate localErrorDeg=0.000000
+  LeftThumbDistal localErrorDeg=0.000000
+  LeftIndexProximal localErrorDeg=0.000000
+  LeftIndexIntermediate localErrorDeg=0.000000
+  LeftIndexDistal localErrorDeg=0.000000
+  LeftMiddleProximal localErrorDeg=0.000000
+  LeftMiddleIntermediate localErrorDeg=0.000000
+  LeftMiddleDistal localErrorDeg=0.000000
+  LeftRingProximal localErrorDeg=0.000000
+  LeftRingIntermediate localErrorDeg=0.000000
+  LeftRingDistal localErrorDeg=0.000000
+  LeftLittleProximal localErrorDeg=0.000000
+  LeftLittleIntermediate localErrorDeg=0.000000
+  LeftLittleDistal localErrorDeg=0.000000
+  RightThumbProximal localErrorDeg=0.000000
+  RightThumbIntermediate localErrorDeg=0.000000
+  RightThumbDistal localErrorDeg=0.000000
+  RightIndexProximal localErrorDeg=0.000000
+  RightIndexIntermediate localErrorDeg=0.000000
+  RightIndexDistal localErrorDeg=0.000000
+  RightMiddleProximal localErrorDeg=0.000000
+  RightMiddleIntermediate localErrorDeg=0.000000
+  RightMiddleDistal localErrorDeg=0.000000
+  RightRingProximal localErrorDeg=0.000000
+  RightRingIntermediate localErrorDeg=0.000000
+  RightRingDistal localErrorDeg=0.000000
+  RightLittleProximal localErrorDeg=0.000000
+  RightLittleIntermediate localErrorDeg=0.000000
+  RightLittleDistal localErrorDeg=0.000000
+PASS: Post-release Idle arms/hands/all fingers match the independent animation pose within 1 degree
+POSE Post-release Walk 0.00 maxLocalErrorDeg=0.000000
+  LeftUpperArm localErrorDeg=0.000000
+  LeftLowerArm localErrorDeg=0.000000
+  LeftHand localErrorDeg=0.000000
+  RightUpperArm localErrorDeg=0.000000
+  RightLowerArm localErrorDeg=0.000000
+  RightHand localErrorDeg=0.000000
+  LeftThumbProximal localErrorDeg=0.000000
+  LeftThumbIntermediate localErrorDeg=0.000000
+  LeftThumbDistal localErrorDeg=0.000000
+  LeftIndexProximal localErrorDeg=0.000000
+  LeftIndexIntermediate localErrorDeg=0.000000
+  LeftIndexDistal localErrorDeg=0.000000
+  LeftMiddleProximal localErrorDeg=0.000000
+  LeftMiddleIntermediate localErrorDeg=0.000000
+  LeftMiddleDistal localErrorDeg=0.000000
+  LeftRingProximal localErrorDeg=0.000000
+  LeftRingIntermediate localErrorDeg=0.000000
+  LeftRingDistal localErrorDeg=0.000000
+  LeftLittleProximal localErrorDeg=0.000000
+  LeftLittleIntermediate localErrorDeg=0.000000
+  LeftLittleDistal localErrorDeg=0.000000
+  RightThumbProximal localErrorDeg=0.000000
+  RightThumbIntermediate localErrorDeg=0.000000
+  RightThumbDistal localErrorDeg=0.000000
+  RightIndexProximal localErrorDeg=0.000000
+  RightIndexIntermediate localErrorDeg=0.000000
+  RightIndexDistal localErrorDeg=0.000000
+  RightMiddleProximal localErrorDeg=0.000000
+  RightMiddleIntermediate localErrorDeg=0.000000
+  RightMiddleDistal localErrorDeg=0.000000
+  RightRingProximal localErrorDeg=0.000000
+  RightRingIntermediate localErrorDeg=0.000000
+  RightRingDistal localErrorDeg=0.000000
+  RightLittleProximal localErrorDeg=0.000000
+  RightLittleIntermediate localErrorDeg=0.000000
+  RightLittleDistal localErrorDeg=0.000000
+PASS: Post-release Walk 0.00 arms/hands/all fingers match the independent animation pose within 1 degree
+POSE Post-release Walk 0.25 maxLocalErrorDeg=0.000000
+  LeftUpperArm localErrorDeg=0.000000
+  LeftLowerArm localErrorDeg=0.000000
+  LeftHand localErrorDeg=0.000000
+  RightUpperArm localErrorDeg=0.000000
+  RightLowerArm localErrorDeg=0.000000
+  RightHand localErrorDeg=0.000000
+  LeftThumbProximal localErrorDeg=0.000000
+  LeftThumbIntermediate localErrorDeg=0.000000
+  LeftThumbDistal localErrorDeg=0.000000
+  LeftIndexProximal localErrorDeg=0.000000
+  LeftIndexIntermediate localErrorDeg=0.000000
+  LeftIndexDistal localErrorDeg=0.000000
+  LeftMiddleProximal localErrorDeg=0.000000
+  LeftMiddleIntermediate localErrorDeg=0.000000
+  LeftMiddleDistal localErrorDeg=0.000000
+  LeftRingProximal localErrorDeg=0.000000
+  LeftRingIntermediate localErrorDeg=0.000000
+  LeftRingDistal localErrorDeg=0.000000
+  LeftLittleProximal localErrorDeg=0.000000
+  LeftLittleIntermediate localErrorDeg=0.000000
+  LeftLittleDistal localErrorDeg=0.000000
+  RightThumbProximal localErrorDeg=0.000000
+  RightThumbIntermediate localErrorDeg=0.000000
+  RightThumbDistal localErrorDeg=0.000000
+  RightIndexProximal localErrorDeg=0.000000
+  RightIndexIntermediate localErrorDeg=0.000000
+  RightIndexDistal localErrorDeg=0.000000
+  RightMiddleProximal localErrorDeg=0.000000
+  RightMiddleIntermediate localErrorDeg=0.000000
+  RightMiddleDistal localErrorDeg=0.000000
+  RightRingProximal localErrorDeg=0.000000
+  RightRingIntermediate localErrorDeg=0.000000
+  RightRingDistal localErrorDeg=0.000000
+  RightLittleProximal localErrorDeg=0.000000
+  RightLittleIntermediate localErrorDeg=0.000000
+  RightLittleDistal localErrorDeg=0.000000
+PASS: Post-release Walk 0.25 arms/hands/all fingers match the independent animation pose within 1 degree
+POSE Post-release Walk 0.50 maxLocalErrorDeg=0.000000
+  LeftUpperArm localErrorDeg=0.000000
+  LeftLowerArm localErrorDeg=0.000000
+  LeftHand localErrorDeg=0.000000
+  RightUpperArm localErrorDeg=0.000000
+  RightLowerArm localErrorDeg=0.000000
+  RightHand localErrorDeg=0.000000
+  LeftThumbProximal localErrorDeg=0.000000
+  LeftThumbIntermediate localErrorDeg=0.000000
+  LeftThumbDistal localErrorDeg=0.000000
+  LeftIndexProximal localErrorDeg=0.000000
+  LeftIndexIntermediate localErrorDeg=0.000000
+  LeftIndexDistal localErrorDeg=0.000000
+  LeftMiddleProximal localErrorDeg=0.000000
+  LeftMiddleIntermediate localErrorDeg=0.000000
+  LeftMiddleDistal localErrorDeg=0.000000
+  LeftRingProximal localErrorDeg=0.000000
+  LeftRingIntermediate localErrorDeg=0.000000
+  LeftRingDistal localErrorDeg=0.000000
+  LeftLittleProximal localErrorDeg=0.000000
+  LeftLittleIntermediate localErrorDeg=0.000000
+  LeftLittleDistal localErrorDeg=0.000000
+  RightThumbProximal localErrorDeg=0.000000
+  RightThumbIntermediate localErrorDeg=0.000000
+  RightThumbDistal localErrorDeg=0.000000
+  RightIndexProximal localErrorDeg=0.000000
+  RightIndexIntermediate localErrorDeg=0.000000
+  RightIndexDistal localErrorDeg=0.000000
+  RightMiddleProximal localErrorDeg=0.000000
+  RightMiddleIntermediate localErrorDeg=0.000000
+  RightMiddleDistal localErrorDeg=0.000000
+  RightRingProximal localErrorDeg=0.000000
+  RightRingIntermediate localErrorDeg=0.000000
+  RightRingDistal localErrorDeg=0.000000
+  RightLittleProximal localErrorDeg=0.000000
+  RightLittleIntermediate localErrorDeg=0.000000
+  RightLittleDistal localErrorDeg=0.000000
+PASS: Post-release Walk 0.50 arms/hands/all fingers match the independent animation pose within 1 degree
+POSE Post-release Walk 0.75 maxLocalErrorDeg=0.000000
+  LeftUpperArm localErrorDeg=0.000000
+  LeftLowerArm localErrorDeg=0.000000
+  LeftHand localErrorDeg=0.000000
+  RightUpperArm localErrorDeg=0.000000
+  RightLowerArm localErrorDeg=0.000000
+  RightHand localErrorDeg=0.000000
+  LeftThumbProximal localErrorDeg=0.000000
+  LeftThumbIntermediate localErrorDeg=0.000000
+  LeftThumbDistal localErrorDeg=0.000000
+  LeftIndexProximal localErrorDeg=0.000000
+  LeftIndexIntermediate localErrorDeg=0.000000
+  LeftIndexDistal localErrorDeg=0.000000
+  LeftMiddleProximal localErrorDeg=0.000000
+  LeftMiddleIntermediate localErrorDeg=0.000000
+  LeftMiddleDistal localErrorDeg=0.000000
+  LeftRingProximal localErrorDeg=0.000000
+  LeftRingIntermediate localErrorDeg=0.000000
+  LeftRingDistal localErrorDeg=0.000000
+  LeftLittleProximal localErrorDeg=0.000000
+  LeftLittleIntermediate localErrorDeg=0.000000
+  LeftLittleDistal localErrorDeg=0.000000
+  RightThumbProximal localErrorDeg=0.000000
+  RightThumbIntermediate localErrorDeg=0.000000
+  RightThumbDistal localErrorDeg=0.000000
+  RightIndexProximal localErrorDeg=0.000000
+  RightIndexIntermediate localErrorDeg=0.000000
+  RightIndexDistal localErrorDeg=0.000000
+  RightMiddleProximal localErrorDeg=0.000000
+  RightMiddleIntermediate localErrorDeg=0.000000
+  RightMiddleDistal localErrorDeg=0.000000
+  RightRingProximal localErrorDeg=0.000000
+  RightRingIntermediate localErrorDeg=0.000000
+  RightRingDistal localErrorDeg=0.000000
+  RightLittleProximal localErrorDeg=0.000000
+  RightLittleIntermediate localErrorDeg=0.000000
+  RightLittleDistal localErrorDeg=0.000000
+PASS: Post-release Walk 0.75 arms/hands/all fingers match the independent animation pose within 1 degree
+POSE Returned-to-Idle after Walk maxLocalErrorDeg=0.000000
+  LeftUpperArm localErrorDeg=0.000000
+  LeftLowerArm localErrorDeg=0.000000
+  LeftHand localErrorDeg=0.000000
+  RightUpperArm localErrorDeg=0.000000
+  RightLowerArm localErrorDeg=0.000000
+  RightHand localErrorDeg=0.000000
+  LeftThumbProximal localErrorDeg=0.000000
+  LeftThumbIntermediate localErrorDeg=0.000000
+  LeftThumbDistal localErrorDeg=0.000000
+  LeftIndexProximal localErrorDeg=0.000000
+  LeftIndexIntermediate localErrorDeg=0.000000
+  LeftIndexDistal localErrorDeg=0.000000
+  LeftMiddleProximal localErrorDeg=0.000000
+  LeftMiddleIntermediate localErrorDeg=0.000000
+  LeftMiddleDistal localErrorDeg=0.000000
+  LeftRingProximal localErrorDeg=0.000000
+  LeftRingIntermediate localErrorDeg=0.000000
+  LeftRingDistal localErrorDeg=0.000000
+  LeftLittleProximal localErrorDeg=0.000000
+  LeftLittleIntermediate localErrorDeg=0.000000
+  LeftLittleDistal localErrorDeg=0.000000
+  RightThumbProximal localErrorDeg=0.000000
+  RightThumbIntermediate localErrorDeg=0.000000
+  RightThumbDistal localErrorDeg=0.000000
+  RightIndexProximal localErrorDeg=0.000000
+  RightIndexIntermediate localErrorDeg=0.000000
+  RightIndexDistal localErrorDeg=0.000000
+  RightMiddleProximal localErrorDeg=0.000000
+  RightMiddleIntermediate localErrorDeg=0.000000
+  RightMiddleDistal localErrorDeg=0.000000
+  RightRingProximal localErrorDeg=0.000000
+  RightRingIntermediate localErrorDeg=0.000000
+  RightRingDistal localErrorDeg=0.000000
+  RightLittleProximal localErrorDeg=0.000000
+  RightLittleIntermediate localErrorDeg=0.000000
+  RightLittleDistal localErrorDeg=0.000000
+PASS: Returned-to-Idle after Walk arms/hands/all fingers match the independent animation pose within 1 degree
+PASS: Completed independent release, finger recovery and post-equipment locomotion checks.

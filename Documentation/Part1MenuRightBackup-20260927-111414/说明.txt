@@ -1,0 +1,5 @@
+只修改 Assets/RobotTrajectoryMenu/RobotTrajectoryMenu.cs。
+新建菜单和已有菜单运行时均使用右上角锚点，距右边 24 个 UI 单位，原高度、大小、按钮布局不变。
+没有改写场景文件，因此已保存菜单在编辑模式可能仍显示左侧；重新 Play 后靠右。
+编译通过。已有非 C# 资源及设置文件哈希核对无变化。
+恢复：停止 Play，将本目录 RobotTrajectoryMenu.cs 复制覆盖回 Assets/RobotTrajectoryMenu/RobotTrajectoryMenu.cs。

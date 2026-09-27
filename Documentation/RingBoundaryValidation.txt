@@ -1,0 +1,72 @@
+Ring boundary validation: 2026-09-25T16:09:05
+Public MoveTool only; one call per real Update; input integrates the actual Time.deltaTime. No direct target writes.
+PASS: station 0 start reverse is capped
+PASS: station 0 start cap does not count a wire contact
+LATERAL: stage=sliding segment=9 target=(0.1588507, 1.1702320, 0.0808508) actual=(0.1588120, 1.1702540, 0.0807886) targetMargin=0.00000133 targetLimit=Rim actualMargin=0.00018000 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.14566200 rejectedLimit=Rim normal=(-0.846232, -0.003725, 0.532801) IKerror=0.00007619 contacts=1 robot=False reason=
+PASS: station 0 lateral escape is blocked and counts contact
+PASS: station 0 wire remains inside the aperture
+PASS: station 0 holding against the same rim does not repeatedly count contact
+PASS: station 0 reverse input releases rim contact
+PASS: station 0 reset clears ring progress, contact and limits
+PASS: station 0 complete legal path reaches 100 percent
+PASS: station 0 centered legal path remains contact-free
+PASS: station 0 end overshoot is capped
+PASS: station 0 end cap does not count a wire contact
+PASS: station 0 reverse movement from finish remains available and preserves completion
+PASS: station 0 emergency stop freezes target and actual tool
+PASS: station 0 resume after emergency stop moves again
+CORNER BEFORE: stage=sliding segment=22 target=(0.0819993, 1.1780010, 0.0751658) actual=(0.0819993, 1.1780010, 0.0751658) targetMargin=0.00002065 targetLimit=Rim actualMargin=0.00017999 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.15165200 rejectedLimit=Rim normal=(0.978612, 0.065563, -0.194987) IKerror=0.00000000
+CORNER AFTER: stage=sliding segment=45 target=(0.0954204, 1.1824700, -0.0024791) actual=(0.0954251, 1.1824690, -0.0024791) targetMargin=0.00005831 targetLimit=Rim actualMargin=0.00018000 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.16264700 rejectedLimit=Rim normal=(0.834146, 0.283014, 0.473396) IKerror=0.00000486
+PASS: station 0 single forward axis slides around the outside bend after rim contact; advance=0.07764
+PASS: station 0 legal movement along the rim still advances training progress
+PASS: station 0 alternating single-axis X/Y/Z controls navigate all bends and finish; frames=20,20,20
+PASS: station 0 ring visual follows the actual end effector
+PASS: station 0 all observed actual poses respect endpoint and finite-width rim bounds
+METRICS station=0 frames=240 dt=0.1532..0.3333 maxVisualError=0.000000 maxApertureDistance=0.034249 maxEndpointOverrun=0.000001 minimumRimSurfaceGap=0.001351
+PASS: station 1 start reverse is capped
+PASS: station 1 start cap does not count a wire contact
+LATERAL: stage=sliding segment=9 target=(0.2698435, 1.2504750, -0.1179336) actual=(0.2698565, 1.2504820, -0.1179132) targetMargin=0.00000112 targetLimit=Rim actualMargin=0.00017999 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.25527600 rejectedLimit=Rim normal=(0.846135, -0.003958, -0.532955) IKerror=0.00002486 contacts=1 robot=False reason=
+PASS: station 1 lateral escape is blocked and counts contact
+PASS: station 1 wire remains inside the aperture
+PASS: station 1 holding against the same rim does not repeatedly count contact
+PASS: station 1 reverse input releases rim contact
+PASS: station 1 reset clears ring progress, contact and limits
+PASS: station 1 complete legal path reaches 100 percent
+PASS: station 1 centered legal path remains contact-free
+PASS: station 1 end overshoot is capped
+PASS: station 1 end cap does not count a wire contact
+PASS: station 1 reverse movement from finish remains available and preserves completion
+PASS: station 1 emergency stop freezes target and actual tool
+PASS: station 1 resume after emergency stop moves again
+CORNER BEFORE: stage=robot-wire-sweep segment=19 target=(0.3400521, 1.2546170, -0.1236367) actual=(0.3400493, 1.2546160, -0.1236372) targetMargin=0.00017998 targetLimit=Rim actualMargin=0.00017998 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.26384800 rejectedLimit=Rim normal=(0.000000, 0.000000, 0.000000) IKerror=0.00000316
+CORNER AFTER: stage=sliding segment=44 target=(0.3336871, 1.2579700, -0.0391814) actual=(0.3336825, 1.2579670, -0.0391827) targetMargin=0.00005937 targetLimit=Rim actualMargin=0.00018000 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.27476700 rejectedLimit=Rim normal=(-0.795220, 0.406995, -0.449422) IKerror=0.00000611
+PASS: station 1 single forward axis slides around the outside bend after rim contact; advance=0.08445
+PASS: station 1 legal movement along the rim still advances training progress
+PASS: station 1 alternating single-axis X/Y/Z controls navigate all bends and finish; frames=20,20,20
+PASS: station 1 ring visual follows the actual end effector
+PASS: station 1 all observed actual poses respect endpoint and finite-width rim bounds
+METRICS station=1 frames=240 dt=0.1517..0.3333 maxVisualError=0.000000 maxApertureDistance=0.034249 maxEndpointOverrun=0.000050 minimumRimSurfaceGap=0.001351
+PASS: station 2 start reverse is capped
+PASS: station 2 start cap does not count a wire contact
+LATERAL: stage=sliding segment=9 target=(0.3060254, 1.1040800, -0.1180455) actual=(0.3060255, 1.1040800, -0.1180458) targetMargin=0.00000112 targetLimit=Rim actualMargin=0.00018000 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.12409000 rejectedLimit=Rim normal=(0.846167, -0.003540, -0.532906) IKerror=0.00000012 contacts=1 robot=False reason=
+PASS: station 2 lateral escape is blocked and counts contact
+PASS: station 2 wire remains inside the aperture
+PASS: station 2 holding against the same rim does not repeatedly count contact
+PASS: station 2 reverse input releases rim contact
+PASS: station 2 reset clears ring progress, contact and limits
+PASS: station 2 complete legal path reaches 100 percent
+PASS: station 2 centered legal path remains contact-free
+PASS: station 2 end overshoot is capped
+PASS: station 2 end cap does not count a wire contact
+PASS: station 2 reverse movement from finish remains available and preserves completion
+PASS: station 2 emergency stop freezes target and actual tool
+PASS: station 2 resume after emergency stop moves again
+CORNER BEFORE: stage=sliding segment=22 target=(0.3827555, 1.1117030, -0.1127470) actual=(0.3827553, 1.1117030, -0.1127472) targetMargin=0.00001722 targetLimit=Rim actualMargin=0.00017998 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.13539100 rejectedLimit=Rim normal=(-0.962517, 0.078078, 0.259738) IKerror=0.00000000
+CORNER AFTER: stage=sliding segment=46 target=(0.3688328, 1.1164030, -0.0337566) actual=(0.3688273, 1.1164000, -0.0337601) targetMargin=0.00005957 targetLimit=Rim actualMargin=0.00018000 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.14234300 rejectedLimit=Rim normal=(-0.827584, 0.282117, -0.485299) IKerror=0.00000746
+PASS: station 2 single forward axis slides around the outside bend after rim contact; advance=0.07899
+PASS: station 2 legal movement along the rim still advances training progress
+PASS: station 2 alternating single-axis X/Y/Z controls navigate all bends and finish; frames=20,20,20
+PASS: station 2 ring visual follows the actual end effector
+PASS: station 2 all observed actual poses respect endpoint and finite-width rim bounds
+METRICS station=2 frames=239 dt=0.1511..0.3333 maxVisualError=0.000000 maxApertureDistance=0.034249 maxEndpointOverrun=0.000000 minimumRimSurfaceGap=0.001351
+PASS: all three stations passed actual-frame ring boundary checks.

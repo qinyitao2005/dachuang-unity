@@ -1,0 +1,14 @@
+PASS: Runtime installation hides menu at startup
+PASS: Jog stage shows menu
+PASS: Existing keyboard ownership preserved
+PASS: Menu shortcut follows existing jog key
+PASS: Pointer hold reaches jog input
+PASS: Pointer release clears jog input
+PASS: Record button records one point
+PASS: Trace ends recording and advances main sequence
+PASS: Replay command disables jog buttons
+PASS: Exit stops replay and restores roaming app state
+PASS: Exit clears held movement
+PASS: Reentry starts a fresh recording session
+PASS: Focus loss clears UI movement
+PASS: Exit is idempotent

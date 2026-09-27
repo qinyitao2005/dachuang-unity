@@ -1,0 +1,44 @@
+Original equipment verification / 2026-09-25T08:12:15.6916069Z
+Scene: Assets/RoboticsLab/Scenes/RoboticsTrainingRoom.unity
+PASS: Active scene is the teaching room
+PASS: Three teaching stations exist; actual=3
+PASS: Station indices are exactly 0, 1, 2
+PASS: Station01 [0] has a complete modelRoot reference
+PASS: Station01 [0] complete original assembly has 1751 MeshFilters; actual=1751
+PASS: Station01 [0] every CAD mesh comes from Assets/无标题.fbx; matching=1751
+PASS: Station01 [0] separate ring gripper retains 30 original CAD meshes
+PASS: Station01 [0] adds four attached distal jaw shoe meshes
+PASS: Station01 [0] model bottom is on floor within 0.020 m; minY=0.000000
+INFO: Station01 [0] world bounds min=(-5.457075, 0.000000, 4.733237) max=(-3.542923, 2.123783, 6.266763) size=(1.914152, 2.123783, 1.533525)
+INFO: Station01 [0] model root=RoboticsLab_Environment/Station01/RobotModel world=(-4.500000, 0.000000, 5.500000) rotation=(0.000, 90.000, 0.000) scale=(1.000000, 1.000000, 1.000000)
+PASS: Station02 [1] has a complete modelRoot reference
+PASS: Station02 [1] complete original assembly has 1751 MeshFilters; actual=1751
+PASS: Station02 [1] every CAD mesh comes from Assets/无标题.fbx; matching=1751
+PASS: Station02 [1] separate ring gripper retains 30 original CAD meshes
+PASS: Station02 [1] adds four attached distal jaw shoe meshes
+PASS: Station02 [1] model bottom is on floor within 0.020 m; minY=0.000000
+INFO: Station02 [1] world bounds min=(-5.457075, 0.000000, 10.233240) max=(-3.542923, 2.123783, 11.766760) size=(1.914152, 2.123783, 1.533524)
+INFO: Station02 [1] model root=RoboticsLab_Environment/Station02/RobotModel world=(-4.500000, 0.000000, 11.000000) rotation=(0.000, 90.000, 0.000) scale=(1.000000, 1.000000, 1.000000)
+PASS: Station03 [2] has a complete modelRoot reference
+PASS: Station03 [2] complete original assembly has 1751 MeshFilters; actual=1751
+PASS: Station03 [2] every CAD mesh comes from Assets/无标题.fbx; matching=1751
+PASS: Station03 [2] separate ring gripper retains 30 original CAD meshes
+PASS: Station03 [2] adds four attached distal jaw shoe meshes
+PASS: Station03 [2] model bottom is on floor within 0.020 m; minY=0.000000
+INFO: Station03 [2] world bounds min=(-5.457075, 0.000000, 15.733240) max=(-3.542923, 2.123783, 17.266760) size=(1.914152, 2.123783, 1.533524)
+INFO: Station03 [2] model root=RoboticsLab_Environment/Station03/RobotModel world=(-4.500000, 0.000000, 16.500000) rotation=(0.000, 90.000, 0.000) scale=(1.000000, 1.000000, 1.000000)
+PASS: Two original rack instances from Assets/架子2.fbx; actual=2
+PASS: Two original racks retain their two source meshes each; total matching MeshFilters=4
+PASS: Rack RoboticsLab_Environment/SafetyHelmetRack/OriginalSafetyStorageRack retains both original source meshes; actual=2
+INFO: rack=RoboticsLab_Environment/SafetyHelmetRack/OriginalSafetyStorageRack source=Assets/架子2.fbx min=(6.924562, 0.000000, 1.300000) max=(7.675438, 1.877187, 5.100000) scale=(0.651801, 0.651801, 0.651801)
+PASS: Rack RoboticsLab_Environment/RearStorage/OriginalRearStorageRack retains both original source meshes; actual=2
+INFO: rack=RoboticsLab_Environment/RearStorage/OriginalRearStorageRack source=Assets/架子2.fbx min=(-6.500000, 0.000000, 20.307200) max=(-0.500000, 2.963979, 21.492800) scale=(1.029160, 1.029160, 1.029160)
+PASS: No legacy Workbench / Backboard / generated guard objects remain outside the original CAD assemblies
+INFO: Legacy check matches Workbench, Backboard, Guard, Fence and 护栏 names; the imported original assembly is excluded.
+PASS: Original scene inventory baseline is present
+PASS: Inventory baseline contains a consistent preserved SampleScene SHA256
+PASS: Original SampleScene file is unchanged from the inventory baseline
+SHA256: Assets/Scenes/SampleScene.unity current=76FB857213D0E6FDB73430A37CA93B9F06A3B4AF01425EF2613FCB2963D60E23 baseline=76fb857213d0e6fdb73430a37ca93b9f06a3b4af01425ef2613fcb2963d60e23
+PASS: Original Jogging.fbx matches the approved SHA256
+SHA256: Assets/Jogging.fbx current=346C19BFC70A5BE3F1353D552F798338FD145774408EDFA47149EFBC8A2679D8 baseline=346C19BFC70A5BE3F1353D552F798338FD145774408EDFA47149EFBC8A2679D8
+RESULT: PASS; failed checks=0

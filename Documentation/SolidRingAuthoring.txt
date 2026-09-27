@@ -1,0 +1,12 @@
+Solid ring and wire authoring / 2026-09-25T08:07:42.5818812Z
+Opaque Standard meshes only; source wirePoints, radii, tool/root transforms and collision rules unchanged.
+STATION 0 sourcePoints=121 wire radius=0.0028000 m; vertices=1601; triangles=2904; cross-section sides=12; both ends capped
+ ring R=0.0420000 m; tube r=0.0036000 m; vertices=845; triangles=1536; major/minor segments=64/12
+ top grasp centreline local=(0,0.0420000,0); real tube faces at z=+/-0.0036000; legacy LineRenderers retained and disabled
+STATION 1 sourcePoints=121 wire radius=0.0028000 m; vertices=1601; triangles=2904; cross-section sides=12; both ends capped
+ ring R=0.0420000 m; tube r=0.0036000 m; vertices=845; triangles=1536; major/minor segments=64/12
+ top grasp centreline local=(0,0.0420000,0); real tube faces at z=+/-0.0036000; legacy LineRenderers retained and disabled
+STATION 2 sourcePoints=121 wire radius=0.0028000 m; vertices=1601; triangles=2904; cross-section sides=12; both ends capped
+ ring R=0.0420000 m; tube r=0.0036000 m; vertices=845; triangles=1536; major/minor segments=64/12
+ top grasp centreline local=(0,0.0420000,0); real tube faces at z=+/-0.0036000; legacy LineRenderers retained and disabled
+PASS: finite meshes, outward winding, unit normals, unchanged physical radii, opaque depth-writing materials and renderer references authored. Review/save the scene and verify runtime colour updates separately.

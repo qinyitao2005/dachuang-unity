@@ -1,0 +1,41 @@
+UTC=2026-09-25T05:44:32.9346819Z
+Play-mode helmet sequence and isolated sampled-walk checks.
+PASS: Shelf and fitted helmet have matching physical dimensions: shelf=(0.201400,0.098610,0.250800), fitted=(0.201400,0.098610,0.250800)
+PASS: HelmetPickup matches the fitted helmet size
+PASS: HelmetPickup remains seated on the original rack tray
+PASS: SpareHelmetYellow matches the fitted helmet size
+PASS: SpareHelmetYellow remains seated on the original rack tray
+PASS: SpareHelmetWhite matches the fitted helmet size
+PASS: SpareHelmetWhite remains seated on the original rack tray
+PASS: SpareHelmetBlue matches the fitted helmet size
+PASS: SpareHelmetBlue remains seated on the original rack tray
+PASS: EquipHelmet starts an asynchronous wearing sequence
+PASS: HelmetWorn remains false immediately after starting the sequence
+PASS: The lesson remains locked while the helmet is being fitted
+PASS: Repeated EquipHelmet does not restart or reset the in-progress sequence
+PASS: The sequence keeps teaching locked and disables roaming input
+CAPTURE: HelmetReach observedGameSeconds=0.760014 progress=0.245166 HelmetWorn=False
+CAPTURE: HelmetRaised observedGameSeconds=1.517273 progress=0.489443 HelmetWorn=False
+CAPTURE: HelmetSeated observedGameSeconds=2.131687 progress=0.687641 HelmetWorn=False
+CAPTURE: HelmetFitted observedGameSeconds=3.281281 progress=1.000000 HelmetWorn=True
+PASS: Duplicate interaction was checked during the animation
+PASS: Shelf-to-hands-to-head keeps the same physical size across rendered frames; largest relative dimension error=0.000001
+PASS: The completed sequence sets HelmetWorn and IsEquipped together
+PASS: Completion observed at 3.124384 game seconds for configured duration 3.100000
+PASS: Completed wearing sequence matches fitted head-local pose: position=0.000000, rotationDegrees=0.000000, scale=0.000000
+PASS: A generated walking clip is available for quarter-cycle sampling
+WalkClip=Assets/RoboticsLab/Generated/TraineeNeutralWalk.anim length=2.400000
+PASS: Walk phase 0.000000 matches fitted head-local pose: position=0.000000, rotationDegrees=0.000000, scale=0.000000
+Walk phase 0.000000 CPU_SKINNED_BODY_MIN_Y=0.019715 PLAYER_ROOT_Y=0.075000 MINUS_ROOT_Y=-0.055285 measuredVertices=20568 lowestMesh=Ch32
+Walk phase 0.000000 frame=168 stateNormalizedTime=0.000000 footPositionsInVisual: left=(-0.089632,0.150915,0.003344) right=(-0.020860,0.174558,-0.335914)
+PASS: Walk phase 0.250000 matches fitted head-local pose: position=0.000000, rotationDegrees=0.000000, scale=0.000000
+Walk phase 0.250000 CPU_SKINNED_BODY_MIN_Y=0.026047 PLAYER_ROOT_Y=0.075000 MINUS_ROOT_Y=-0.048953 measuredVertices=20568 lowestMesh=Ch32
+Walk phase 0.250000 frame=171 stateNormalizedTime=0.250000 footPositionsInVisual: left=(0.013796,0.191950,-0.333725) right=(0.057884,0.134013,0.056730)
+PASS: Walk phase 0.500000 matches fitted head-local pose: position=0.000000, rotationDegrees=0.000000, scale=0.000000
+Walk phase 0.500000 CPU_SKINNED_BODY_MIN_Y=0.027128 PLAYER_ROOT_Y=0.075000 MINUS_ROOT_Y=-0.047872 measuredVertices=20568 lowestMesh=Ch32
+Walk phase 0.500000 frame=174 stateNormalizedTime=0.500000 footPositionsInVisual: left=(-0.047454,0.126719,0.096431) right=(0.011345,0.220995,-0.420127)
+PASS: Walk phase 0.750000 matches fitted head-local pose: position=0.000000, rotationDegrees=0.000000, scale=0.000000
+Walk phase 0.750000 CPU_SKINNED_BODY_MIN_Y=0.047939 PLAYER_ROOT_Y=0.075000 MINUS_ROOT_Y=-0.027061 measuredVertices=20568 lowestMesh=Ch32
+Walk phase 0.750000 frame=177 stateNormalizedTime=0.750000 footPositionsInVisual: left=(0.004635,0.269437,-0.424316) right=(0.019796,0.135058,0.066356)
+PASS: Quarter-cycle walking samples change the leg pose; largest foot displacement=0.453681
+NOTE: Walk phases are captured on the live Play-mode avatar after three rendered frame intervals. This verifies displayed pose variation and head-relative helmet stability, not foot-slip under live navigation.

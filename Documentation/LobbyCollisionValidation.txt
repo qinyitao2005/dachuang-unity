@@ -1,0 +1,5 @@
+Lobby CharacterController validation / 2026-09-25T07:06:51.8981196Z
+PASS: Walk through doorway into lobby without falling: (0.0000, 0.0700, -3.1300)
+PASS: Far wall stops continued backwards travel
+PASS: Return across threshold into training room: (0.0000, 0.0749, 3.3700)
+PASS: Both side walls retain the character inside the lobby

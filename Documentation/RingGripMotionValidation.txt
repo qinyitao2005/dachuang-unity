@@ -1,0 +1,45 @@
+Ring grip live motion validation / 2026-09-25T15:48:59
+Isolated BeginOperation/SetMode/ResetExercise fixture; learning and quiz gates are NOT tested here. Their state is not changed.
+One public MoveTool per real Update; measurements run after all MonoBehaviour LateUpdates. No target writes or direct joint solving.
+Dynamic wirePoints are traversed in order. Distances are simulation world metres, not hardware accuracy.
+PASS: Three training robots are available
+PASS: Station 0 has rigid gripper and whole-body collision components
+PASS: Current authored guide contains ordered waypoints
+PASS: Both real rubber contact meshes are present; contact markers alone are not evidence
+PASS: Authored ring tube diameter is 7.2 mm
+PASS: Full moving robot mesh cache is valid, proxies=118
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station01_Start.png
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station01_Middle.png
+PASS: Station 0 traversed every 121 authored waypoint; progress=1.000000000
+PASS: Centred full path introduced no new rim contacts
+PASS: Rigid grasp, real contact faces and full-body safety checked after LateUpdate throughout motion
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station01_End.png
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station01_Overview.png
+COMPLETE station=0 point=121/121 frames=247 simulatedSeconds=45.266070000 dt=0.154213900..0.333333300 gripErrorMax=0.000000477 normalAngleMax=0.000007476 realJawGap=0.007199399..0.007200097 bodyClearanceMin=0.033937040 followingErrorMax=0.000050898 blockedFrames=0 progress=1.000000000 contacts=0
+PASS: Station 1 has rigid gripper and whole-body collision components
+PASS: Current authored guide contains ordered waypoints
+PASS: Both real rubber contact meshes are present; contact markers alone are not evidence
+PASS: Authored ring tube diameter is 7.2 mm
+PASS: Full moving robot mesh cache is valid, proxies=120
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station02_Start.png
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station02_Middle.png
+PASS: Station 1 traversed every 121 authored waypoint; progress=1.000000000
+PASS: Centred full path introduced no new rim contacts
+PASS: Rigid grasp, real contact faces and full-body safety checked after LateUpdate throughout motion
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station02_End.png
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station02_Overview.png
+COMPLETE station=1 point=121/121 frames=247 simulatedSeconds=44.215480000 dt=0.154535100..0.333333300 gripErrorMax=0.000000954 normalAngleMax=0.000009006 realJawGap=0.007199021..0.007200361 bodyClearanceMin=0.024081390 followingErrorMax=0.000078437 blockedFrames=0 progress=1.000000000 contacts=0
+PASS: Station 2 has rigid gripper and whole-body collision components
+PASS: Current authored guide contains ordered waypoints
+PASS: Both real rubber contact meshes are present; contact markers alone are not evidence
+PASS: Authored ring tube diameter is 7.2 mm
+PASS: Full moving robot mesh cache is valid, proxies=120
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station03_Start.png
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station03_Middle.png
+PASS: Station 2 traversed every 121 authored waypoint; progress=1.000000000
+PASS: Centred full path introduced no new rim contacts
+PASS: Rigid grasp, real contact faces and full-body safety checked after LateUpdate throughout motion
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station03_End.png
+SCREENSHOT: Documentation/Screenshots/RingGripMotion_Station03_Overview.png
+COMPLETE station=2 point=121/121 frames=247 simulatedSeconds=45.011800000 dt=0.153242100..0.333333300 gripErrorMax=0.000000492 normalAngleMax=0.000007790 realJawGap=0.007198246..0.007200983 bodyClearanceMin=0.028219780 followingErrorMax=0.000068849 blockedFrames=0 progress=1.000000000 contacts=0
+PASS: All three robots completed the actual rigid-grip/full-body motion fixture.

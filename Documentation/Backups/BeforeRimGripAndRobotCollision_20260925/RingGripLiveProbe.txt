@@ -1,0 +1,6 @@
+Station 0 safe=True gap=0.024107 IK=0.007826 angle=30.66664 reason=
+stage=reset segment=0 target=(0.1451936, 1.1621950, -0.1866377) actual=(0.1501551, 1.1582720, -0.1912475) targetMargin=0.00005000 targetLimit=Endpoint actualMargin=0.00018000 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.15120700 rejectedLimit=Rim normal=(0.000000, 0.000000, 0.000000) IKerror=0.00782638
+Station 1 safe=True gap=0.033068 IK=0.005392 angle=27.83504 reason=
+stage=reset segment=0 target=(0.2833800, 1.2423710, -0.1866367) actual=(0.2859540, 1.2376340, -0.1866617) targetMargin=0.00005000 targetLimit=Endpoint actualMargin=-0.00108956 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.25307600 rejectedLimit=Rim normal=(0.000000, 0.000000, 0.000000) IKerror=0.00539175
+Station 2 safe=True gap=0.023415 IK=0.021679 angle=53.83146 reason=
+stage=reset segment=0 target=(0.3196325, 1.0960160, -0.1866367) actual=(0.3293495, 1.0962140, -0.2060146) targetMargin=0.00005000 targetLimit=Endpoint actualMargin=-0.00094956 rejected=(0.0000000, 0.0000000, 0.0000000) rejectedMargin=-1.12202700 rejectedLimit=Rim normal=(0.000000, 0.000000, 0.000000) IKerror=0.02167929

@@ -1,0 +1,9 @@
+Room detail authoring / 2026-09-25T07:05:38.6462004Z
+Scene=Assets/RoboticsLab/Scenes/RoboticsTrainingRoom.unity
+Root=RoomPolish
+Mesh renderers=74
+Combined decorative primitive parts=290
+Static labels=36; verified font glyphs=108
+Font=Assets/RoboticsLab/Fonts/NotoSansSC-Regular.ttf; atlas is copied into a persistent project asset.
+Added lights=0; added colliders=4 (lobby floor and three walls only). Existing scene objects and materials were not edited.
+Scene marked dirty; save after visual and interaction review.

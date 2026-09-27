@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "message": "Last completed build.",
+  "data": {
+    "job_id": "build-060ec1c746",
+    "result": "succeeded",
+    "platform": "StandaloneWindows64",
+    "output_path": "Builds/Windows/RobotLab.exe",
+    "started_at": "2026-09-25T08:12:18.3087277Z",
+    "duration_seconds": 6.160685099999999,
+    "completed_at": "2026-09-25T08:12:24.4694128Z",
+    "total_size_mb": 186.22,
+    "errors": 0,
+    "warnings": 0
+  }
+}

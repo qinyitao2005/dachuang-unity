@@ -1,0 +1,10 @@
+PASS: video completion event unlocks the next learning step
+PASS: station 0 drawing vertices=65, progress=0.601, max target error=0.0019
+PASS: station 0 centered ring guide progress=1.000, contacts=0, max target error=0.0001
+PASS: station 0 intentional rim contact counted=1
+PASS: station 1 drawing vertices=65, progress=0.604, max target error=0.0020
+PASS: station 1 centered ring guide progress=1.000, contacts=0, max target error=0.0001
+PASS: station 1 intentional rim contact counted=1
+PASS: station 2 drawing vertices=65, progress=0.602, max target error=0.0036
+PASS: station 2 centered ring guide progress=1.000, contacts=0, max target error=0.0002
+PASS: station 2 intentional rim contact counted=1

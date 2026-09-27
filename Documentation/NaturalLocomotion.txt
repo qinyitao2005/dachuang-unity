@@ -1,0 +1,35 @@
+Natural locomotion authoring / 2026-09-25T05:45:54.8676951Z
+Source: Assets/Jogging.fbx / mixamo.com
+Output: Assets/RoboticsLab/Generated/TraineeNeutralWalk.anim (existing asset path retained for diagnostics and references)
+Original humanoid clip copied directly; no generated foot targets or resampled muscle curves.
+Source seconds=2.40000 frameRate=30 humanoid=True
+Movement reference m/s=1.6; estimated source m/s=1.32831; base playback multiplier=1.15000
+Animator Speed is movement/reference; it multiplies the base playback once. Root motion remains disabled.
+Cadence calibration is bounded to 0.72..1.15 to retain natural recorded rhythm; it is not a measured no-slip guarantee.
+CURVE RootT.x keys=46 range=0.029277 preserved=True
+CURVE RootT.y keys=13 range=0.089614 preserved=True
+CURVE RootT.z keys=7 range=3.353524 preserved=True
+CURVE RootQ.x keys=31 range=0.114917 preserved=True
+CURVE RootQ.y keys=37 range=0.234919 preserved=True
+CURVE RootQ.z keys=66 range=0.052685 preserved=True
+CURVE RootQ.w keys=6 range=0.004725 preserved=True
+CURVE Spine Front-Back keys=33 range=0.054437 preserved=True
+CURVE Spine Left-Right keys=64 range=0.057298 preserved=True
+CURVE Spine Twist Left-Right keys=47 range=0.109980 preserved=True
+CURVE Chest Front-Back keys=33 range=0.108705 preserved=True
+CURVE Chest Left-Right keys=61 range=0.141996 preserved=True
+CURVE Chest Twist Left-Right keys=48 range=0.220967 preserved=True
+CURVE UpperChest Front-Back keys=33 range=0.217410 preserved=True
+CURVE UpperChest Left-Right keys=61 range=0.283993 preserved=True
+CURVE UpperChest Twist Left-Right keys=48 range=0.441933 preserved=True
+CURVE Left Upper Leg Front-Back keys=54 range=0.889084 preserved=True
+CURVE Left Upper Leg In-Out keys=61 range=0.435639 preserved=True
+CURVE Left Upper Leg Twist In-Out keys=68 range=0.638784 preserved=True
+CURVE Left Lower Leg Stretch keys=56 range=1.134262 preserved=True
+CURVE Left Lower Leg Twist In-Out keys=59 range=0.338944 preserved=True
+CURVE Right Upper Leg Front-Back keys=43 range=0.841159 preserved=True
+CURVE Right Upper Leg In-Out keys=58 range=0.499628 preserved=True
+CURVE Right Upper Leg Twist In-Out keys=72 range=0.551603 preserved=True
+CURVE Right Lower Leg Stretch keys=43 range=0.991067 preserved=True
+CURVE Right Lower Leg Twist In-Out keys=60 range=0.489593 preserved=True
+PASS: source keyframes preserved; compared=130 differing=0 animated=119

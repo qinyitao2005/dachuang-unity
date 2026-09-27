@@ -1,0 +1,2782 @@
+[
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\架子.fbx",
+    "Hash": "754F2FC9BB2803025F32BB16BB20B5E2031822080C9ECA96E969CDC3921CE675"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\架子.fbx.meta",
+    "Hash": "7A9136258C93784BB5713847E892CBD4EBB16372F467D601C440AC8B05FDA2D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\架子2.fbx",
+    "Hash": "C172B4A49D5D06232D19846497F9D6E6F6BAADD63B5D473049E0AE247B45C033"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\架子2.fbx.meta",
+    "Hash": "3BF3CF459BA1796226DDDE04ECC5B0C1DA23B0C495184F0D3D594BD3F4BF56A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\无标题.fbx",
+    "Hash": "04B5A0E8FC6CD99AEE4A82926536F8AD1A30E03562757C59403A09C2A425BF76"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\无标题.fbx.meta",
+    "Hash": "DE5E644F32A45A95D1715F9846D3DF114A8616A0977261961B6AF80BF1B942A4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation.meta",
+    "Hash": "11858B1C25F72939D84D24201476FFA34AEC50C75BF5A4D573C76BFB6B84ABA5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\eco2_stp.fbx",
+    "Hash": "63CF25794E8BDB46E0EF9B7CDE41AB8FBC20A99EAC88784BF7CAAA228D5FFA7B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\eco2_stp.fbx.meta",
+    "Hash": "CEC8494D3324A74D3FFA1ABD0E4EECB6E635AF7BC086B4CB50A6813CCA6CBA19"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Editor.meta",
+    "Hash": "422569B04044BF371545545B3F07D5C0D00761756284C5008A6B069D744E6737"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Image.meta",
+    "Hash": "53F0ACAC0B0667B448D667B88242010E8EAA365EE00675781677EA3896166B1F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Jogging.fbx",
+    "Hash": "346C19BFC70A5BE3F1353D552F798338FD145774408EDFA47149EFBC8A2679D8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Jogging.fbx.meta",
+    "Hash": "A0B7EE4C54AEDDFBF6D0E17F209132F5454A11AF8CAD6A74822B387CDE6D73A2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Light_green.mat",
+    "Hash": "C8F988685B3A1E2F3B570E684964C0E694ECFCFC57D2A1D8E66342FED200922A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Light_green.mat.meta",
+    "Hash": "6E4B2578B9B6E7C748BC639FD08DED8B6D192BF053A2213FA4BC9C0BD4373639"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Light_red.mat",
+    "Hash": "4611E57F09CEE2F17737723F5575301D339911747C92E6C78EC2C4538892CA2B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Light_red.mat.meta",
+    "Hash": "392F7311837DE4784F10DFD5C930183391E7702E33416653A5F0FF2A3F8AB813"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Light_yellow.mat",
+    "Hash": "0EF140C52CD19352B46DA0EBE64768958818D4178EE432DCE244CC1C7710AEA8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Light_yellow.mat.meta",
+    "Hash": "668271E341DFD72AAE2E91C9AD4A8179D3CD09849A5228D498670C119929016D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\man.controller",
+    "Hash": "747968789C03B1A14F8568264E90B45864CA77DE9D7891A306010764306C70A5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\man.controller.meta",
+    "Hash": "60528D079B1D74432CBCAAF889C285E0B851743C8690FFD6295CE396BC5050C6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\manmove.anim",
+    "Hash": "4C6A5BE44EB7033F9B46734F962AE2E81C7E4D949F22EC06EBB6C23E602922EF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\manmove.anim.meta",
+    "Hash": "98AA993646A4B70409291FF4927BF785F5917F1A5F5559B98D3C264B167D017D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials.meta",
+    "Hash": "5CF37AD5736BD5F5944E5D2E4AAD054F9843CEE5AF513DF94F059645B2260ECE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\New Material.mat",
+    "Hash": "24343E3376693DDB647A18EF6473764482E2DDDBE4A16DE3E46404751A45452B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\New Material.mat.meta",
+    "Hash": "01336428A08342953B52A4F557B59AE1FCFEA70F742D53BB5DF3AC9BFFFC3C54"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\part 1.fbx",
+    "Hash": "04B5A0E8FC6CD99AEE4A82926536F8AD1A30E03562757C59403A09C2A425BF76"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\part 1.fbx.meta",
+    "Hash": "D7012EDB45721819A776D46AFFC05CB0892CC567253E32621963261FCCB06A88"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Part1Export.meta",
+    "Hash": "297EF8E2F34D8E2CCD756741E9FBFD286507C68A30198CB999A47350D29F5705"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab.meta",
+    "Hash": "B1DD3BD27524528EC1AC2A04D58F38B49FEE31E6EF58F1A7A1B588BDBEEAF1A2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RobotTrajectoryMenu.meta",
+    "Hash": "FFFA09D8DC2CC2D9C167937946F508EB5200473DA749404C1B534134882D5DF3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes.meta",
+    "Hash": "AD23BBB61D1B4DAACBD1C3E294C370116417CB1B39DF12180E9BAEE0355D07B8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips.meta",
+    "Hash": "F69DE579E92428A3F40BF0457CC640B4CC0FCDEA15E46EB75C63E25AFC7F24D7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script.meta",
+    "Hash": "5B74E3575E042C46336B56D0D7049F113C3F9CADF07318A9A91741C18141BF96"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets.meta",
+    "Hash": "7DE9F3B726A711406B68911C759AF9C92F22EFC39BD076F7CEFAF94842A30AE5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro.meta",
+    "Hash": "8529D84D190A68AEB1A16E0A90308081BD30A738DBCC63C63B2A93C53B9A11B3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\grabber_to_controller.controller",
+    "Hash": "577B84F07E243902D4BEAEC1DF279A9636363C66F7C4718737A3A9691333D855"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\grabber_to_controller.controller.meta",
+    "Hash": "230A27D0AFBB3F894D8089030C7EC69C626A22087C9599669647564D07B054BB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\grabber_to_pointer_1.anim",
+    "Hash": "0975C3409DF43C43F35011FE935FA586AB8C7D92CB5485FF48DF6EFB9825DD2E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\grabber_to_pointer_1.anim.meta",
+    "Hash": "04D01FD42493B4676C1D1FADEA35AD21D236FCEBA71EF6550F9BFA0034FCE897"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\grabber_to_pointer_2.anim",
+    "Hash": "7E2D1C558100D1C096911993CDB2041200A6BF7CAF90376B28A50C8D8CC38755"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\grabber_to_pointer_2.anim.meta",
+    "Hash": "98011F34BF76F72AF5092333288FA1DB7A931BFD75D4F2AE4A16484FAE25B0EB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\pointer_to_grabber_1.anim",
+    "Hash": "A330A3C1545076B67D32FBD4591F8C427B22DB2C25F9554428496464570759F9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\pointer_to_grabber_1.anim.meta",
+    "Hash": "5F4B7CC824122E2C2F72A305537D17C3BFB825F74414480360673411AFF43F3D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\pointer_to_grabber_2.anim",
+    "Hash": "6CD69A455D16A51867453256439C851627B21EC6A333690CF6E856511D530E18"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\pointer_to_grabber_2.anim.meta",
+    "Hash": "E2ABC02251C8FEE8899165BDC6E22C7EA3C325AC93261D9E11CF09BF58BA56C1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\pointer_to_grabber.controller",
+    "Hash": "626C848331CE59FEE71950846833C66B6B09238E149A21FDF5CA49C67D54C82F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Animation\\pointer_to_grabber.controller.meta",
+    "Hash": "9E78B2D6537A4AE0133A27D8FCB878932F2813A2A32EFBF59C3CD0919586491E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Image\\62bc5d45737e7_800.jpg",
+    "Hash": "678C867351101E9E5D53FD9E55B1527896E9BFDF439BCA560F8E7C320C01BF2F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Image\\62bc5d45737e7_800.jpg.meta",
+    "Hash": "5365F18998D49822770C925D8E522CC64123834B87915FEDF2B0F275AB467B10"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Image\\image_12_10 1.png",
+    "Hash": "D4DEE38F068132CD40B173DCE5B71067346ED9AC34D90EA8510D63F8F70F081B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Image\\image_12_10 1.png.meta",
+    "Hash": "3E600C9227C0FDA5D2C67A73CB3680725F9969312CDAD0A2D69819DD7297993C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Image\\image_12_10.png",
+    "Hash": "D4DEE38F068132CD40B173DCE5B71067346ED9AC34D90EA8510D63F8F70F081B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Image\\image_12_10.png.meta",
+    "Hash": "9B9A7747B8FACBFED08BBEAEDE2FA53AFEEABACA943C15C1E8E836726B00AA76"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground.meta",
+    "Hash": "88FDD21C9DB425F1866049185A95A421010756D62B669A50FE145C7A4A9C001D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall.meta",
+    "Hash": "C7FC66DAE27F0C0E6B16218D9D4509D2B025040B927495C998B730478A8A221B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\Ground.mat",
+    "Hash": "925CBA3C36631B72144B1F71256B05480539528C98D3A2026D3FC54704EAA935"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\Ground.mat.meta",
+    "Hash": "C99B8160C3E3630B0B0CED861AD7A7CBB21AA09D6F0D80CFFD7FFDF6975F1009"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures.meta",
+    "Hash": "E7CD85E7D3143DEB4957AA04520DAEEA6367189811262014F1923B1E29E4B822"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_Color.jpg",
+    "Hash": "D87FBA962C0779016AE33AE266C4C4E35A274BC96B931A498729104F034A1A47"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_Color.jpg.meta",
+    "Hash": "7C9C0C4AFA6B3C17540E3545020C7B48DC586A6531B59A3C658F6D5DB4139465"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_Displacement.jpg",
+    "Hash": "7DDB621BF90509A44BDA307E796D4EA257536D44D465EA524F6953FB6FEFD284"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_Displacement.jpg.meta",
+    "Hash": "8E9F41F609C7F6E17C91D5474A61DEAAD3B7814DC42C0E79891A53FDC3B12179"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_NormalDX.jpg",
+    "Hash": "15BA99265C57DD947680DA9570777BB5C43C510ADBB54C6CD220A29424217771"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_NormalDX.jpg.meta",
+    "Hash": "2C30DCD3E2C2778B3D72B386622436F8F72113AF085E0489E0E77B33598BC487"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_NormalGL.jpg",
+    "Hash": "817AA8DE25DB1E8AF28C2A48A5C46B3BA3D9E8C5CB04D11F7EB5EF0B5DB848F1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_NormalGL.jpg.meta",
+    "Hash": "BBB9D23BF848CF8E45C4F17679005C7C64D923B973EC6A7BDB5211CE6D5147A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_Roughness.jpg",
+    "Hash": "1EE3F45D9840D36DF706D4AE3A48DF8295334162B9E2BBA92D665F5035332157"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Ground\\textures\\Tiles078_1K-JPG_Roughness.jpg.meta",
+    "Hash": "59FA4F55CFA0D827EC932C4134F5B0753FAC4900A935FA993741F32C0384D5D4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures.meta",
+    "Hash": "4F3F7FCD97A3BB6B7287D83C88B145022630FC5F3263DC3E948E9B1AB0B93163"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\Wall.mat",
+    "Hash": "1B61E541A6533013B76102544BBCAAD087600ADE68012204F557EDE5582A1130"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\Wall.mat.meta",
+    "Hash": "33478E5A9D95427D385E9FE2D5DDAFE8EFEDE9F4A467F9343B214AB48FE984C2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_Color.jpg",
+    "Hash": "77ED8AF9AE851C8B7EBF4514CAB07743B392AB3E35DE7710846FC50A4CBD9906"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_Color.jpg.meta",
+    "Hash": "E4887E2014D06C0AD9FCE0F602B5A4085B577B11373BF586969749AC2C731774"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_Displacement.jpg",
+    "Hash": "671F29B838D4D3D1435F4A3A0B793D0E82B249B97C61DE819D67A33AA93A6FB0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_Displacement.jpg.meta",
+    "Hash": "BD2D399E60291796A0C56265F99E09A20166AD1DC923EFD3DF806E453A7656AA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_NormalDX.jpg",
+    "Hash": "487D38D79FBAB7E4B4F20D8FE2988CEC66831994B6E9BE18ED154D42EE446B5D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_NormalDX.jpg.meta",
+    "Hash": "FC16716FF73BD96E227A251C2BE812FCD7EAAAB1A2E823775DE283B61F571B27"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_NormalGL.jpg",
+    "Hash": "EC17D7F07C57C2BCC855157396C6200E5DA9451D97E0790A85A3E8A1D4668FF2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_NormalGL.jpg.meta",
+    "Hash": "926E4EA4D03C81067FFBEE0C05B78CB6A3013D71EC00B1BBF7EB6957B547ADB7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_Roughness.jpg",
+    "Hash": "A8460082C37BCAFC76E712B6548312B7A1C21F8ABB293B7EB402DCC5B69DEB00"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Materials\\Wall\\textures\\Plastic012B_1K-JPG_Roughness.jpg.meta",
+    "Hash": "0B6D112A54902412CE7B845C3AFB93A57B76EEC1049FB67451F1C23D298A7D50"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Part1Export\\Part1.prefab",
+    "Hash": "D71EFA3B1074C928895378463B125A123BEF0D4B1F63F6BA0BC8E98ABC68D843"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Part1Export\\Part1.prefab.meta",
+    "Hash": "D950C11F2AD8D7ED70CD848082CCC2BDA317D9D7DA8FD97F346402F6349D9E23"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Part1Export\\Part1启动桥.cs.meta",
+    "Hash": "C92110D1293C6E5847139824D8C86C553A026D3D16FA71A0DC6DF8F275D1EC75"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Part1Export\\Part1MenuAdapter.cs.meta",
+    "Hash": "8BACB3FD881F2888DFD8ADA5AD9486C372C6EF6B0B207EA4AD196E49D0DF7325"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor.meta",
+    "Hash": "EAD1A15909416EAE285384B858FDAC57D780563C804D7E891A2A4B8C962D3893"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts.meta",
+    "Hash": "94CD7095733D145F79E297FDA5C18B8145B52EBA65E5ACF35BF5E3B2A417DE6F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated.meta",
+    "Hash": "043A00AD61DF20B5F1990C3BDC2EC956E782362F9C8F32B458B13A6BBDEE1B80"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Questions.json",
+    "Hash": "DC3836404DEF81C1360505C327872686EF416FA0B0B52A12B5511D78070C9926"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Questions.json.meta",
+    "Hash": "612511AF25DB42E0A54A9539919D5FD8AC819A5CA13CD85CD4B661F03ECD5A10"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scenes.meta",
+    "Hash": "916A03B1D1C005A7D7D8B91D80685B33953BF35A97675184FF0FFDE3FE36369F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts.meta",
+    "Hash": "765719A43D9D2B8B09C2673F7E0A925B15B83A21CD3D4616B6224AC9191ADB9F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Shaders.meta",
+    "Hash": "9E3E0DFCF20A389A30571394D4EE8088E3BB241A9C8CEE17CAEE65F3E3C829A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabAvatarAnimationBuilder.cs.meta",
+    "Hash": "0B3F810D79BF057EA8DDFDDBA839B1A72DB18FA81F7AA1DA0CE1AA0D02951D09"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabAvatarBodyAuthoring.cs.meta",
+    "Hash": "0D895294164D9FF6097A72F2512EEA87BD01232A3EC6B25766966CE286A159B8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabAvatarDiagnostics.cs.meta",
+    "Hash": "B2009CFEE9E20B1092D22CDFFBCCE4455E1F4E017C1C7FAAB645DF5C15C5249B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabAvatarEquipmentAuthoring.cs.meta",
+    "Hash": "CD738861E702A7B2687B26B890ABE231D8E6FFA4C1D293752C87F26A9E226F9E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabDiagnostics.cs.meta",
+    "Hash": "078A7C7B9AEA654DA593B4B0373DEC6677A64480688470B1BB1062B4C66C2DB0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabEnvironmentBuilder.cs.meta",
+    "Hash": "43E520BD7892387404508FF48C88FE71EBDD0B4A3F2D4FCDFCA340B42595A018"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabExerciseValidation.cs.meta",
+    "Hash": "6A18E855782D0826074DDDDA905CE6F365F0AE5E8893C446471DE6EA5E071D8A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabHelmetReleaseValidation.cs.meta",
+    "Hash": "4A1606025054F376E2F54DD053EA8DB00E5C6BF1E1EC08EA45A041BF3A2F0FE4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabInRoomExperienceUpdate.cs.meta",
+    "Hash": "0391CAA3233849CA4550B5D4331B30055CCA63958686621D788CBA795737DFEE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabOriginalAssetInventory.cs.meta",
+    "Hash": "BEDCC9B9AD903F47A73CBECBD9761BFA78161DE7A04BC91AB91C47589E50EA5E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabOriginalEquipmentAssets.cs.meta",
+    "Hash": "31BB9730B4CBBC0327711F4ABCF0F53B9E3A710C0A5F9D818EE50B2BDF05EF12"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabOriginalEquipmentValidation.cs.meta",
+    "Hash": "C688ED2470D2F144C9FA87365BF8CA59A5D9A5D2E5E6443EA96A5DC7AD3D13CA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabOriginalRackBuilder.cs.meta",
+    "Hash": "8689A99695FAE2D24F1B38C4A36AFA14E78F2C5498A65AB200D9F0E310DF7052"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRingBoundaryValidation.cs.meta",
+    "Hash": "DC9C3C8DE92600E70F07191C86A9F847E3D6C5CD4C066942DC3F14B0E2F87152"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRingCourseAuthoring.cs.meta",
+    "Hash": "A53C745CDF2C3F5B7BCB7C7F31F1CB2ACFACAE551282AA0C9E7799B2A24361BD"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRingGripAuthoring.cs.meta",
+    "Hash": "24E46E6FBF0346B9F00FD9BE481EAA41B0E5635F2208D65C0DD0141D0AABF74F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRingGripMotionValidation.cs.meta",
+    "Hash": "4EE302F3E54E04539C55FBB857A0CB78E10C6C007E54473040DCFBBBBE9E6781"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRingTubeVisualAuthoring.cs.meta",
+    "Hash": "D64D4326A2DD497D36A7835FDCC635641CAFC795C792439C68DE08D1CBAF19D3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRobotBuilder.cs.meta",
+    "Hash": "44D5C91C413A42664B91D8361914F1B581C047BD0FBF81E99D92B95E66965691"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRobotWireCollisionValidation.cs.meta",
+    "Hash": "53FE38AC8E1B9A32477761427B6FE71E1B993F51CEDCADFBD9AAA6A09D298E04"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabRoomPolishBuilder.cs.meta",
+    "Hash": "D335089BA6FE9DD9D3EFF59F04171E4699BAF0423A7BA11AA7E7B5084DFE7AB0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabSceneBuilder.cs.meta",
+    "Hash": "62BFA71B3839D4ED46C6A52F90857313178FE890553942151E8A1BBBBF3FF837"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabTrajectoryProgramValidation.cs.meta",
+    "Hash": "F96BE11CFCE36F827D9177AEB5D687FE969AC2F8441CE34D4D9BBFD7790C0350"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabUserFlowValidation.cs.meta",
+    "Hash": "66BE519BB34ADAEDB703B873C1F9C3F946021C47D0103F8EDC038C2A5A3240E7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Editor\\LabWallLearningDisplayBuilder.cs.meta",
+    "Hash": "71F89231537E79E382D2153BC65C29ADB928796258BB71D4FA05C5B568B76283"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\FontSource.json",
+    "Hash": "1F6C00FE1E27CC959F47E4AD287791B12B8E9892EC48F49F38469F17651879D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\FontSource.json.meta",
+    "Hash": "17674F6E2205C3811D3FBBD4F943E0715D816FF8ACBC84F9ECDBEF3603FAA07C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\NotoSansSC-Regular.ttf",
+    "Hash": "D45F67F0A7C0CA3F256950777CE6A61CC7CE5F9696D02900CBBAAC25F8AA7D16"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\NotoSansSC-Regular.ttf.meta",
+    "Hash": "79202268C25491712DDF17BD21D9E5682967BD3725D40E3A36C92C87B7DADD2E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\OFL.txt",
+    "Hash": "E5AA11C906AAE1DC17718FFAB4C95B519A00A39EFDC4F37ECB68EAE85E261848"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\OFL.txt.meta",
+    "Hash": "63BEF235E27341BA675CECA1FCC6CA2A1B3BA5B7929C7B35DBB17ABC782F75B0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\README.md",
+    "Hash": "32F126FEEF2A9A56F72347FB2370C67B775681DCA807A22EA776029F65A65778"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Fonts\\README.md.meta",
+    "Hash": "6D31B9C3A92BFC5AD9BC1189513A602F207690ED94EEB346AC1554787C59F641"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Blue.mat",
+    "Hash": "05DA2B5CAF9EB80401D455D12289191E2ABBD2B7A615D19325EFBA691EF73631"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Blue.mat.meta",
+    "Hash": "9329C44918F2D0C7EC4B5DB743CDD0B17830867CE61E088584AF962C038D0731"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_BlueLight.mat",
+    "Hash": "CD7A7A90BCFC69703AAEDC8A78ABD278587359744EF77CE0C95262D822B37213"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_BlueLight.mat.meta",
+    "Hash": "DE939437B54A65BF1082713F0FD20E8D6CD7B972C4DFB5305A890B2102A64DF0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_DarkMetal.mat",
+    "Hash": "AA1E6E7399158A78CC51071AAEDB33EBB53D1E15A129F5824E8289D9E3FDB24F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_DarkMetal.mat.meta",
+    "Hash": "504A133A080AB354E9B488E7A365B7356D761A102267ABCDB93E0F91E540D7DB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_DepthText.mat",
+    "Hash": "714CB057084EC0A3F9906805309CA679C01EDED725FDB379428B8487832A91D4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_DepthText.mat.meta",
+    "Hash": "78458912BCCE77867A05A38286FB5309A7E91FB8A310C45527425D3141FEF2EA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Floor.mat",
+    "Hash": "6515A74E0F813A550A8D180453076F4E13579FDC8AF4AF9FEFC62FA433959CDB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Floor.mat.meta",
+    "Hash": "BE3BC24374B2083ECEFE0693F880BACBD60FD642D41F2C1449DF626D31873DC0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_FloorAlternate.mat",
+    "Hash": "456736EDDBE9C6B13B84E0F374FF71653B2C934BC7197546F63297208F12AE16"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_FloorAlternate.mat.meta",
+    "Hash": "74C6C8EE1AFA5EEDB9E5C59C4E9343DCB5C39E4738DC34943E7521A6F1706B7B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Glass.mat",
+    "Hash": "E9A7512DE7A55F122C89599C43D4A2BAEF763E3A39740E16E37C191B57F13244"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Glass.mat.meta",
+    "Hash": "63FD912532F3D18D087BA31E0E7F917448AE5826F4506F86576940C8D300B9FB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Graphite.mat",
+    "Hash": "3B54549AC27F8CD224BA049C3EFA3717A25D09A8C5F092E26B554AEF5448976C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Graphite.mat.meta",
+    "Hash": "9E29A74B5F32CE94413E8AD722FEDE68B20F734DDB0C067D34D76FAF17705A6E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Green.mat",
+    "Hash": "0B27EC304F879DFA877A72C63F1CFD28A6CFFE4613A90B90181FEA4B87F4B2C1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Green.mat.meta",
+    "Hash": "5107521F291FBE918ED78FA32C365C9C87646AB440B5B526DA479B9C01845252"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Grout.mat",
+    "Hash": "70593FF87E98F22115482FDD522C6392D00D62C83C5BFCB7B18BD5E07BC7150C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Grout.mat.meta",
+    "Hash": "E3AEFA701BD82DFC4511701D8DD265E37C9DE35E787B234F8AEF220F512DC82A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_HardHatShell.asset",
+    "Hash": "52774ACC48DCE9B44D7938DAF8F04DE34D560BFF5E130B0FD1F845C060103F8B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_HardHatShell.asset.meta",
+    "Hash": "9776AB49470CF01FD5C737E167EE671C367A7621B67235713EDB82564B754817"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Indicator.mat",
+    "Hash": "7C1FE398A63B61E1E4494572A3098ABA97B14CAB97E5BCEDD2CF44C7C1C3A048"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Indicator.mat.meta",
+    "Hash": "F8190F7BF19CC93B4C3C34E3DB57DE23BC7E5597FF8B8642D11E945A1D8D3252"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_000.asset",
+    "Hash": "53AB898C9A0D958FDD9CC053EB4531711010BDDF91B5DB68590DDA4E0B186AE4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_000.asset.meta",
+    "Hash": "D237CCDDF54D885E451D398A0AF8D2724FE0137246263BA102873002E7BE47CE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_001.asset",
+    "Hash": "419C4113C8EAC395A7581BC147B90966BA17805DDBA6B5C329D453AE0D8B7126"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_001.asset.meta",
+    "Hash": "FE154965726884DB796D9D92C632B7485B0065AE226E175921C95B9D9840196B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_002.asset",
+    "Hash": "5274449CB15CD3DD148B384A3B3D68702B637ED7DDF755E85D2484DC74333216"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_002.asset.meta",
+    "Hash": "6712652F6DE8AFC220F1C90476A21AE82D8BC0E11DE6A5A91C68115DB3986A45"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_003.asset",
+    "Hash": "D4D1842884B5E1BFB24C47E8B53D92AF18FCB344ECD8E5C63ACB9CBDD12CA5FC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_003.asset.meta",
+    "Hash": "75A2BBD7409E44A7FEA25037352412D200157A0958AB5FF52E5B53B67A7F044A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_004.asset",
+    "Hash": "713DC4F515F59B6268D09B23899E1EB2662CEB2ACC1EFF1C4CBBE912AA20E41C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_004.asset.meta",
+    "Hash": "04D741B5F01C7607300F0F065E0A7474A6776DC1AABD357C745E9F1CEDF619F1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_005.asset",
+    "Hash": "146578123D748E22EC283BE2A70953F8651CF0963C91D8FF45CE03F11A3EB9EA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_005.asset.meta",
+    "Hash": "2F6E9EED32C8545F8A3EB892E9ABDE8E44BA04BA8B17896EE277A8CC01ACCE86"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_006.asset",
+    "Hash": "80FB963E7F0D2DD087A994FEF9EEA90B0BCAC86B4C203B5E7F86E955D581EC03"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_006.asset.meta",
+    "Hash": "C5271FC542DAB5BC09A8AFCFE7AC1BC0C7E0996B73719A37738C815C72438840"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_007.asset",
+    "Hash": "02BE1495FA28E789BB569CC68E45CAAB3E37BE54F103EFBC329C343F8A1547B6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_007.asset.meta",
+    "Hash": "FCEDE77FE2EA50452C5BE51FF1C9CC123C9AB24AA7C9A41510CE7AD45DF1A7DA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_008.asset",
+    "Hash": "2F2A428D00B505EAABBC5AB3413734A839AF40BC9ECA4A7761C0279EE48F42D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_008.asset.meta",
+    "Hash": "87F0F84829D4A4E94E29499CDA9C3F88AC71041879E62BEAEF94A31A637CCC22"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_009.asset",
+    "Hash": "6CF7F9D3FC18D8F6AAC39F371C3739B1D902A505375937FD5C4A81ACF7B110FD"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_009.asset.meta",
+    "Hash": "2CFCA5794FBAD2853486CDCF1ED4E7DC28A302967D452D7EF91B10750A9D2613"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_010.asset",
+    "Hash": "A5E2DE7142BC232E4652E62EE92B97935F5314AC46011C3C9428DB44890DCC7A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_010.asset.meta",
+    "Hash": "B6FE2C7DD232247003CE70954F6756ADC3AFA6E6BAF7F18B8B0C9C5998F24FFB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_011.asset",
+    "Hash": "8050C4E74CCC429BEF0A5E3F81CD83AD045CA894AE5CD3E70B08CCB2D5788068"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_011.asset.meta",
+    "Hash": "B761D6EA4B38D6F93790A8EB52B37916F97916F2F6437D1324E63B929035528D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_012.asset",
+    "Hash": "336C09A45FAA9717BE3472DA3948546CCBDFC317C5941B80EE99780056A83043"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_012.asset.meta",
+    "Hash": "2684FE1D4569514652672A1B93C1E694DD62B99F687A17C999B6C53FBE6178E5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_013.asset",
+    "Hash": "A1FB086729C91F5AEBAF0D497CCC15F6ED285397CC4EF92B30086666F9A51242"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_013.asset.meta",
+    "Hash": "D3AFBF1AFB20CE86132340F545E4616B175733C8D3CE424EFBDEC1C36846F92C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_014.asset",
+    "Hash": "B4A7A24DCC7B2A59C19F919658A55909CEF7E5B2E8544026BA8F2653345740C7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_014.asset.meta",
+    "Hash": "BD54B79E07F49F7BBE99F6DF96CC39CCB6D8281E41D717AAD719EC6DB6A99892"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_015.asset",
+    "Hash": "7147839262E4BFD7CF607A8411D4FC524213363C6F524C2EA8E28554F32BB5F5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_015.asset.meta",
+    "Hash": "AF7F90F972B71D73805AEB4EE31A227C1B91FFCA2E01804EC01F0B38850A5D02"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_016.asset",
+    "Hash": "0A92E0631F347084528F214719C842B34800CCA27A0C693AD9BC534850ED2C4C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_016.asset.meta",
+    "Hash": "2505C257E99B7EE7414883429A7053A7FAACB46E92C3A4C89827015C716C51B9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_017.asset",
+    "Hash": "0BD7F4D4369555C841DF63180BF058FAC535D61CAFDA6E16D141E61096D19887"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_017.asset.meta",
+    "Hash": "3EED1EB45A28CC4789875DABF829657E71767DD4D204080B11129D68F057EE2D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_018.asset",
+    "Hash": "3A89F90B8C7B48C055A73DE7456C80D25DBD9467739B5CE124C458EA806E6B40"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_018.asset.meta",
+    "Hash": "CAA40A52E5435724F4B0BC2907A2CD5129E49F9481B8EF53AEC24EE6AFE2C7EA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_019.asset",
+    "Hash": "3E3E3277A8682C312D8873734192752E06A0D1B344B944E9C7B45E696068684F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_019.asset.meta",
+    "Hash": "8B6BCFC70F771354A232682EEC22A6E78DBAADBDDBFF023F26A8269EF75A1F49"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_020.asset",
+    "Hash": "2913F3788CA479E32083DCB163A9A7F7C2E1F4686D79ACEB9D34E9BDF79EEF0D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_020.asset.meta",
+    "Hash": "D63CE6E599252BACF0FCBB7534905D8C07BC5A5DB4B9634546CE81FBA7914498"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_021.asset",
+    "Hash": "B26C0238F8F504463C7E7B50D21445BBCDCE3D49503623F8365197540AA2E747"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_021.asset.meta",
+    "Hash": "C265D31D19C74137FEC31742C07FAD229C5132BD030ED59565DAA9FDB126C3BF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_022.asset",
+    "Hash": "ED3D0138D7E01FA01486065D7E0E274B54FF9148AA784269255AFCD6D5FCCE17"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_022.asset.meta",
+    "Hash": "58AB9A6837B1B19634F0C3538FED98E5F86E08DF27C19D24B3112E41B14E007C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_023.asset",
+    "Hash": "DE7C554C1DC7AD9C37490ACCB15310CD72061317856C763D5014DA0498F0390D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_023.asset.meta",
+    "Hash": "110D17B9C7BCFC454B42491AD3A4B3256AD8DF58C14BD2D7605B50CFA63BCD6A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_024.asset",
+    "Hash": "15EC761E7614C81B1D7B7EB657B3CECC4C09A4C801D48F483C46B4BD2267836A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_024.asset.meta",
+    "Hash": "65C8A74BE324A0A44A9A3D44FDDB8CE44FE064F56A8CBA01EF890F6DCD15353E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_025.asset",
+    "Hash": "6132ED345A0C7B05641716B9D61EF6A3C7B776458C75D65D206F98D54A08BEB8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_025.asset.meta",
+    "Hash": "CBD9B22DD9F20EE2B22AF8EE1117E2118BF0021CB84E0F94C6CBE5FB4677DF8D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_026.asset",
+    "Hash": "870F5C961BB8328159A7457700C0C886137C95C626A7D351B0CBDE970CA43A59"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_026.asset.meta",
+    "Hash": "66AC5B846AD3EC65DF94665CE6A42D00ADA4B63BA438473E122FF0A90214715B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_027.asset",
+    "Hash": "7DCAB10E01DE5853A9DAD4FAEA39E8BD9349B6FF2AD63CCAC55BB73CF0DA4FFA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_027.asset.meta",
+    "Hash": "3862C11A78581F35BC280422AD538C049F8E12BBCB8F7F40DC1FFED32D4F68C8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_028.asset",
+    "Hash": "3BFBF1743EB8715D0634FC127BF2F61A2A7196EDAE36549827046238234B1E97"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_028.asset.meta",
+    "Hash": "69FEA1207B11923FCA87F2C6523B745D0BF3960107B62609B50743B75DCB58FC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_029.asset",
+    "Hash": "895D4D949E05282540752078AC20510F42A111B752BDD59727137B9F98466725"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_029.asset.meta",
+    "Hash": "64B81A57404593410F5F9E1FC7629173B9A16EE9BE9279133495629CF7591DBB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_030.asset",
+    "Hash": "979A8869C7A22E6FA018E57596A83D32497A57B03E9DD290800198FB8C4E0F1C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_030.asset.meta",
+    "Hash": "A2F7B6EE096B2B018A4BCAAC56CC7F05889ACDE406D18654853D10E88FC72B54"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_031.asset",
+    "Hash": "E6E194A951D5341FA61673703B79EC2D0C472BAF2940C1D3106FE2DFED7E2E84"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_031.asset.meta",
+    "Hash": "0B5130339E86735B2D0327EF5F2FC7893B02B05FC338B44DA34CF3035FCD7C1F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_032.asset",
+    "Hash": "3BBFF461A2EEAEA072E3E75067D09A7A4C22C3FF971E82F26B07D8B79E0F5869"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_032.asset.meta",
+    "Hash": "9C74A0813D65C0EED3AC481F4FA53AF513D11A046BA7FAAC2CF4DB458CCFDFE3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_033.asset",
+    "Hash": "D95991378EAEB39E6AED4D1F19CFC8154D6166A83603ED5CAFCA12F57F5B307B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_033.asset.meta",
+    "Hash": "A7B3E29E4E9C7BDA0DD16EBEC5149AAB3F43468FFECA2C352C3EB86706E86FE9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_034.asset",
+    "Hash": "880D7A66951DF5C62EB23F3C2004295C29F8899CBF01A2851405361261561682"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Label_034.asset.meta",
+    "Hash": "983EC59C5B7B532171C4A848A83C28184A08E0D69E031514D0516349AEC7B7C7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_LabelAtlas.asset",
+    "Hash": "4907DB220D39E74411177A330B52F32423DA001C5102DEDD5C80AF7420B8C823"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_LabelAtlas.asset.meta",
+    "Hash": "AC0ACB0BFDA0D6A24B4757224BC78CAD4F9F31BB5460EF1D1F86545A655A26F0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Light.mat",
+    "Hash": "86ABCCB703421362EAAB4F6D55EE411FA77351CC78B56A5C7F101E1D2795B118"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Light.mat.meta",
+    "Hash": "217356BD3921F27585C3B75BF2A0D6F08375571C34DD77AE4E726503621989D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Metal.mat",
+    "Hash": "FD4686494271540E791B4B41269CA13A6C9EE1F518B959DE5674793904F3C03C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Metal.mat.meta",
+    "Hash": "0881579DEFD60A209DDEF2ED778FB2E16BBE50142B99B9E4EAE8109FC0FB7301"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Navy.mat",
+    "Hash": "E4BD73A4D3A38CAA0410E10B773AA29F70D28A55B9DD94FE70CE392FB904559D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Navy.mat.meta",
+    "Hash": "1A65E1B78848925B994D6DB6AC190535A83994451ECB08BCFF309FDE449E441D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_PaleBlue.mat",
+    "Hash": "C5286F201BC286859CAA187BFD797A6B44927296758DE677E79867B3D0508BD6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_PaleBlue.mat.meta",
+    "Hash": "4409892264CB34FF658CC3118B7C259E93FEA58BA91721460E5F7A14B1C83366"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Paper.mat",
+    "Hash": "2D5F0308AF769EDBE03A275187759E49B87E4B717E3C7DB331CC6A06BDBE22E9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Paper.mat.meta",
+    "Hash": "7D7FFEF8EF28C07191ACD1E131724B0BD234905D75D9A0BE5C6949618FABED11"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_RackSupportTray.mat",
+    "Hash": "F8B02F45788FE58D0ED0D172A086616487B06D89AAD264E71C4E05D4E5648C61"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_RackSupportTray.mat.meta",
+    "Hash": "A615CD7167B71A7C26196DA798FDF378F64150922AAB1F70BDEE06F1F9901601"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Red.mat",
+    "Hash": "A2C1CD1351A8B9EF3DFD2CBA3BDFA20A72FB96A942F93C5D015FDCD8EFE5F5A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Red.mat.meta",
+    "Hash": "0E1FCABA57E3B8AC08B6E750486ECD9D00D65C1D9A8BD3A0B6D38AD7A2C0FFFE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Rubber.mat",
+    "Hash": "66A26D0151E4DA2077E9C2CF0554CF9F754625C2664E57AE95B82D682DFCE231"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Rubber.mat.meta",
+    "Hash": "CA5B900EF722D2E70E151827D68B709BAFA0C73396F961D89E7A3E77DBF2459D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_SafetyYellow.mat",
+    "Hash": "9A26B5F7454AF02B38A9F718643527BC8666F5FF158E41257EAC5F52246021A1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_SafetyYellow.mat.meta",
+    "Hash": "B1ADDBDAB58CEEE8E3236C87EE908894A50BC534DD585FDE97F679C579F77A9F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_VideoScreen.asset",
+    "Hash": "8B354D89002D82404011E95FEED6CF2EA105E6731BA0F6B9763E951625CF476D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_VideoScreen.asset.meta",
+    "Hash": "9757429151E31A0C0E237152F3F831D29B1EBAC20DF4BF7D6954E2DA205AAFB8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Wall.mat",
+    "Hash": "B326C728270A86AC6289BC9CF4E4AEF59CC871DC68BCBEE9FBB4ADF567095F7A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_Wall.mat.meta",
+    "Hash": "9E4292E35517B94C64B64F9F496903E7C27C1F998A34D8A6F3E79BA332E444E3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_White.mat",
+    "Hash": "1D2E3BE0D2D3853D77D6D2A82EDA0938FB6375C6684ABA9B8EA7606D58BA749A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_White.mat.meta",
+    "Hash": "543160338972C9BEBC55835A1A8EDF72A61BA9ABC1095D5244A59352B84C536C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_WindowSky.mat",
+    "Hash": "47445F2C34280AE6CD5A791C919CB5946C05E3A52D00DD8480AEF431A3058F5E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Lab_WindowSky.mat.meta",
+    "Hash": "9B8A9EDE2298D919F9A2D75104073E2AAD1E16435E05FE771B8C70B6BA30B084"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalRobot1.prefab",
+    "Hash": "DBE1A9AC9BB551809E1578EE2883904978A78B8C6BFC2D863B97DC28D4EEBD4C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalRobot1.prefab.meta",
+    "Hash": "583EBD93AB6E04D05B435595B11C9103E4C544FCAFFA517049F81A103B17987B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalRobot2.prefab",
+    "Hash": "6F375AFF94E289C1D9B33EABAF15752E14CA9BF3606AB05D4DE1A0BE11A9C81A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalRobot2.prefab.meta",
+    "Hash": "3F4103D3A9CC629BE84A9A03AD06BFBCF419FBA3C637EEAFDF0FC1533DE64400"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalRobot3.prefab",
+    "Hash": "71EB39120180FB2A8923ABB139587603118690F09B6067E8FBD46BBCC3F9E014"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalRobot3.prefab.meta",
+    "Hash": "7FB5DDEFC0E6374215D452144A4386F8A25198560369B54CDEB3C727CBB0F89B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalStorageRack.prefab",
+    "Hash": "F47DECC9804BCF36BA409BC9D8C02531D62078D07A823B7B69D8EA6AF7B52599"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalStorageRack.prefab.meta",
+    "Hash": "0C4B2049F2A7B8D56E18EC10BB9E5875A14EE26EA7595E93B29215E992544A16"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalWorkcell1.prefab",
+    "Hash": "3A8879076C2CC2594A14EE32F3479AE60E391FBF9A908FE703DFD807BCEDC96F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalWorkcell1.prefab.meta",
+    "Hash": "A0D4F1EAE329DC8AB5D84ADE4C1E8291DB65ACF2342FB281B81B5C407A3AE2ED"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalWorkcell2.prefab",
+    "Hash": "377A64A4F4B9D5CAD503F5001908769E37B0E7D5EB11518D3C80C30AE726FA76"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalWorkcell2.prefab.meta",
+    "Hash": "A071F89D871EA3AEB9C88F80086A12E12F12F40E54B480010F54E879B21B2DC2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalWorkcell3.prefab",
+    "Hash": "AC0819267378AD51D2289D9DE696FD14AF3FD366F88D3E67ED3F1EEE0A2199A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\OriginalWorkcell3.prefab.meta",
+    "Hash": "A3E223A58E8637E10F107FE267BF7271C0F3E41B3879079403038DC1255094B7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid.meta",
+    "Hash": "1E55F29CE78E8971F3937856D0188824F79520995E940A45106BD559436F46CC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotLine.mat",
+    "Hash": "2804ADC2CAAE740ED7851CE727CE78FFEAD3493815F9A547AF5FC5D9C99F78D4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotLine.mat.meta",
+    "Hash": "BC306C14487FC4A2623251239F10EAB67445265E34DFE3D5115EF73A41CF82D5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_0F91B0.mat",
+    "Hash": "8CE5D33D998893D95D710CF3E5C2D80082F7F18AFFA446F8C5A48AA59EFBD550"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_0F91B0.mat.meta",
+    "Hash": "25C9FFFAEE21B8BED0F16B403344702F233A76E26DE27294A0A958B10B3EF771"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_1C2E3B.mat",
+    "Hash": "C3B7B88348A61921BF347DABDFBABD1E3D903D2AB729B4D7BC0957EE856F670D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_1C2E3B.mat.meta",
+    "Hash": "CEC38497134C9444EDC2AE111CB9FBBEF6ACB76D05B0020E661144BA651ABB97"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_26B880.mat",
+    "Hash": "D8E35344DD3EA0C797C827737FE9E086338DBAE4813BE8159F9A62AAFF7544E6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_26B880.mat.meta",
+    "Hash": "F60F72A801EFCA6B1870F1B63E249E0388BB980004E21D83E1E3EF65A1AC6A7A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_384A57.mat",
+    "Hash": "EFD7C6D8200CF44F7A5BCF028A3737E9395022B98CCAE33EAE9A3C1DD602C899"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_384A57.mat.meta",
+    "Hash": "48CFFBCFE4D940FA39437F01FC4DC19516632162A5092FA092E8D0F2550D4FB3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_99A8B2.mat",
+    "Hash": "875802AA78B5C9155DF27CF05C7B9834056685A644A36E96B438CAE8C3412407"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_99A8B2.mat.meta",
+    "Hash": "596ADB7822455DCB8C432BD8E868FB01351ACFA1A29517A9DA11ACFE066CA94E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_FFFFFF.mat",
+    "Hash": "D07E4B502232C4683CFBA18935FFC7EDFA11F143535EF49EB75E0B29E76C656B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RobotMat_FFFFFF.mat.meta",
+    "Hash": "7FFC046F634378ACFB9E4E2D40650D87435A18BE4983116D5AA7EFEDFFB06ADF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish.meta",
+    "Hash": "1BC6BECBBA6AC53BF8C5BEC44153D4E84811768E874D8F7F5B33D718F0AB29FD"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TeachingVideo.renderTexture",
+    "Hash": "8181716B10D7D72363CA89865B79E1F22D81B9479E6C49EBAD12F6259C5EEEF8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TeachingVideo.renderTexture.meta",
+    "Hash": "77057B956D8435FC4E5D4314D6243BAF872893885186E2275AC9677E9EB135D9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Trainee.controller",
+    "Hash": "A44EEB7B5DF7F4851B05857544214E9B4A1E4FED4959C72D00B5ACF35F4CE3E8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\Trainee.controller.meta",
+    "Hash": "54B6E847EEEE617606C6EDB064FE68B17DCC2C3B46746891D2E5E13DEDB6FF96"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeIdle.anim",
+    "Hash": "644B008906D6E89C3B2605EF4F2AF3A8BDEB168253E55727ADD2565B43D08789"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeIdle.anim.meta",
+    "Hash": "5BE56D3F5E81BFDB03B773419B78DB5B6FC3849A77373D5AA0F033F32F123F4E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeLocomotion.controller",
+    "Hash": "EAF8F5D3B818E1B6FDA38A8482B2EAED0659D71D5E6A31DC90E57FFD4BB1AE14"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeLocomotion.controller.meta",
+    "Hash": "AEFD78AD7E4383BB0CFD7B6085B267643A132193CD16507D28D16603D3D4C03A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeNeutralWalk.anim",
+    "Hash": "C73083D2A21A6E5EE02E0DDE409C4DAB9B3677494213474F39B7C3F813BC719D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeNeutralWalk.anim.meta",
+    "Hash": "B9B3F00B52308ECDAB3BBD87C31922948DAD85BDD3544AAA1FAF9C161134A9B5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeSlim_Ch32_4659950864537851583.asset",
+    "Hash": "E1C6A69C21879F5097D5A50B1093E99E73E9D423732488EBF65F9C53B60AE449"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\TraineeSlim_Ch32_4659950864537851583.asset.meta",
+    "Hash": "CD68ED95EB984A9813E449C7CD0154DE603F91E13040130ADE92339C7C597844"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\VideoScreen.mat",
+    "Hash": "431150B5EA8E45DB6D1B8CBAB00192E8C26EC48C5BFD06D7024F56784A6713D3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\VideoScreen.mat.meta",
+    "Hash": "DB5257061CC47E909B79AB20C086DED7C05F8C1B48BC1634639430A9D9BD1019"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\OrangeRing.mat",
+    "Hash": "C91DB21013B01277789ED658EA357F6C2C81CCB9CC28ACA856C999AF6B76613C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\OrangeRing.mat.meta",
+    "Hash": "0F3DEE355995C55F78581DC91DB969C1D7652DE172C9EEE7EDE8B633D229E6CA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station01_RingRim.asset",
+    "Hash": "8A1B557BCA8BCED6B6C41AE19E67D81FE2A7708559AA447339F0862DFDFD2950"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station01_RingRim.asset.meta",
+    "Hash": "59C918C7EAE96A66632DF537D18F26B0605EF1B17CCCF1F229B981083562FEBF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station01_SteelGuide.asset",
+    "Hash": "11CF197B53C68AEB095FCFD751B8D6006030A45D659E7B8E633E1E11C1EA46D4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station01_SteelGuide.asset.meta",
+    "Hash": "9D07F52B1E2B26FAC4839BD2C0BAD0814C5259787170241C8337329543E196F0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station02_RingRim.asset",
+    "Hash": "5BFE4481EAFD47CFFCE140CF8145AB7C2DB3C0DC1B8A6F9C44BFA64E6F7B7AFE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station02_RingRim.asset.meta",
+    "Hash": "09C7D8E83847414210A465F298D9B361E4AF43F7A75A4713751355EBFC307FB2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station02_SteelGuide.asset",
+    "Hash": "C6974C4307D64921B3A0F142698F6A94F3DBEB827F22136EB538DA155B34A5E9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station02_SteelGuide.asset.meta",
+    "Hash": "92527A60C142A273A31DE1480F167D61EE39FB56DD667A45F20482D4111C1CD6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station03_RingRim.asset",
+    "Hash": "7A52029DEF58FE108CCAEB619F521D42B675D7C3E645AFD82E553471A643A801"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station03_RingRim.asset.meta",
+    "Hash": "37CA3CA1337B4E3CF56DC0EA94B70EECC1F4022A6FD6A5B5D178B1B1F9E7D72C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station03_SteelGuide.asset",
+    "Hash": "02A2A6F2ABE09A888A74333CCB40383D6AA85516F40E660867F88C6ABEC1940D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\Station03_SteelGuide.asset.meta",
+    "Hash": "8AC4852DF7FA6697A5A850369DB15731D43AC20C0DEC1FAAB884A27BE34DC261"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\SteelGuide.mat",
+    "Hash": "75C3556CC31E343B53EF47FE10C8230BD499D1C36EF5AB4C7360684931967AF7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RingSolid\\SteelGuide.mat.meta",
+    "Hash": "6ECE4633BF21516E6D7A3294AED4F46F5D3A1C3C95F9C7D33ABE1DEE9F9433A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\ChineseSignAtlas.asset",
+    "Hash": "5CBC0A5E5A2BDF172EDC24D3ACB212FE15D605DC235375AB396EC228FF974B4D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\ChineseSignAtlas.asset.meta",
+    "Hash": "B913F097DB20CF5B36DFFE267BE4013CF0332684E7D4964610115D3F4592378A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\ChineseSignText.mat",
+    "Hash": "865391C6DD0A3DCCA488D0CEC91CF79CD681EE18125A5E7B2C42F8D1FB10A7B9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\ChineseSignText.mat.meta",
+    "Hash": "46677D2D616434C5C2F77589D2B3E974330FEE6E20E5942858DDF5B2B66D9C1D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_CeilingDetails_Lab_Metal.asset",
+    "Hash": "865B9D8613B9C137D5CD2055402F0E75B5DA9F66A591F35BA4FC2474C9AE5E46"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_CeilingDetails_Lab_Metal.asset.meta",
+    "Hash": "86693BEBFE3BF943E0A0C0735CB221F594E89B8FC6F57D0F8D044695AFC25B8B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_CeilingDetails_Lab_White.asset",
+    "Hash": "955F9C8CB083349500941B685525146423E8F17026E9CB28212DCF7126C3262D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_CeilingDetails_Lab_White.asset.meta",
+    "Hash": "C5133ACE1BBB34BF56912D1087D9E06C11571B326C33E98828A757088FA7829B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_CeilingDetails_Polish_Panel.asset",
+    "Hash": "400244225AA41A8A0464DCBE591A0FC614337919286605DA13DAEF305DBA61FC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_CeilingDetails_Polish_Panel.asset.meta",
+    "Hash": "CE49AD4C47C0A4A30544244CB8774766FCD0180A516B914EB3E73A2080156E7E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_BlueLight.asset",
+    "Hash": "207E7F7CE73A52958E65481F1D0B75914E531E1A1DDAE0D509EF3A42D926E19B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_BlueLight.asset.meta",
+    "Hash": "3A2F9A5F1844A7E2A5C2568C70719FCEDAEEAD7985AE5B0EA8A601C6EE4C7E7F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Floor.asset",
+    "Hash": "1D5014B39597D97775399A755AD33F215B1C77E5340ACFD4A5E70F6CB9C2F4E0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Floor.asset.meta",
+    "Hash": "D3756C293AD157BA1BCE009C00521B7D98A399F49BBC7BB8AC09B25F8B9A6E6D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_FloorAlternate.asset",
+    "Hash": "0C9E25B0895E574C82F09867C15D414BFAF940E2677AF18663D40295A3D3F28E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_FloorAlternate.asset.meta",
+    "Hash": "44B346FADFAF1222C4C2909DD4A977C9A26A575E7C43FB1DFFC3578CABF887A1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Grout.asset",
+    "Hash": "9789CDDED6CF6E231F047F2FEE4D302789035A45B1DCC88BF3F915BC1397883E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Grout.asset.meta",
+    "Hash": "40A022E9A9BE6AE684B2FF24316C8E313309F4DC41D4DD123B0DF2CC6A9FFBA2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Light.asset",
+    "Hash": "8CC2A30973EA4E81F26AF0AC63E992CFB799899E0E69E95A338E8A74E10E9234"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Light.asset.meta",
+    "Hash": "515C04613A4B21EA37C33EEB0F5E7429B38263704FDF561C083E0F927159B7BA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Metal.asset",
+    "Hash": "92777D234A8CF665643E99F57CC024F82A526F6CC51CF15B2B1A90ED4B295B22"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Metal.asset.meta",
+    "Hash": "4AC5BB47254AFD89CA0BEBD72033A1FDBD17039B52AB4DD87973E0153C0D38E9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Wall.asset",
+    "Hash": "727085C2D3CE79F7E674B66741B2926FCD189FEFA25EFECA85277DD7314F785F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_Wall.asset.meta",
+    "Hash": "DC4B88C76469ABD5F275703DC821DFD6B84F722F9414B2C12A9E54C59E302E62"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_White.asset",
+    "Hash": "45D1D155A462EC213DB3BCBF8940FDB391678937FEC5D2503C02BB1C7C01B3BE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Lab_White.asset.meta",
+    "Hash": "C24689B457663C14BC0E12334951F348D69614E76BD885C81275177C13690FF1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Polish_Panel.asset",
+    "Hash": "C0A484C29639506CD9EE45191838EBFFC11ED2610080102B099B01D404A23571"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntranceLobby_Polish_Panel.asset.meta",
+    "Hash": "678AD5F246F674F69D8E5A07428B06B3934D03493ABBAE1AAE1C764A0CCFA5A0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntrySigns_Lab_Blue.asset",
+    "Hash": "7CB7D0B029F838F7982A3C59FDBBA00F01D88247325B5143B41067F0C7F1ADE7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntrySigns_Lab_Blue.asset.meta",
+    "Hash": "F3A5845224FE7D25AFC305618A7FB27122F87866FB4188463B8F82ADC8491803"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntrySigns_Lab_Metal.asset",
+    "Hash": "AF47E07F5EFF3D69CCD08E1116D2952A89C9E3B6DAE933BF52DC67CCB8E3A00E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntrySigns_Lab_Metal.asset.meta",
+    "Hash": "FA35AE6869FB647090EE05B3BF83F6155B3D94632AB192FF1504FA87B0F9D3BC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntrySigns_Lab_White.asset",
+    "Hash": "EE6D4A48D435C387F85E6F967C9EC433E5824BB64F322960F27FCD861D21197F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_EntrySigns_Lab_White.asset.meta",
+    "Hash": "6044B743C045C6C724EBB715290B5A9CFA279E37D2966191140D216EF31B152B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_FloorWayfinding_Lab_Graphite.asset",
+    "Hash": "1134D05F68BD23AF08642477FD707239C7950F2B9CB97886ACFC6B321C496746"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_FloorWayfinding_Lab_Graphite.asset.meta",
+    "Hash": "AA6C4646F9AE6816A555A53B6AC97746C163A9B6EAC1A91347D3242EC28C6FD1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_FloorWayfinding_Lab_SafetyYellow.asset",
+    "Hash": "1C693E40EE8DCEABAB67FAC52BF1D1083699B5D9DEAFBC1B1DAB9BDB6E74E5FB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_FloorWayfinding_Lab_SafetyYellow.asset.meta",
+    "Hash": "A1B210BC60DCDDFEC0C5FE4991DFB60216BBEFF35AD1E4DA1C2EB444590EDF2E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_Blue.asset",
+    "Hash": "D0BD3C44886ADD8095EAB155FC6938D977F5E96331FD630988FB913060E25FEA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_Blue.asset.meta",
+    "Hash": "98BEFA0E4450EBC27B61AD023A2C66482F975E74890CC27833FCA9BDF2D08C86"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_BlueLight.asset",
+    "Hash": "731980AEAA8D341AC9023A2E89A7B3469B2AA52037E6468F8A909477D1AA5E16"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_BlueLight.asset.meta",
+    "Hash": "8FDD32018B6A3FCE797022E541D46A9CC05684DB8B6A8DA5A82EC2B51D8498E3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_Metal.asset",
+    "Hash": "96DAC5761ED4682A6498EC7A71659CC007375E5572DD3C0ED06FAA32867F8EEB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_Metal.asset.meta",
+    "Hash": "5DDCFF0094C30D6476A100F0EC7944B264506DFE007277597F339D3DC2DF8C67"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_Paper.asset",
+    "Hash": "70263A8EAC5EC9F721AC800322D1872E1D151925645FD010F7AF5BBBFE95F5E8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_Paper.asset.meta",
+    "Hash": "27CE634AB2435A78874526718CA4CA5E0C1B3501306ABDA7D93ADB383A095B3C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_White.asset",
+    "Hash": "ECF5DF659114942A45AD71402BFD523A0390AF40008F6D4C0F6EE34F715F9F3F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Lab_White.asset.meta",
+    "Hash": "638878AD19D00A7FA88A88DA0C4BEA78BDEFF408DC38EB0ECE222F240700D130"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Polish_Panel.asset",
+    "Hash": "FA6B387FFB05264E28CAAF0C2CC57B9E612D617FC5FCFE336B8E11326FAB00D7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_LearningAccessories_Polish_Panel.asset.meta",
+    "Hash": "2287472C167DF0DA71BB8E4CE2B537E99DCAAF4AC10CE19C3C7708BBB8AF96BE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_Blue.asset",
+    "Hash": "A2377E88AAD0DDFF5C7D62F9A7440FE7E0E771D16533627B63A2CC157DCE6987"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_Blue.asset.meta",
+    "Hash": "5BAF4BBE4381E9E052111EC29114EDF31666DF4784A351DFC8EE66805D687147"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_DarkMetal.asset",
+    "Hash": "DE326290548208D43145ECB203126480B3009907F1BD9E41AC3112542223D9CF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_DarkMetal.asset.meta",
+    "Hash": "40979FCF0DDE5D9A4C24A221CB953D6A2603EFD751AFC442348AF6BD667F8512"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_Metal.asset",
+    "Hash": "09BB0FB4ACE6ACB8E6EF8CCBF1DF9661DBB870A3C5DA5FE73071849C4B4D57EE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_Metal.asset.meta",
+    "Hash": "244F0B3059BAA11984D3F44B1C76C9D04421482F4C22297FA295E63B6F955DB0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_White.asset",
+    "Hash": "73AD68BBCB04410F18BC8695640BDFE091C155420C4AD17FFB57A19B6321FDFE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Lab_White.asset.meta",
+    "Hash": "6EA7F03382863FDA95EB114026B5499CF2FBC92ADD16F0F9BB9729A400C8B47B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Polish_Gasket.asset",
+    "Hash": "9C2A76366FB08E79FCC1E31C9B874F7EFB07AA9312D12D0C2FC37DAE6C00CF07"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_ToolStorage_Polish_Gasket.asset.meta",
+    "Hash": "951F8EC02BEE2549A6558F8E148D6E1B447DAE7F869DAE88BFF717AEBEFB5332"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WallFinishes_Lab_White.asset",
+    "Hash": "DC4C6020A3194B8718B3EE13E9EB6C74B80F17F661CB9E79C70986FE4649DAD0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WallFinishes_Lab_White.asset.meta",
+    "Hash": "617EC0D5E1D27E3BC3847649ED7F3BFBBC5FEC7965EB1DCBEE8B0881264D5E95"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WallFinishes_Polish_Panel.asset",
+    "Hash": "2E544978CF435D91A08582B107EA0DC3C03C22B0381FF08256DB651C0984B729"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WallFinishes_Polish_Panel.asset.meta",
+    "Hash": "A3F82FA5D22F619B3CEE248045864C54F0F0B857BE6A9343F19D7BA722361DBE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Lab_Metal.asset",
+    "Hash": "75611208F708A4F7AB50A2A602A82D1614B89DBAF98822A0C81039283DA7DB40"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Lab_Metal.asset.meta",
+    "Hash": "9ABAA6176D1BC9EFFF2729D9A68FBD5130BA55C11DE96CB9FF471BB5D3D92CAC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Lab_White.asset",
+    "Hash": "AB60F79A4E4941C3FE30548A375BF1F9D902DEC8A6925AF820903BCED00550F4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Lab_White.asset.meta",
+    "Hash": "007245960675C84F52344C85670644BF91A25856BD98A5DA10CDAB6D85A0A41E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Polish_Blind.asset",
+    "Hash": "4F3826E709900ED5A24E782D13A7A8DBDE746EF6789404258C8EB53F30932421"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Polish_Blind.asset.meta",
+    "Hash": "08A26C43C6077FE9358BEFCA744C157C942901B1918CF227E37DE1C532D795D4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Polish_Gasket.asset",
+    "Hash": "DB094E2C15BD9AE18B4D217BE0902FAD35DEF22303AD2C2678DD3E24550ECC76"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_Polish_Gasket.asset.meta",
+    "Hash": "200DADF205A733773AA0008B5EF9F96BBB0B5034FCAAA96970663B96EB64D943"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_WindowDaylight.asset",
+    "Hash": "5212B06250940FAE21A9D1FC7EA8298747445FB725212D20AACE08DE04545D42"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WindowDetails_WindowDaylight.asset.meta",
+    "Hash": "C5CC87BE059901AC6C87882B2C90CFE5E4053E79B583DD86EB2733A0368F25A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WorkcellSigns_Lab_Blue.asset",
+    "Hash": "2109B331D187CEEEED4730560D5D7AB594C84DD84592B9AF252C5EA2FEFE0A87"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WorkcellSigns_Lab_Blue.asset.meta",
+    "Hash": "0BAF179D7063F4CD9690BE4095FB815CDFC9B5D03C0A0BA191E15CA64ECBB9DA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WorkcellSigns_Lab_Metal.asset",
+    "Hash": "2D74EC142E2EDCD1FAFF6AD10B46787781086B5F891E7294BC38D20DE934A089"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WorkcellSigns_Lab_Metal.asset.meta",
+    "Hash": "901FC2506B2D2888E4BAF48C8542252B9CD7DEEBEFDBE5B135170372A89E9FA7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WorkcellSigns_Lab_White.asset",
+    "Hash": "63F0B6A411C6793AE4330F407986518FBACA72CA02C49A221EF484CD3BEC4755"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Geometry_WorkcellSigns_Lab_White.asset.meta",
+    "Hash": "0D207C643ADA6ECA525A450C13CF9B00B6E623DC19BA27A83B4F3D01654068FC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Polish_Blind.mat",
+    "Hash": "557595071E4681994C8EFE2C54819A32633B0028832FD5CA91B72EA1A45DFABB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Polish_Blind.mat.meta",
+    "Hash": "1F4F224FA443064939BD60198F970EDC0977A5C2B61CCC548655EF9542E7FC0A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Polish_Gasket.mat",
+    "Hash": "768E77140BBD21ED2A0A799C2D946A2F058B18FBB1F7F82301062B730A766CEA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Polish_Gasket.mat.meta",
+    "Hash": "02098D870DDE9331C771E3D8E93C0D5182394B7112C241CB63DA645472A86938"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Polish_Panel.mat",
+    "Hash": "E5A6F72CEA813950B2018013F3913C1090BE74359A92F3F080AF41546B0E2FEF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Polish_Panel.mat.meta",
+    "Hash": "33D316E820E3F611B8398BC32325B85CD0C4A91701270B902CAF249BD96BE24E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CellOperatorArea0.asset",
+    "Hash": "BBACEBA456D75E7FD5295C2514CD8BBFDF8C48D8E1A076251A3653E112B160C7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CellOperatorArea0.asset.meta",
+    "Hash": "2E9956238DBD22904A8D4531C6F695820F0BE1453C3879A3C379081104A347F9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CellOperatorArea1.asset",
+    "Hash": "3D2E21CE81D3517D9F950EF2371CB1FC2364080077F5C6FEEF3BB5E43A73A1AB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CellOperatorArea1.asset.meta",
+    "Hash": "7C5F2333EE89129C70EE6E58DB298AD9726B1A6F1D87A0E70845AA11D0DEF5E3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CellOperatorArea2.asset",
+    "Hash": "0F26DFF02400F3EA2C6FE6FBF4BB411885A61F48CA07364BE09002632A4E8440"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CellOperatorArea2.asset.meta",
+    "Hash": "06DC5B7B5A879D6DDF13B0E029F0E96CDBC0F97AE5AF928FC62AACBA037F6001"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ClearAisle.asset",
+    "Hash": "205B5E91D5E40BEF63E7B39579542E8C7A75D7A104E6E6A8D6B999326B3CF616"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ClearAisle.asset.meta",
+    "Hash": "2B9EA3892A39A6BA97CDF02B682E5D5CB688BB2FB3C70CAF649864E067D95D6D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CollectHelmetHint.asset",
+    "Hash": "171D2467BAFA0DDDFB218181A3354C43CE9FEF64553FC79062E212090BD85DA5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_CollectHelmetHint.asset.meta",
+    "Hash": "4AAFC6C81B2B9B748E59164128E8243D6A4262233072451ADFDB43C21D57ED98"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_EntrySequence.asset",
+    "Hash": "493167E8EBB751F2241893F0B9E9E33D1AAB16DEFF81D9851A776862DE9339EE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_EntrySequence.asset.meta",
+    "Hash": "391628D8E70BAE2283A0949147307FB2AE00BBAB32EF8BF0026C3F304F6F413C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_LobbyRoomDirection.asset",
+    "Hash": "105491CD50BCD44441C4A42FF6CD89C18D447979E1744909344BA2F1B67BDFA8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_LobbyRoomDirection.asset.meta",
+    "Hash": "056DD9B971B266CBB57FFF47182C2BF3EB1BD4EC2543CC0D8D4C0CC2AC5C21EA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_LobbyTeachingWing.asset",
+    "Hash": "35A3DC3F319AB3450B6FE424503A97B644F0D6963E3964C524F2AAB73C83A827"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_LobbyTeachingWing.asset.meta",
+    "Hash": "270365CE8A0766C11D9938AA397FE8B1FC8929CC01940A4621244B6D43EBBB95"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualCover0.asset",
+    "Hash": "A4024C3647299E7B1B3549FADFCB48FEDD86D88A9C41107232DBFDF32B2F2A66"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualCover0.asset.meta",
+    "Hash": "2C7763FC4822E98D573B2720E859543FB59D0971594C3882DDBD104203A3CCB7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualCover1.asset",
+    "Hash": "E005F573D6ABDACB77963FC692D70E220569FE3825B622977F4B4DB2E5D4F841"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualCover1.asset.meta",
+    "Hash": "DDF0B0884D38B96906486ABDB46EB80787B032378B5C19AEBC9CAED412C22D65"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualCover2.asset",
+    "Hash": "D7191B5CAAE1DAFB63E2B28223256F85EC9E4842ECEDA50C3CDABAF792339967"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualCover2.asset.meta",
+    "Hash": "201ABA90229D0802A7276CF1A4893A1A5F8AF9A77ECAD550319E493FFA0F0A4E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualHolder.asset",
+    "Hash": "FC94852A6904DF5EBDB2FFC35B913A42A8192F1F89494CDB4A460C175032560B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ManualHolder.asset.meta",
+    "Hash": "37EA74B7018247A5174BDD2BD9ED4910FE2642AD1B30B7EC822C42E947FFE174"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingSequence.asset",
+    "Hash": "D5B8D0756628B3940EF0CDE9358CC440401DAA42C1C06B154C9074E44D08E4D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingSequence.asset.meta",
+    "Hash": "BE3987FBAC12DE65F342E2FFC08540A56155A26CADA4D2C16A45B1617C58349D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep0.asset",
+    "Hash": "554A4ABC651CEF9D631B9B0887E63339FE8B06A919A1A61E0E35EFA8C33DC232"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep0.asset.meta",
+    "Hash": "FC1C0FE132F95A8CBE9D4C8561E142CB69D3665C2FC9A6E0516233A516278BB3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep1.asset",
+    "Hash": "3DE1FB1D470A8FFA7ED02474C226DDA96DFF4B04C813E83614C285EF94097139"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep1.asset.meta",
+    "Hash": "0A2CE6E1F290590E9FCBC082D4B4123E3613B302450C5B5F017F3E3E3A23A8BB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep2.asset",
+    "Hash": "0E39FC3C86B4A1EA72944B3E120D2103EBA26282858737614398824FE2E83740"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep2.asset.meta",
+    "Hash": "D7118E5F63C32540F73D0B1A333AC704700E3FADE4873852938315C26C1C9DA2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep3.asset",
+    "Hash": "1F37774BB4540E1100A61575C4F2BAE442A4143FA34A1551318210AD4E3B789F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_OperatingStep3.asset.meta",
+    "Hash": "518446C2D113CF3F05407DB77EFE2E4F174B8BFE87726B284E44F989D7B3C9C4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_RoomNumber.asset",
+    "Hash": "A30C7446B40D6BEF8906BD323B95A9C171CE50FC211B324F9264CD818A5D8C57"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_RoomNumber.asset.meta",
+    "Hash": "0DC4C1D13F62D1C77B4C43BE1E16A5E1064A8F403B62D0803C579F59374D6B60"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_RoomTitleChinese.asset",
+    "Hash": "AD2DFAA8A84699683531E4478444183F04C8E8424D462DFDCC2E322924A65734"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_RoomTitleChinese.asset.meta",
+    "Hash": "C21CD33D6F1CD404A2AD8F91C3C0CCB80187198B5691A84AB3771EE5F791A6B5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_RoomTitleEnglish.asset",
+    "Hash": "18A70621E64571A96B32F594DFFE6967C781B27F5DA14E8A595B2EC0A0AC7AB0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_RoomTitleEnglish.asset.meta",
+    "Hash": "C24BDAEB361BD9CAC86CCC61C59251FC971AF38F90F9DEA050028C1699E14D52"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_SafetyPreparation.asset",
+    "Hash": "72EBD82A4C0256EEBDB6D1FAE2426DF899A5A14E7C9B8306FE6822E8EF79A0C5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_SafetyPreparation.asset.meta",
+    "Hash": "08CDA20914FBF01874F0D78654082AB56F06A7E80D75A5E5766B43643B07B55B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_SimulatorNotice.asset",
+    "Hash": "37151B2442FC35248761CE3334CA64F9D0F5AF22670CF07D37933A325C0E6DE4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_SimulatorNotice.asset.meta",
+    "Hash": "94B2D0F46E6ED666F54AC3E58806960681830A587EFCE746AD4A7B86144C3DF1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationCode0.asset",
+    "Hash": "75E5DA8B18912F97A3A1C0627A47BFAAB4E0FC88CF208152F094AB5245CD838C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationCode0.asset.meta",
+    "Hash": "4E8ED6A7354B62FE32B6F25B64C34D7D13D7C594930E76985F1D387D4295666D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationCode1.asset",
+    "Hash": "DE9F36DB2BED405FC85BCAC9BC9B7AA77C977C97D210B44AE21D91A4E7B6E8AE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationCode1.asset.meta",
+    "Hash": "29658095E887E032062B52E8638A79C7D31DB6B3CC6AEDF540F9A9963177B6CD"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationCode2.asset",
+    "Hash": "DF9BFC48FBF3558DF1447BE079EFB6743DEDD73685B468B0DE71EE14BDDFD177"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationCode2.asset.meta",
+    "Hash": "2F25C9F847FDF0E8B16273F1DC9261D4054FC168F8CB5A951C5D8B644242D018"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationName0.asset",
+    "Hash": "E4413CFB23F0BA3BDCDBCA76401BE7AB1427F430B4F8E9E426C8B52D83E359DC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationName0.asset.meta",
+    "Hash": "AE113B796E26A7B602ED3A864EE959E634384C83CCFEAFB7180885F85117E732"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationName1.asset",
+    "Hash": "6B833B742301C523B9EEC9716B08EE11F541EB2C3536579B9485D623574C6954"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationName1.asset.meta",
+    "Hash": "7B3964746113EB932BDD31E3FFF2FB56F86E077A479A9C03CCF2BE17B7C9E456"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationName2.asset",
+    "Hash": "B8511B842316C2790043EB63D503B562DC7D72651F5E4EC26D9291B3F9ED98A8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationName2.asset.meta",
+    "Hash": "FDB1C75A74804C96F9B6D8940EAEA2225A470F5E6747F60D8DD38D2813AFEFB6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationNumber0.asset",
+    "Hash": "A56A4CBE8855FE51D045BDF94A0B5162EF66FADF0BC8959BE35900110F293697"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationNumber0.asset.meta",
+    "Hash": "CEC37BE836A249396F7653B38B852CBC608405B54F7AD16C527C22B0D5DFA221"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationNumber1.asset",
+    "Hash": "978F2BFC8A800317B71D23DC0D6853ED704728F7ABB754634D602AEA4EC1AD6F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationNumber1.asset.meta",
+    "Hash": "401743414A236766D09970A4388CE74EB6D04DE68A4A026E8323C3A5B3D78C62"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationNumber2.asset",
+    "Hash": "4FA3104ECD363FE672BB42A3602D2098798EABE83D5DE8E2E68EAF99540CFBF1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_StationNumber2.asset.meta",
+    "Hash": "652020F424B05B6F4EB67B5A0F09FE32B248BA4513A25D0CBF514E1E3A4B98C5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ToolBoardReminder.asset",
+    "Hash": "E601A8B98B7082E7381B7527EFA366D767B827A34969CE8964FE3DA98B1BF783"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ToolBoardReminder.asset.meta",
+    "Hash": "58D7EEA47B854B941C8438867DAB9D056D5E548442C2C2310188984809E53E58"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ToolBoardTitle.asset",
+    "Hash": "CFB7CCDB18BE7D48BB31455F2FEB5FEF0EE2E751D1A53389A50E5D6E592924C8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_ToolBoardTitle.asset.meta",
+    "Hash": "091DD8F41BF1B7BDA4B58A69B3D06903F897EDD69CF048AAD50AF3FC8A4AEC22"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_VentID0.asset",
+    "Hash": "9F84509AF63BEE45FFFCA860B31174FBF0B28D33230E9125513F0489883D6176"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_VentID0.asset.meta",
+    "Hash": "D936C47C325166475203CE298834E377710BAA7CADE4299F6EEA6D81E582D2B8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_VentID1.asset",
+    "Hash": "C22F0259CF89150C6D1C1FB8DE95068CDC27B9FEFFD442D60E8643ECD6F1E52B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_VentID1.asset.meta",
+    "Hash": "A54BBF0AC772ED4BF313241B16FDE0D867A53B3121DFDFCE7AE9F962A9307F6C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_VentID2.asset",
+    "Hash": "5DADCE403FBC2E57802FE0C19CCD902AAA6D513ED430A24615BD8C517FEA83F0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\Text_VentID2.asset.meta",
+    "Hash": "CFAAF1029F9916392909659CB8AE4C5225794A3B8391EDB1ACDE784244FC404F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\WindowDaylight.asset",
+    "Hash": "9824F245D9C2EC4DF7140A2490BB761D6778F9ABC3764ECFEA15B6E25DE390D8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\WindowDaylight.asset.meta",
+    "Hash": "1334080275CADD2F160496D7EEF7C12CB71F40FADF4DE5F1C01C978E1E87FC45"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\WindowDaylight.mat",
+    "Hash": "5BDDA7E17AC9B950FDE211762AFB72DE464F97F1DB18DA29994C008223E651B8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Generated\\RoomPolish\\WindowDaylight.mat.meta",
+    "Hash": "1EBE54ECC4F05BD3A8561EE7B6139DAAD435659F8341DE8E06B2645FAB610688"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scenes\\RoboticsTrainingRoom.unity",
+    "Hash": "1467979C95A0A6B607E9E541E909EBD253A911B4A266A086C040C8446DADED3E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scenes\\RoboticsTrainingRoom.unity.meta",
+    "Hash": "2A4552477BB4E939743D58E5B63B3CB8FE3A77DBF5C8E73DD59F6160B2DB1188"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabAvatarGrounding.cs.meta",
+    "Hash": "B82D99B3B4874B9BA49C34F016C3CDC559EECB6F913EFE501DB742DD5FC2C818"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabBuildSmoke.cs.meta",
+    "Hash": "E6A78CF8026FC6A64C5205994C0160512D443B8798F0A059F51D0719C1301C97"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabHelmetEquipment.cs.meta",
+    "Hash": "173D8472D1982FE184B76D8F0765F7A85D08D9CAD58506FFA2CC4C9862522007"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabHelmetRackSelection.cs.meta",
+    "Hash": "8AB9437CAC22F9AB7822422B45A6ED3AC92B2205AD8BF57A05313900561783F9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabRobotStation.cs.meta",
+    "Hash": "CCDEF1434E1683E16E8DD300CF7945E3FC3CEF2702604D86992051171A993199"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabRobotWireCollision.cs.meta",
+    "Hash": "B51499D8A895EACB0CBB34731DDAC470F04954564AB1A2388A020202C4E3FDD0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabThirdPerson.cs.meta",
+    "Hash": "C0F6832F94DC50FD719B267EE321F08E2FCBBB391F9D18DA46F650D720A42BF2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabTrainingApp.cs.meta",
+    "Hash": "4091DF9960B0A1ED95EE8F39E3990805BC72AA1448AD6256481404D5B897A186"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabTrajectoryPanel.cs.meta",
+    "Hash": "92761E7DBB73E43B55A02B087E76DE67ECD9FDBC0C1582BB1E1819A6206A749F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabTrajectoryProgram.cs.meta",
+    "Hash": "02FFEC53D70CE1AEB2B961D1325D4EF87BFE341BBA34D40BA10CBE1C95232D8F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Scripts\\LabWallLearningDisplay.cs.meta",
+    "Hash": "FA52E3F643FB61D7C15ABC977BD2868C3430A368622DF4D79110E2D7271239CF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Shaders\\DepthTestedText.shader",
+    "Hash": "0CE899371566997E972336909FB5B706C5162FB80B07FFE04B01FB32CEEA6512"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RoboticsLab\\Shaders\\DepthTestedText.shader.meta",
+    "Hash": "3E971EC531BB5621495FCBDAD77E3B76631FAAE32D0BE07158AC67C34A15BC65"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RobotTrajectoryMenu\\Editor.meta",
+    "Hash": "204B35FB92AB8EF2CD669A952C9DB4E8D7ADFEBF5491890954DC2D5239DF696B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RobotTrajectoryMenu\\RobotTrajectoryMenu.cs.meta",
+    "Hash": "3BB5A27D702D046AA84B76FC3C41081DD0760F7F13C45C0A24000A7FCDB2185A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RobotTrajectoryMenu\\TrajectoryHoldButton.cs.meta",
+    "Hash": "8F50BF43C2CCE1CEA556E12700BBC7442FD49487029A57588ED4BAA3F71F8427"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\RobotTrajectoryMenu\\Editor\\TrajectoryMenuCreator.cs.meta",
+    "Hash": "9D2A093E0BC22C21D294878E1D11D6257E0B1A580014E4AAB3945AC856F27701"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene.meta",
+    "Hash": "1BB38A60FED2DBE0DB4603941604F576928675B20E645A8CCECE9C21A777783D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene.unity",
+    "Hash": "76FB857213D0E6FDB73430A37CA93B9F06A3B4AF01425EF2613FCB2963D60E23"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene.unity.meta",
+    "Hash": "ACEAB14F038DBD3A1778159772CD9E89D7D8188F9158F06C204A8912438D8C96"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\LightingData.asset",
+    "Hash": "512EDF23251FBF5C22284CAC98AE84A6A1EB3D9E44573342131C4D23E7AB978A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\LightingData.asset.meta",
+    "Hash": "0EFAD557ED5CCEF122559001EF05BE684FD0D87F8250E6A5776B9BF9189802BE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-0_comp_dir.png",
+    "Hash": "3DF9B5F59B661D44C93A0747155CB5230AB06E93DDF64A492000C77A55DEB71D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-0_comp_dir.png.meta",
+    "Hash": "00CB327ECBA33E24DF0F7EA3FE6C41D9EED02791821F5760530417A9F016AB91"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-0_comp_light.exr",
+    "Hash": "A21ECD869421EA8F74C5262210C860AF091F4A1AC17601929E3C952D9BA7267D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-0_comp_light.exr.meta",
+    "Hash": "93C47826A8B7ADFFF3D2A25F31235A3B2490A4ACBFDF9459473BE4447C5279D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-0_comp_shadowmask.png",
+    "Hash": "CE175DDCCD07D3001E08D85C55A31AB6D6A67C12DC9F777D948571FBD7A59BA8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-0_comp_shadowmask.png.meta",
+    "Hash": "9BCAB66CB7775FF0B2CC5D9375AEA429ACFDE9B55353D495FEEB54EA7E1059E6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-1_comp_dir.png",
+    "Hash": "64F582814EC2BE137E622AC95B0E5EE297C9F16B3727CE1A67951C128919D123"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-1_comp_dir.png.meta",
+    "Hash": "B06E0912941CC4EBD53171C9884439E58C377FBB70D0A301BCE7F5DB62281B3E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-1_comp_light.exr",
+    "Hash": "29420E08FDDC0A8D101BA986E78C6A17186276068885C3E5E83777A2BF7666B9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-1_comp_light.exr.meta",
+    "Hash": "86B061B42003892DB7329B155759CE6716F6FD8228F139CBBBAF6B68B64049EF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-1_comp_shadowmask.png",
+    "Hash": "0E702D948E7F654C60B11025597EFF488D56BFFE2DCE19BCFB7186BCFFEBF690"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-1_comp_shadowmask.png.meta",
+    "Hash": "7E2E668096874934AFA2C814513AA2CA2982AA4B4338E2A8CE1E483DEB9CCFF9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-2_comp_dir.png",
+    "Hash": "B2CBE95A078FE8F8D5FD26021D4363563CE79D746B4C25E34C0D2E10058EDA6D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-2_comp_dir.png.meta",
+    "Hash": "0737E3A12466E082B057358E7485B47DF46CE67A420BD3FEF7908E342AF21F89"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-2_comp_light.exr",
+    "Hash": "6DC810C6E1FE522B907CB46E49DBFE13502D5D338AFD58873322091C35B26A8C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-2_comp_light.exr.meta",
+    "Hash": "916E1AE71A49B77CF9BA9C3DEE6EBFCAEFAE175E897C848187A7D32E2FB6D9E2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-2_comp_shadowmask.png",
+    "Hash": "21F52412AD390FD78C425E27F560BF762E0F0D6D513A83DF120E3C47B801EB0C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\Lightmap-2_comp_shadowmask.png.meta",
+    "Hash": "659A804A43658678B2CC5E4E382849EE645E1498AC8E5783E2A0687DE13CCE1A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\ReflectionProbe-0.exr",
+    "Hash": "06A7D14D526AA876F96273F20FC00FEAB534E7327778BC3A035ABB3D3F53B3B5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scenes\\SampleScene\\ReflectionProbe-0.exr.meta",
+    "Hash": "8407B36E91C23CF68A45921983F7BE4B1A014BA424B4B05B1207F1D9C47AE4BC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\AnimationEvents.cs.meta",
+    "Hash": "7C891DF32515C4C0DEC955052CC469520D8437922EAD6B837534C4AA4EA2D421"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\ArmPoseSaver.cs.meta",
+    "Hash": "57CF1F4F86C47F0CFA3BEB1093BCA4B7FC11E448FE72B9D2DBDCCE3304D6C64C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\armProperty.cs.meta",
+    "Hash": "0F773E6901D2E28620F6E7B2F3F7B8C1DD23A1F59958AAACD5AFD24E95BDF83A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\CameraController.cs.meta",
+    "Hash": "CB1AE1FB630D9737BF10EE58C069B50B9CCA14C93194E2C10D47C0D65884B58A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\CubeMove.cs.meta",
+    "Hash": "991FBCDA946E4BFB1A7842C38E3F799E3B5B297322E4B2836CC759CF66284DFF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\HoldableButton.cs.meta",
+    "Hash": "ABB911488197118BE1FC781FD47A94FC1D85979FEDA0129F14A6EB60E24D1DB3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\IK.cs.meta",
+    "Hash": "115A0D4444701320D53CE7BF0E6D5A5C3D0BCA818FE828184FBC9BCA86D341CE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\IKnew.cs.meta",
+    "Hash": "BDFD134C4BA223F9B37B8E79818B2E5A6A4B0BA05CB4158C93E51401B34B158A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\IKnew2.cs.meta",
+    "Hash": "14F5EE9A5940906E79F68F7602722164798F441AFAB9E4B0DC4DE8930224B11C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\LightControl.cs.meta",
+    "Hash": "E70CBCD8AE4D977D9C58304A476C2EA486954F8B2F8FBB515372CEC5AE6E6E02"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\PlayerController.cs.meta",
+    "Hash": "0DE37CEDF8DBA9C3ACB4BAE8A06348930700AD74D2DC8AED6BF198EF75132878"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\SpeedController.cs.meta",
+    "Hash": "88E957D278A2487D4C24006F572C0528BE320C45B2EA853D7EB3249D35D057CA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\Scrips\\StopOnExit.cs.meta",
+    "Hash": "7DEC4529311F9F074A568206CF2B58DB9568F25140CF593435D1ECFA046A22E6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\菜单控制.cs.meta",
+    "Hash": "AE435C764E0AD180B0FD7CAB11A04F223C629DB674CE927127E345D90484EF34"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\公屏叫号.cs.meta",
+    "Hash": "9501D80AD814754C419FAFB3E660B411F6D8D63C58B39BEB6A4692B9FE01017B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\轨迹点记录控制器.cs.meta",
+    "Hash": "7540721BA50E8CDA18CA0CEDCDD67B8C3B3D893C2E014FEA16ABBCC6977A7E02"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\轨迹速度设置控制器.cs.meta",
+    "Hash": "426373F4616AFC44158AE094994A7CEB7EC9043B49FB2422B7BE87AD79D62CA3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\机械臂轨迹重复控制器.cs.meta",
+    "Hash": "E591B489F2D4C7610B6EEBF26E5DAA847020347E0AD46C38F6D74933DD2A832B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\机械臂XYZ手动移动控制器.cs.meta",
+    "Hash": "BFADCD75CD58B781E097910501E95FA6B2E82DD458A791A49B9384BBCC226F3A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\小人控制器_听公屏输入.cs.meta",
+    "Hash": "685FCE7BFDFD3082EC06F0A264EBF34CCC5C31CD3736EDF39C4CD22EC24ECB43"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\AttachPartToSocket.cs.meta",
+    "Hash": "1A507A4300D01912D985D7749032FECBEFD7D90D8F648F8A8499ECF402F1B6A5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\CentralInputReceiver.cs.meta",
+    "Hash": "EAEF6331B15DB6D14153FAB6263B8C645C28233EB6ED7E0DF9DC38E72001CB56"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\DirectKeyDockingIK.cs.meta",
+    "Hash": "62F0BD8E613343768241E3B727A22C62968319E5444669EDD2838CB02AD8AB64"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\MenuBranchSequenceController.cs.meta",
+    "Hash": "45A2AB3C0915E18AA9B36A7F9DD49E2F80A9FB75BF984BEF3711E521C8E74804"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\MultiJointAxisAlignStep.cs.meta",
+    "Hash": "45383512541229BAE6D17BE65D9D6FE9611A502B6638F92980ECDA19AFA7279A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\OperationAreaPromptTrigger.cs.meta",
+    "Hash": "2333C968FB029C87432C55FCBEB392C7DC0AF97B819430E587A954C2EB732F0B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\PenAsEndEffectorSequenceIK.cs.meta",
+    "Hash": "27E9EE2F104D638CF9CB754FBBDFF12A755DD2B2F7F3F4AB467E6DAF01CF794C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\PublicCommandSequenceController.cs.meta",
+    "Hash": "E9F131866BAEBFFFB0CD72337AC0866C7ACA440FA399FB2FEBF61F9C169452A9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\RobotTrajectorySpeedController.cs.meta",
+    "Hash": "0A67BE60D69038BAFA80991C13DFBF2A31AC74FF6CCAAE801611BC3E0F041F6C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\RobotTrajectorySpeedController1.cs.meta",
+    "Hash": "F2EBDBB6AA8EB6FAE15153BF4944D5099C0CB80AD6676B2E682466043E16E0DA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\RotatePartByAxisStep.cs.meta",
+    "Hash": "D326FF0112FF04CA1D697B398BEEC6AD506E2A170CE39F839B3BEB8DB39806B1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\SequenceSignalController.cs.meta",
+    "Hash": "C676436FA35F34D379F38BB61321C09BBA630E8DA4676737760D68F80EB3D77E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\TeachingTransformMoveStep.cs.meta",
+    "Hash": "56549012CD4E5750EE4F94E22E3EEEB349AE1443D616DCDB26EAA5580D073406"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\script\\WorldAxesOrientationIKStep.cs.meta",
+    "Hash": "AB4DFB83D7FA64FAAF14C24C3BB3BB2D591DCB882C59965DA4C0852C5FE12860"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets\\Questions.json",
+    "Hash": "DC3836404DEF81C1360505C327872686EF416FA0B0B52A12B5511D78070C9926"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets\\Questions.json.meta",
+    "Hash": "582E68D386F2EC61EFEF2E54208DFB750C15E3B2DEBFA14B6D225F1E179347B5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets\\ThirdPartyNotices.meta",
+    "Hash": "D3A062D663A031BD3B7CCB8ACFCC6BBBF46101308852FA8A615DACF16645AC35"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets\\TrainingLesson.mp4",
+    "Hash": "BC9645BF7F3252EBDA7E3501A86D864B391FE4650E25E0F3DC1A26B3B4FEFF90"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets\\TrainingLesson.mp4.meta",
+    "Hash": "B792896BF21F0D55658D432105FBACFBBA9B110B18389C300B6B273C5EF1E252"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets\\ThirdPartyNotices\\NotoSansSC-OFL.txt",
+    "Hash": "E5AA11C906AAE1DC17718FFAB4C95B519A00A39EFDC4F37ECB68EAE85E261848"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\StreamingAssets\\ThirdPartyNotices\\NotoSansSC-OFL.txt.meta",
+    "Hash": "D29CCA0DD0DD4AE0D0E43EC9CB69C022E49383AC2EE854D9CA660F2CF844AC75"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Documentation.meta",
+    "Hash": "07A8D45855AD4E331C57CD451654A5A454B001EF9677B725B856810B7D58B77B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras.meta",
+    "Hash": "AD8C09C0E27DD4DABC2B613F6E28FDA0D8D0919CEE2CF32A660905D28221D17F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts.meta",
+    "Hash": "11E80153FA39B86EFADB8917ECDE12A0402FE0729F2C88F6F8D1999F3FB04748"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources.meta",
+    "Hash": "167448559DB07C9857B206A0F5A0AEDCD6A6DAD900D618B35B0702D636573805"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders.meta",
+    "Hash": "C109EB7E331AFFEDB377F7051DF3D4881F8529B65F9593234585713E6E94ED30"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Sprites.meta",
+    "Hash": "41E002B97BA2235689FBA502D1EE4419F50EA0095CD3632CDC50BC90CA8A94DE"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Documentation\\TextMesh Pro User Guide 2016.pdf",
+    "Hash": "93D6D3CA8A7D8423B01FAACD00FA3921FE055FB2187873653A925E4CC1AF85C0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Documentation\\TextMesh Pro User Guide 2016.pdf.meta",
+    "Hash": "942EF57B7129D587BDEE03541CC260CF55AF7564D9D2D582EA11EACD3DE278CA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Prefabs.meta",
+    "Hash": "3D11332351577CAD01BD8A3911C7D039B2161F3E50A7AF1DB2C7113F0FCFD3FF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts.meta",
+    "Hash": "9B1BC0101DC1848517DE707A13E516C054980B34DADC1B7F3B790E00352F214C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Prefabs\\Text Popup.prefab",
+    "Hash": "8E49A094DD05DF0060B49A714668957D3E26867498791EDD836475B0B1C36D00"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Prefabs\\Text Popup.prefab.meta",
+    "Hash": "36D62361B7D236711E555A65C5D79787E9EE181EC832688EB710DBEBA2EDCBD5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\Benchmark01_UGUI.cs.meta",
+    "Hash": "606008CEE33B68171E2C51B240A2C7D181860D2D59A931E96D2E14F7287E2DE2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\Benchmark01.cs.meta",
+    "Hash": "4BBF1250E079A2D6DEBF0E0500D1D405A98B1AE16F8F427913E0C7D8CAC17D6E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\Benchmark02.cs.meta",
+    "Hash": "2D82ACD844E4FFAB19C49E87ABF777D424ADC91A360C3C5023B204FCC13A105B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\Benchmark03.cs.meta",
+    "Hash": "D4D9C6E26626CCB8C351C5E88A587EDC2D9A283EF79CB6DB7CE1FAD3C9413296"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\Benchmark04.cs.meta",
+    "Hash": "BDD72314DA401C0C71D8D604BC211F08671BAA1A44B698714CCFBF423866C328"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\CameraController.cs.meta",
+    "Hash": "E528828D96BD45A20345EB32EF518209CDBACE4254CF167C6112CA80AEF5D1A5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\ChatController.cs.meta",
+    "Hash": "887534736FCF5FC4B985C58F566DE299A3418794364807723E69343D7040F99F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\DropdownSample.cs.meta",
+    "Hash": "711D845331B6174EE6E65F377EBAFBEF78B909B92C91996092B9B2CDD4FEA3F7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\EnvMapAnimator.cs.meta",
+    "Hash": "C1C631E87B7681D2B7A3D3F6BC1436BEB1C87D6833EE591014629AFABB613DF9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\ObjectSpin.cs.meta",
+    "Hash": "8B0AF4B06FD87AEBFAE368D0D0AC83548B608061F0B7DD54B295E8815236634F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\ShaderPropAnimator.cs.meta",
+    "Hash": "312F06F737AE9B769C49E396F09208E5BB86ABE76BFAAC57B4B00E1992526FD8"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\SimpleScript.cs.meta",
+    "Hash": "E668710DB8277599B55E81D89FF6E0CB89DF28AD5EDDF964433616C697D2B639"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\SkewTextExample.cs.meta",
+    "Hash": "0D8881CDFFE930F83812CC151A7B697AF2179601437D383BA18B1B589059F81A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TeleType.cs.meta",
+    "Hash": "D280DAF4594AC90C2BAABF55C160AFCD2368E710D95672300CDF8EB310B38897"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TextConsoleSimulator.cs.meta",
+    "Hash": "4C73EBBC4FC69615EEAF18F4F8C6A50C867E5F9066ACEC3D18F5D98AB1642D8D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TextMeshProFloatingText.cs.meta",
+    "Hash": "2C6B4BD0CA3E9A029E349DA4446D3B2569A085F540446577310F8BCEEE26FBB3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TextMeshSpawner.cs.meta",
+    "Hash": "171E9687C4C1B16141A84617096706927BCD34AFD43D82CF7E920DF2112B417E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_DigitValidator.cs.meta",
+    "Hash": "1AA61975478366B8BAD6F15E6BE1397DE331D9CE73C46B9C92F1DF8E8E8B2BEA"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_ExampleScript_01.cs.meta",
+    "Hash": "FF5AB2AECC8A43AC24394F2896A0A7CC4BC941F08DB598854390C8336F68C168"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_FrameRateCounter.cs.meta",
+    "Hash": "437A6E5F2EC3123F9EF49B833249073C5F70C815C776C19F09CABBB5342927A6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_PhoneNumberValidator.cs.meta",
+    "Hash": "4D1C09234431DC78C787AEF9AF51EAE9DE5F96134E6E644E415127781DF38CD2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_TextEventCheck.cs.meta",
+    "Hash": "2D1D12E5B8072CFFDD92FD947DDA5CB231E30B4760C532718859CC9677A3E41D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_TextEventHandler.cs.meta",
+    "Hash": "AA8B937E39741ACD2244A98C30814A26D242064C982B2F33F3178EA16ABBC62B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_TextInfoDebugTool.cs.meta",
+    "Hash": "55562ED20412699C10B1B1B38B63029F2BC155BEC4C00D959F376EDF6090A347"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_TextSelector_A.cs.meta",
+    "Hash": "35772983E31F857570A4E6C7F2924DF75C4D0DB6A27CA01FF216467E9B1DB9D9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_TextSelector_B.cs.meta",
+    "Hash": "23CB3B2B5C3BDC479E9C9F1BEE5989CE7CAB6852CC954C6BCE2972FDA74FB601"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMP_UiFrameRateCounter.cs.meta",
+    "Hash": "F856CA9C55317F4A730BB9B55EE5ABC6B94E92A090B64E96AF4E253356BA497B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\TMPro_InstructionOverlay.cs.meta",
+    "Hash": "EE275331813E05B969701BCEA6C903913D41EEFEBF14CF927E65C8AB84888722"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\VertexColorCycler.cs.meta",
+    "Hash": "07AFCEC3CF8AAC169B7D9547B88545216556E981E705FE53E5E5F6E2C950835D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\VertexJitter.cs.meta",
+    "Hash": "A0DE5A2634598A37509B0C75500807440FD3DBE6DD2FBB28D2654EC50324DB66"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\VertexShakeA.cs.meta",
+    "Hash": "C0BAC9FC94B5B3ACD3369B7E866F3E60DD8B8025FD47B8DB79DF62E05BE3525F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\VertexShakeB.cs.meta",
+    "Hash": "A9951FA0F99BE560A68A5BFE6F512D164D7D423F292C2ADE28DC3AA2F7F04D65"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\VertexZoom.cs.meta",
+    "Hash": "9A710DDB5F3A80B7C6252376BA1D387F2EC74AFCF9EF04FC3F75B678584F6544"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Examples & Extras\\Scripts\\WarpTextExample.cs.meta",
+    "Hash": "9311E7B22A36417D3CF38AB5F55D0E12FD8241016A5C39F04BF39F0350DF0553"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\LiberationSans - OFL.txt",
+    "Hash": "37F8552E9A874EC10710DC0EDE6A9ADF168E6609FBD02A507F35629373B85A48"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\LiberationSans - OFL.txt.meta",
+    "Hash": "5DBEC32C014C17D94674AF5F1494D49B42BA00EDD50397F895F088C868CCBF86"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\LiberationSans.ttf",
+    "Hash": "E5B0AF421EA2BFBC1AC8D251D647268087AE82786234C57F757D1F0B90FA8B49"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\LiberationSans.ttf.meta",
+    "Hash": "E2E35A015703584FB119355FA02631764D111C3E112D32519801D46BD697B596"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\MSYH SDF.asset",
+    "Hash": "66B6B603A1906D3C3EB6DC997F9DDF9FD9B14849DB3797117A3AABCD60D8070C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\MSYH SDF.asset.meta",
+    "Hash": "74DCCC9D2D0AEF09D107E5A3E5F4D800FFA6B62F7089A18F315066D16FFD23E1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\MSYH.TTC",
+    "Hash": "D79C55E68B1131EEA0CC1C47BE4F572D964F28C682E143DB2AD09C1E4CB07A3F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Fonts\\MSYH.TTC.meta",
+    "Hash": "3901269275EFE44EC27D44961ED4221B53EFF7DC2A1ABBEAEB4383B6A2156E4B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials.meta",
+    "Hash": "8917470A9265BEB1EF55A28C6A3718EB12EC8004554499998CC345056247995F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\LineBreaking Following Characters.txt",
+    "Hash": "3A73E5FFE2510756DD3C2E982FDC1218B4BE82C6E21ABDE88070D6860E1BC8E6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\LineBreaking Following Characters.txt.meta",
+    "Hash": "D5A86D8B7DB6AA3CA6F4A63750EB94E0C42A64909B47D8C6C6F2565845534490"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\LineBreaking Leading Characters.txt",
+    "Hash": "62D3F4D5F64AAF885692D2D13A8313F6918E6E4C5AEB3990A43F614652BFD89C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\LineBreaking Leading Characters.txt.meta",
+    "Hash": "6A925814D5E251A0CED6DE210DB2BACF2DE29B4F0DC2991E85C908632E9565E4"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Sprite Assets.meta",
+    "Hash": "5605AFFAC803B81F876F35577F075C9B7E5EA73CF812FDFCC74277BF0F40140E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Style Sheets.meta",
+    "Hash": "1FDF0423552F46284FB97894F36ADCD34D32E595AAF5C7CF1CE38A2349FAAF89"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\TMP Settings.asset",
+    "Hash": "A699A043195B71622DF343E8C353312CDFDC49C4B8C7043EB14584C34451991C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\TMP Settings.asset.meta",
+    "Hash": "A65193B095EC3606789A3191751A837704CF52D4F461993AE7903024C6D43F45"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF - Drop Shadow.mat",
+    "Hash": "B6B65C34E4907DD3006C2217FC8A4CEF81B6DA24DF0A3DE8E2288199EB6C5A9D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF - Drop Shadow.mat.meta",
+    "Hash": "EF2EEE63B288D47823DA38109E3E8C879F4717A82DC662AC2D5E2460DACDE698"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF - Fallback.asset",
+    "Hash": "26FA8281DAD4F9FE9CF70A194AD6952200E1937A20B6042A0990E4B8F0440C7D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF - Fallback.asset.meta",
+    "Hash": "D6D86504040CF6E736767FDA9BDEF494AFB06D5304384243E2DD703EBA3A4A3D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF - Outline.mat",
+    "Hash": "25874340976D40E9F9E8ABF731B7F32E5A478541DEAD9288140BD60C7A3287D9"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF - Outline.mat.meta",
+    "Hash": "A8CF0EE9888A163E892368B4660B9C62A7375E7F8AFDB8EE02E5C91CA1CDB355"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF.asset",
+    "Hash": "C3FF50E3133D989180B187748FFC67903F1FEDE099A5B85B4FCBD8CB6E8BE958"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Fonts & Materials\\LiberationSans SDF.asset.meta",
+    "Hash": "37233890984555987CB585551BC885069F2849A9B0D1C2191AF073B9376AA10F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Sprite Assets\\EmojiOne.asset",
+    "Hash": "155FFF99F467BAA93DD2D0886DF466BD242CD5E3C8C60C9D43E9CDAD269F7F54"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Sprite Assets\\EmojiOne.asset.meta",
+    "Hash": "097525B164260B0FB34B4E0C73B3187C693F4DFE2991F475B5B416DBF07DFBBC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Style Sheets\\Default Style Sheet.asset",
+    "Hash": "01222AC025A1F5B90F3F129EEE7BFAC7FB05223A1EDD84AECF2171EC34B10708"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Resources\\Style Sheets\\Default Style Sheet.asset.meta",
+    "Hash": "B832663CA09EC7AF8C8E816FD91A718B2AF6C21AB4F126FA818871AD53BCE763"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\教学模式启动主控.cs.meta",
+    "Hash": "5B4D9E8E313F625B32553866E237A555687FEEF11A2A273E9B505F54A6026C8D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Bitmap-Custom-Atlas.shader",
+    "Hash": "F45E54DD8D92AE0702621BFC3AAAEDAC7F9C2509DCB84F721C11AA257171D523"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Bitmap-Custom-Atlas.shader.meta",
+    "Hash": "91BE1D5618A7DA33C878E20CF2BE3E13B897D4976C70BDE0CDA7A67DBD502CD2"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Bitmap-Mobile.shader",
+    "Hash": "86216818723945B88960D3958E744CF7A2433EB306F4F6BFBA84F1F09320A25E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Bitmap-Mobile.shader.meta",
+    "Hash": "7430F3E97AE1B46F34E1CA75508705BB7B944307C41DC568EA728011F327086D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Bitmap.shader",
+    "Hash": "05B182E4A8EEFE246A83B8065A38F47524E9492128EA0C5A0F1BAFC28CC59974"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Bitmap.shader.meta",
+    "Hash": "3D462E6F8BA57F45DC5E6000020DB066C36ED5A1A24F74F749727812373C2325"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF Overlay.shader",
+    "Hash": "5D014FD30168464EF417514FDC25D19B15CE5705DC352BC7F9703C95008F6DD0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF Overlay.shader.meta",
+    "Hash": "FB8FC84B612E19C169CDF3596195B416E68D227A8987A0EAA90D8C137FB69797"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF SSD.shader",
+    "Hash": "699F0E1291B37A9103FCF5059F44ECA257CC63F02728939046311B431E804039"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF SSD.shader.meta",
+    "Hash": "BEA74D576F181A8BB04B8CF02EEDD0136540325ECB2824928A3AA52C75ADCB13"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile Masking.shader",
+    "Hash": "C11C36263A42EC618251C21D1F9B5F2E9DF5F0F21F10F82AB6B4388913F7AED7"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile Masking.shader.meta",
+    "Hash": "3744D078F9A8B6D3C5D9BCA51E43F9223544FCAFAF9396E121F49EA84A0609D3"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile Overlay.shader",
+    "Hash": "B2F29604A41934625338B7D1E6BD37FE008366F98932AC49F026DEC16FD465D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile Overlay.shader.meta",
+    "Hash": "1EECA1536C7506F79D4D877B866A5FB88DB8F402634E091B6D78AA9D21C9D18B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile SSD.shader",
+    "Hash": "598B92EA8C4D65802C9273BEC594786B8CA896013AFAF8F31E2C973518F293B1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile SSD.shader.meta",
+    "Hash": "E3412891B9306B017E60CBA4AE4F6D258EE8B161D986DCDE9CEFB3D60345514D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile.shader",
+    "Hash": "970DB4B1E73B8289C1DD56CFF60877F426B49C9682620B2D14DA6CD70B64CB9C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Mobile.shader.meta",
+    "Hash": "F2112F50C72762D4E6731391495EA11F76975D677B698E9BCFDD38275EA18F9D"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface-Mobile.shader",
+    "Hash": "79B6E02DBDF65168F2BD81E1A41966AB492BF473BE8BA7ABD659AB8876C781B1"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface-Mobile.shader.meta",
+    "Hash": "95AA060F371EE503A22C0A0B018E029C0328BD82B9317FEAA784432B0A787343"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface.shader",
+    "Hash": "A1EC7F5BEB83B6C2F00570246F542CC3C9D12516E69B4A2C39D58675B5B76D15"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF-Surface.shader.meta",
+    "Hash": "42439F5AC7491998F562E8EDE73D64C3512953EB99FB1B49E833F5D9999A7660"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF.shader",
+    "Hash": "BBAE422625F31BFA560AC5CE44C402FAFD16DBA55D496C6279CA985B652B58BF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_SDF.shader.meta",
+    "Hash": "0897FB06D170043FFFA2D28783B347BBAEE87A3F09F08374CA44B2C3848697D6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Sprite.shader",
+    "Hash": "C5D35F56A73324CF1639A4B9B0650A7412230BACAA9B0FDD4EE34F437A9B3F31"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMP_Sprite.shader.meta",
+    "Hash": "9609584C5249687F3765F0018A93DFD6445C7E35D5AEE4E87556F111C8852819"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro_Mobile.cginc",
+    "Hash": "31AA22DEBDF974D1DC73E90B7FEADF7F2E37AD60CF6F9F9E54A6ADC71CD792B5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro_Mobile.cginc.meta",
+    "Hash": "2E16FA15EF884A60A402D8B696F8B09E5315CBB468BA223D256030C7FE2B0667"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro_Properties.cginc",
+    "Hash": "26C70831A9BDD6A56A37EC1E2358929453D66A064D10A61DA49A1D4B05280E06"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro_Properties.cginc.meta",
+    "Hash": "EDACE33591894D86D9A4144466FB3606E538D3341030FE22F908551755120EA5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro_Surface.cginc",
+    "Hash": "434ADB97DFCD9D5772FC11BB3A76F36AF13614A664ACA840EBCBF635E6E2DF24"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro_Surface.cginc.meta",
+    "Hash": "247746F3A4E39DD24D1AD99E4FAE03AE8976586307948B2846529A876DCB0A63"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro.cginc",
+    "Hash": "14EDB7D7B88CAF2B82CAE68200ABE895E5B5B3474C3FFFBF0E9B4B09A4E2467E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Shaders\\TMPro.cginc.meta",
+    "Hash": "277459EF190430AD8E4CEB2BB38A8895D11FBBE6C2B2672E818FF970CB59EFED"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Sprites\\EmojiOne Attribution.txt",
+    "Hash": "095907D2631301D08DBFF9388FC0C278904FD86E18BA76BB0D401A790ADE8F83"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Sprites\\EmojiOne Attribution.txt.meta",
+    "Hash": "9FFFC8AC513116B8AC394D86D81CA9AC4EC52EE92C63C114D355808384EA16FC"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Sprites\\EmojiOne.json",
+    "Hash": "FA35C4A1B7CFC12E872BCBA7D0D20702077A5478472B87D619B2C72BF5BB48D0"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Sprites\\EmojiOne.json.meta",
+    "Hash": "AC2C551B5BC7F7D636D54DED634DFC3493E249567283B2EFC06D1299F9360061"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Sprites\\EmojiOne.png",
+    "Hash": "A87B965A701DE3DC31D7401E542B1FC946587F912C51D7A26E46ADE9F098BD1A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\Assets\\TextMesh Pro\\Sprites\\EmojiOne.png.meta",
+    "Hash": "EB63C0321658B980B138CE5F675D44689B8C7144DF43976931E132E7706D1E1A"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\AudioManager.asset",
+    "Hash": "F2ED914F70919B6434C647BD820850BE731B408F0F0C31E3BF7F98C8CAFB617F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\ClusterInputManager.asset",
+    "Hash": "40E65DD214BF254955D2C8829CA8CE2130FD3510485560CE012E9A1DDD93E623"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\DynamicsManager.asset",
+    "Hash": "80BA5565BEEFDDABBA07863F19983C62409753FB36BFF400FE36CF9A7DB94690"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\EditorBuildSettings.asset",
+    "Hash": "C072F450B4F3E5D095D58AB50E898D5B18E2F81C3AA91513FD0C7419FE0364AF"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\EditorSettings.asset",
+    "Hash": "705E5DDE8B4CEB8147971B0C8F3781EBBE566A12B8E280379EE24F2BD9AD9474"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\GraphicsSettings.asset",
+    "Hash": "442894020EEBC9CFEDDC7B95F3E637FDCF033513A507E0FBE231A8E0E4F7D60B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\InputManager.asset",
+    "Hash": "1FB1C30F8A1615CF9A4220BE6D18A33ECCD3A09CC4CD0A3C7CD0A38A7C083134"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\MemorySettings.asset",
+    "Hash": "1E8379A461B10AE09F3F696911088C16875D63E87ED5F2D95DF9E1892703F9FD"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\NavMeshAreas.asset",
+    "Hash": "80106CFA7E6181A1928B142C075F3E510D527441E3D79BC83590E4AC91E7CD66"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\PackageManagerSettings.asset",
+    "Hash": "A87B826416ABD32AD232F34801F794004131009BAE35571DC4CEBBDDA89CB9CD"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\Physics2DSettings.asset",
+    "Hash": "D57A0FE55659C33879E8B70BC01C5EA9CDF082069DAB649905C6C5138531E6EB"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\PresetManager.asset",
+    "Hash": "29C125923FE6E29F90190D4FCE1C82D660E7051546E2C9D02908D18C9CF2436C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\ProjectSettings.asset",
+    "Hash": "C5E5E3E2CB0ACCEE6C01781B3D7F4DC0AABDF92B1A7F2FCF3976CDBBFAD710D6"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\ProjectVersion.txt",
+    "Hash": "B42279CFD794D9F1825F3B7C1F318B861FA9E2E2B3C6C146737BDBD41C01B389"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\QualitySettings.asset",
+    "Hash": "1E2603DF8C91DF2DA4F0C6C93DBD11EB080747E19A656CA44E99AB67B154117B"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\SceneTemplateSettings.json",
+    "Hash": "5BAF593374AD67246277A435D8D0DED7167696EEF6E05D2D245670E490625D8C"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\TagManager.asset",
+    "Hash": "8E18B1C820E9C09E16BBD1F1B7842E9FB3B0158A0921B0964E0B8FA12C6E2C01"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\TimeManager.asset",
+    "Hash": "1A83E54ADBBDA7C9F4851103A0C6AB7F6448A3343D4EA5B7620452FA08416ECD"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\UnityConnectSettings.asset",
+    "Hash": "5AF4C69BB69F1D9DFBBC47B01EB6522E3EA41E672791E080A003C8DEACAE9AB5"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\VersionControlSettings.asset",
+    "Hash": "E7BDA45BF7A394745FEE1316E6C71FA676004D591AD1F3AA247FD3E4CEB86071"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\VFXManager.asset",
+    "Hash": "F066C6483919961332415EE64204F74FE52F38C02E82892EB02B7A5B2E381F0E"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\XRSettings.asset",
+    "Hash": "EDD2BEB4A2E388312B4B7DA241AA51070434005D82C59363F1237DD2E567585F"
+  },
+  {
+    "Path": "C:\\Users\\QYt\\Documents\\unity practise\\RobotTraining_Unity2022\\ProjectSettings\\Packages\\com.unity.testtools.codecoverage\\Settings.json",
+    "Hash": "A40F81B0DCC795E422F5CA0881FE7DAD4E26CB8FDB33244A70F110835C1A8D44"
+  }
+]

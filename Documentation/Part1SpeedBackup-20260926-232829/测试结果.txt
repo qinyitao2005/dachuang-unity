@@ -1,0 +1,23 @@
+PASS: Runtime installation hides menu at startup
+PASS: Jog stage shows menu
+PASS: Existing keyboard ownership preserved
+PASS: No speed dialog and default speed is 0.10
+PASS: Existing menu gets speed row
+PASS: Plus changes shared speed by 0.05
+PASS: Upper bound is 0.50
+PASS: Lower bound is 0.00
+PASS: Speed row installation is idempotent
+PASS: Menu shortcut follows existing jog key
+PASS: Pointer hold reaches jog input
+PASS: Pointer release clears jog input
+PASS: Record button records one point
+PASS: Trace ends recording and advances main sequence
+PASS: Replay command disables jog buttons
+PASS: Trace accepts a zero-speed start
+PASS: Zero speed pauses instead of failing or completing
+PASS: Speed adjustment remains available during trace
+PASS: Exit stops replay and restores roaming app state
+PASS: Exit clears held movement
+PASS: Reentry starts a fresh recording session
+PASS: Focus loss clears UI movement
+PASS: Exit is idempotent

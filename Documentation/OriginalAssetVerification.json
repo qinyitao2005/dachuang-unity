@@ -1,0 +1,42 @@
+[
+  {
+    "File": "Assets\\无标题.fbx",
+    "Preserved": true,
+    "SHA256": "04B5A0E8FC6CD99AEE4A82926536F8AD1A30E03562757C59403A09C2A425BF76"
+  },
+  {
+    "File": "Assets\\eco2_stp.fbx",
+    "Preserved": true,
+    "SHA256": "63CF25794E8BDB46E0EF9B7CDE41AB8FBC20A99EAC88784BF7CAAA228D5FFA7B"
+  },
+  {
+    "File": "Assets\\Jogging.fbx",
+    "Preserved": true,
+    "SHA256": "346C19BFC70A5BE3F1353D552F798338FD145774408EDFA47149EFBC8A2679D8"
+  },
+  {
+    "File": "Assets\\Scenes\\SampleScene.unity",
+    "Preserved": true,
+    "SHA256": "76FB857213D0E6FDB73430A37CA93B9F06A3B4AF01425EF2613FCB2963D60E23"
+  },
+  {
+    "File": "Assets\\Scrips\\IK.cs",
+    "Preserved": true,
+    "SHA256": "BEC1F1A32028FEFE6B61A6524BF637EFCB3DBF6FE6245F9F3CBC31F585073D48"
+  },
+  {
+    "File": "Assets\\Scrips\\IKnew.cs",
+    "Preserved": true,
+    "SHA256": "B3DCE22C8FADDED5C7273F1B9EB75565F72F8E81707C7B367F7B8DDD5BFCC902"
+  },
+  {
+    "File": "Assets\\Scrips\\IKnew2.cs",
+    "Preserved": true,
+    "SHA256": "7152284D1BF0EF0520019139C5F26286DC082848EAB41AA85E6519D7A46E0514"
+  },
+  {
+    "File": "Assets\\Scrips\\CubeMove.cs",
+    "Preserved": true,
+    "SHA256": "ABEED39E352D92C7C0825B4F382830108994323DACF6574900F4341BA3600EDF"
+  }
+]

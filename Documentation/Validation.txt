@@ -1,0 +1,24 @@
+PASS: Third person player and three stations exist
+PASS: Robot operation blocked before safety and quiz
+PASS: Helmet is worn on the visible character after the equip animation
+PASS: Helmet alone does not bypass quiz
+PASS: Example MP4 decodes and advances frames
+PASS: Incorrect quiz answer does not unlock or increment score
+PASS: Safety question accepts correct answer
+PASS: Control question accepts correct answer
+PASS: Emergency stop question accepts correct answer
+PASS: All quiz questions unlock practice
+PASS: Station 1 can be selected
+PASS: Station 1 original robot joint transforms respond to tool input
+PASS: Station 1 emergency stop freezes all joint motion
+PASS: Station 1 ring exercise resets contacts and progress
+PASS: Station 2 can be selected
+PASS: Station 2 original robot joint transforms respond to tool input
+PASS: Station 2 emergency stop freezes all joint motion
+PASS: Station 2 ring exercise resets contacts and progress
+PASS: Station 3 can be selected
+PASS: Station 3 original robot joint transforms respond to tool input
+PASS: Station 3 emergency stop freezes all joint motion
+PASS: Station 3 ring exercise resets contacts and progress
+PASS: Exiting station returns to roaming
+NOTE: This integration run uses the text-course completion state for quiz setup; video decoding was tested separately.
