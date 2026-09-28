@@ -9,13 +9,18 @@ namespace RoboticsLab
     {
         public int stationIndex;
         public string displayName = "六轴机械臂";
-        public bool IsOperating { get; private set; }
-        public bool EmergencyStopped { get; private set; }
-        public bool PenDown { get; private set; }
-        public int TrainingMode { get; private set; }
-        public float Progress { get; private set; }
-        public int Contacts { get; private set; }
-        public float Elapsed { get; private set; }
+        bool isOperating, emergencyStopped, penDown;
+        int trainingMode, contacts;
+        float progress, elapsed;
+        Group0927Station group0927;
+        bool UsesGroup0927 => stationIndex > 0 && (group0927 || (group0927 = GetComponent<Group0927Station>()));
+        public bool IsOperating { get { return UsesGroup0927 ? group0927.IsOperating : isOperating; } private set { isOperating = value; } }
+        public bool EmergencyStopped { get { return UsesGroup0927 ? group0927.EmergencyStopped : emergencyStopped; } private set { emergencyStopped = value; } }
+        public bool PenDown { get { return UsesGroup0927 ? group0927.PenDown : penDown; } private set { penDown = value; } }
+        public int TrainingMode { get { return UsesGroup0927 ? group0927.TrainingMode : trainingMode; } private set { trainingMode = value; } }
+        public float Progress { get { return UsesGroup0927 ? group0927.Progress : progress; } private set { progress = value; } }
+        public int Contacts { get { return UsesGroup0927 ? group0927.Contacts : contacts; } private set { contacts = value; } }
+        public float Elapsed { get { return UsesGroup0927 ? group0927.Elapsed : elapsed; } private set { elapsed = value; } }
         public Transform modelRoot, toolTarget, endEffector;
         public Transform ringGripTcp, ringGripTool, originalEndTool;
         public float ringGripRoll;
@@ -32,17 +37,21 @@ namespace RoboticsLab
         public float exerciseScale = 1f, tableHeight = .93f;
         public float ringRadius = .105f, ringTubeRadius = .009f, wireRadius = .007f;
         public Vector3[] wirePoints;
-        public bool ToolInContact { get; private set; }
-        public bool RingMovementBlocked { get; private set; }
-        public bool RobotWireBlocked { get; private set; }
-        public string RobotCollisionReason { get; private set; } = "";
-        public Vector3 RingGripPosition => ringGripTcp ? ringGripTcp.position : endEffector ? endEffector.position : transform.position;
+        bool toolInContact, ringMovementBlocked, robotWireBlocked;
+        string robotCollisionReason = "";
+        public bool ToolInContact { get { return UsesGroup0927 ? group0927.ToolInContact : toolInContact; } private set { toolInContact = value; } }
+        public bool RingMovementBlocked { get { return UsesGroup0927 ? group0927.RingMovementBlocked : ringMovementBlocked; } private set { ringMovementBlocked = value; } }
+        public bool RobotWireBlocked { get { return UsesGroup0927 ? group0927.RobotWireBlocked : robotWireBlocked; } private set { robotWireBlocked = value; } }
+        public string RobotCollisionReason { get { return UsesGroup0927 ? group0927.RobotCollisionReason : robotCollisionReason; } private set { robotCollisionReason = value; } }
+        public string DrawingBlockReason => UsesGroup0927 ? group0927.DrawingBlockReason : "";
+        public Vector3 RingGripPosition => UsesGroup0927 ? group0927.RingGripPosition : ringGripTcp ? ringGripTcp.position : endEffector ? endEffector.position : transform.position;
         public Vector3 ActualToolPosition
         {
-            get { if(TrainingMode!=1||!ringGripTcp)return endEffector?endEffector.position:transform.position;
+            get { if(UsesGroup0927)return group0927.ActualToolPosition;
+                if(TrainingMode!=1||!ringGripTcp)return endEffector?endEffector.position:transform.position;
                 Vector3 center;Quaternion rotation;GetActualRingPose(out center,out rotation);return center; }
         }
-        public float PositionError => toolTarget && endEffector ? Vector3.Distance(toolTarget.position,ActualToolPosition) : 0;
+        public float PositionError => UsesGroup0927 ? group0927.PositionError : toolTarget && endEffector ? Vector3.Distance(toolTarget.position,ActualToolPosition) : 0;
         LabRobotWireCollision robotWireCollision;
         readonly List<LineRenderer> strokes = new List<LineRenderer>();
         LineRenderer currentStroke;
@@ -66,9 +75,10 @@ namespace RoboticsLab
         Vector3 ringRejectedPose,ringLastNormal;
         const int RingSegments = 64;
 
-        void Start() { Initialize(); ResetExercise(); }
+        void Start() { if(UsesGroup0927)return; Initialize(); ResetExercise(); }
         void Initialize()
         {
+            if(UsesGroup0927)return;
             if(initialized) return;
             initialized=true;
             if(joints==null)joints=new JointConfig[0];
@@ -84,17 +94,19 @@ namespace RoboticsLab
             if(!toolTarget) {toolTarget=new GameObject("ToolTarget").transform;toolTarget.SetParent(transform,false);}
             SetMode(TrainingMode);
         }
-        public void BeginOperation() {Initialize();IsOperating=true;requestedMotion=Vector3.zero;ApplyExerciseVisibility();}
-        public void EndOperation() {IsOperating=false;PenDown=false;requestedMotion=Vector3.zero;currentStroke=null;ApplyExerciseVisibility();if(legacyState)legacyState.armIsMoving=false;}
-        public void SetEmergencyStop(bool stopped) {EmergencyStopped=stopped;requestedMotion=Vector3.zero;if(stopped){PenDown=false;currentStroke=null;}}
+        public void BeginOperation() {if(UsesGroup0927){group0927.BeginOperation();return;}Initialize();IsOperating=true;requestedMotion=Vector3.zero;ApplyExerciseVisibility();}
+        public void EndOperation() {if(UsesGroup0927){group0927.EndOperation();return;}IsOperating=false;PenDown=false;requestedMotion=Vector3.zero;currentStroke=null;ApplyExerciseVisibility();if(legacyState)legacyState.armIsMoving=false;}
+        public void SetEmergencyStop(bool stopped) {if(UsesGroup0927){group0927.SetEmergencyStop(stopped);return;}EmergencyStopped=stopped;requestedMotion=Vector3.zero;if(stopped){PenDown=false;currentStroke=null;}}
         public void SetMode(int mode)
         {
+            if(UsesGroup0927){group0927.SetMode(mode);return;}
             TrainingMode=Mathf.Clamp(mode,0,1);
             ApplyExerciseVisibility();
             if(initialized)ResetExercise();
         }
         void ApplyExerciseVisibility()
         {
+            if(UsesGroup0927)return;
             // Exchange the original trajectory jig for the selected exercise attachment.
             // Keep the preserved jig in the assembly and restore it when leaving the station.
             if(originalTrajectoryModule)originalTrajectoryModule.gameObject.SetActive(!IsOperating&&originalTrajectoryVisible);
@@ -109,17 +121,20 @@ namespace RoboticsLab
         }
         public void SetPen(bool down)
         {
+            if(UsesGroup0927){group0927.SetPen(down);return;}
             PenDown=down&&IsOperating&&!EmergencyStopped&&TrainingMode==0;
             if(PenDown&&toolTarget){var p=toolTarget.localPosition;p.y=drawingHeight;toolTarget.localPosition=p;}
             else currentStroke=null;
         }
         public void ClearDrawing()
         {
+            if(UsesGroup0927){group0927.ClearDrawing();return;}
             foreach(var stroke in strokes)if(stroke)Destroy(stroke.gameObject);
             strokes.Clear(); currentStroke=null; inkLength=0;if(TrainingMode==0)Progress=0;
         }
         public void ResetExercise()
         {
+            if(UsesGroup0927){group0927.ResetExercise();return;}
             if(!initialized){Initialize();return;}
             PenDown=false; EmergencyStopped=false;Elapsed=0;Progress=0;Contacts=0;ToolInContact=false;
             previousContact=false;contactCooldown=0;ringStarted=false;furthestSegment=0;requestedMotion=Vector3.zero;
@@ -144,6 +159,7 @@ namespace RoboticsLab
         /// <summary>Call once per frame with world XYZ direction. Time integration happens here once.</summary>
         public void MoveTool(Vector3 input)
         {
+            if(UsesGroup0927){group0927.MoveTool(input);return;}
             if(!IsOperating||EmergencyStopped||!toolTarget)return;
             RingMovementBlocked=false;
             RobotWireBlocked=false;RobotCollisionReason="";
@@ -160,6 +176,7 @@ namespace RoboticsLab
         }
         void LateUpdate()
         {
+            if(UsesGroup0927)return;
             if(!initialized)return;
             if(IsOperating&&!EmergencyStopped)
             {

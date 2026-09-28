@@ -180,6 +180,8 @@ namespace RoboticsLab
 
             elapsed += Time.deltaTime;
 
+            CloseFailedStation();
+
             if(Input.GetKeyDown(KeyCode.F1))
 
             {
@@ -214,11 +216,15 @@ namespace RoboticsLab
 
                     Vector3 dir=typing?Vector3.zero:new Vector3(Input.GetAxisRaw("Horizontal"),(Input.GetKey(KeyCode.Q)?1:0)-(Input.GetKey(KeyCode.E)?1:0),Input.GetAxisRaw("Vertical"));
 
+                    heldDirection=typing?Vector3.zero:PointerJogDirection();
+
                     ActiveStation.MoveTool(Vector3.ClampMagnitude(dir+heldDirection,1));
 
                 }
 
             }
+
+            CloseFailedStation();
 
             if(player)
 
@@ -386,12 +392,14 @@ namespace RoboticsLab
 
             }
 
-            // Station02 / Station03 完全保持原流程。
+            // Station02 / Station03 使用 0927 控制器；先选模式，再进入操作并核验复位。
             Part1接管中=false;
+
+            ActiveStation.SetMode(LastMode);
 
             ActiveStation.BeginOperation();
 
-            ActiveStation.SetMode(LastMode);
+            if(CloseFailedStation())return false;
 
             panel="operate";
 
@@ -399,6 +407,30 @@ namespace RoboticsLab
 
             Notify("已进入工位。WASD 平移，Q / E 升降，空格急停。",6);return true;
 
+        }
+
+        bool CloseFailedStation()
+        {
+            if(!ActiveStation || ActiveStation.stationIndex==0 || ActiveStation.IsOperating)return false;
+            string reason=ActiveStation.DrawingBlockReason;
+            if(string.IsNullOrEmpty(reason))reason="工位无法进入操作状态，请检查配置后重试";
+            ClosePanel();
+            Notify(reason+"；已退出工位。",8);
+            return true;
+        }
+
+        Vector3 PointerJogDirection()
+        {
+            if(!Input.GetMouseButton(0) || Screen.width<=0 || Screen.height<=0)return Vector3.zero;
+            Vector3 mouse=Input.mousePosition;
+            Vector2 point=new Vector2(mouse.x*1600f/Screen.width,(Screen.height-mouse.y)*900f/Screen.height);
+            if(new Rect(1325,395,116,45).Contains(point))return Vector3.forward;
+            if(new Rect(1218,447,100,45).Contains(point))return Vector3.left;
+            if(new Rect(1448,447,104,45).Contains(point))return Vector3.right;
+            if(new Rect(1325,499,116,45).Contains(point))return Vector3.back;
+            if(new Rect(1218,561,162,43).Contains(point))return Vector3.up;
+            if(new Rect(1392,561,162,43).Contains(point))return Vector3.down;
+            return Vector3.zero;
         }
 
         public bool SubmitAnswer(int index)
@@ -620,19 +652,17 @@ namespace RoboticsLab
 
             Txt(new Rect(1222,322,330,56),"W/S  前后    A/D  左右\nQ/E  升降    空格  急停",small);
 
-            heldDirection=Vector3.zero;
+            Hold(new Rect(1325,395,116,45),"前 +Z");
 
-            if(Hold(new Rect(1325,395,116,45),"前 +Z"))heldDirection=Vector3.forward;
+            Hold(new Rect(1218,447,100,45),"左 −X");
 
-            if(Hold(new Rect(1218,447,100,45),"左 −X"))heldDirection=Vector3.left;
+            Hold(new Rect(1448,447,104,45),"右 +X");
 
-            if(Hold(new Rect(1448,447,104,45),"右 +X"))heldDirection=Vector3.right;
+            Hold(new Rect(1325,499,116,45),"后 −Z");
 
-            if(Hold(new Rect(1325,499,116,45),"后 −Z"))heldDirection=Vector3.back;
+            Hold(new Rect(1218,561,162,43),"上 +Y");
 
-            if(Hold(new Rect(1218,561,162,43),"上 +Y"))heldDirection=Vector3.up;
-
-            if(Hold(new Rect(1392,561,162,43),"下 −Y"))heldDirection=Vector3.down;
+            Hold(new Rect(1392,561,162,43),"下 −Y");
 
             if(Btn(new Rect(1220,620,163,45),LastMode==0?(s.PenDown?"抬笔  [P]":"落笔  [P]"):"重置训练")){if(LastMode==0)s.SetPen(!s.PenDown);else trajectoryProgram.Reset();}
 
