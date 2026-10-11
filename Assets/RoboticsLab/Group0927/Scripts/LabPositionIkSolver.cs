@@ -13,7 +13,7 @@ namespace RoboticsLab
             if (rig == null || rig.Count == 0 || !effector)
                 return;
 
-            for (int pass = 0; pass < 14; pass++)
+            for (int pass = 0; pass < 5; pass++)
             {
                 if ((effector.position - target).sqrMagnitude < tolerance * tolerance)
                     break;

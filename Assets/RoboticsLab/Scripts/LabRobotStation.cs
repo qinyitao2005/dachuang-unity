@@ -147,10 +147,12 @@ namespace RoboticsLab
             if(TrainingMode==0)start.y=drawingHeight+.12f*exerciseScale;
             else if(wirePoints!=null&&wirePoints.Length>1)start=wirePoints[0];
             toolTarget.localPosition=start;
+            float settled=TrainingMode==1?Mathf.Max(.0001f,.0004f*exerciseScale):.003f;
             for(int i=0;i<60;i++)
             {
                 ringInitializePose=TrainingMode==1&&ringUsePoseSeed&&i<10;
                 SolveIK(.18f);
+                if(!ringInitializePose&&endEffector&&PositionError<settled)break;
             }
             ringInitializePose=false;
             acceptedRingTarget=toolTarget.localPosition;
@@ -200,7 +202,7 @@ namespace RoboticsLab
             Transform effector=endEffector;
             Vector3 desired=toolTarget.position;
             // CCD walks from wrist to shoulder. Each joint uses its original local hinge axis.
-            for(int pass=0;pass<14;pass++)
+            for(int pass=0;pass<5;pass++)
             {
                 float tolerance=TrainingMode==1?Mathf.Max(.00006f,.00025f*exerciseScale):.002f;
                 if((effector.position-desired).sqrMagnitude<tolerance*tolerance)break;
@@ -458,7 +460,7 @@ namespace RoboticsLab
             Vector3 origin=acceptedRingTarget;
             toolTarget.localPosition=origin;
             float step=RingStep;
-            int count=Mathf.Clamp(Mathf.CeilToInt(Vector3.Distance(origin,destination)/step),1,512);
+            int count=Mathf.Clamp(Mathf.CeilToInt(Vector3.Distance(origin,destination)/step),1,64);
             Vector3 displacement=(destination-origin)/count;
             for(int n=1;n<=count;n++)
             {

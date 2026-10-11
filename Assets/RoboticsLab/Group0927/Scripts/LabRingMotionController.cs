@@ -55,7 +55,7 @@ namespace RoboticsLab
             Vector3 origin=acceptedRingTarget;
             station.toolTarget.localPosition=origin;
             float step=geometry.Step;
-            int count=Mathf.Clamp(Mathf.CeilToInt(Vector3.Distance(origin,destination)/step),1,512);
+            int count=Mathf.Clamp(Mathf.CeilToInt(Vector3.Distance(origin,destination)/step),1,64);
             Vector3 displacement=(destination-origin)/count;
             for(int n=1;n<=count;n++)
             {

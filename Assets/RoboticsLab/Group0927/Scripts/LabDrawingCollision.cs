@@ -22,6 +22,9 @@ namespace RoboticsLab
         public Transform LastObstacleTransform { get; private set; }
         public string CacheError { get; private set; } = "";
 
+        // TEMP-DIAG: 排查绘图卡顿用的临时开关，确认后连同 CheckSweep 里的短路一起删除
+        public const bool SkipSweepForDiagnosis = true;
+
         sealed class Proxy
         {
             public MeshFilter mesh;
@@ -125,6 +128,8 @@ namespace RoboticsLab
         public bool CheckSweep(Quaternion[] previousLocalRotations, out string reason, out float minClearance)
         {
             LastSweepIntervals = 0;
+            // TEMP-DIAG: 排查绘图卡顿，临时跳过扫掠碰撞（测完必须移除本行）
+            if (SkipSweepForDiagnosis) { reason = ""; minClearance = 0f; return true; }
             if (!Prepare(out reason)) return Unverified(reason, out reason, out minClearance);
             if (previousLocalRotations == null || previousLocalRotations.Length != joints.Length)
                 return Unverified("绘图扫掠的关节数量不匹配。", out reason, out minClearance);

@@ -171,8 +171,15 @@ namespace RoboticsLab
             else if (wirePoints != null && wirePoints.Length > 1) start = wirePoints[0];
             toolTarget.localPosition = start;
             if (IsOperating)
+            {
+                float settled = TrainingMode == 1 ? .0003f : .001f;
                 for (int i = 0; i < 60; i++)
-                    SolvePose(.18f, TrainingMode == 1 && ringUsePoseSeed && i < 10);
+                {
+                    bool seedPose = TrainingMode == 1 && ringUsePoseSeed && i < 10;
+                    SolvePose(.18f, seedPose);
+                    if (!seedPose && endEffector && PositionError < settled) break;
+                }
+            }
             ringMotion.AcceptCurrentTarget();
             drawingMotion.Reset();
             if (IsOperating && TrainingMode == 0 && !drawingMotion.ValidateReset())
