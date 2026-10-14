@@ -1,0 +1,18 @@
+Tracing visibility update / 2026-10-14 / Unity 2022.3.61f1c1
+
+Editor runtime and Game View verification (1920 x 1080):
+PASS Default tracing entry opens the unobstructed paper view alongside the 3D robot.
+PASS All five reference paths, green starts and red J end are fully visible.
+PASS Paper view uses actual TCP; each actual DrawingStroke is drawn independently.
+PASS Complex path completes through normal IK: coverage=100%, score=99.96111.
+PASS Completed ink and actual pen cursor remain visible with the gripper over the paper.
+PASS Collapse/expand preserves score, completion and station operation.
+PASS Reset clears actual ink and score, and lifts the pen.
+PASS Ring and free-drawing stations enter successfully without the tracing paper view.
+PASS Runtime console has no errors after the refreshed scripts.
+PASS Windows build succeeds with 0 errors and 0 warnings.
+
+Screenshots: TracingUI.png, TracingVisibilityInk.png.
+The paper view is read-only. No joint, tool, collision or scoring settings were changed by this update.
+PASS New Windows standalone rerun: passed=true, no failures or exceptions, all four automatic paths completed, wallSeconds=70.50.
+Standalone rerun is recorded separately in StandaloneSmoke.json.

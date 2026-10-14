@@ -11,6 +11,8 @@ namespace RoboticsLab
         public bool EmergencyStopped { get; private set; }
         public bool PenDown { get; private set; }
         public int TrainingMode { get; private set; }
+        // 触纸状态也用于循迹评分；只有第三台自由画图工位生成笔迹。
+        bool LeavesInk => stationIndex == 2 && TrainingMode == 0;
         public float Progress => TrainingMode == 0 ? (drawing?.Progress ?? 0) : (ringExercise?.Progress ?? 0);
         public int Contacts => ringExercise?.Contacts ?? 0;
         public float Elapsed { get; private set; }
@@ -122,12 +124,19 @@ namespace RoboticsLab
         {
             EmergencyStopped = stopped;
             requestedMotion = Vector3.zero;
-            if (stopped) { PenDown = false; drawing?.EndStroke(); }
+            if (stopped)
+            {
+                PenDown = false;
+                drawing?.EndStroke();
+                if (TrainingMode == 0 && drawingTcp && toolTarget)
+                    toolTarget.position = drawingTcp.position;
+            }
         }
 
         public void SetMode(int mode)
         {
-            TrainingMode = Mathf.Clamp(mode, 0, 1);
+            // 工位分工固定：第一台循迹、第二台套圈、第三台自由绘图。
+            TrainingMode = stationIndex == 1 ? 1 : 0;
             ApplyExerciseVisibility();
             if (initialized) ResetExercise();
         }
@@ -135,7 +144,7 @@ namespace RoboticsLab
         void ApplyExerciseVisibility()
         {
             ToolView.ApplyVisibility(IsOperating, TrainingMode);
-            drawing?.SetVisible(IsOperating && TrainingMode == 0);
+            drawing?.SetVisible(IsOperating && LeavesInk);
             if (robotWireCollision) robotWireCollision.RebuildCache();
             drawingCollision?.RebuildCache();
         }
@@ -220,7 +229,7 @@ namespace RoboticsLab
             tools.UpdatePose(CurrentRingFrame);
             if (IsOperating && !EmergencyStopped)
             {
-                if (TrainingMode == 0) drawing.Tick(PenDown);
+                if (TrainingMode == 0) drawing.Tick(LeavesInk && PenDown);
                 else
                 {
                     ringExercise.Tick(ringMotion.RimBlocked, Time.deltaTime);
@@ -253,7 +262,9 @@ namespace RoboticsLab
         public bool DrawingMovementBlocked => drawingMotion?.Blocked ?? false;
         public string DrawingBlockReason => drawingMotion?.Reason ?? "";
         public float DrawingTiltDegrees => drawingTcp ? Vector3.Angle(drawingTcp.up, Vector3.up) : 180;
-        public float DrawingGripTiltDegrees => DrawingToolRoot
+        // Tracing uses the original bent probe: its needle axis must be vertical.
+        // Free drawing retains the horizontal CAD gripper constraint.
+        public float DrawingGripTiltDegrees => stationIndex == 0 ? DrawingTiltDegrees : DrawingToolRoot
             ? Mathf.Max(Vector3.Angle(DrawingToolRoot.forward, Vector3.down),
                 Mathf.Abs(90f - Vector3.Angle(DrawingToolRoot.up, Vector3.up))) : 180;
 

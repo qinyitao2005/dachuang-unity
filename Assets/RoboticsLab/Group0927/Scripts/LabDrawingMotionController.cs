@@ -28,13 +28,14 @@ namespace RoboticsLab
 
         public bool ValidateReset()
         {
-            string reason;
+            string reason = "";
             float clearance;
             if (station.drawingTcp && station.DrawingTiltDegrees <= 1f && station.DrawingGripTiltDegrees <= 1f
                 && collision.Check(out reason, out clearance))
                 return true;
             Blocked = true;
-            Reason = "绘图复位姿态不安全，请检查笔尖、关节和画板配置";
+            Reason = !station.drawingTcp ? "缺少工具尖端绑定" : station.DrawingTiltDegrees > 1f || station.DrawingGripTiltDegrees > 1f
+                ? (station.stationIndex == 0 ? "复位无法保持探针竖直，请检查工作区和关节限位" : "复位无法保持夹具水平，请检查工作区和关节限位") : "复位被阻挡：" + reason;
             return false;
         }
 
@@ -42,7 +43,7 @@ namespace RoboticsLab
 
         public void Tick(float deltaTime)
         {
-            if (!station.drawingTcp) { Blocked = true; Reason = "缺少绘图笔尖绑定"; return; }
+            if (!station.drawingTcp) { Blocked = true; Reason = "缺少工具尖端绑定"; return; }
             Vector3 requested = station.toolTarget.position;
             Vector3 next = Vector3.MoveTowards(station.drawingTcp.position, requested,
                 station.moveSpeed * Mathf.Max(0, deltaTime));
@@ -58,7 +59,8 @@ namespace RoboticsLab
                 // 避免反向输入每帧都被积压的旧目标抵消。
                 station.toolTarget.position = station.drawingTcp.position;
                 Blocked = true;
-                Reason = horizontal ? reason : "此位置无法保持夹具水平，请退回调整";
+                Reason = horizontal ? reason : station.stationIndex == 0
+                    ? "此位置无法保持探针竖直，请退回调整" : "此位置无法保持夹具水平，请退回调整";
                 return;
             }
         }

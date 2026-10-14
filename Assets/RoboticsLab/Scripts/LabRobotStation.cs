@@ -9,11 +9,17 @@ namespace RoboticsLab
     {
         public int stationIndex;
         public string displayName = "六轴机械臂";
+        // Station identity is the source of truth; UI/program calls cannot exchange exercises.
+        public bool IsTracing => stationIndex == 0;
+        public bool IsRing => stationIndex == 1;
+        public bool IsDrawing => stationIndex == 2;
+        public int RequiredMode => IsRing ? 1 : 0;
+        public string RoleLabel => IsTracing ? "循迹训练" : IsRing ? "钢丝套圈" : "自由画图";
         bool isOperating, emergencyStopped, penDown;
         int trainingMode, contacts;
         float progress, elapsed;
         Group0927Station group0927;
-        bool UsesGroup0927 => stationIndex > 0 && (group0927 || (group0927 = GetComponent<Group0927Station>()));
+        bool UsesGroup0927 => group0927 || (group0927 = GetComponent<Group0927Station>());
         public bool IsOperating { get { return UsesGroup0927 ? group0927.IsOperating : isOperating; } private set { isOperating = value; } }
         public bool EmergencyStopped { get { return UsesGroup0927 ? group0927.EmergencyStopped : emergencyStopped; } private set { emergencyStopped = value; } }
         public bool PenDown { get { return UsesGroup0927 ? group0927.PenDown : penDown; } private set { penDown = value; } }
@@ -94,13 +100,14 @@ namespace RoboticsLab
             if(!toolTarget) {toolTarget=new GameObject("ToolTarget").transform;toolTarget.SetParent(transform,false);}
             SetMode(TrainingMode);
         }
-        public void BeginOperation() {if(UsesGroup0927){group0927.BeginOperation();return;}Initialize();IsOperating=true;requestedMotion=Vector3.zero;ApplyExerciseVisibility();}
+        public void BeginOperation() {if(TrainingMode!=RequiredMode)SetMode(RequiredMode);if(UsesGroup0927){group0927.BeginOperation();return;}Initialize();IsOperating=true;requestedMotion=Vector3.zero;ApplyExerciseVisibility();}
         public void EndOperation() {if(UsesGroup0927){group0927.EndOperation();return;}IsOperating=false;PenDown=false;requestedMotion=Vector3.zero;currentStroke=null;ApplyExerciseVisibility();if(legacyState)legacyState.armIsMoving=false;}
         public void SetEmergencyStop(bool stopped) {if(UsesGroup0927){group0927.SetEmergencyStop(stopped);return;}EmergencyStopped=stopped;requestedMotion=Vector3.zero;if(stopped){PenDown=false;currentStroke=null;}}
         public void SetMode(int mode)
         {
+            mode=RequiredMode;
             if(UsesGroup0927){group0927.SetMode(mode);return;}
-            TrainingMode=Mathf.Clamp(mode,0,1);
+            TrainingMode=mode;
             ApplyExerciseVisibility();
             if(initialized)ResetExercise();
         }
