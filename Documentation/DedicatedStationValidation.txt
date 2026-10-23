@@ -1,0 +1,74 @@
+Dedicated stations / actual runtime motion / 2026-10-14T06:48:52.1862311Z
+Coverage and accuracy are measured from actual TCP samples; targets and joints are never teleported.
+PASS Exactly three station facades
+PASS Station 0 uses the separated robot modules
+PASS Station 0 facade rejects cross-role mode 0
+PASS Station 0 group rejects cross-role mode 0
+PASS Station 0 facade rejects cross-role mode 1
+PASS Station 0 group rejects cross-role mode 1
+PASS Station 1 uses the separated robot modules
+PASS Station 1 facade rejects cross-role mode 0
+PASS Station 1 group rejects cross-role mode 0
+PASS Station 1 facade rejects cross-role mode 1
+PASS Station 1 group rejects cross-role mode 1
+PASS Station 2 uses the separated robot modules
+PASS Station 2 facade rejects cross-role mode 0
+PASS Station 2 group rejects cross-role mode 0
+PASS Station 2 facade rejects cross-role mode 1
+PASS Station 2 group rejects cross-role mode 1
+PASS Station identities are tracing / ring / free drawing
+PASS Tracing uses the complete original Pointer CAD probe including its needle; meshes=28
+PASS TracingProbeTCP is parented to the original needle mesh and both station bindings use that needle
+PASS Tracing BeginOperation succeeds: 
+PASS Initial probe TCP and original needle axis are vertical: pen=0.034 grip=0.034 needle=0.034
+PASS All original probe CAD local transforms remain unchanged after initial IK
+PASS J course remains a manual exercise
+PASS Automatic start 圆形
+PASS Actual course completion 圆形 coverage=100.00% accuracy=99.97% score=99.97 meanErrorMm=0.001 frames=215 elapsed=20.6s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Actual course quality 圆形 coverage=100.00% accuracy=99.97% score=99.97 meanErrorMm=0.001 frames=215 elapsed=20.6s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Original needle axis and probe TCP remain vertical throughout 圆形 tcp=0.000 probe=0.000 needle=0.000
+PASS No CAD deformation during 圆形
+PASS Real paper contact 圆形 frames=193 maximumHeightMm=0.002
+PASS Automatic tracing creates no DrawingStroke objects or ink: 圆形 vertices=0
+INFO 圆形 max requested-target lagMm=5.158
+PASS Automatic start 三角形
+PASS Actual course completion 三角形 coverage=100.00% accuracy=99.96% score=99.96 meanErrorMm=0.001 frames=198 elapsed=18.4s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Actual course quality 三角形 coverage=100.00% accuracy=99.96% score=99.96 meanErrorMm=0.001 frames=198 elapsed=18.4s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Original needle axis and probe TCP remain vertical throughout 三角形 tcp=0.000 probe=0.000 needle=0.000
+PASS No CAD deformation during 三角形
+PASS Real paper contact 三角形 frames=186 maximumHeightMm=0.002
+PASS Automatic tracing creates no DrawingStroke objects or ink: 三角形 vertices=0
+INFO 三角形 max requested-target lagMm=0.327
+PASS Automatic start 正方形
+PASS Actual course completion 正方形 coverage=100.00% accuracy=99.97% score=99.97 meanErrorMm=0.001 frames=243 elapsed=23.3s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Actual course quality 正方形 coverage=100.00% accuracy=99.97% score=99.97 meanErrorMm=0.001 frames=243 elapsed=23.3s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Original needle axis and probe TCP remain vertical throughout 正方形 tcp=0.000 probe=0.000 needle=0.000
+PASS No CAD deformation during 正方形
+PASS Real paper contact 正方形 frames=225 maximumHeightMm=0.002
+PASS Automatic tracing creates no DrawingStroke objects or ink: 正方形 vertices=0
+INFO 正方形 max requested-target lagMm=0.338
+PASS Automatic start 复合曲线
+PASS Actual course completion 复合曲线 coverage=100.00% accuracy=99.97% score=99.97 meanErrorMm=0.001 frames=353 elapsed=32.4s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Actual course quality 复合曲线 coverage=100.00% accuracy=99.97% score=99.97 meanErrorMm=0.001 frames=353 elapsed=32.4s status=自动路径执行完毕，成绩依据实际探针轨迹
+PASS Original needle axis and probe TCP remain vertical throughout 复合曲线 tcp=0.000 probe=0.000 needle=0.000
+PASS No CAD deformation during 复合曲线
+PASS Real paper contact 复合曲线 frames=330 maximumHeightMm=0.002
+PASS Automatic tracing creates no DrawingStroke objects or ink: 复合曲线 vertices=0
+INFO 复合曲线 max requested-target lagMm=4.445
+PASS Manual J reaches its actual start while pen is lifted
+PASS Actual manual course completion J coverage=100.00% accuracy=99.96% score=99.96 meanErrorMm=0.001 frames=370 status=循迹完成；评分按实际覆盖率和偏差计算
+PASS Actual manual course quality J coverage=100.00% accuracy=99.96% score=99.96 meanErrorMm=0.001 frames=370 status=循迹完成；评分按实际覆盖率和偏差计算
+PASS Manual J preserves rigid original probe CAD and vertical needle; tcp=0.000 probe=0.000 needle=0.000
+PASS Manual J creates no DrawingStroke objects or ink; vertices=0
+PASS Emergency stop ends automatic attempt and lifts pen state
+PASS Emergency stop rejects movement and holds actual joints/TCP
+PASS Emergency release never restarts a stopped program
+PASS Exiting the station stops automatic motion
+PASS Second station opens ring exercise
+PASS Second station has no drawing exercise visible
+PASS Ring accepts input through real IK; displacementMm=4.790
+PASS Third station opens free drawing: 
+PASS Third station remains free drawing without tracing score ownership
+PASS Third station draws the requested 25 mm stroke via MoveTool; vertices=5 inkLengthMm=23.751 endpointErrorMm=0.004
+PASS Third station preserves tool orientation: pen=0.000 grip=0.000
+RESULT passed=67 failed=0 wallSeconds=145.4

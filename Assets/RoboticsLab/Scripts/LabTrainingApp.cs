@@ -62,10 +62,10 @@ namespace RoboticsLab
 
         public LabRobotStation ActiveStation;
 
-        [Header("Part1教学接管")]
+        [Header("保留的 Part1 教学资源（专用循迹工位不启用）")]
         public Part1启动桥 part1启动桥;
 
-        [Tooltip("true 时 Station01 由 Part1 接管，大佬原机械臂输入和操作面板暂停。")]
+        [Tooltip("兼容保留的 Part1 资源；当前三工位流程统一由专用工位控制器操作。")]
         public bool Part1接管中 = false;
 
         public string panel = "";
@@ -94,9 +94,14 @@ namespace RoboticsLab
 
         public int LastMode;
 
+        readonly LabTracingPanel tracingPanel = new LabTracingPanel();
+
+        public LabTracingExercise ActiveTracing => ActiveStation && ActiveStation.IsTracing ? ActiveStation.GetComponent<LabTracingExercise>() : null;
+        public bool TracingPaperVisible => ActiveTracing && tracingPanel.PaperViewVisible;
+
         public string StateSummary => "helmet="+HelmetWorn+";lesson="+LessonCompleted+";quiz="+QuizPassed+";panel="+panel+";station="+(ActiveStation?ActiveStation.stationIndex:-1);
 
-        public bool ProgrammingVisible => !Part1接管中&&trajectoryPanel&&trajectoryPanel.Visible&&panel=="operate"&&ActiveStation;
+        public bool ProgrammingVisible => !Part1接管中&&trajectoryPanel&&trajectoryPanel.Visible&&panel=="operate"&&ActiveStation&&!ActiveStation.IsTracing;
 
         void Awake()
 
@@ -156,6 +161,8 @@ namespace RoboticsLab
 
             EnsureProgramming();
 
+            Part1接管中=false;
+
         }
 
         public void EnsureProgramming()
@@ -188,7 +195,7 @@ namespace RoboticsLab
 
                 if(panel=="help")panel=helpReturnPanel;
 
-                else {helpReturnPanel=panel;panel="help";if(trajectoryProgram&&trajectoryProgram.IsExecuting)trajectoryProgram.Pause();}
+                else {helpReturnPanel=panel;panel="help";if(trajectoryProgram&&trajectoryProgram.IsExecuting)trajectoryProgram.Pause();if(ActiveTracing)ActiveTracing.StopAutomatic();}
 
             }
 
@@ -202,15 +209,17 @@ namespace RoboticsLab
 
                 bool typing=ProgrammingVisible&&trajectoryPanel.TextEntryFocused;
 
-                bool automatic=trajectoryProgram&&trajectoryProgram.IsExecuting;
+                var trace=ActiveTracing;
 
-                if(!typing&&Input.GetKeyDown(KeyCode.Space)) ActiveStation.SetEmergencyStop(!ActiveStation.EmergencyStopped);
+                bool automatic=(trajectoryProgram&&trajectoryProgram.IsExecuting)||(trace&&trace.IsAutomatic);
 
-                if(!typing&&Input.GetKeyDown(KeyCode.R)){if(trajectoryProgram)trajectoryProgram.Reset();else ActiveStation.ResetExercise();}
+                if(!typing&&Input.GetKeyDown(KeyCode.Space)) ToggleEmergencyStop();
 
-                if(!typing&&!automatic&&Input.GetKeyDown(KeyCode.P)) ActiveStation.SetPen(!ActiveStation.PenDown);
+                if(!typing&&Input.GetKeyDown(KeyCode.R)) ResetActiveExercise();
 
-                if(panel=="operate"&&!automatic)
+                if(panel=="operate"&&!typing&&!automatic&&Input.GetKeyDown(KeyCode.P)&&(!trace||trace.IsManual)) ActiveStation.SetPen(!ActiveStation.PenDown);
+
+                if(panel=="operate"&&!automatic&&(!trace||trace.IsManual))
 
                 {
 
@@ -236,7 +245,7 @@ namespace RoboticsLab
 
             player.focusZoomEnabled=!ProgrammingVisible;
 
-            player.focusHorizontalScreenOffset=ProgrammingVisible?.115f:0;
+            player.focusHorizontalScreenOffset=ProgrammingVisible?.115f:TracingPaperVisible?-.155f:0;
 
                 player.learningFocus=IsLearningView&&learningScreen;
 
@@ -250,7 +259,14 @@ namespace RoboticsLab
 
                 }
 
-                if(ActiveStation){player.focusPoint=ActiveStation.transform.TransformPoint(ActiveStation.exerciseCenter);player.focusScale=Mathf.Clamp(ActiveStation.exerciseScale*1.3f,.5f,1f);}
+                if(ActiveStation)
+                {
+                    Vector3 center=ActiveStation.exerciseCenter;
+                    if(ActiveStation.IsTracing)center.y=ActiveStation.drawingHeight;
+                    player.focusPoint=ActiveStation.transform.TransformPoint(center);
+                    player.focusScale=ActiveStation.IsTracing?(TracingPaperVisible?.60f:.52f):Mathf.Clamp(ActiveStation.exerciseScale*1.3f,.5f,1f);
+                    player.focusCameraOffset=ActiveStation.IsTracing?new Vector3(.75f,1.35f,-.90f):new Vector3(3.1f,2.2f,-2.5f);
+                }
 
                 player.UpdatePointerCapture();
 
@@ -350,52 +366,16 @@ namespace RoboticsLab
 
             if(trajectoryProgram)trajectoryProgram.Stop();
 
-            if(ActiveStation && !Part1接管中) ActiveStation.EndOperation();
+            if(ActiveTracing)ActiveTracing.StopAutomatic();
+
+            if(ActiveStation) ActiveStation.EndOperation();
 
             ActiveStation=stations[index];
 
-            // Station01（index 0）交给 Part1，保留大佬的工位聚焦相机，
-            // 但不启动原 LabRobotStation 的操作逻辑。
-            if(index==0)
-
-            {
-
-                if(!part1启动桥)
-
-                {
-
-                    Debug.LogError("[LabTrainingApp] Station01 未绑定 Part1启动桥。",this);
-
-                    Notify("Station01 的 Part1 启动桥未绑定，请检查 Inspector。",6);
-
-                    ActiveStation=null;
-
-                    Part1接管中=false;
-
-                    panel="";
-
-                    return false;
-
-                }
-
-                Part1接管中=true;
-
-                if(trajectoryPanel)trajectoryPanel.Close();
-
-                panel="operate";
-
-                part1启动桥.启动Part1();
-
-                Notify("已进入 Station01 / Part1 机械臂教学。",6);
-
-                return true;
-
-            }
-
-            // Station02 / Station03 使用 0927 控制器；先选模式，再进入操作并核验复位。
+            // All three dedicated stations use the same validated motion adapter.
             Part1接管中=false;
 
-            ActiveStation.SetMode(LastMode);
+            LastMode=ActiveStation.RequiredMode;
 
             ActiveStation.BeginOperation();
 
@@ -403,15 +383,21 @@ namespace RoboticsLab
 
             panel="operate";
 
-            EnsureProgramming();trajectoryProgram.Bind(ActiveStation);trajectoryPanel.Close();
+            EnsureProgramming();trajectoryProgram.Bind(ActiveStation.IsTracing?null:ActiveStation);trajectoryPanel.Close();
 
-            Notify("已进入工位。WASD 平移，Q / E 升降，空格急停。",6);return true;
+            if(ActiveStation.IsTracing)
+            {
+                if(!ActiveTracing){ClosePanel();Notify("循迹训练组件未配置，请检查 01 工位。",6);return false;}
+                ActiveTracing.SelectShape(0);
+            }
+
+            Notify("已进入"+ActiveStation.RoleLabel+"工位。WASD 平移，Q / E 升降，空格急停。",6);return true;
 
         }
 
         bool CloseFailedStation()
         {
-            if(!ActiveStation || ActiveStation.stationIndex==0 || ActiveStation.IsOperating)return false;
+            if(!ActiveStation || ActiveStation.IsOperating)return false;
             string reason=ActiveStation.DrawingBlockReason;
             if(string.IsNullOrEmpty(reason))reason="工位无法进入操作状态，请检查配置后重试";
             ClosePanel();
@@ -479,8 +465,9 @@ namespace RoboticsLab
 
             if(trajectoryPanel)trajectoryPanel.Close();
 
-            // Part1 没有调用 LabRobotStation.BeginOperation()，所以不要对它调用 EndOperation()。
-            if(ActiveStation && !Part1接管中) ActiveStation.EndOperation();
+            if(ActiveTracing)ActiveTracing.StopAutomatic();
+
+            if(ActiveStation) ActiveStation.EndOperation();
 
             ActiveStation=null;
 
@@ -490,6 +477,21 @@ namespace RoboticsLab
 
             panel="";heldDirection=Vector3.zero;
 
+        }
+
+        public void ResetActiveExercise()
+        {
+            if(!ActiveStation)return;
+            if(ActiveTracing)ActiveTracing.ResetAttempt();
+            else if(trajectoryProgram)trajectoryProgram.Reset();
+            else ActiveStation.ResetExercise();
+        }
+
+        public void ToggleEmergencyStop()
+        {
+            if(!ActiveStation)return;
+            if(!ActiveStation.EmergencyStopped&&ActiveTracing)ActiveTracing.StopAutomatic();
+            ActiveStation.SetEmergencyStop(!ActiveStation.EmergencyStopped);
         }
 
         public void Interact()
@@ -606,7 +608,7 @@ namespace RoboticsLab
 
                 Box(new Rect(24,102,270,148),navy);Txt(new Rect(44,120,234,30),"当前任务",heading);
 
-                string task=!HelmetWorn?"前往入口右侧装备架\n领取安全帽并佩戴":!LessonCompleted?"沿右侧前往教学大屏\n观看机械臂基础课程":!QuizPassed?"完成教学屏上的问答\n解锁机械臂操作":ActiveStation?"手动操控末端工具\n完成当前工位训练":"选择左侧任一工位\n开始绘图或钢丝套圈";
+                string task=!HelmetWorn?"前往入口右侧装备架\n领取安全帽并佩戴":!LessonCompleted?"沿右侧前往教学大屏\n观看机械臂基础课程":!QuizPassed?"完成教学屏上的问答\n解锁机械臂操作":ActiveStation?(ActiveStation.IsTracing?"手动循迹 J 型\n自动循迹右侧四图":ActiveStation.IsRing?"沿钢丝移动圆环\n避开圈边与机械臂碰撞":"移动末端画笔\n自由绘图或编程轨迹"):"01 循迹  ·  02 套圈\n03 自由画图";
 
                 Txt(new Rect(44,164,234,72),task,small);
 
@@ -634,21 +636,25 @@ namespace RoboticsLab
 
             var s=ActiveStation;
 
-            bool manual=!trajectoryProgram||!trajectoryProgram.IsExecuting;
+            var trace=ActiveTracing;
 
-            if(Btn(new Rect(1200,100,375,43),ProgrammingVisible?"收起轨迹编程":"轨迹编程 / 示教 + 指令",true))
+            bool manual=(!trajectoryProgram||!trajectoryProgram.IsExecuting)&&(!trace||(trace.IsManual&&!trace.IsAutomatic));
+
+            if(s.IsTracing)
+            {Box(new Rect(1200,100,375,43),teal);Txt(new Rect(1220,109,345,30),"01  /  专用循迹工位",heading);}
+
+            else if(Btn(new Rect(1200,100,375,43),ProgrammingVisible?"收起轨迹编程":"轨迹编程 / 示教 + 指令",true))
 
             {if(ProgrammingVisible)trajectoryPanel.Close();else {EnsureProgramming();trajectoryProgram.Bind(s);trajectoryPanel.Open();}}
 
             Box(new Rect(1200,156,375,637),navy);Txt(new Rect(1222,176,330,34),s.displayName,heading);
 
-            Txt(new Rect(1222,220,330,30),manual?"末端点动控制  /  手动模式":"轨迹程序控制中",small);
+            Txt(new Rect(1222,220,330,30),manual?"末端点动控制  /  手动模式":trace?(trace.IsAutomatic?"自动循迹中，手动输入已锁定":"请在左侧启动自动循迹"):"轨迹程序控制中",small);
 
             bool wasEnabled=GUI.enabled;GUI.enabled=manual;
 
-            if(Btn(new Rect(1220,262,163,45),"轨迹绘图",LastMode==0))SetTrainingMode(0);
-
-            if(Btn(new Rect(1394,262,160,45),"钢丝套圈",LastMode==1))SetTrainingMode(1);
+            Box(new Rect(1220,262,334,45),muted);
+            Txt(new Rect(1232,272,316,30),"本机任务："+s.RoleLabel,heading);
 
             Txt(new Rect(1222,322,330,56),"W/S  前后    A/D  左右\nQ/E  升降    空格  急停",small);
 
@@ -664,37 +670,29 @@ namespace RoboticsLab
 
             Hold(new Rect(1392,561,162,43),"下 −Y");
 
-            if(Btn(new Rect(1220,620,163,45),LastMode==0?(s.PenDown?"抬笔  [P]":"落笔  [P]"):"重置训练")){if(LastMode==0)s.SetPen(!s.PenDown);else trajectoryProgram.Reset();}
+            if(Btn(new Rect(1220,620,163,45),s.IsRing?"重置训练":s.IsTracing?(s.PenDown?"抬起探针 [P]":"探针贴纸 [P]"):(s.PenDown?"抬笔  [P]":"落笔  [P]"))){if(s.IsRing)ResetActiveExercise();else s.SetPen(!s.PenDown);}
 
             GUI.enabled=wasEnabled;
 
-            if(Btn(new Rect(1394,620,160,45),"重置  [R]"))trajectoryProgram.Reset();
+            if(Btn(new Rect(1394,620,160,45),"重置  [R]"))ResetActiveExercise();
 
-            if(Btn(new Rect(1220,680,334,48),s.EmergencyStopped?"解除急停":"■  紧急停止",true))s.SetEmergencyStop(!s.EmergencyStopped);
+            if(Btn(new Rect(1220,680,334,48),s.EmergencyStopped?"解除急停":"■  紧急停止",true))ToggleEmergencyStop();
 
             if(Btn(new Rect(1220,741,334,36),"退出工位  [Esc]"))ClosePanel();
 
-            if(!ProgrammingVisible)
+            if(trace)tracingPanel.Draw(this,trace,font);
+
+            else if(!ProgrammingVisible)
 
             {
 
-            Box(new Rect(24,336,270,182),navy);Txt(new Rect(44,354,230,30),LastMode==0?"轨迹记录":"钢丝挑战",heading);
+            Box(new Rect(24,336,270,216),navy);Txt(new Rect(44,354,230,30),s.IsDrawing?"轨迹记录":"钢丝挑战",heading);
 
             Txt(new Rect(44,398,230,74),"进度  "+Mathf.RoundToInt(s.Progress*100)+"%\n接触  "+s.Contacts+" 次     用时  "+s.Elapsed.ToString("F1")+"s",small);
 
-            Txt(new Rect(44,471,230,64),s.EmergencyStopped?"■ 已急停":LastMode==1?(s.RobotWireBlocked?"机械臂接近钢丝，请反向调整":s.ToolInContact?"● 触及圈边，沿线调整或退回":s.RingMovementBlocked?"已到边界，可反向退回":"沿钢丝逐步前进"):(s.PenDown?"● 正在落笔":"○ 抬笔移动中"),small);
+            Txt(new Rect(44,471,230,72),s.EmergencyStopped?"■ 已急停":s.IsRing?(s.RobotWireBlocked?"机械臂接近钢丝，请反向调整":s.ToolInContact?"● 触及圈边，沿线调整或退回":s.RingMovementBlocked?"已到边界，可反向退回":"沿钢丝逐步前进"):(!string.IsNullOrEmpty(s.DrawingBlockReason)?s.DrawingBlockReason:s.PenDown?"● 正在落笔":"○ 抬笔移动中"),small);
 
             }
-
-        }
-
-        void SetTrainingMode(int mode)
-
-        {
-
-            trajectoryProgram.Stop();LastMode=mode;ActiveStation.SetMode(mode);trajectoryProgram.Bind(ActiveStation);
-
-            if(ProgrammingVisible)trajectoryPanel.Open();
 
         }
 
@@ -702,19 +700,19 @@ namespace RoboticsLab
 
         {
 
-            Box(new Rect(360,210,880,500),navy);Txt(new Rect(400,244,800,44),"实训室操作指南",title);
+            Box(new Rect(360,180,880,570),navy);Txt(new Rect(400,214,800,44),"实训室操作指南",title);
 
-            Txt(new Rect(400,316,785,284),"漫游：WASD 移动，鼠标直接转视角；Tab 释放/捕获光标。\n交互：靠近后按 E；Esc 关闭面板或退出工位。\n流程：佩戴安全帽 → 墙屏学习与问答 → 选择工位。\n机械臂：WASD 平移，Q/E 升降，P 画笔，R 重置，空格急停。\n轨迹编程：记录示教点，或输入 MOVE / SPEED / PEN / WAIT。\n代码应用后可运行、暂停、单步；运行中由程序控制。\n碰线会阻挡穿越，可以反向退回；钢丝两端有限位。",body);
+            Txt(new Rect(400,276,785,364),"漫游：WASD 移动，鼠标转视角；Tab 释放/捕获光标。\n流程：佩戴安全帽 → 墙屏学习与问答 → 靠近工位按 E。\n01 循迹：移至 J 型绿色起点，点“开始手动”，沿参考线移动；\n完成后点评估。圆、三角形、正方形和复杂图形由自动循迹演示。\n02 套圈：沿钢丝前进，碰线与端点会阻挡，可反向调整。\n03 画图：自由绘图，或用示教点 / MOVE 指令编程。\n机械臂：WASD 平移，Q/E 升降，P 抬笔 / 落笔，R 重置。\n空格急停，Esc 退出。自动循迹时手动移动锁定；帮助会停止自动。\n循迹显示覆盖率、精度与成功程度，按真实笔尖轨迹评分。",body);
 
-            if(Btn(new Rect(400,621,785,52),"返回",true))panel=helpReturnPanel;
+            if(Btn(new Rect(400,664,785,52),"返回",true))panel=helpReturnPanel;
 
         }
 
         void OnEnable() { }
 
-        void OnDisable(){heldDirection=Vector3.zero;}
+        void OnDisable(){heldDirection=Vector3.zero;if(ActiveTracing)ActiveTracing.StopAutomatic();}
 
-        void OnDestroy(){if(font&&!uiFont)Destroy(font);}
+        void OnDestroy(){tracingPanel.Dispose();if(font&&!uiFont)Destroy(font);}
 
         void OnApplicationFocus(bool focus){if(!focus)heldDirection=Vector3.zero;}
 

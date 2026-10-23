@@ -16,6 +16,7 @@ namespace RoboticsLab
         public float walkSpeed = 1.6f;
         public Vector3 focusPoint;
         public float focusScale=1f;
+        public Vector3 focusCameraOffset = new Vector3(3.1f, 2.2f, -2.5f);
         public bool focusMode;
         public bool learningFocus;
         public bool focusZoomEnabled=true;
@@ -96,7 +97,7 @@ namespace RoboticsLab
             else if (focusMode)
             {
                 target = focusPoint;
-                wanted = focusPoint + new Vector3(3.1f,2.2f,-2.5f)*operationZoom*focusScale;
+                wanted = focusPoint + focusCameraOffset*operationZoom*focusScale;
                 // Keep the work surface visible between the program and jog panels.
                 Vector3 forward=(target-wanted).normalized;
                 Vector3 right=Vector3.Cross(Vector3.up,forward).normalized;

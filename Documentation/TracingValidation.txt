@@ -1,0 +1,27 @@
+PASS Shape 0 lies inside paper layout
+PASS Automatic shape 0 closes
+PASS Ideal path 0 completion=100.0 score=100.0
+PASS Shape 1 lies inside paper layout
+PASS Automatic shape 1 closes
+PASS Ideal path 1 completion=100.0 score=100.0
+PASS Shape 2 lies inside paper layout
+PASS Automatic shape 2 closes
+PASS Ideal path 2 completion=100.0 score=100.0
+PASS Shape 3 lies inside paper layout
+PASS Automatic shape 3 closes
+PASS Ideal path 3 completion=100.0 score=100.0
+PASS Shape 4 lies inside paper layout
+PASS Automatic shape 4 closes
+PASS Ideal path 4 completion=100.0 score=100.0
+PASS Circle remains circular on rectangular paper
+PASS Square sides have equal physical lengths
+PASS Photo curve is a broad outline rather than a distorted tall contour
+PASS Incomplete work cannot receive a high success score
+PASS Stationary samples cannot farm coverage or accuracy
+PASS Pen-up movement earns no progress
+PASS Jump from start to finish does not complete ordered checkpoints
+PASS Traversing a closed path in reverse cannot skip its ordered course
+PASS Off-path movement lowers accuracy and success
+PASS Safe backtracking permits later completion without duplicate coverage
+PASS Known 1.5 mm deviation with 3 mm tolerance yields 50% accuracy
+PASS Paused samples do not change distance-weighted accuracy

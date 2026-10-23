@@ -237,10 +237,11 @@ namespace RoboticsLab
         bool ReadyToOperate()
         {
             if(!Station||!Station.IsOperating||!Station.toolTarget||!Station.endEffector)return Error("请先进入已解锁的机械臂工位");
+            if(Station.IsTracing)return Error("01 工位只使用专用循迹控制，请在循迹面板选择图形");
             if(Station.EmergencyStopped)return Error("请先解除急停");
             return true;
         }
-        bool CanEdit(){if(!Station)return Error("请先选择工位");if(IsExecuting)return Error("请先停止程序，再编辑或载入");return true;}
+        bool CanEdit(){if(!Station)return Error("请先选择工位");if(Station.IsTracing)return Error("01 工位使用专用循迹面板");if(IsExecuting)return Error("请先停止程序，再编辑或载入");return true;}
         bool Error(string message){LastError=message;StatusText=message;return false;}
         string StepLabel(LabTrajectoryStep step)=>"第 "+(CurrentStepIndex+1)+" 步"+(step.sourceLine>0?"（第 "+step.sourceLine+" 行）":"");
 

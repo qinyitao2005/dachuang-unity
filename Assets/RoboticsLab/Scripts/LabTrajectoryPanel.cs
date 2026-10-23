@@ -27,6 +27,7 @@ namespace RoboticsLab
 
         public void Open()
         {
+            if(!program||!program.Station||program.Station.IsTracing){Close();return;}
             Visible=true;selected=-1;message="";if(!sourceDirty)SyncSource();RefreshPreview();
         }
         public void Close(){Visible=false;TextEntryFocused=false;GUIFocusReset();if(preview)preview.enabled=false;}

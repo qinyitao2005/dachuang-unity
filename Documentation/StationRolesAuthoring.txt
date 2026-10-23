@@ -1,0 +1,4 @@
+Dedicated station authoring / 2026-10-14T06:46:54.1746157Z
+PASS: 01 · 循迹训练; mode=0; real joints=6
+PASS: 02 · 钢丝套圈; mode=1; real joints=6
+PASS: 03 · 自由画图; mode=0; real joints=6
