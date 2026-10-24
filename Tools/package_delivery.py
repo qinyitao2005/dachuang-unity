@@ -19,7 +19,7 @@ from pathlib import Path
 PROJECT = Path(__file__).resolve().parent.parent
 DELIVERABLES = PROJECT / "Deliverables"
 SOURCE_DIRECTORIES = ("Assets", "Packages", "ProjectSettings", "Documentation", "Tools")
-SOURCE_FILES = ("Open Project.cmd", "Play Demo.cmd", ".gitignore")
+SOURCE_FILES = ("Open Project.cmd", "Play Demo.cmd", "Play L-C Recording.cmd", "README.md", ".gitignore")
 CACHE_NAMES = {"__pycache__", ".pytest_cache", ".mypy_cache"}
 WINDOWS_README = """机械臂虚拟实训室 — Windows 演示版
 
@@ -32,6 +32,18 @@ RobotLab_Data、UnityPlayer.dll 及其他随包文件必须与程序一起保留
 左侧 J 型手动操作；右侧圆、三角形、正方形、复合曲线自动循迹。
 02 套圈：夹住圆环沿钢丝前进。
 03 画图：保留真实笔迹，支持自由绘图、示教点和轨迹指令。
+02/03 工位右上方“示教器 / L・C 编程”打开实体控制器界面。
+F1 记录 L 直线；F2 依次记录 C 中间点与终点；ENTER 按当前模式记录。
+F3 撤销，F4 切换新指令速度参数，F5 清空；也可直接点击控制器对应按键。
+LCD 显示 L P[n] 或 C P[中间点] P[终点]，当前执行行高亮。
+FWD 运行/恢复；HOLD 暂停；STEP 单步完整 L/C 指令；RESET 停止，保留程序。
+C 为经过中间点的真实三点圆弧；未完成、共线或越界的程序会拒绝运行并提示原因。
+按 DATA 在控制器 LCD 内保存、加载程序，或插入返回 P[1] 的 L 指令。
+纸面绘图：抬笔示教起点并记录 L，再落笔记录要画的 L/C 段，抬笔记录结束点。
+程序保存每行的抬笔/落笔状态。名义速度受原工位上限及真实 IK 跟随能力约束。
+暂停时禁止录点或手动抢控制；解除急停后还需明确按 FWD，不会自动恢复。
+文件按工位隔离保存到用户数据目录 PendantPrograms，关闭演示后仍可加载。
+原有高级轨迹编辑继续可用，与实体示教器互斥执行。
 
 漫游：WASD 移动，鼠标转视角，Tab 释放光标，Shift 快走。
 工位：WASD 平移，Q/E 升降，R 重置。

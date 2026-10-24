@@ -40,6 +40,8 @@ namespace RoboticsLab
 
         public LabTrajectoryPanel trajectoryPanel;
 
+        public LabPendantController pendantController;
+
         Transform learningScreen;
 
         public LabQuestion CurrentQuestion => bank!=null&&bank.questions!=null&&bank.questions.Length>0?bank.questions[Mathf.Clamp(questionIndex,0,bank.questions.Length-1)]:null;
@@ -101,7 +103,9 @@ namespace RoboticsLab
 
         public string StateSummary => "helmet="+HelmetWorn+";lesson="+LessonCompleted+";quiz="+QuizPassed+";panel="+panel+";station="+(ActiveStation?ActiveStation.stationIndex:-1);
 
-        public bool ProgrammingVisible => !Part1接管中&&trajectoryPanel&&trajectoryPanel.Visible&&panel=="operate"&&ActiveStation&&!ActiveStation.IsTracing;
+        public bool PendantProgrammingVisible => !Part1接管中&&pendantController&&pendantController.Visible&&panel=="operate"&&ActiveStation&&!ActiveStation.IsTracing;
+        public bool LegacyProgrammingVisible => !Part1接管中&&trajectoryPanel&&trajectoryPanel.Visible&&panel=="operate"&&ActiveStation&&!ActiveStation.IsTracing;
+        public bool ProgrammingVisible => PendantProgrammingVisible||LegacyProgrammingVisible;
 
         void Awake()
 
@@ -179,6 +183,10 @@ namespace RoboticsLab
 
             trajectoryPanel.app=this;trajectoryPanel.program=trajectoryProgram;
 
+            if(!pendantController)pendantController=GetComponent<LabPendantController>();
+            if(!pendantController)pendantController=gameObject.AddComponent<LabPendantController>();
+            pendantController.app=this;
+
         }
 
         void Update()
@@ -189,7 +197,7 @@ namespace RoboticsLab
 
             CloseFailedStation();
 
-            if(Input.GetKeyDown(KeyCode.F1))
+            if(Input.GetKeyDown(KeyCode.F1)&&!PendantProgrammingVisible)
 
             {
 
@@ -207,11 +215,11 @@ namespace RoboticsLab
 
             {
 
-                bool typing=ProgrammingVisible&&trajectoryPanel.TextEntryFocused;
+                bool typing=ProgrammingVisible&&((trajectoryPanel&&trajectoryPanel.TextEntryFocused)||(pendantController&&pendantController.TextEntryFocused));
 
                 var trace=ActiveTracing;
 
-                bool automatic=(trajectoryProgram&&trajectoryProgram.IsExecuting)||(trace&&trace.IsAutomatic);
+                bool automatic=(trajectoryProgram&&trajectoryProgram.IsExecuting)||(pendantController&&pendantController.Executor&&pendantController.Executor.IsExecuting)||(trace&&trace.IsAutomatic);
 
                 if(!typing&&Input.GetKeyDown(KeyCode.Space)) ToggleEmergencyStop();
 
@@ -227,7 +235,7 @@ namespace RoboticsLab
 
                     heldDirection=typing?Vector3.zero:PointerJogDirection();
 
-                    ActiveStation.MoveTool(Vector3.ClampMagnitude(dir+heldDirection,1));
+                    ActiveStation.MoveTool(Vector3.ClampMagnitude(dir+heldDirection+(PendantProgrammingVisible?pendantController.HeldDirection:Vector3.zero),1));
 
                 }
 
@@ -364,6 +372,8 @@ namespace RoboticsLab
 
             if(index<0 || index>=stations.Length) return false;
 
+            if(pendantController)pendantController.Close();
+
             if(trajectoryProgram)trajectoryProgram.Stop();
 
             if(ActiveTracing)ActiveTracing.StopAutomatic();
@@ -383,7 +393,7 @@ namespace RoboticsLab
 
             panel="operate";
 
-            EnsureProgramming();trajectoryProgram.Bind(ActiveStation.IsTracing?null:ActiveStation);trajectoryPanel.Close();
+            EnsureProgramming();trajectoryProgram.Bind(ActiveStation.IsTracing?null:ActiveStation);trajectoryPanel.Close();pendantController.Close();
 
             if(ActiveStation.IsTracing)
             {
@@ -461,9 +471,13 @@ namespace RoboticsLab
 
         {
 
+            if(pendantController)pendantController.Close();
+
             if(trajectoryProgram)trajectoryProgram.Stop();
 
             if(trajectoryPanel)trajectoryPanel.Close();
+
+            if(pendantController)pendantController.Close();
 
             if(ActiveTracing)ActiveTracing.StopAutomatic();
 
@@ -482,6 +496,7 @@ namespace RoboticsLab
         public void ResetActiveExercise()
         {
             if(!ActiveStation)return;
+            if(pendantController)pendantController.StopProgram();
             if(ActiveTracing)ActiveTracing.ResetAttempt();
             else if(trajectoryProgram)trajectoryProgram.Reset();
             else ActiveStation.ResetExercise();
@@ -492,6 +507,7 @@ namespace RoboticsLab
             if(!ActiveStation)return;
             if(!ActiveStation.EmergencyStopped&&ActiveTracing)ActiveTracing.StopAutomatic();
             ActiveStation.SetEmergencyStop(!ActiveStation.EmergencyStopped);
+            if(ActiveStation.EmergencyStopped&&pendantController)pendantController.PauseProgram();
         }
 
         public void Interact()
@@ -594,7 +610,7 @@ namespace RoboticsLab
 
             Txt(new Rect(48,17,390,40),"ROBOT LAB  /  机械臂实训室",heading);
 
-            Txt(new Rect(1240,27,330,35),"VIRTUAL TRAINING    •    F1 帮助",small);
+            Txt(new Rect(1240,27,330,35),PendantProgrammingVisible?"F1 直线  ·  F2 圆弧  ·  Enter 记录":"VIRTUAL TRAINING    •    F1 帮助",small);
 
             string[] steps={"01  安全准备","02  教学学习","03  知识问答","04  实操训练"};
 
@@ -624,7 +640,7 @@ namespace RoboticsLab
 
             if(panel=="operate" && ActiveStation && !Part1接管中) OperationUI();
 
-            if(ProgrammingVisible)trajectoryPanel.Draw();
+            if(LegacyProgrammingVisible)trajectoryPanel.Draw();
 
             if(panel=="help") HelpUI();
 
@@ -638,14 +654,17 @@ namespace RoboticsLab
 
             var trace=ActiveTracing;
 
-            bool manual=(!trajectoryProgram||!trajectoryProgram.IsExecuting)&&(!trace||(trace.IsManual&&!trace.IsAutomatic));
+            bool manual=(!trajectoryProgram||!trajectoryProgram.IsExecuting)&&(!pendantController||!pendantController.Executor||!pendantController.Executor.IsExecuting)&&(!trace||(trace.IsManual&&!trace.IsAutomatic));
 
             if(s.IsTracing)
             {Box(new Rect(1200,100,375,43),teal);Txt(new Rect(1220,109,345,30),"01  /  专用循迹工位",heading);}
 
-            else if(Btn(new Rect(1200,100,375,43),ProgrammingVisible?"收起轨迹编程":"轨迹编程 / 示教 + 指令",true))
+            else if(Btn(new Rect(1200,100,375,43),PendantProgrammingVisible?"收起示教器":"示教器 / L・C 编程",true))
 
-            {if(ProgrammingVisible)trajectoryPanel.Close();else {EnsureProgramming();trajectoryProgram.Bind(s);trajectoryPanel.Open();}}
+            {if(PendantProgrammingVisible)pendantController.Close();else {EnsureProgramming();trajectoryProgram.Bind(s);trajectoryPanel.Close();pendantController.Open(s);}}
+
+            if(!s.IsTracing&&Btn(new Rect(1200,805,375,34),LegacyProgrammingVisible?"收起高级轨迹编辑":"高级轨迹编辑 / 原有示教与执行"))
+            {if(LegacyProgrammingVisible)trajectoryPanel.Close();else {EnsureProgramming();pendantController.Close();trajectoryProgram.Bind(s);trajectoryPanel.Open();}}
 
             Box(new Rect(1200,156,375,637),navy);Txt(new Rect(1222,176,330,34),s.displayName,heading);
 
@@ -681,6 +700,14 @@ namespace RoboticsLab
             if(Btn(new Rect(1220,741,334,36),"退出工位  [Esc]"))ClosePanel();
 
             if(trace)tracingPanel.Draw(this,trace,font);
+
+            else if(PendantProgrammingVisible&&pendantController.Executor)
+            {
+                var executor=pendantController.Executor;
+                Box(new Rect(510,805,665,78),navy);
+                Txt(new Rect(527,815,632,31),"FWD 运行/恢复 · HOLD 暂停 · STEP 单步 · RESET 停止 · DATA 文件",small);
+                Txt(new Rect(527,846,632,34),executor.StatusText,small);
+            }
 
             else if(!ProgrammingVisible)
 

@@ -59,6 +59,7 @@ namespace RoboticsLab
         public void Bind(LabRobotStation station)
         {
             if(Station==station)return;
+            if(PendantBusy()){Error("L/C 示教程序正在运行或暂停，请先停止示教器程序，再切换高级轨迹工位");return;}
             Vector3 oldOrigin=Station?Station.exerciseCenter:Vector3.zero;
             bool hadStation=Station;
             Stop();Station=station;
@@ -147,10 +148,12 @@ namespace RoboticsLab
         }
         public void Stop()
         {
+            // An idle legacy editor must not lift the pen of a different execution owner.
+            if(!IsExecuting&&PendantBusy()){Error("L/C 示教程序占用运动控制；请在示教器按 RESET 停止");return;}
             if(Station)Station.SetPen(false);
             execution=null;ResetCursor();StatusText="程序已停止，步骤保留";
         }
-        public void Reset(){Stop();if(Station)Station.ResetExercise();StatusText="工位已复位，程序保留";}
+        public void Reset(){if(PendantBusy()){Error("L/C 示教程序占用运动控制；请先在示教器按 RESET 停止");return;}Stop();if(Station)Station.ResetExercise();StatusText="工位已复位，程序保留";}
         void ResetCursor(){CurrentStepIndex=0;State=LabTrajectoryState.Ready;instructionStarted=false;singleStep=false;LastError="";}
 
         void Update()
@@ -236,12 +239,22 @@ namespace RoboticsLab
         void OnDisable(){if(IsExecuting)Stop();}
         bool ReadyToOperate()
         {
+            if(PendantBusy())return Error("L/C 示教程序正在运行或暂停，请先在示教器按 RESET 停止，再运行高级轨迹");
             if(!Station||!Station.IsOperating||!Station.toolTarget||!Station.endEffector)return Error("请先进入已解锁的机械臂工位");
             if(Station.IsTracing)return Error("01 工位只使用专用循迹控制，请在循迹面板选择图形");
             if(Station.EmergencyStopped)return Error("请先解除急停");
             return true;
         }
-        bool CanEdit(){if(!Station)return Error("请先选择工位");if(Station.IsTracing)return Error("01 工位使用专用循迹面板");if(IsExecuting)return Error("请先停止程序，再编辑或载入");return true;}
+        bool CanEdit(){if(PendantBusy())return Error("L/C 示教程序正在运行或暂停，请先停止示教器程序，再编辑或载入高级轨迹");if(!Station)return Error("请先选择工位");if(Station.IsTracing)return Error("01 工位使用专用循迹面板");if(IsExecuting)return Error("请先停止程序，再编辑或载入");return true;}
+        bool PendantBusy()
+        {
+            var app=GetComponent<LabTrainingApp>();
+            if(!app)app=FindObjectOfType<LabTrainingApp>();
+            if(app&&app.pendantController&&app.pendantController.Executor&&app.pendantController.Executor.IsExecuting)return true;
+            // Also protect direct API use in an isolated validation scene without the app facade.
+            foreach(var executor in FindObjectsOfType<LabPendantExecutor>())if(executor.IsExecuting)return true;
+            return false;
+        }
         bool Error(string message){LastError=message;StatusText=message;return false;}
         string StepLabel(LabTrajectoryStep step)=>"第 "+(CurrentStepIndex+1)+" 步"+(step.sourceLine>0?"（第 "+step.sourceLine+" 行）":"");
 

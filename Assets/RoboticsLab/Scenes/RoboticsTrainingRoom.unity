@@ -89668,6 +89668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2033625144}
   - component: {fileID: 2033625143}
+  - component: {fileID: 2033625145}
   m_Layer: 0
   m_Name: TrainingSession
   m_TagString: Untagged
@@ -89701,6 +89702,7 @@ MonoBehaviour:
   wallLearningDisplay: {fileID: 1924524822}
   trajectoryProgram: {fileID: 0}
   trajectoryPanel: {fileID: 0}
+  pendantController: {fileID: 2033625145}
   HelmetWorn: 0
   LessonCompleted: 0
   QuizPassed: 0
@@ -89727,6 +89729,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2033625145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033625142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2baa253408a99ad46864a0908e87bf4b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  app: {fileID: 2033625143}
+  pendantPrefab: {fileID: 568107726475087842, guid: 95c5d649b5d0f7a418845e54a77580f1, type: 3}
 --- !u!1 &2036095061
 GameObject:
   m_ObjectHideFlags: 0

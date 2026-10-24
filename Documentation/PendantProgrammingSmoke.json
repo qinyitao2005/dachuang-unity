@@ -1,0 +1,748 @@
+{
+    "passed": true,
+    "unityVersion": "2022.3.61f1c1",
+    "scene": "RoboticsTrainingRoom",
+    "exception": "",
+    "screenshot": "D:\\dachuang-unity\\Documentation\\Screenshots\\PendantProgramming.png",
+    "wallSeconds": 2.092722177505493,
+    "jogDistanceMm": 23.838115692138673,
+    "capturedPointErrorMm": 0.0,
+    "checks": [
+        {
+            "name": "real_scene",
+            "passed": true,
+            "detail": "Main scene contains the app, player and three workcells."
+        },
+        {
+            "name": "helmet_gate",
+            "passed": true,
+            "detail": "Station 03 rejects entry before helmet and learning prerequisites."
+        },
+        {
+            "name": "learning_gate",
+            "passed": true,
+            "detail": "A helmet alone does not bypass the teaching/quiz gate."
+        },
+        {
+            "name": "drawing_entry",
+            "passed": true,
+            "detail": "TryStartStation(2) enters station 03."
+        },
+        {
+            "name": "pendant_resource",
+            "passed": true,
+            "detail": "Configured authored controller prefab."
+        },
+        {
+            "name": "pendant_open",
+            "passed": true,
+            "detail": "The pendant opens for the active drawing station."
+        },
+        {
+            "name": "event_system",
+            "passed": true,
+            "detail": "Scene supplies a real EventSystem."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "linear_one_click_one_row",
+            "passed": true,
+            "detail": "One physical F1 click appends exactly one instruction and point."
+        },
+        {
+            "name": "linear_actual_tcp",
+            "passed": true,
+            "detail": "L P[1] captures the real TCP in station-local coordinates; error mm=0"
+        },
+        {
+            "name": "linear_screen",
+            "passed": true,
+            "detail": "1:L P[1] 100mm/sec FINE\n[End]"
+        },
+        {
+            "name": "button_exists_F2",
+            "passed": true,
+            "detail": "The actual pendant contains button F2."
+        },
+        {
+            "name": "raycast_top_F2",
+            "passed": true,
+            "detail": "At (249.78, 421.53) top=F2, expected=F2"
+        },
+        {
+            "name": "button_raycast_F2",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F2",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F2."
+        },
+        {
+            "name": "circular_midpoint_pending",
+            "passed": true,
+            "detail": "First C click adds one pending arc row and its intermediate point."
+        },
+        {
+            "name": "circular_pending_screen",
+            "passed": true,
+            "detail": "1:L P[1] 100mm/sec FINE\n2:C P[2] P[?] 100mm/sec FINE\n[End]"
+        },
+        {
+            "name": "button_exists_F2",
+            "passed": true,
+            "detail": "The actual pendant contains button F2."
+        },
+        {
+            "name": "raycast_top_F2",
+            "passed": true,
+            "detail": "At (249.78, 421.53) top=F2, expected=F2"
+        },
+        {
+            "name": "button_raycast_F2",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F2",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F2."
+        },
+        {
+            "name": "duplicate_arc_endpoint_rejected",
+            "passed": true,
+            "detail": "C rejects an endpoint at the unchanged intermediate position."
+        },
+        {
+            "name": "real_jog_buttons",
+            "passed": true,
+            "detail": "Six Cartesian pendant jog buttons are present."
+        },
+        {
+            "name": "raycast_top_J3+",
+            "passed": true,
+            "detail": "At (380.35, 283.00) top=J3+, expected=J3+"
+        },
+        {
+            "name": "jog_raycast_J3+",
+            "passed": true,
+            "detail": "Jog button is the top eligible pointer target."
+        },
+        {
+            "name": "jog_hold_J3+",
+            "passed": true,
+            "detail": "Pointer down starts pendant jogging."
+        },
+        {
+            "name": "jog_moves_real_tcp",
+            "passed": true,
+            "detail": "UI pointer hold moves the real robot, release clears held direction; mm=23.83812"
+        },
+        {
+            "name": "button_exists_F2",
+            "passed": true,
+            "detail": "The actual pendant contains button F2."
+        },
+        {
+            "name": "raycast_top_F2",
+            "passed": true,
+            "detail": "At (249.78, 421.53) top=F2, expected=F2"
+        },
+        {
+            "name": "button_raycast_F2",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F2",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F2."
+        },
+        {
+            "name": "circular_completes_same_row",
+            "passed": true,
+            "detail": "Second C completes the same row with distinct midpoint P[2] and endpoint P[3]."
+        },
+        {
+            "name": "circular_actual_tcp",
+            "passed": true,
+            "detail": "Circular endpoint captures the moved TCP."
+        },
+        {
+            "name": "circular_screen",
+            "passed": true,
+            "detail": "1:L P[1] 100mm/sec FINE\n2:C P[2] P[3] 100mm/sec FINE\n[End]"
+        },
+        {
+            "name": "screenshot_saved",
+            "passed": true,
+            "detail": "D:\\dachuang-unity\\Documentation\\Screenshots\\PendantProgramming.png"
+        },
+        {
+            "name": "screenshot_rendered",
+            "passed": true,
+            "detail": "PNG decodes and contains rendered, non-black image data; maximum sample luminance=0.9349255"
+        },
+        {
+            "name": "button_exists_F3",
+            "passed": true,
+            "detail": "The actual pendant contains button F3."
+        },
+        {
+            "name": "raycast_top_F3",
+            "passed": true,
+            "detail": "At (285.55, 421.53) top=F3, expected=F3"
+        },
+        {
+            "name": "button_raycast_F3",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F3",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F3."
+        },
+        {
+            "name": "undo_button",
+            "passed": true,
+            "detail": "F3 removes the whole completed arc and its two points while retaining P[1]."
+        },
+        {
+            "name": "button_exists_F4",
+            "passed": true,
+            "detail": "The actual pendant contains button F4."
+        },
+        {
+            "name": "raycast_top_F4",
+            "passed": true,
+            "detail": "At (321.33, 421.53) top=F4, expected=F4"
+        },
+        {
+            "name": "button_raycast_F4",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F4",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F4."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "speed_button",
+            "passed": true,
+            "detail": "F4 selects 50 mm/sec for the next recorded instruction."
+        },
+        {
+            "name": "button_exists_MENU/Enter",
+            "passed": true,
+            "detail": "The actual pendant contains button MENU/Enter."
+        },
+        {
+            "name": "raycast_top_Enter",
+            "passed": true,
+            "detail": "At (275.39, 275.95) top=Enter, expected=Enter"
+        },
+        {
+            "name": "button_raycast_MENU/Enter",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_MENU/Enter",
+            "passed": true,
+            "detail": "A pointerClick event was handled by MENU/Enter."
+        },
+        {
+            "name": "enter_repeat_button",
+            "passed": true,
+            "detail": "The physical Enter key repeats the current L recording mode once."
+        },
+        {
+            "name": "button_exists_F5",
+            "passed": true,
+            "detail": "The actual pendant contains button F5."
+        },
+        {
+            "name": "raycast_top_F5",
+            "passed": true,
+            "detail": "At (357.10, 421.53) top=F5, expected=F5"
+        },
+        {
+            "name": "button_raycast_F5",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F5",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F5."
+        },
+        {
+            "name": "clear_button",
+            "passed": true,
+            "detail": "F5 clears instructions and resets point numbering."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "multirow_auto_scroll",
+            "passed": true,
+            "detail": "Fourteen UI-recorded rows overflow the LCD and automatically scroll to the latest row."
+        },
+        {
+            "name": "ring_entry",
+            "passed": true,
+            "detail": "TryStartStation(1) enters station 02."
+        },
+        {
+            "name": "station02_separate_document",
+            "passed": true,
+            "detail": "Station 02 starts with its own program data."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "station02_record",
+            "passed": true,
+            "detail": "Station 02 records one L row."
+        },
+        {
+            "name": "drawing_reentry",
+            "passed": true,
+            "detail": "Station 03 reopens normally."
+        },
+        {
+            "name": "station03_document_retained",
+            "passed": true,
+            "detail": "Station 03 retains all fourteen of its own rows."
+        },
+        {
+            "name": "ring_reentry",
+            "passed": true,
+            "detail": "Station 02 reopens normally."
+        },
+        {
+            "name": "station02_document_retained",
+            "passed": true,
+            "detail": "Station 02 retains its independent single row."
+        },
+        {
+            "name": "tracing_entry",
+            "passed": true,
+            "detail": "Station 01 remains enterable through the ordinary app API."
+        },
+        {
+            "name": "tracing_rejects_pendant",
+            "passed": true,
+            "detail": "Station 01 tracing does not open the programming pendant."
+        },
+        {
+            "name": "drawing_final_entry",
+            "passed": true,
+            "detail": "Station 03 enters for stop and closure checks."
+        },
+        {
+            "name": "button_exists_F1",
+            "passed": true,
+            "detail": "The actual pendant contains button F1."
+        },
+        {
+            "name": "raycast_top_F1",
+            "passed": true,
+            "detail": "At (214.01, 421.53) top=F1, expected=F1"
+        },
+        {
+            "name": "button_raycast_F1",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F1",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F1."
+        },
+        {
+            "name": "button_exists_F2",
+            "passed": true,
+            "detail": "The actual pendant contains button F2."
+        },
+        {
+            "name": "raycast_top_F2",
+            "passed": true,
+            "detail": "At (249.78, 421.53) top=F2, expected=F2"
+        },
+        {
+            "name": "button_raycast_F2",
+            "passed": true,
+            "detail": "The actual button is the top eligible raycast target."
+        },
+        {
+            "name": "button_click_F2",
+            "passed": true,
+            "detail": "A pointerClick event was handled by F2."
+        },
+        {
+            "name": "emergency_stop_blocks_recording",
+            "passed": true,
+            "detail": "Real F1/F2 pointer clicks cannot append rows or points during emergency stop."
+        },
+        {
+            "name": "close_has_held_jog",
+            "passed": true,
+            "detail": "A held pendant direction exists before closure."
+        },
+        {
+            "name": "close_releases_and_blocks_recording",
+            "passed": true,
+            "detail": "Closing releases jog and closed-controller requests cannot record data."
+        },
+        {
+            "name": "close_no_new_motion_target",
+            "passed": true,
+            "detail": "No new robot target movement follows closure; displacement mm=0"
+        }
+    ],
+    "limitations": [
+        "Digital UI and simulated robot acceptance only; no physical robot or pendant was connected.",
+        "Pointer events are dispatched by the test after EventSystem raycast validation; OS mouse hardware is not exercised.",
+        "Teaching prerequisites are bypassed only inside this explicit smoke run after their rejection is verified.",
+        "L/C recording is checked as program data; executing a real industrial controller program is outside this test."
+    ]
+}

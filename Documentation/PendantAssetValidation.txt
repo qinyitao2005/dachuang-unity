@@ -1,0 +1,7 @@
+Teaching pendant installed / 2026-10-24T06:38:34.7092758Z
+Source: Assets/控制器.unity (from kongzhiqi controller project)
+Prefab: Assets/RoboticsLab/Generated/TeachingPendant.prefab
+Scene: Assets/RoboticsLab/Scenes/RoboticsTrainingRoom.unity
+Imported sprites: 147
+Controller model/view/jog are separate components.
+Legacy menus omitted only from integrated prefab; original controller scene retained.

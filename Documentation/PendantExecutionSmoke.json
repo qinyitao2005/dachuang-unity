@@ -1,0 +1,997 @@
+{
+    "passed": true,
+    "unityVersion": "2022.3.61f1c1",
+    "scene": "RoboticsTrainingRoom",
+    "exception": "",
+    "screenshot": "D:\\dachuang-unity\\Documentation\\Screenshots\\PendantExecution.png",
+    "fileScreenshot": "D:\\dachuang-unity\\Documentation\\Screenshots\\PendantFiles.png",
+    "wallSeconds": 23.54739761352539,
+    "linearDeviationMm": 0.015759648755192758,
+    "arcRadialErrorMm": 0.01157168298959732,
+    "arcViaErrorMm": 0.0045125423930585388,
+    "arcEndErrorMm": 0.0014279978349804879,
+    "ringMotionDistanceMm": 2.453348159790039,
+    "ringArrivalErrorMm": 0.0018625855445861817,
+    "ringMaximumDeviationMm": 0.025607502087950708,
+    "linearSamples": 15,
+    "arcSamples": 50,
+    "drawingInkVertices": 19,
+    "checks": [
+        {
+            "name": "real_scene",
+            "detail": "Main scene contains three original workcells.",
+            "passed": true
+        },
+        {
+            "name": "drawing_entry",
+            "detail": "Ordinary app entry selects dedicated drawing station 03.",
+            "passed": true
+        },
+        {
+            "name": "controller_exists",
+            "detail": "Scene has the imported teaching pendant controller.",
+            "passed": true
+        },
+        {
+            "name": "executor_and_ui",
+            "detail": "Pendant has a live executor and actual EventSystem.",
+            "passed": true
+        },
+        {
+            "name": "same_document",
+            "detail": "FWD executes the exact document visible in the LCD.",
+            "passed": true
+        },
+        {
+            "name": "program_built",
+            "detail": "L approach, L line, C semicircle through via, L return: four executable rows.",
+            "passed": true
+        },
+        {
+            "name": "point_reference_reused",
+            "detail": "Return L references P[1], without duplicating its point number or coordinates.",
+            "passed": true
+        },
+        {
+            "name": "lcd_has_c",
+            "detail": "1:L P[1] 40mm/sec FINE\n2:L P[2] 40mm/sec FINE\n3:C P[3] P[4] 40mm/sec FINE\n4:L P[1] 100mm/sec FINE\n[End]",
+            "passed": true
+        },
+        {
+            "name": "legacy_valid_program",
+            "detail": "A valid legacy WAIT program is prepared before exclusive pendant execution.",
+            "passed": true
+        },
+        {
+            "name": "button_STEP",
+            "detail": "Authored pendant button STEP exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_STEP",
+            "detail": "At (308.35, 350.00), top=STEP, expected=STEP",
+            "passed": true
+        },
+        {
+            "name": "click_STEP",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "step_starts",
+            "detail": "Actual STEP button starts the first complete instruction.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "单步 FINE 到位；下一行 2，FWD 继续 / STEP 单步",
+            "passed": true
+        },
+        {
+            "name": "step_first",
+            "detail": "单步 FINE 到位；下一行 2，FWD 继续 / STEP 单步",
+            "passed": true
+        },
+        {
+            "name": "step_exactly_one_line",
+            "detail": "单步 FINE 到位；下一行 2，FWD 继续 / STEP 单步",
+            "passed": true
+        },
+        {
+            "name": "first_fine_arrival",
+            "detail": "Actual TCP distance mm=0.002540709",
+            "passed": true
+        },
+        {
+            "name": "button_F1",
+            "detail": "Authored pendant button F1 exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_F1",
+            "detail": "At (214.01, 421.53), top=F1, expected=F1",
+            "passed": true
+        },
+        {
+            "name": "click_F1",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "button_F2",
+            "detail": "Authored pendant button F2 exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_F2",
+            "detail": "At (249.78, 421.53), top=F2, expected=F2",
+            "passed": true
+        },
+        {
+            "name": "click_F2",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "pause_reserves_control",
+            "detail": "Recording and held manual jogging cannot steal control from a paused program.",
+            "passed": true
+        },
+        {
+            "name": "paused_legacy_run_rejected",
+            "detail": "A valid legacy program cannot steal the pendant's paused motion reservation.",
+            "passed": true
+        },
+        {
+            "name": "paused_position_held",
+            "detail": "Paused target is stationary; actual TCP settling stays within 1.5 mm.",
+            "passed": true
+        },
+        {
+            "name": "button_STEP",
+            "detail": "Authored pendant button STEP exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_STEP",
+            "detail": "At (308.35, 350.00), top=STEP, expected=STEP",
+            "passed": true
+        },
+        {
+            "name": "click_STEP",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "单步 FINE 到位；下一行 3，FWD 继续 / STEP 单步",
+            "passed": true
+        },
+        {
+            "name": "linear_step_fine",
+            "detail": "单步 FINE 到位；下一行 3，FWD 继续 / STEP 单步",
+            "passed": true
+        },
+        {
+            "name": "linear_real_tcp",
+            "detail": "Samples=15, largest line deviation mm=0.01575965, endpoint mm=0.006777975",
+            "passed": true
+        },
+        {
+            "name": "button_STEP",
+            "detail": "Authored pendant button STEP exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_STEP",
+            "detail": "At (308.35, 350.00), top=STEP, expected=STEP",
+            "passed": true
+        },
+        {
+            "name": "click_STEP",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "单步 FINE 到位；下一行 4，FWD 继续 / STEP 单步",
+            "passed": true
+        },
+        {
+            "name": "c_is_one_complete_step",
+            "detail": "单步 FINE 到位；下一行 4，FWD 继续 / STEP 单步",
+            "passed": true
+        },
+        {
+            "name": "circular_real_tcp",
+            "detail": "Samples=50, radial mm=0.01157168, via mm=0.004512542, end mm=0.001427998",
+            "passed": true
+        },
+        {
+            "name": "arc_not_two_chords",
+            "detail": "Real TCP reaches the bulged semicircle via point; a direct endpoint chord misses it by 15 mm.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "fwd_resumes",
+            "detail": "Actual FWD resumes from the next row after STEP.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "程序执行完毕，共 4 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "all_rows_completed",
+            "detail": "程序执行完毕，共 4 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "complete_arrives_and_lifts",
+            "detail": "Return point FINE arrived and pen is lifted.",
+            "passed": true
+        },
+        {
+            "name": "hold_program",
+            "detail": "A raised 50 mm L path is prepared.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "button_HOLD",
+            "detail": "Authored pendant button HOLD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_HOLD",
+            "detail": "At (308.35, 317.00), top=HOLD, expected=HOLD",
+            "passed": true
+        },
+        {
+            "name": "click_HOLD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "hold_mid_instruction",
+            "detail": "HOLD 已暂停；FWD 继续，手动移动仍锁定",
+            "passed": true
+        },
+        {
+            "name": "hold_before_endpoint",
+            "detail": "HOLD happened before reaching the endpoint.",
+            "passed": true
+        },
+        {
+            "name": "hold_no_target_motion",
+            "detail": "HOLD prevents any new motion targets.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "程序执行完毕，共 1 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "hold_resume_completes",
+            "detail": "程序执行完毕，共 1 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "estop_program",
+            "detail": "Return L path prepared.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "button_EmergencyStop",
+            "detail": "Authored pendant button EmergencyStop exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_EmergencyStop",
+            "detail": "At (413.50, 762.50), top=EmergencyStop, expected=EmergencyStop",
+            "passed": true
+        },
+        {
+            "name": "click_EmergencyStop",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "emergency_pauses",
+            "detail": "Existing station emergency stop pauses execution and lifts pen.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "emergency_rejects_fwd",
+            "detail": "请先解除急停，再按 FWD 继续",
+            "passed": true
+        },
+        {
+            "name": "button_EmergencyStop",
+            "detail": "Authored pendant button EmergencyStop exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_EmergencyStop",
+            "detail": "At (413.50, 762.50), top=EmergencyStop, expected=EmergencyStop",
+            "passed": true
+        },
+        {
+            "name": "click_EmergencyStop",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "clear_estop_not_auto_resume",
+            "detail": "Clearing emergency stop retains paused state and target.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "程序执行完毕，共 1 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "explicit_estop_resume",
+            "detail": "程序执行完毕，共 1 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "pending_c_setup",
+            "detail": "Record only the C via.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "pending_c_rejected_without_motion",
+            "detail": "第 1 行：圆弧尚未完成，请补录中间点和终点",
+            "passed": true
+        },
+        {
+            "name": "collinear_c_setup",
+            "detail": "Complete C with three collinear points.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "collinear_c_rejected_without_motion",
+            "detail": "第 1 行：圆弧三点共线或过于接近共线，请重新示教中间点。",
+            "passed": true
+        },
+        {
+            "name": "outside_setup",
+            "detail": "Create a point beyond the allowed workspace.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "outside_rejected_without_clamping",
+            "detail": "第 1 行：轨迹坐标极值超出工位工作区；请调整示教点，不能裁剪圆弧",
+            "passed": true
+        },
+        {
+            "name": "nominal_speed_setup",
+            "detail": "Record the reference video's 100 mm/sec nominal speed.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "nominal_speed_bounded",
+            "detail": "Nominal 100 mm/sec runs at no more than the configured station cap; effective=88",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "程序执行完毕，共 1 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "nominal_speed_completes",
+            "detail": "程序执行完毕，共 1 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "drawing_program",
+            "detail": "Raised approach, pen-down L and C, pen-up return.",
+            "passed": true
+        },
+        {
+            "name": "pen_metadata",
+            "detail": "Each L/C stores its own pen state.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "程序执行完毕，共 4 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "drawing_lc_completes",
+            "detail": "程序执行完毕，共 4 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "actual_lc_ink",
+            "detail": "Actual paper-contact drawing generated 19 ink vertices, then lifted pen.",
+            "passed": true
+        },
+        {
+            "name": "button_DATA",
+            "detail": "Authored pendant button DATA exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_DATA",
+            "detail": "At (301.00, 386.00), top=DATA, expected=DATA",
+            "passed": true
+        },
+        {
+            "name": "click_DATA",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "data_opens_lcd_files",
+            "detail": "Actual DATA opens the file view inside the original LCD.",
+            "passed": true
+        },
+        {
+            "name": "filename_input",
+            "detail": "The real LCD has a bounded 32-character program-name input.",
+            "passed": true
+        },
+        {
+            "name": "filename_focus_blocks_jog",
+            "detail": "Editing a filename retains focus and cannot issue held robot movement.",
+            "passed": true
+        },
+        {
+            "name": "file_button_SaveProgram",
+            "detail": "LCD file-view button exists and is active.",
+            "passed": true
+        },
+        {
+            "name": "raycast_SaveProgram",
+            "detail": "At (183.44, 517.76), top=SaveProgram, expected=SaveProgram",
+            "passed": true
+        },
+        {
+            "name": "click_SaveProgram",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "save_program_button",
+            "detail": "Real Save button wrote the chosen unique program file.",
+            "passed": true
+        },
+        {
+            "name": "saved_name_listed",
+            "detail": "Saved program appears in the station's file list.",
+            "passed": true
+        },
+        {
+            "name": "saved_list_refreshed",
+            "detail": "The saved filename is visibly listed on the LCD immediately after Save.",
+            "passed": true
+        },
+        {
+            "name": "files_screenshot_saved",
+            "detail": "D:\\dachuang-unity\\Documentation\\Screenshots\\PendantFiles.png",
+            "passed": true
+        },
+        {
+            "name": "files_screenshot_rendered",
+            "detail": "PNG decodes with nonblack rendered content; maximum luminance=0.9803922",
+            "passed": true
+        },
+        {
+            "name": "file_button_CloseProgramFiles",
+            "detail": "LCD file-view button exists and is active.",
+            "passed": true
+        },
+        {
+            "name": "raycast_CloseProgramFiles",
+            "detail": "At (389.69, 517.76), top=CloseProgramFiles, expected=CloseProgramFiles",
+            "passed": true
+        },
+        {
+            "name": "click_CloseProgramFiles",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "file_close_releases_focus",
+            "detail": "Closing the LCD file overlay releases text-entry focus.",
+            "passed": true
+        },
+        {
+            "name": "clear_before_load",
+            "detail": "Program is genuinely empty before loading.",
+            "passed": true
+        },
+        {
+            "name": "button_DATA",
+            "detail": "Authored pendant button DATA exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_DATA",
+            "detail": "At (301.00, 386.00), top=DATA, expected=DATA",
+            "passed": true
+        },
+        {
+            "name": "click_DATA",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "file_button_LoadProgram",
+            "detail": "LCD file-view button exists and is active.",
+            "passed": true
+        },
+        {
+            "name": "raycast_LoadProgram",
+            "detail": "At (252.44, 517.76), top=LoadProgram, expected=LoadProgram",
+            "passed": true
+        },
+        {
+            "name": "click_LoadProgram",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "saved_lc_roundtrip",
+            "detail": "L/C types, stable point numbers, 3D positions, speed and per-row pen state survive a saved roundtrip.",
+            "passed": true
+        },
+        {
+            "name": "file_button_CloseProgramFiles",
+            "detail": "LCD file-view button exists and is active.",
+            "passed": true
+        },
+        {
+            "name": "raycast_CloseProgramFiles",
+            "detail": "At (389.69, 517.76), top=CloseProgramFiles, expected=CloseProgramFiles",
+            "passed": true
+        },
+        {
+            "name": "click_CloseProgramFiles",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "file_path_rejected_transactionally",
+            "detail": "A path outside the program directory cannot save/load or replace the valid document.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "button_HOLD",
+            "detail": "Authored pendant button HOLD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_HOLD",
+            "detail": "At (308.35, 317.00), top=HOLD, expected=HOLD",
+            "passed": true
+        },
+        {
+            "name": "click_HOLD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "paused_load_rejected",
+            "detail": "Loading cannot replace an exclusively controlled paused program.",
+            "passed": true
+        },
+        {
+            "name": "button_RESET",
+            "detail": "Authored pendant button RESET exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_RESET",
+            "detail": "At (185.20, 278.00), top=RESET, expected=RESET",
+            "passed": true
+        },
+        {
+            "name": "click_RESET",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "reset_stops_retains_program",
+            "detail": "Actual RESET stops execution and preserves recorded rows.",
+            "passed": true
+        },
+        {
+            "name": "loaded_document_bound_to_executor",
+            "detail": "The executor references the newly loaded document, not a stale pre-save instance.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "bounded_execution",
+            "detail": "程序执行完毕，共 4 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "loaded_program_replays",
+            "detail": "The program loaded through the LCD executes all four L/C rows to FINE completion: 程序执行完毕，共 4 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "loaded_replay_actual_arrival",
+            "detail": "The loaded program's real TCP returns to the saved paper point and lifts the pen; endpoint mm=0.0003576279",
+            "passed": true
+        },
+        {
+            "name": "close_program",
+            "detail": "Raised close/exit test path.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "close_stops_execution",
+            "detail": "Closing the pendant releases motion and retains the taught row.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "switch_ring",
+            "detail": "Switch through the ordinary app API to station 02.",
+            "passed": true
+        },
+        {
+            "name": "station_switch_stops",
+            "detail": "Previous drawing program cannot continue after changing station.",
+            "passed": true
+        },
+        {
+            "name": "station_documents_separate",
+            "detail": "Ring station has a distinct pendant program document.",
+            "passed": true
+        },
+        {
+            "name": "ring_wire_exists",
+            "detail": "Station 02 has its authored steel guide.",
+            "passed": true
+        },
+        {
+            "name": "ring_safe_segment",
+            "detail": "The first straight guide segment contains a full 2.5 mm legal move.",
+            "passed": true
+        },
+        {
+            "name": "ring_legal_program",
+            "detail": "Prepare one L that advances 2.5 mm along the authored guide's first straight segment.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "ring_legal_l_completes",
+            "detail": "Station 02 FWD completes a legal L through the existing steel-guide motion adapter: 程序执行完毕，共 1 行；全部 FINE 到位",
+            "passed": true
+        },
+        {
+            "name": "ring_legal_actual_tcp",
+            "detail": "Actual motion mm=2.453348, endpoint mm=0.001862586, maximum centreline deviation mm=0.0256075, blocked=False, samples=10",
+            "passed": true
+        },
+        {
+            "name": "ring_boundary_program",
+            "detail": "Request a 10 mm motion beyond the steel guide's first endpoint.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "ring_endpoint_guard_preserved",
+            "detail": "New L/C execution cannot bypass the existing steel-guide boundary: 第 1 行：圆环被钢丝或两端边界阻挡；已停止，请调整此行，不能越界完成",
+            "passed": true
+        },
+        {
+            "name": "return_drawing",
+            "detail": "Return to drawing station 03.",
+            "passed": true
+        },
+        {
+            "name": "drawing_document_retained",
+            "detail": "Station 03 retains its own program after exit and re-entry.",
+            "passed": true
+        },
+        {
+            "name": "button_FWD",
+            "detail": "Authored pendant button FWD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_FWD",
+            "detail": "At (308.35, 282.74), top=FWD, expected=FWD",
+            "passed": true
+        },
+        {
+            "name": "click_FWD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "button_HOLD",
+            "detail": "Authored pendant button HOLD exists.",
+            "passed": true
+        },
+        {
+            "name": "raycast_HOLD",
+            "detail": "At (308.35, 317.00), top=HOLD, expected=HOLD",
+            "passed": true
+        },
+        {
+            "name": "click_HOLD",
+            "detail": "Actual pointer click handled.",
+            "passed": true
+        },
+        {
+            "name": "execution_screenshot_saved",
+            "detail": "D:\\dachuang-unity\\Documentation\\Screenshots\\PendantExecution.png",
+            "passed": true
+        },
+        {
+            "name": "execution_screenshot_rendered",
+            "detail": "PNG decodes with nonblack rendered content; maximum luminance=0.9349255",
+            "passed": true
+        }
+    ],
+    "limitations": [
+        "The real scene's simulated robot and original CAD assembly are exercised; no physical robot is connected.",
+        "Pointer events are dispatched after the actual EventSystem raycast; physical OS mouse hardware is not exercised.",
+        "Deterministic test points are populated through the program model; actual TCP recording has its separate --pendant-smoke acceptance.",
+        "Motion evidence is sampled from the actual tool TCP after committed IK frames, not merely the ideal target or execution state."
+    ]
+}
