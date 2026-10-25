@@ -72,7 +72,9 @@ namespace RoboticsLab
                 Line(visible - Vector2.right * 10, visible + Vector2.right * 10, Tip, 1.5f);
                 Line(visible - Vector2.up * 10, visible + Vector2.up * 10, Tip, 1.5f);
                 Dot(visible, 4, Tip);
-                if (!trace.station.PenDown) Dot(visible, 2, Paper);
+                bool probeOnPaper = (trace.IsProgrammed || trace.station.PenDown)
+                    && Mathf.Abs(trace.station.transform.InverseTransformPoint(trace.station.ActualToolPosition).y - trace.station.drawingHeight) <= trace.contactTolerance;
+                if (!probeOnPaper) Dot(visible, 2, Paper);
                 if ((actual - visible).sqrMagnitude > 100)
                 {
                     Vector2 direction = (actual - visible).normalized;
@@ -92,7 +94,7 @@ namespace RoboticsLab
                 Vector2 paperPoint = trace.WorldToPaper(trace.station.ActualToolPosition) - trace.layoutOffset;
                 bool outside = Mathf.Abs(paperPoint.x) > size.x * .5f || Mathf.Abs(paperPoint.y) > size.y * .5f;
                 float contactHeight = trace.station.transform.InverseTransformPoint(trace.station.ActualToolPosition).y;
-                bool sampling = trace.station.PenDown && Mathf.Abs(contactHeight - trace.station.drawingHeight) <= trace.contactTolerance;
+                bool sampling = (trace.IsProgrammed || trace.station.PenDown) && Mathf.Abs(contactHeight - trace.station.drawingHeight) <= trace.contactTolerance;
                 string probeState = sampling ? "触纸采样" : "未采样";
                 Dot(new Vector2(bounds.x + 13, legendY + 29), 4, Tip);
                 Text(new Rect(bounds.x + 22, legendY + 20, bounds.width - 26, 20),

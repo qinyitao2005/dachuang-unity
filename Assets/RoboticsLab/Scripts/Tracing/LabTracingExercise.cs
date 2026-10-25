@@ -20,6 +20,7 @@ namespace RoboticsLab
         public bool IsManual => CurrentShape == 0;
         public bool IsAutomatic => automatic != null && automatic.Running;
         public bool AttemptActive { get; private set; }
+        public bool IsProgrammed { get; private set; }
         public bool Completed { get; private set; }
         public float Coverage => scorer?.Coverage ?? 0;
         public float Accuracy => scorer?.Accuracy ?? 0;
@@ -67,6 +68,7 @@ namespace RoboticsLab
             Initialize();
             automatic?.Stop("已重置");
             AttemptActive = Completed = false;
+            IsProgrammed = false;
             if (station) { station.SetPen(false); station.ClearDrawing(); }
             scorer = new LabTracingScore(GetPath(CurrentShape), tolerance);
             Status = IsManual ? "手动 J：先将探针移到绿色起点，再点击开始" : "点击自动循迹，沿印线移动并评分";
@@ -99,12 +101,24 @@ namespace RoboticsLab
         {
             string message = IsManual ? "手动循迹已停止，保留本次成绩" : "自动循迹已停止，保留本次成绩";
             automatic?.Stop(message); AttemptActive = false;
+            IsProgrammed = false;
             Status = message;
+        }
+        public void BeginProgrammed()
+        {
+            Initialize();
+            automatic?.Stop("切换到示教程序");
+            scorer = new LabTracingScore(GetPath(CurrentShape), tolerance);
+            IsProgrammed = AttemptActive = true;
+            Completed = false;
+            station.SetPen(false);
+            Status = "示教程序循迹：按实际探针位置评分，不留笔迹";
         }
         public void FinishAttempt()
         {
             if (automatic != null && automatic.Running) automatic.Stop("本次循迹已结束");
             AttemptActive = false;
+            IsProgrammed = false;
             Completed = scorer != null && scorer.Completed;
             if (station) station.SetPen(false);
             Status = Completed ? "循迹完成；评分按实际覆盖率和偏差计算" : "已结束；未走完的部分计入完成度扣分";
@@ -112,8 +126,9 @@ namespace RoboticsLab
         void Update()
         {
             if (!initialized) return;
+            if (IsProgrammed && station.IsOperating && station.EmergencyStopped) return;
             if (AttemptActive && (!station.IsOperating || station.EmergencyStopped))
-            { automatic.Stop("已停止：工位退出或急停"); AttemptActive = false; Status = automatic.Status; return; }
+            { automatic.Stop("已停止：工位退出或急停"); AttemptActive = IsProgrammed = false; Status = automatic.Status; return; }
             bool wasRunning = IsAutomatic;
             automatic.Tick(Time.deltaTime);
             if (wasRunning)
@@ -126,11 +141,11 @@ namespace RoboticsLab
         {
             if (!AttemptActive || !station || !station.IsOperating || station.EmergencyStopped) return;
             Vector3 local = station.transform.InverseTransformPoint(station.ActualToolPosition);
-            bool contact = station.PenDown && Mathf.Abs(local.y - station.drawingHeight) <= contactTolerance;
+            bool contact = (IsProgrammed || station.PenDown) && Mathf.Abs(local.y - station.drawingHeight) <= contactTolerance;
             // Automatic approach/lowering is not part of the printed course. Sample after the robot's LateUpdate.
             if (IsAutomatic && !automatic.Following) return;
             scorer.Sample(WorldToPaper(station.ActualToolPosition), contact);
-            if (IsManual)
+            if (IsManual && !IsProgrammed)
             {
                 if (scorer.Completed) { Completed = true; FinishAttempt(); }
                 else Status = !contact ? "探针未接触纸面：贴纸后继续" : !scorer.Started ? "请将探针移到绿色起点" :

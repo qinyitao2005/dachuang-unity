@@ -25,6 +25,8 @@ namespace RoboticsLab
         const float SampleSpacing = .001f;
 
         public LabRobotStation Station { get; private set; }
+        // Only the dedicated Station 1 programming controller opts in.
+        public bool AllowTracing { get; set; }
         public LabPendantProgramModel Model { get; private set; }
         public LabTrajectoryState State { get; private set; } = LabTrajectoryState.Ready;
         public bool IsExecuting => State == LabTrajectoryState.Running || State == LabTrajectoryState.Paused;
@@ -276,7 +278,8 @@ namespace RoboticsLab
             // The station's paper constraint is exact, whereas a taught real TCP
             // can differ by solver precision. Accept only that tiny Y difference;
             // all lateral coordinates and every lifted/three-dimensional arc stay unchanged.
-            if (Station.TrainingMode == 0 && Mathf.Abs(destination.y - Station.drawingHeight) <= PaperTolerance)
+            if (Station.TrainingMode == 0 && Mathf.Abs(destination.y - Station.drawingHeight) <= PaperTolerance
+                && (!Station.IsTracing || destination.y <= Station.drawingHeight))
                 destination.y = Station.drawingHeight;
             return Vector3.Distance(Station.toolTarget.localPosition, destination) <= TargetTolerance;
         }
@@ -328,7 +331,7 @@ namespace RoboticsLab
 
         string BlockedReason()
         {
-            if (!Station.IsRing) return "绘图运动被阻挡：" + Station.DrawingBlockReason + "；已停止，请调整轨迹";
+            if (!Station.IsRing) return (Station.IsTracing ? "探针运动被阻挡：" : "绘图运动被阻挡：") + Station.DrawingBlockReason + "；已停止，请调整轨迹";
             if (Station.RobotWireBlocked)
                 return "机械臂与钢丝的碰撞边界阻挡了轨迹"
                     + (string.IsNullOrEmpty(Station.RobotCollisionReason) ? "" : "（" + Station.RobotCollisionReason + "）")
@@ -349,7 +352,9 @@ namespace RoboticsLab
             if (!isActiveAndEnabled) return Reject("示教程序执行器未启用");
             if (!Station || !Station.IsOperating || !Station.toolTarget || !Station.endEffector)
                 return Reject("请先进入已解锁的机械臂工位");
-            if (Station.IsTracing) return Reject("01 工位使用专用循迹控制，请在 02 / 03 工位使用 L/C 编程");
+            if (Station.IsTracing && !AllowTracing) return Reject("01 工位请使用专用循迹示教器");
+            if (Station.IsTracing && Station.GetComponent<LabTracingExercise>() && Station.GetComponent<LabTracingExercise>().IsAutomatic)
+                return Reject("先停止预设自动循迹，再运行示教程序");
             if (Station.EmergencyStopped) return Reject("请先解除急停，再按 FWD 继续");
             if (!Finite(Station.moveSpeed) || Station.moveSpeed <= 0) return Reject("工位运动速度配置无效");
             if (Model == null) return Reject("示教程序尚未绑定");
@@ -397,7 +402,7 @@ namespace RoboticsLab
                 }
                 else { error = prefix + "未知运动类型"; return false; }
 
-                bool pen = instruction.PenDown;
+                bool pen = !Station.IsTracing && instruction.PenDown;
                 if (pen && Station.IsRing) { error = prefix + "套圈工位不能落笔"; return false; }
                 Vector3 minimum, maximum;
                 if (!path.TryGetBounds(out minimum, out maximum) || !InsideWorkspace(minimum) || !InsideWorkspace(maximum))

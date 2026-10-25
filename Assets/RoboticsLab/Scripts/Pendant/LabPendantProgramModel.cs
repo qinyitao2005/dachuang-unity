@@ -15,6 +15,7 @@ namespace RoboticsLab
 
         public int Number => number;
         public Vector3 LocalPosition => localPosition;
+        internal void SetPosition(Vector3 position) { localPosition = position; }
 
         internal LabPendantPoint(int number, Vector3 localPosition)
         {
@@ -160,6 +161,26 @@ namespace RoboticsLab
             for (int i = 0; i < points.Count; i++)
                 if (points[i].Number == number) return points[i];
             return null;
+        }
+
+        public bool TouchUpPoint(int number, Vector3 position)
+        {
+            var point = FindPoint(number);
+            if (point == null || !ValidPosition(position)) return Reject("点位不存在或坐标无效。");
+            point.SetPosition(position);
+            revision++;
+            Notify("已更新 P[" + number + "] 的实际位置。");
+            return true;
+        }
+
+        public bool SetTargetReference(int row, int number)
+        {
+            if (row < 0 || row >= instructions.Count || FindPoint(number) == null) return Reject("程序行或引用点位不存在。");
+            instructions[row].SetTargetPoint(number);
+            points.RemoveAll(point => !instructions.Exists(item => item.ViaPoint == point.Number || item.TargetPoint == point.Number));
+            revision++;
+            Notify("目标点已改为 P[" + number + "]。");
+            return true;
         }
 
         public string[] GetRows()
