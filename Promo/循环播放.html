@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>机械臂虚拟仿真实训平台 · 比赛循环展播</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#0b1822;color:#edf6f6;width:100%;height:100%;font-family:"Microsoft YaHei",sans-serif}main,video{width:100%;height:100%;display:block}video{object-fit:contain}main.playing{cursor:none}#launch{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;background:#0b1822ef;text-align:center;padding:30px}#launch[hidden]{display:none}h1{font-size:clamp(26px,4vw,64px);margin:14px 0}p{color:#a1bbc0;margin:12px 0 30px}button{background:#69ddd1;color:#102534;border:0;padding:15px 32px;font:600 20px inherit;font-size:20px;cursor:pointer;border-radius:4px}small{color:#69ddd1;letter-spacing:.16em}
+</style><main id="screen"><video id="film" playsinline loop preload="auto" src="机械臂虚拟仿真实训平台_比赛循环版_90秒.mp4"></video>
+<div id="launch"><small>飞八分钱 · 虚拟仿真赛道</small><h1>机械臂虚拟仿真实训平台</h1><p id="hint">90 秒循环展播　·　单击开始后全屏播放</p><button id="play">开始展播</button></div></main>
+<script>
+const film=document.getElementById('film'),screenNode=document.getElementById('screen'),cover=document.getElementById('launch'),hint=document.getElementById('hint');
+document.getElementById('play').onclick=async()=>{const full=screenNode.requestFullscreen?.();if(full)full.catch(()=>{});try{await film.play();cover.hidden=true;screenNode.classList.add('playing')}catch(e){hint.textContent='请将 HTML 与同名 MP4 放在同一文件夹后重新打开。'}};
+film.ondblclick=()=>{if(document.fullscreenElement){document.exitFullscreen()}else{screenNode.requestFullscreen?.()}};
+film.onerror=()=>{cover.hidden=false;hint.textContent='未能读取视频。请完整解压，并将 HTML 与 MP4 保留在同一文件夹。'};
+</script></html>

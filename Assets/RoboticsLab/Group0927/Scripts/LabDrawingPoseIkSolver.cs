@@ -55,7 +55,8 @@ namespace RoboticsLab
         /// 此时保留误差较小的姿态，是否接受或恢复由外层运动控制器决定。
         /// </returns>
         public bool Solve(LabRobotJointRig rig, Transform drawingTcp, Vector3 target,
-            Vector3 localToolNormal, Vector3 desiredWorldNormal, float dt, Transform fixedToolRoot = null)
+            Vector3 localToolNormal, Vector3 desiredWorldNormal, float dt, Transform fixedToolRoot = null,
+            float maximumPositionTolerance = float.PositiveInfinity)
         {
             Converged = false;
             LastIterations = 0;
@@ -65,9 +66,10 @@ namespace RoboticsLab
                 localToolNormal.sqrMagnitude < 1e-12f || desiredWorldNormal.sqrMagnitude < 1e-12f)
                 return false;
 
+            float positionTolerance = Mathf.Max(.000001f, Mathf.Min(PositionTolerance, maximumPositionTolerance));
             localToolNormal.Normalize();
             desiredWorldNormal.Normalize();
-            if (UpdateDiagnostics(drawingTcp, target, localToolNormal, desiredWorldNormal))
+            if (UpdateDiagnostics(drawingTcp, target, localToolNormal, desiredWorldNormal, positionTolerance))
                 return true;
             if (float.IsNaN(dt) || float.IsInfinity(dt) || dt <= 0 ||
                 float.IsNaN(JointSpeedDegrees) || float.IsInfinity(JointSpeedDegrees) || JointSpeedDegrees <= 0)
@@ -103,7 +105,7 @@ namespace RoboticsLab
                 Vector3 positionError = target - actualPosition;
                 Vector3 normalError = NormalError(desiredWorldNormal, actualNormal, guide);
                 if (!Finite(positionError) || !Finite(normalError)) break;
-                if (UpdateDiagnostics(drawingTcp, target, localToolNormal, desiredWorldNormal))
+                if (UpdateDiagnostics(drawingTcp, target, localToolNormal, desiredWorldNormal, positionTolerance))
                     return true;
 
                 work.error[0] = positionError.x;
@@ -188,14 +190,14 @@ namespace RoboticsLab
                     if (damping > .08) break;
                 }
             }
-            return UpdateDiagnostics(drawingTcp, target, localToolNormal, desiredWorldNormal);
+            return UpdateDiagnostics(drawingTcp, target, localToolNormal, desiredWorldNormal, positionTolerance);
         }
 
-        bool UpdateDiagnostics(Transform tcp, Vector3 target, Vector3 localNormal, Vector3 desiredNormal)
+        bool UpdateDiagnostics(Transform tcp, Vector3 target, Vector3 localNormal, Vector3 desiredNormal, float positionTolerance)
         {
             PositionError = Vector3.Distance(tcp.position, target);
             OrientationError = Vector3.Angle(tcp.TransformDirection(localNormal), desiredNormal);
-            Converged = PositionError <= Mathf.Max(.000001f, PositionTolerance) &&
+            Converged = PositionError <= positionTolerance &&
                 OrientationError <= Mathf.Max(.001f, OrientationTolerance);
             return Converged;
         }

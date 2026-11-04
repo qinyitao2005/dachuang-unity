@@ -73,6 +73,10 @@ def files_under(directory: Path, *, windows: bool = False) -> list[Path]:
             continue
         if windows and any("BackUpThisFolder_ButDontShipItWithYourGame" in part for part in relative.parts):
             continue
+        if windows and len(relative.parts) == 1 and path.name in {
+            "StandaloneSmoke.json", "StandaloneSmoke.png", "StandaloneTracingPaper.png", "StandaloneTracingWorkcell.png"
+        }:
+            continue
         try:
             path.resolve().relative_to(PROJECT)
         except ValueError as exc:

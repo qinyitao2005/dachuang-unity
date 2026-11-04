@@ -1,12 +1,13 @@
-Avatar body authoring / 2026-09-25T05:45:55.3436597Z
+Avatar body authoring / 2026-11-04T14:35:02.6089991Z
 Source: Assets/Jogging.fbx
 Body radial reduction: 11 percent around bind-pose torso and limb axes; blended by the original skin weights.
-No skeleton, bone lengths, bind poses, skin weights, materials, head, hands or footwear are scaled.
-Protected head/neck/hand/foot weights taper the reduction smoothly to zero; their dominant vertices remain identical.
+The original skeleton, bone lengths, bind poses and white material are retained.
+Slimming alone tapers to zero at protected head, neck, hand and foot bones. Subsequent contour authoring rounds the suit and lower jaw and replaces the four mechanical neck islands.
 Every update rebuilds from the original FBX mesh, preventing cumulative slimming.
 MESH Ch32 => Assets/RoboticsLab/Generated/TraineeSlim_Ch32_4659950864537851583.asset vertices=20568 modified=10986 maxDeltaMeters=0.018126
-PASS: original skin weights and bind poses preserved
-PASS: protected dominant head/neck/hand/foot vertices unchanged; count=9567 maxDeltaMeters=0.00000000
+PASS: radial fit preserves original weights; assembled mesh preserves the original bind poses
+PASS: protected vertices unchanged by radial fit; count=9567 maxDeltaMeters=0.00000000
+CONTOUR sourceVertices=20568 finalVertices=19456 finalTriangles=35760
 RADIAL LeftLowerArm highInfluenceVertices=44 meanRatio=0.889770
 RADIAL LeftLowerLeg highInfluenceVertices=122 meanRatio=0.889989
 RADIAL LeftUpperArm highInfluenceVertices=265 meanRatio=0.897770

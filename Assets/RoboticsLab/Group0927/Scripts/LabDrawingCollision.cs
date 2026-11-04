@@ -25,6 +25,10 @@ namespace RoboticsLab
         sealed class Proxy
         {
             public MeshFilter mesh;
+            public Transform transform;
+            public Matrix4x4 lastMatrix;
+            public Bounds lastBatchBounds;
+            public bool wasActive, wasBatched;
             public Renderer renderer;
             public Bounds localBounds;
             public float[] radii;
@@ -43,6 +47,24 @@ namespace RoboticsLab
         Box[] obstacleBoxes;
         int[] activeObstacles;
         int activeObstacleCount;
+        // Static CAD is indexed in world space. Rebuild the tree when a fixture moves or
+        // changes visibility; intermediate joint sweep samples only query nearby leaves.
+        struct Node
+        {
+            public Vector3 min, max;
+            public int start, count, left, right;
+        }
+        Node[] nodes;
+        int nodeCount;
+        bool indexReady;
+        sealed class ByCenter : IComparer<int>
+        {
+            readonly Box[] boxes;
+            readonly int axis;
+            public ByCenter(Box[] boxes, int axis) { this.boxes = boxes; this.axis = axis; }
+            public int Compare(int a, int b) => boxes[a].center[axis].CompareTo(boxes[b].center[axis]);
+        }
+        ByCenter[] centerOrder;
         Vector3 tableNormal, tableOrigin;
         Quaternion[] finalRotations;
         float[] jointAngles, paddings;
@@ -112,6 +134,9 @@ namespace RoboticsLab
             moving.Sort((a, b) => b.deepestJoint.CompareTo(a.deepestJoint));
             obstacleBoxes = new Box[obstacles.Count];
             activeObstacles = new int[obstacles.Count];
+            nodes = new Node[2 * obstacles.Count + 1];
+            centerOrder = new[] { new ByCenter(obstacleBoxes, 0), new ByCenter(obstacleBoxes, 1), new ByCenter(obstacleBoxes, 2) };
+            indexReady = false;
             finalRotations = new Quaternion[joints.Length];
             jointAngles = new float[joints.Length];
             paddings = new float[moving.Count];
@@ -152,13 +177,14 @@ namespace RoboticsLab
                 paddings[p] = motion;
                 maximumMotion = Mathf.Max(maximumMotion, motion);
             }
-            if (!CheckPose(null, safetyMargin, out reason, out minClearance)) return false;
+            float clearanceCap = Mathf.Max(safetyMargin, 2 * maxSweepPadding);
+            if (!CheckPose(null, safetyMargin, out reason, out minClearance, clearanceCap)) return false;
             float finalClearance = minClearance;
             if (maximumMotion < 1e-9f) return true;
             try
             {
                 SetPose(previousLocalRotations);
-                if (!CheckPose(null, safetyMargin, out reason, out minClearance))
+                if (!CheckPose(null, safetyMargin, out reason, out minClearance, clearanceCap))
                 { reason = "起始姿态：" + reason; return false; }
                 float endpointClearance = Mathf.Min(finalClearance, minClearance);
                 if (!Finite(maximumMotion) || endpointClearance <= 0)
@@ -180,7 +206,7 @@ namespace RoboticsLab
                         if (joints[j] != null && joints[j].joint)
                             joints[j].joint.localRotation = Quaternion.Slerp(previousLocalRotations[j], finalRotations[j], t);
                     float clearance;
-                    if (!CheckPose(paddings, 0, out reason, out clearance))
+                    if (!CheckPose(paddings, 0, out reason, out clearance, clearanceCap))
                     { minClearance = Mathf.Min(minClearance, clearance); reason = "运动路径：" + reason; return false; }
                     minClearance = Mathf.Min(minClearance, clearance);
                 }
@@ -199,27 +225,121 @@ namespace RoboticsLab
             if (!string.IsNullOrEmpty(reason)) return false;
             if (!Finite(safetyMargin) || safetyMargin < 0 || !Finite(penContactTolerance) || penContactTolerance < 0)
             { reason = "绘图碰撞间隙设置无效。"; return false; }
-            tableNormal = station.transform.up;
-            tableOrigin = station.transform.TransformPoint(Vector3.up * station.tableHeight);
-            activeObstacleCount = 0;
+            Vector3 normal = station.transform.up;
+            Vector3 origin = station.transform.TransformPoint(Vector3.up * station.tableHeight);
+            bool dirty = !indexReady || !normal.Equals(tableNormal) || !origin.Equals(tableOrigin);
+            tableNormal = normal;
+            tableOrigin = origin;
             for (int i = 0; i < obstacles.Count; i++)
             {
-                if (!Active(obstacles[i])) continue;
-                Box box = WorldBox(obstacles[i]);
-                if (!Finite(box.center) || !Finite(box.extents))
-                { reason = "无效静态网格变换：" + obstacles[i].path; return false; }
-                obstacleBoxes[i] = box;
-                // 所有肩部后代还有桌面半空间检查，桌面以下的柜体不必重复逐块检查。
-                if (Vector3.Dot(box.center - tableOrigin, tableNormal) + Radius(box, tableNormal) <= .001f &&
-                    !obstacles[i].board) continue;
-                activeObstacles[activeObstacleCount++] = i;
+                Proxy proxy = obstacles[i];
+                bool active = Active(proxy);
+                if (active != proxy.wasActive) dirty = true;
+                bool wasActive = proxy.wasActive;
+                proxy.wasActive = active;
+                if (!active) continue;
+                bool batched = proxy.renderer.isPartOfStaticBatch;
+                if (batched)
+                {
+                    Bounds bounds = proxy.renderer.bounds;
+                    if (wasActive && proxy.wasBatched && bounds.Equals(proxy.lastBatchBounds)) continue;
+                    proxy.lastBatchBounds = bounds;
+                    obstacleBoxes[i] = AxisAligned(bounds);
+                }
+                else
+                {
+                    Matrix4x4 matrix = proxy.transform.localToWorldMatrix;
+                    if (wasActive && !proxy.wasBatched && matrix.Equals(proxy.lastMatrix)) continue;
+                    proxy.lastMatrix = matrix;
+                    obstacleBoxes[i] = WorldBox(proxy, matrix);
+                }
+                proxy.wasBatched = batched;
+                if (!Finite(obstacleBoxes[i].center) || !Finite(obstacleBoxes[i].extents))
+                {
+                    proxy.wasActive = false;
+                    reason = "无效静态网格变换：" + proxy.path;
+                    return false;
+                }
+                dirty = true;
+            }
+            if (dirty)
+            {
+                activeObstacleCount = 0;
+                for (int i = 0; i < obstacles.Count; ++i)
+                {
+                    if (!obstacles[i].wasActive) continue;
+                    Box box = obstacleBoxes[i];
+                    if (!obstacles[i].board && Vector3.Dot(box.center - tableOrigin, tableNormal)
+                        + Radius(box, tableNormal) <= .001f) continue;
+                    activeObstacles[activeObstacleCount++] = i;
+                }
+                nodeCount = 0;
+                if (activeObstacleCount > 0) BuildNode(0, activeObstacleCount);
+                indexReady = true;
             }
             return true;
         }
 
-        bool CheckPose(float[] padding, float margin, out string reason, out float minClearance)
+        int BuildNode(int start, int count)
         {
-            minClearance = float.PositiveInfinity;
+            int index = nodeCount++;
+            Box first = obstacleBoxes[activeObstacles[start]];
+            Node node = new Node { min = first.min, max = first.max, start = start, count = count };
+            for (int i = start + 1; i < start + count; i++)
+            {
+                Box box = obstacleBoxes[activeObstacles[i]];
+                node.min = Vector3.Min(node.min, box.min);
+                node.max = Vector3.Max(node.max, box.max);
+            }
+            if (count > 8)
+            {
+                Vector3 size = node.max - node.min;
+                int axis = size.x >= size.y && size.x >= size.z ? 0 : size.y >= size.z ? 1 : 2;
+                Array.Sort(activeObstacles, start, count, centerOrder[axis]);
+                int half = count / 2;
+                node.left = BuildNode(start, half);
+                node.right = BuildNode(start + half, count - half);
+                node.count = 0;
+            }
+            nodes[index] = node;
+            return index;
+        }
+
+        // The AABB gap is a lower bound on separation. Include the swept-motion skin
+        // in the search distance before discarding an entire subtree.
+        bool CheckNode(int index, Proxy proxy, ref Box box, float skin, float margin,
+            ref float minClearance, ref string reason)
+        {
+            ref Node node = ref nodes[index];
+            float search = Mathf.Max(margin, minClearance) + skin;
+            if (box.min.x > node.max.x + search || box.max.x < node.min.x - search ||
+                box.min.y > node.max.y + search || box.max.y < node.min.y - search ||
+                box.min.z > node.max.z + search || box.max.z < node.min.z - search)
+                return true;
+            if (node.count == 0)
+                return CheckNode(node.left, proxy, ref box, skin, margin, ref minClearance, ref reason)
+                    && CheckNode(node.right, proxy, ref box, skin, margin, ref minClearance, ref reason);
+            for (int j = node.start; j < node.start + node.count; j++)
+            {
+                int o = activeObstacles[j];
+                Proxy obstacle = obstacles[o];
+                if (proxy.deepestJoint == 0 && obstacle.baseMount) continue;
+                Box other = obstacleBoxes[o];
+                float allowance = proxy.nib && obstacle.paper ? penContactTolerance : 0;
+                float distanceSquared = BoundsDistanceSquared(box, other);
+                float threshold = Mathf.Max(margin, minClearance) + skin - allowance;
+                if (distanceSquared > 0 && (threshold <= 0 || distanceSquared >= threshold * threshold)) continue;
+                float gap = Separation(box, other) - skin + allowance;
+                if (gap < minClearance) minClearance = gap;
+                if (gap < margin) return Hit(proxy, obstacle, gap, obstacle.path, out reason);
+            }
+            return true;
+        }
+
+        bool CheckPose(float[] padding, float margin, out string reason, out float minClearance,
+            float clearanceCap = float.PositiveInfinity)
+        {
+            minClearance = clearanceCap;
             reason = "";
             LastHitTransform = LastObstacleTransform = null;
             int activeMoving = 0;
@@ -239,21 +359,8 @@ namespace RoboticsLab
                     if (gap < minClearance) minClearance = gap;
                     if (gap < margin) return Hit(proxy, null, gap, "工作台面", out reason);
                 }
-                for (int active = 0; active < activeObstacleCount; active++)
-                {
-                    int o = activeObstacles[active];
-                    Proxy obstacle = obstacles[o];
-                    Box other = obstacleBoxes[o];
-                    // 仅第一轴与本机械臂固定安装座的正常接合可忽略；外框仍然检测。
-                    if (proxy.deepestJoint == 0 && obstacle.baseMount) continue;
-                    float allowance = proxy.nib && obstacle.paper ? penContactTolerance : 0;
-                    float boundsDistanceSquared = BoundsDistanceSquared(box, other);
-                    float aabbGap = Mathf.Sqrt(boundsDistanceSquared) - skin + allowance;
-                    if (boundsDistanceSquared > 0 && aabbGap >= minClearance && aabbGap >= margin) continue;
-                    float gap = Separation(box, other) - skin + allowance;
-                    if (gap < minClearance) minClearance = gap;
-                    if (gap < margin) return Hit(proxy, obstacle, gap, obstacle.path, out reason);
-                }
+                if (nodeCount > 0 && !CheckNode(0, proxy, ref box, skin, margin, ref minClearance, ref reason))
+                    return false;
             }
             if (activeMoving == 0)
                 return Unverified("没有可验证的活动机械臂网格。", out reason, out minClearance);
@@ -273,7 +380,7 @@ namespace RoboticsLab
             if (!filter || !filter.sharedMesh) return null;
             var renderer = filter.GetComponent<Renderer>();
             if (!renderer) return null;
-            return new Proxy { mesh = filter, renderer = renderer, localBounds = filter.sharedMesh.bounds,
+            return new Proxy { mesh = filter, transform = filter.transform, renderer = renderer, localBounds = filter.sharedMesh.bounds,
                 path = PathOf(filter.transform, station.transform) };
         }
         int DeepestJoint(Transform child)
@@ -292,14 +399,15 @@ namespace RoboticsLab
         {
             // Unity 静态合批后 sharedMesh 可能是整个合批网格，已不再属于本零件的
             // 局部坐标。Renderer.bounds 仍是当前零件的正确世界包围盒，直接使用。
-            if (proxy.renderer && proxy.renderer.isPartOfStaticBatch)
-            {
-                Bounds bounds = proxy.renderer.bounds;
-                return new Box { center = bounds.center, x = Vector3.right, y = Vector3.up,
-                    z = Vector3.forward, extents = bounds.extents, min = bounds.min, max = bounds.max };
-            }
-            Matrix4x4 matrix = proxy.mesh.transform.localToWorldMatrix;
-            Quaternion rotation = proxy.mesh.transform.rotation;
+            return proxy.renderer.isPartOfStaticBatch ? AxisAligned(proxy.renderer.bounds)
+                : WorldBox(proxy, proxy.transform.localToWorldMatrix);
+        }
+        static Box AxisAligned(Bounds bounds) =>
+            new Box { center = bounds.center, x = Vector3.right, y = Vector3.up, z = Vector3.forward,
+                extents = bounds.extents, min = bounds.min, max = bounds.max };
+        static Box WorldBox(Proxy proxy, Matrix4x4 matrix)
+        {
+            Quaternion rotation = proxy.transform.rotation;
             Vector3 extent = proxy.localBounds.extents;
             Vector3 vx = matrix.MultiplyVector(Vector3.right * extent.x);
             Vector3 vy = matrix.MultiplyVector(Vector3.up * extent.y);

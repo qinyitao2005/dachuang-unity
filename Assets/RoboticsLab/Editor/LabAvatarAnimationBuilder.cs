@@ -308,7 +308,8 @@ namespace RoboticsLab.Editor
             var toes = left ? HumanBodyBones.LeftToes : HumanBodyBones.RightToes;
             Aim(animator, upper, lower, Vector3.down + Vector3.forward * .025f);
             Aim(animator, lower, foot, Vector3.down - Vector3.forward * .025f);
-            Aim(animator, foot, toes, Vector3.forward);
+            // The toes sit forward and below the ankle when the white trainee stands flat.
+            Aim(animator, foot, toes, Vector3.forward - Vector3.up * .6f);
         }
 
         static void PoseArm(Animator animator, bool left)

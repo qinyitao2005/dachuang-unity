@@ -79,10 +79,12 @@ namespace RoboticsLab.Editor
                 Transform helmet = helmets[i];
                 float u = helmets.Count == 1 ? .5f : i/(float)(helmets.Count-1);
                 float z = frontBounds.center.z + Mathf.Lerp(-availableLength*.5f,availableLength*.5f,u);
-                helmet.rotation = Quaternion.Euler(0,90,0);
+                // Place the brim towards the wearer's forward direction at the front of the tray.
+                // This lets both hands lift the shell without a half-turn or reaching into the rack.
+                helmet.rotation = Quaternion.Euler(0,-90,0);
                 helmet.position = new Vector3(frontBounds.center.x,beamTop+trayThickness,z);
                 Bounds b = RenderBounds(helmet.gameObject);
-                helmet.position += new Vector3(frontBounds.center.x-b.center.x,beamTop+trayThickness-b.min.y,z-b.center.z);
+                helmet.position += new Vector3(frontBounds.center.x-trayWidth*.285f-b.center.x,beamTop+trayThickness-b.min.y,z-b.center.z);
                 EditorUtility.SetDirty(helmet);
             }
 

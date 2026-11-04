@@ -46,8 +46,8 @@ namespace RoboticsLab.Editor
                 "Avatar body authoring / " + DateTime.UtcNow.ToString("O"),
                 "Source: " + SourcePath,
                 "Body radial reduction: 11 percent around bind-pose torso and limb axes; blended by the original skin weights.",
-                "No skeleton, bone lengths, bind poses, skin weights, materials, head, hands or footwear are scaled.",
-                "Protected head/neck/hand/foot weights taper the reduction smoothly to zero; their dominant vertices remain identical.",
+                "The original skeleton, bone lengths, bind poses and white material are retained.",
+                "Slimming alone tapers to zero at protected head, neck, hand and foot bones. Subsequent contour authoring rounds the suit and lower jaw and replaces the four mechanical neck islands.",
                 "Every update rebuilds from the original FBX mesh, preventing cumulative slimming."
             };
             var originals = source.GetComponentsInChildren<SkinnedMeshRenderer>(true)
@@ -125,30 +125,43 @@ namespace RoboticsLab.Editor
                         metric.after += Vector3.ProjectOnPlane(output[v] - primary.origin, primary.axis).magnitude;
                     }
                 }
-                Mesh clone = Object.Instantiate(original);
+                Mesh clone = new Mesh { indexFormat = original.indexFormat };
                 clone.name = "TraineeSlim_" + original.name;
                 clone.hideFlags = HideFlags.None;
                 clone.vertices = output;
+                clone.uv = original.uv;
+                clone.bindposes = bindposes;
+                clone.boneWeights = weights;
+                clone.triangles = original.triangles;
                 if (normals.Length == vertices.Length) clone.normals = normals;
                 if (tangents.Length == vertices.Length) clone.tangents = tangents;
+                // Validate the radial fit before the neck replacement changes topology.
+                bool weightsPreserved = clone.boneWeights.SequenceEqual(original.boneWeights);
+                LabAvatarSilhouette.Apply(clone);
+                LabAvatarNeckAuthoring.Apply(original, clone, originalRenderer.bones);
                 clone.RecalculateBounds();
                 string guid; long fileId;
                 AssetDatabase.TryGetGUIDAndLocalFileIdentifier(original, out guid, out fileId);
                 string meshPath = Folder + "/TraineeSlim_" + Regex.Replace(original.name, "[^A-Za-z0-9_-]", "_") + "_" + fileId + ".asset";
                 clone.name = Path.GetFileNameWithoutExtension(meshPath);
+                int assembledCount = clone.vertexCount;
+                if (assembledCount < 16000) throw new InvalidOperationException("No assembled skinned vertices.");
+                // Writing the Mesh as a native asset preserves this path's GUID. CopySerialized
+                // between Mesh instances does not reliably include the runtime vertex buffers.
+                AssetDatabase.CreateAsset(clone, meshPath);
                 Mesh asset = AssetDatabase.LoadAssetAtPath<Mesh>(meshPath);
-                if (asset) { EditorUtility.CopySerialized(clone, asset); Object.DestroyImmediate(clone); }
-                else { asset = clone; AssetDatabase.CreateAsset(asset, meshPath); }
+                if (!asset || asset.vertexCount != assembledCount)
+                    throw new InvalidOperationException("Failed to write the assembled trainee mesh.");
                 Undo.RecordObject(renderer, "Use independently authored slim body mesh");
                 renderer.sharedMesh = asset;
                 // The original animation bounds remain a conservative culling volume.
                 renderer.localBounds = originalRenderer.localBounds;
                 EditorUtility.SetDirty(asset); EditorUtility.SetDirty(renderer);
-                bool weightsPreserved = asset.boneWeights.SequenceEqual(original.boneWeights);
                 bool bindposesPreserved = asset.bindposes.SequenceEqual(original.bindposes);
                 report.Add("MESH " + path + " => " + meshPath + " vertices=" + vertices.Length + " modified=" + modified + " maxDeltaMeters=" + maxWorldDelta.ToString("F6"));
-                report.Add((weightsPreserved && bindposesPreserved ? "PASS" : "FAIL") + ": original skin weights and bind poses preserved");
-                report.Add((maxProtectedDelta <= 1e-7f ? "PASS" : "FAIL") + ": protected dominant head/neck/hand/foot vertices unchanged; count=" + protectedVertices + " maxDeltaMeters=" + maxProtectedDelta.ToString("F8"));
+                report.Add((weightsPreserved && bindposesPreserved ? "PASS" : "FAIL") + ": radial fit preserves original weights; assembled mesh preserves the original bind poses");
+                report.Add((maxProtectedDelta <= 1e-7f ? "PASS" : "FAIL") + ": protected vertices unchanged by radial fit; count=" + protectedVertices + " maxDeltaMeters=" + maxProtectedDelta.ToString("F8"));
+                report.Add("CONTOUR sourceVertices=" + original.vertexCount + " finalVertices=" + asset.vertexCount + " finalTriangles=" + asset.triangles.Length/3);
                 foreach (var metric in metrics.OrderBy(m => m.Key))
                     report.Add("RADIAL " + metric.Key + " highInfluenceVertices=" + metric.Value.count + " meanRatio=" + (metric.Value.after / Math.Max(1e-12, metric.Value.before)).ToString("F6"));
                 if (!weightsPreserved || !bindposesPreserved || maxProtectedDelta > 1e-7f)

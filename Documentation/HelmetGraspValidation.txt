@@ -1,0 +1,5 @@
+case=HelmetPickup trigger_m=0.85 heading=90 equipped=True remaining=3 handoff_displacement_m=0.0004 max_frame_delta_m=0.0415 max_grip_error_m_LR=0.0000/0.0000 scale_error=0.0000004 stance_dist=0.539
+case=SpareHelmetWhite trigger_m=1.59 heading=245 equipped=True remaining=3 handoff_displacement_m=0.0000 max_frame_delta_m=0.0469 max_grip_error_m_LR=0.0000/0.0000 scale_error=0.0000003 stance_dist=0.538
+case=SpareHelmetBlue trigger_m=0.47 heading=90 equipped=True remaining=3 handoff_displacement_m=0.0002 max_frame_delta_m=0.0395 max_grip_error_m_LR=0.0000/0.0000 scale_error=0.0000003 stance_dist=0.474
+case=SpareHelmetYellow trigger_m=1.42 heading=90 equipped=True remaining=3 handoff_displacement_m=0.0017 max_frame_delta_m=0.0455 max_grip_error_m_LR=0.0000/0.0000 scale_error=0.0000003 stance_dist=0.539
+case=HelmetPickup trigger_m=1.649 heading=90 equipped=True remaining=3 handoff_displacement_m=0.0010 max_frame_delta_m=0.0473 max_grip_error_m_LR=0.0000/0.0000 scale_error=0.0000003 stance_dist=0.539

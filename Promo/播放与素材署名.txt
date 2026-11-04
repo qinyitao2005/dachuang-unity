@@ -1,0 +1,29 @@
+﻿机械臂虚拟仿真实训平台 · 比赛循环展播版
+
+完整解压后打开「循环播放.html」，点击“开始展播”。也可用支持 H.264/AAC 的播放器打开 MP4 并启用单文件循环。
+
+成片 90.000 秒，1920×1080，30 帧/秒，共 2700 帧。旁白与配乐取自团队提供的原宣传片，以完整句子节选和重排。保留原赛项、队名及音乐署名。
+
+00:00–00:18　汽车、飞机、芯片制造应用。芯片段为意法半导体晶圆厂与晶圆搬运实拍。
+00:18–01:09.6　团队 Unity 项目。包括实训室、戴帽、墙屏问答、循迹、套圈、L/C 画图、示教器保存加载与回放。
+01:09.6–01:24.8　先对照示教器，再对照笔尖顺时针循迹。Unity 工程与实机录像分别采集，按同一运动方向和位置剪辑配合。
+01:24.8–01:30　团队及比赛信息、音乐署名，片尾和片首均收至同色以衔接循环。
+
+使用素材
+汽车车架装配实拍。Engin Altundağ，《Automated Car Factory》，Pexels。节选、裁切及加字幕。
+https://www.pexels.com/video/automated-car-factory-6450803/
+https://www.pexels.com/license/
+
+飞机机身自动化钻孔实拍。Dennis L. Stewart，Air Force Research Laboratory，《Drilling Down To Success》，DVIDS。来源页标示 PUBLIC DOMAIN。节选 212.02–218.02 秒并放大、加字幕。
+https://www.dvidshub.net/video/556173/drilling-down-success
+
+芯片制造与晶圆搬运实拍。STMicroelectronics（意法半导体），《How ST designs and manufactures semiconductor devices》，2022。选自原片 29.92–31.96 秒及 33.92–36.52 秒，剪接、调整速度、移除原声并加中文字幕和署名。
+原作者视频 https://www.youtube.com/watch?v=LmFt8a_oYqs
+授权记录 https://commons.wikimedia.org/wiki/File:How_ST_designs_and_manufactures_semiconductor_devices.webm
+CC BY 3.0 https://creativecommons.org/licenses/by/3.0/
+
+Unity 操作与实机示教素材来自团队工程和提供的录像。原片配乐署名为 Kevin MacLeod (incompetech.com)，CC BY 4.0。本版将音乐随原片混音节选、缩时并作淡入淡出。
+https://incompetech.com/
+https://creativecommons.org/licenses/by/4.0/
+
+人物镜头使用团队 Unity 工程的白色学员模型。入场、双手取帽佩戴及墙屏问答均使用调整过后颈轮廓的白色学员重新录制。

@@ -45,10 +45,13 @@ namespace RoboticsLab
         {
             if (!station.drawingTcp) { Blocked = true; Reason = "缺少工具尖端绑定"; return; }
             Vector3 requested = station.toolTarget.position;
-            Vector3 next = Vector3.MoveTowards(station.drawingTcp.position, requested,
-                station.moveSpeed * Mathf.Max(0, deltaTime));
+            float travelBudget = station.moveSpeed * Mathf.Max(0, deltaTime);
+            Vector3 next = Vector3.MoveTowards(station.drawingTcp.position, requested, travelBudget);
             rig.CaptureCollisionPose();
-            solver.Solve(rig, station.drawingTcp, next, Vector3.up, Vector3.up, deltaTime, station.DrawingToolRoot);
+            // At high frame rates one permitted step can be smaller than the normal
+            // 0.4 mm IK tolerance. That step must still move the physical pen.
+            solver.Solve(rig, station.drawingTcp, next, Vector3.up, Vector3.up, deltaTime,
+                station.DrawingToolRoot, travelBudget * .5f);
             string reason = "";
             float clearance;
             bool horizontal = station.DrawingTiltDegrees <= 1f && station.DrawingGripTiltDegrees <= 1f;

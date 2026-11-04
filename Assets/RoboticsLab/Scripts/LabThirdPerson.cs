@@ -63,7 +63,7 @@ namespace RoboticsLab
             controller.Move((planarVelocity + Vector3.up * vertical) * Time.deltaTime);
             if (direction.sqrMagnitude > .01f && visual)
                 visual.rotation = Quaternion.Slerp(visual.rotation, Quaternion.LookRotation(direction), 12 * Time.deltaTime);
-            UpdateAnimation(planarVelocity.magnitude / 1.6f);
+            if (!IsEquippingHelmet) UpdateAnimation(planarVelocity.magnitude / 1.6f);
             if (transform.position.y < -4) Teleport(new Vector3(0,.1f,1.8f),0);
         }
         void UpdateAnimation(float locomotionSpeed)

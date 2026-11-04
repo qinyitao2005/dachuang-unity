@@ -275,11 +275,11 @@ namespace RoboticsLab
 
         bool TargetAtPoint(Vector3 destination)
         {
-            // The station's paper constraint is exact, whereas a taught real TCP
-            // can differ by solver precision. Accept only that tiny Y difference;
-            // all lateral coordinates and every lifted/three-dimensional arc stay unchanged.
+            // Normalize only when the workspace actually clamps Y. A raised pen
+            // approaching the sheet can have valid substeps 0.1-0.2 mm above it:
+            // Drive can reach those heights and must be allowed to advance past them.
             if (Station.TrainingMode == 0 && Mathf.Abs(destination.y - Station.drawingHeight) <= PaperTolerance
-                && (!Station.IsTracing || destination.y <= Station.drawingHeight))
+                && (Station.PenDown || destination.y <= Station.drawingHeight))
                 destination.y = Station.drawingHeight;
             return Vector3.Distance(Station.toolTarget.localPosition, destination) <= TargetTolerance;
         }
