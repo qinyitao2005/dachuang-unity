@@ -229,7 +229,7 @@ namespace RoboticsLab
 
             {
 
-                bool typing=ProgrammingVisible&&((trajectoryPanel&&trajectoryPanel.TextEntryFocused)||(pendantController&&pendantController.TextEntryFocused));
+                bool typing=ProgrammingVisible&&((Station1PendantVisible&&station1Pendant.Programming&&station1Pendant.Programming.TextEntryFocused)||(trajectoryPanel&&trajectoryPanel.TextEntryFocused)||(pendantController&&pendantController.TextEntryFocused));
 
                 var trace=ActiveTracing;
 

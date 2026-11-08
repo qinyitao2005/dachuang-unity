@@ -16,6 +16,8 @@ namespace RoboticsLab
         int activeLine=-1;
         LabTrajectoryState executionState=LabTrajectoryState.Ready;
         const float Resolution=2;
+        bool station1Layout;
+        readonly Text[] functionKeys = new Text[5];
 
         public void Initialize(RectTransform screen, Font font)
         {
@@ -50,7 +52,53 @@ namespace RoboticsLab
             {
                 var key=Label(surface,"FunctionF"+(i+1),font,8,Color.white,new Vector2(32.9f+i*23.8f,-125),new Vector2(24,13));
                 key.alignment=TextAnchor.MiddleCenter;key.text=captions[i];
+                functionKeys[i]=key;
             }
+        }
+
+        // Opt-in layout: other stations retain their existing LCD and soft keys.
+        public InputField ConfigureStation1(Font font)
+        {
+            station1Layout=true;
+            ProgramRows.fontSize=16;
+            ProgramRows.horizontalOverflow=HorizontalWrapMode.Wrap;
+            ProgramRows.supportRichText=false;
+            Header.supportRichText=false;
+            Status.supportRichText=false;
+            Header.resizeTextForBestFit=true;Header.resizeTextMinSize=10;Header.resizeTextMaxSize=16;
+            Scroll.viewport.anchoredPosition=new Vector2(6,-36);
+            Scroll.viewport.sizeDelta=new Vector2(360,148);
+            Coordinates.rectTransform.anchoredPosition=new Vector2(6,-188);
+            Status.rectTransform.anchoredPosition=new Vector2(6,-210);
+            Status.rectTransform.sizeDelta=new Vector2(360,38);
+            Status.fontSize=14;Status.horizontalOverflow=HorizontalWrapMode.Wrap;
+            Status.verticalOverflow=VerticalWrapMode.Truncate;
+            for(int i=0;i<functionKeys.Length;i++)
+            {
+                var key=functionKeys[i];
+                key.rectTransform.sizeDelta=new Vector2(46,26);
+                key.fontSize=12;key.resizeTextForBestFit=true;
+                key.resizeTextMinSize=8;key.resizeTextMaxSize=12;
+                key.horizontalOverflow=HorizontalWrapMode.Wrap;
+                key.verticalOverflow=VerticalWrapMode.Truncate;
+                key.gameObject.AddComponent<RectMask2D>();
+            }
+            var box=Rect(Header.transform.parent,"ProgramNameInput",new Vector2(3,-35),new Vector2(180,20));
+            var background=box.gameObject.AddComponent<Image>();background.color=Color.white;
+            var label=Label(box,"Text",font,9,new Color(.06f,.1f,.16f),new Vector2(2,-2),new Vector2(176,16));
+            label.supportRichText=false;label.horizontalOverflow=HorizontalWrapMode.Wrap;
+            var input=box.gameObject.AddComponent<InputField>();
+            input.targetGraphic=background;input.textComponent=label;input.characterLimit=24;
+            input.contentType=InputField.ContentType.Standard;input.lineType=InputField.LineType.SingleLine;
+            input.onValidateInput+=(text,index,ch)=>((char.IsLetterOrDigit(ch)&&ch<128)||ch=='_')?char.ToUpperInvariant(ch):'\0';
+            box.gameObject.SetActive(false);
+            return input;
+        }
+
+        public void SetFunctionKeys(params string[] captions)
+        {
+            for(int i=0;i<functionKeys.Length;i++)
+                if(functionKeys[i])functionKeys[i].text=i<captions.Length?captions[i]:"";
         }
 
         public void Bind(LabPendantProgramModel document)
@@ -69,7 +117,7 @@ namespace RoboticsLab
             Canvas.ForceUpdateCanvases();Scroll.verticalNormalizedPosition=0;
             Status.text=model.HasPendingArc?"C：中间点已记录，请记录终点":model.Instructions.Count==0?"F1直线 / F2圆弧 / ENTER记录":"已记录 "+model.Instructions.Count+" 行 / "+model.Points.Count+" 点";
         }
-        public void SetStatus(string text){if(Status)Status.text=text.Length>22?text.Substring(0,21)+"…":text;}
+        public void SetStatus(string text){if(Status)Status.text=station1Layout?text:text.Length>22?text.Substring(0,21)+"…":text;}
         public void SetExecution(int line,LabTrajectoryState state,string message)
         {
             activeLine=line;executionState=state;Refresh();

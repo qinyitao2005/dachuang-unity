@@ -31,6 +31,7 @@ namespace RoboticsLab.Editor
         static float started;
         static int previousFrame;
         static bool finishing;
+        static string validationProgramPath;
 
         static LabStation1ProgrammingValidation() { EditorApplication.update += Tick; }
 
@@ -38,7 +39,7 @@ namespace RoboticsLab.Editor
         public static void Run()
         {
             if (EditorApplication.isPlaying) throw new InvalidOperationException("Exit Play Mode before running this acceptance.");
-            sequence = null; finishing = false; previousFrame = -1;
+            sequence = null; finishing = false; previousFrame = -1; validationProgramPath = null;
             EditorSceneManager.OpenScene("Assets/RoboticsLab/Scenes/RoboticsTrainingRoom.unity");
             SessionState.SetBool(Pending, true);
             EditorApplication.isPlaying = true;
@@ -90,10 +91,14 @@ namespace RoboticsLab.Editor
             Require(!app.pendantController.Executor.AllowTracing, "Stations2/3 executor keeps its original defaults.");
             for (int i = 0; i < 6; i++) yield return null;
             Require(app.Station1PendantVisible && app.TracingPaperVisible, "Pendant and paper view remain visible together.");
+            Click("SELECT"); Click("F2"); Click("F1");
+            validationProgramPath = LabPendantProgramStorage.PathFor(0, program.ProgramName);
+            Require(!string.IsNullOrEmpty(program.ProgramName) && File.Exists(validationProgramPath),
+                "SELECT CREATE creates a named, persisted Station1 program.");
 
             Click("F1");
             Require(program.Model.Points.Count == 0, "POINT without SHIFT opens choice instead of recording.");
-            Click("ENTER");
+            Click("PREV");
             Click("SHIFT_LEFT");
             Require(program.ShiftActive, "Mouse SHIFT latches a simulated held modifier.");
             var path = trace.GetPath(1);
@@ -115,9 +120,8 @@ namespace RoboticsLab.Editor
             Require(program.Model.Instructions.Count == 2, "L start is recorded independently of the safe point.");
             Require(!station.PenDown, "Teaching keeps the probe out of drawing/pen mode.");
 
-            Click("F4"); Click("DOWN"); Click("ENTER");
             yield return MoveTo(station.transform.InverseTransformPoint(trace.PaperToWorld(path[path.Length / 4])));
-            Click("F1");
+            Click("SHIFT_LEFT"); Click("F1"); Click("DOWN"); Click("ENTER"); Click("SHIFT_LEFT");
             Require(program.Model.HasPendingArc, "C SHIFT+POINT records a via point, leaving an incomplete arc.");
             Click("FWD");
             Require(!program.IsBusy, "Incomplete C cannot execute.");
@@ -126,7 +130,7 @@ namespace RoboticsLab.Editor
             Require(!program.Model.HasPendingArc && program.Model.Instructions.Count == 3, "SHIFT+TOUCHUP completes the same C instruction.");
 
             // Classroom sequence: safe -> half-circle -> same safe, without a separate lift point.
-            Click("F4"); Click("UP"); Click("ENTER"); Click("1"); Click("ENTER");
+            Click("1"); Click("ENTER");
             Vector3 halfEnd = program.Model.FindPoint(program.Model.Instructions[2].TargetPoint).LocalPosition;
             Vector3 savedSafe = program.Model.FindPoint(1).LocalPosition;
             Require(halfEnd.y < savedSafe.y - .001f
@@ -134,6 +138,7 @@ namespace RoboticsLab.Editor
                 "Regression uses an endpoint lower than and horizontally separate from the safe point.");
             Require(program.Model.Instructions.Count == 4 && program.Model.Instructions[3].TargetPoint == 1,
                 "Half-circle program ends by reusing P1 with no intermediate departure point.");
+            for (int i = 0; i < 4; i++) Click("UP");
             Click("FWD");
             Require(program.IsBusy, "SHIFT+FWD accepts direct L return from the half-circle endpoint.");
             float halfTimeout = Time.realtimeSinceStartup + 35;
@@ -142,14 +147,12 @@ namespace RoboticsLab.Editor
             Require(Vector3.Distance(Actual(), savedSafe) <= .0011f, "Real probe returns to the original P1 after the open half-circle.");
             Require(Vector3.Distance(program.Model.FindPoint(1).LocalPosition, savedSafe) < .000001f,
                 "Return reuses the saved safe point without overwriting it.");
-            Click("FCTN"); Click("ENTER");
-            Click("F4"); Click("DOWN"); Click("ENTER");
+            Click("FCTN"); Click("DOWN"); Click("ENTER");
 
             yield return MoveTo(station.transform.InverseTransformPoint(trace.PaperToWorld(path[path.Length * 3 / 4])));
             Click("F1"); Click("2"); Click("ENTER");
             Require(!program.Model.HasPendingArc && program.Model.Instructions[3].TargetPoint == 2,
                 "Second arc reuses the taught start P2 through point-number entry.");
-            Click("F4"); Click("UP"); Click("ENTER");
             Click("1"); Click("ENTER");
             Require(program.Model.Instructions.Count == 5 && program.Model.Instructions[4].TargetPoint == 1,
                 "Final L references the original safe P1.");
@@ -157,6 +160,7 @@ namespace RoboticsLab.Editor
                 "LCD shows the executable L/C document and final return.");
             Click("SHIFT_LEFT"); Click("FWD");
             Require(!program.IsBusy, "FWD without SHIFT does not start motion.");
+            for (int i = 0; i < 5; i++) Click("UP");
             Click("SHIFT_LEFT"); Click("STEP"); Click("FWD");
             yield return WaitForPause();
             report.debug = "actual=" + Actual().ToString("F6") + "; target=" + station.toolTarget.localPosition.ToString("F6")
@@ -185,6 +189,7 @@ namespace RoboticsLab.Editor
             Require(station.EmergencyStopped && program.Executor.IsPaused, "Pendant emergency control pauses execution.");
             Click("EMERGENCY_STOP");
             Require(!station.EmergencyStopped && program.Executor.IsPaused, "Clearing emergency state does not auto-resume.");
+            Click("RESET");
             Click("FWD");
             float timeout = Time.realtimeSinceStartup + 35;
             while (program.Executor.State == LabTrajectoryState.Running && Time.realtimeSinceStartup < timeout) yield return null;
@@ -201,7 +206,9 @@ namespace RoboticsLab.Editor
             Click("FWD");
             Require(program.IsBusy, "Completed program can explicitly restart.");
             Click("RESET");
-            Require(!program.IsBusy && program.Model.Instructions.Count == 5, "RESET stops motion while preserving all taught instructions.");
+            Require(program.IsBusy, "RESET does not replace ABORT or terminate a running program.");
+            Click("FCTN"); Click("ENTER");
+            Require(!program.IsBusy && program.Model.Instructions.Count == 5, "ABORT terminates motion while preserving taught instructions.");
             Click("FWD");
             app.ToggleStation1Pendant();
             Require(!program.IsBusy && !app.Station1PendantVisible && app.TracingPaperVisible, "Closing the pendant stops execution and restores ordinary layout.");
@@ -216,7 +223,7 @@ namespace RoboticsLab.Editor
             Require(app.TryStartStation(0), "Can return to Station1 for a new teaching attempt.");
             station = app.ActiveStation; app.ToggleStation1Pendant();
             for (int i = 0; i < 3; i++) yield return null;
-            for (int i = 0; i < 5; i++) { Click("FCTN"); Click("ENTER"); }
+            for (int i = 0; i < 5; i++) { Click("FCTN"); Click("DOWN"); Click("ENTER"); }
             Require(program.Model.Points.Count == 0 && program.Model.NextPointNumber == 1,
                 "Deleting every instruction resets the next safe point to P1.");
             Click("SHIFT_LEFT"); yield return MoveTo(safe); Click("F1");
@@ -274,6 +281,9 @@ namespace RoboticsLab.Editor
         static void Finish()
         {
             finishing = true; SessionState.SetBool(Pending, false);
+            // Only the uniquely created test program is cleaned up. User programs are never overwritten.
+            if (program) program.Deactivate();
+            if (!string.IsNullOrEmpty(validationProgramPath) && File.Exists(validationProgramPath)) File.Delete(validationProgramPath);
             report.passed = string.IsNullOrEmpty(report.exception);
             Directory.CreateDirectory("Documentation");
             File.WriteAllText("Documentation/Station1ProgrammingValidation.json", JsonUtility.ToJson(report, true));

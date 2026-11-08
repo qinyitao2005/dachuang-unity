@@ -33,16 +33,19 @@ namespace RoboticsLab
         public bool IsPaused => State == LabTrajectoryState.Paused;
         public int CurrentInstructionIndex { get; private set; }
         public float CurrentPathDistance { get; private set; }
-        public float CurrentEffectiveSpeedMm => CurrentInstructionIndex < execution.Count
-            ? execution[CurrentInstructionIndex].speed * 1000f : 0;
-        public float CurrentCommandSpeedMm => CurrentInstructionIndex < execution.Count
-            ? execution[CurrentInstructionIndex].commandSpeedMm : 0;
+        public float CurrentEffectiveSpeedMm => CurrentInstructionIndex >= executionStartIndex && CurrentInstructionIndex < ExecutionEndIndex
+            ? CurrentMotion.speed * 1000f : 0;
+        public float CurrentCommandSpeedMm => CurrentInstructionIndex >= executionStartIndex && CurrentInstructionIndex < ExecutionEndIndex
+            ? CurrentMotion.commandSpeedMm : 0;
         public float MaximumPathError { get; private set; }
         public string StatusText { get; private set; } = "程序尚未运行";
         public string LastError { get; private set; } = "";
         public event Action Changed;
 
         readonly List<Motion> execution = new List<Motion>();
+        int executionStartIndex;
+        int ExecutionEndIndex => executionStartIndex + execution.Count;
+        Motion CurrentMotion => execution[CurrentInstructionIndex - executionStartIndex];
         bool instructionStarted, penPrepared, singleStep, viaReached;
         int executionMode, executionRevision;
         float lastStationElapsed, stepElapsed, noProgress, blockedSeconds, offPathSeconds;
@@ -65,25 +68,27 @@ namespace RoboticsLab
             Changed?.Invoke();
         }
 
-        public bool Run()
+        public bool Run() { return Run(0); }
+        public bool Run(int startIndex)
         {
             if (IsPaused) return Resume();
             if (State == LabTrajectoryState.Running) return Reject("程序正在运行；可按 HOLD 暂停");
-            return Begin(false);
+            return Begin(false, startIndex);
         }
 
-        public bool Step()
+        public bool Step() { return Step(0); }
+        public bool Step(int startIndex)
         {
             if (State == LabTrajectoryState.Running) return Reject("请先按 HOLD 暂停，再执行单步");
-            return IsPaused ? Continue(true) : Begin(true);
+            return IsPaused ? Continue(true) : Begin(true, startIndex);
         }
 
-        bool Begin(bool oneStep)
+        bool Begin(bool oneStep, int startIndex)
         {
             if (!ReadyToOperate()) return false;
             List<Motion> validated;
             string error;
-            if (!TryPrepare(out validated, out error))
+            if (!TryPrepare(startIndex, out validated, out error))
             {
                 State = LabTrajectoryState.Faulted;
                 return Reject(error);
@@ -91,7 +96,8 @@ namespace RoboticsLab
             execution.Clear();
             execution.AddRange(validated);
             Station.SetPen(false);
-            CurrentInstructionIndex = 0;
+            executionStartIndex = startIndex;
+            CurrentInstructionIndex = startIndex;
             CurrentPathDistance = MaximumPathError = 0;
             instructionStarted = penPrepared = false;
             singleStep = oneStep;
@@ -127,7 +133,7 @@ namespace RoboticsLab
                 StopWithMessage("工位已复位或模式已改变；请从头运行");
                 return false;
             }
-            if (CurrentInstructionIndex >= execution.Count) { Complete(); return true; }
+            if (CurrentInstructionIndex >= ExecutionEndIndex) { Complete(); return true; }
             singleStep = oneStep;
             penPrepared = false;
             noProgress = blockedSeconds = offPathSeconds = 0;
@@ -135,7 +141,7 @@ namespace RoboticsLab
             previousActual = ActualLocal();
             State = LabTrajectoryState.Running;
             LastError = "";
-            StatusText = (oneStep ? "正在执行单步；" : "程序继续运行；") + FeedLabel(execution[CurrentInstructionIndex]);
+            StatusText = (oneStep ? "正在执行单步；" : "程序继续运行；") + FeedLabel(CurrentMotion);
             Changed?.Invoke();
             return true;
         }
@@ -145,6 +151,7 @@ namespace RoboticsLab
             // Binding/closing an idle pendant must not alter a legacy program's active tool.
             if (Station && (IsExecuting || !LegacyProgramBusy())) { Station.SetPen(false); Station.MoveTool(Vector3.zero); }
             execution.Clear();
+            executionStartIndex = 0;
             CurrentInstructionIndex = 0;
             CurrentPathDistance = 0;
             instructionStarted = penPrepared = singleStep = false;
@@ -182,9 +189,9 @@ namespace RoboticsLab
                 return;
             }
             if (State != LabTrajectoryState.Running || Time.deltaTime <= 0) return;
-            if (CurrentInstructionIndex >= execution.Count) { Complete(); return; }
+            if (CurrentInstructionIndex >= ExecutionEndIndex) { Complete(); return; }
 
-            var motion = execution[CurrentInstructionIndex];
+            var motion = CurrentMotion;
             if (!instructionStarted)
             {
                 instructionStarted = true;
@@ -301,7 +308,7 @@ namespace RoboticsLab
             CurrentInstructionIndex++;
             instructionStarted = penPrepared = false;
             CurrentPathDistance = 0;
-            if (CurrentInstructionIndex >= execution.Count) { Complete(); return; }
+            if (CurrentInstructionIndex >= ExecutionEndIndex) { Complete(); return; }
             if (singleStep)
             {
                 Pause();
@@ -370,13 +377,22 @@ namespace RoboticsLab
             return false;
         }
 
-        bool TryPrepare(out List<Motion> result, out string error)
+        bool TryPrepare(int startIndex, out List<Motion> result, out string error)
         {
             result = new List<Motion>();
             error = "";
             if (Model.Instructions.Count == 0) { error = "程序为空；先移动工具并记录 L / C 点位"; return false; }
+            if (startIndex < 0 || startIndex >= Model.Instructions.Count)
+            { error = "请把光标移到要执行的程序行；End 不是运动指令"; return false; }
             Vector3 start = ActualLocal();
-            for (int i = 0; i < Model.Instructions.Count; i++)
+            if (startIndex > 0 && Model.Instructions[startIndex].Type == LabPendantInstructionType.Circular)
+            {
+                var previous = Model.FindPoint(Model.Instructions[startIndex - 1].TargetPoint);
+                if (previous == null || Vector3.Distance(start, previous.LocalPosition) > ArrivalTolerance)
+                { error = "从 C 开始前，先执行上一行到达圆弧起点"; return false; }
+                start = previous.LocalPosition;
+            }
+            for (int i = startIndex; i < Model.Instructions.Count; i++)
             {
                 var instruction = Model.Instructions[i];
                 string prefix = "第 " + (i + 1) + " 行：";

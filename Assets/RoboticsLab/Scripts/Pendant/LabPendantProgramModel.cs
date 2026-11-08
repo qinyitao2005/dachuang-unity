@@ -176,10 +176,44 @@ namespace RoboticsLab
         public bool SetTargetReference(int row, int number)
         {
             if (row < 0 || row >= instructions.Count || FindPoint(number) == null) return Reject("程序行或引用点位不存在。");
+            if (instructions[row].Type == LabPendantInstructionType.Circular && instructions[row].ViaPoint == number)
+                return Reject("圆弧终点不能与经过点相同。");
             instructions[row].SetTargetPoint(number);
             points.RemoveAll(point => !instructions.Exists(item => item.ViaPoint == point.Number || item.TargetPoint == point.Number));
             revision++;
             Notify("目标点已改为 P[" + number + "]。");
+            return true;
+        }
+
+        public bool SetViaReference(int row, int number)
+        {
+            if (row < 0 || row >= instructions.Count || instructions[row].Type != LabPendantInstructionType.Circular
+                || FindPoint(number) == null || instructions[row].TargetPoint == number)
+                return Reject("圆弧经过点引用无效。");
+            var old = instructions[row];
+            instructions[row] = new LabPendantInstruction(old.Type, number, old.TargetPoint, old.SpeedMm, old.PenDown);
+            revision++; Notify("已修改圆弧经过点。"); return true;
+        }
+
+        public bool ChangeMotionType(int row, LabPendantInstructionType type)
+        {
+            if (row < 0 || row >= instructions.Count || HasPendingArc) return Reject("先补齐当前圆弧，再修改运动类型。");
+            var old = instructions[row];
+            if (old.Type == type) return true;
+            if (type == LabPendantInstructionType.Circular)
+            {
+                // Pending arcs are always at the end, as required by the recording/file model.
+                if (row != instructions.Count - 1 || row == 0) return Reject("本实验仅支持将末行 L 改为 C；首行保留安全点。");
+                instructions[row] = new LabPendantInstruction(type, old.TargetPoint, 0, old.SpeedMm, old.PenDown);
+                revision++; Notify("原终点改为 C 经过点；请补录圆弧终点。");
+            }
+            else
+            {
+                if (instructions.Count >= MaximumInstructions) return Reject("程序行数已满，无法拆分圆弧。");
+                instructions[row] = new LabPendantInstruction(type, 0, old.ViaPoint, old.SpeedMm, old.PenDown);
+                instructions.Insert(row + 1, new LabPendantInstruction(type, 0, old.TargetPoint, old.SpeedMm, old.PenDown));
+                revision++; Notify("C 已拆为经过点、终点两条 L。");
+            }
             return true;
         }
 
