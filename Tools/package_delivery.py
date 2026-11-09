@@ -18,7 +18,7 @@ from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parent.parent
 DELIVERABLES = PROJECT / "Deliverables"
-SOURCE_DIRECTORIES = ("Assets", "Packages", "ProjectSettings", "Documentation", "Tools")
+SOURCE_DIRECTORIES = ("Assets", "Packages", "ProjectSettings", "Documentation", "Tools", "操作说明", "Promo")
 SOURCE_FILES = ("Open Project.cmd", "Play Demo.cmd", "Play L-C Recording.cmd", "README.md", ".gitignore")
 CACHE_NAMES = {"__pycache__", ".pytest_cache", ".mypy_cache"}
 WINDOWS_README = """机械臂虚拟实训室 — Windows 演示版
@@ -32,23 +32,29 @@ RobotLab_Data、UnityPlayer.dll 及其他随包文件必须与程序一起保留
 左侧 J 型手动操作；右侧圆、三角形、正方形、复合曲线自动循迹。
 02 套圈：夹住圆环沿钢丝前进。
 03 画图：保留真实笔迹，支持自由绘图、示教点和轨迹指令。
-02/03 工位右上方“示教器 / L・C 编程”打开实体控制器界面。
-F1 记录 L 直线；F2 依次记录 C 中间点与终点；ENTER 按当前模式记录。
-F3 撤销，F4 切换新指令速度参数，F5 清空；也可直接点击控制器对应按键。
-LCD 显示 L P[n] 或 C P[中间点] P[终点]，当前执行行高亮。
-FWD 运行/恢复；HOLD 暂停；STEP 单步完整 L/C 指令；RESET 停止，保留程序。
+三台右上方“示教器 / L・C 编程”使用同一套新控制器流程。
+SELECT 打开程序列表，F2 CREATE 新建，接受或输入程序名后按 F1 END / ENTER。
+SHIFT + ±X/±Y/±Z 点动；键盘也可 SHIFT 配合 WASD、Q/E。方向键只导航程序。
+松开 SHIFT，F1 POINT 选择 L 或 C，ENTER 选择并立即记录当前位置。
+SHIFT + F1 重复当前类型：L 记录终点，C 先记录经过点；C 到终点后 SHIFT + F5 补齐。
+上下选择程序行；SHIFT + F5 TOUCHUP 修改点位，左右键选择 C 经过点/终点。
+SHIFT + FWD 从选中行运行/恢复；STEP 切换单步模式；HOLD 暂停。
+FCTN → 1 ABORT → ENTER 终止并保留程序；FCTN → 2 删除末行。
+RESET 复位已排除的故障，不终止正常运行或 HOLD。急停解除后 RESET，再 SHIFT + FWD。
+指令固定 20 mm/sec，未接入调速；真实进给仍受原工位上限、IK 和碰撞约束。
+01 保留首尾 L P[1] 安全点课堂要求、探针评分，不画新线。
+02 记录真实圆环中心，不要求纸面安全高度或强制回 P[1]，所有钢丝与碰撞限制仍有效。
+03 用 IO/P 切换新录行的 UP/DOWN；UP 不留线但不自动升高工具，DOWN 整段需贴纸。
+03 先用 UP 接近纸面，再用 DOWN 示教线段和圆弧。End 输入 1、ENTER 可追加引用 P[1] 的 L，采用当前笔状态。
 C 为经过中间点的真实三点圆弧；未完成、共线或越界的程序会拒绝运行并提示原因。
-按 DATA 在控制器 LCD 内保存、加载程序，或插入返回 P[1] 的 L 指令。
-纸面绘图：抬笔示教起点并记录 L，再落笔记录要画的 L/C 段，抬笔记录结束点。
-程序保存每行的抬笔/落笔状态。名义速度受原工位上限及真实 IK 跟随能力约束。
-暂停时禁止录点或手动抢控制；解除急停后还需明确按 FWD，不会自动恢复。
-文件按工位隔离保存到用户数据目录 PendantPrograms，关闭演示后仍可加载。
+运行/暂停时禁止编辑或手动抢控制。SELECT 重开程序，修改后自动保存，三台分别存在用户数据目录 PendantPrograms/Station01、Station02、Station03。
+旧速度程序不会自动改速；固定速度不符时拒绝加载。旧 F1/F2、RESET 停止、DATA 流程仅保留用于历史录制接口。
 原有高级轨迹编辑继续可用，与实体示教器互斥执行。
 
 漫游：WASD 移动，鼠标转视角，Tab 释放光标，Shift 快走。
-工位：WASD 平移，Q/E 升降，R 重置。
-循迹时 P 切换探针抬起/贴纸；画图时 P 切换抬笔/落笔。
-空格急停，Esc 退出工位，F1 查看操作指南。
+示教器收起时：WASD 平移，Q/E 升降，R 复位训练。
+示教器收起时，循迹可用 P 切换探针抬起/贴纸；画图可用 P 切换抬笔/落笔。
+空格急停，Esc 退出工位；示教器收起后可用 F1 查看操作指南。
 自动循迹在左侧面板启动；自动运行时禁止手动移动。
 循迹默认显示无遮挡的纸面俯视图：蓝色为当前参考线，橙色十字为实际探针。
 纸面与俯视图都不生成新线，只显示印好的图形与实际探针位置。

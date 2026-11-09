@@ -214,12 +214,12 @@ namespace RoboticsLab.Editor
             Require(!program.IsBusy && !app.Station1PendantVisible && app.TracingPaperVisible, "Closing the pendant stops execution and restores ordinary layout.");
             Require(program.Model.Instructions.Count == 5, "Closing keeps the taught program.");
             Require(app.TryStartStation(1), "Station2 remains enterable after Station1 programming.");
-            app.pendantController.Open(app.ActiveStation);
-            Require(app.pendantController.Visible && !program.IsBusy, "Original Station2 pendant remains available.");
+            app.ToggleTeachingPendant();
+            Require(app.TeachingPendantVisible && !program.IsBusy, "Shared Station2 pendant is available after Station1.");
             Require(app.TryStartStation(2), "Station3 remains enterable after Station1 programming.");
-            app.pendantController.Open(app.ActiveStation);
-            Require(app.pendantController.Visible && app.pendantController.Model.Points.Count == 0,
-                "Original Station3 pendant remains independent of the Station1 program.");
+            app.ToggleTeachingPendant();
+            Require(app.TeachingPendantVisible && app.ActiveTeachingPendant.Programming.Model.Points.Count == 0,
+                "Shared Station3 pendant remains independent of the Station1 program.");
             Require(app.TryStartStation(0), "Can return to Station1 for a new teaching attempt.");
             station = app.ActiveStation; app.ToggleStation1Pendant();
             for (int i = 0; i < 3; i++) yield return null;

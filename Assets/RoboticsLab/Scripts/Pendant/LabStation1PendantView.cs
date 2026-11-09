@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace RoboticsLab
 {
-    /// <summary>Station 1 pendant artwork and button events; programming has its own controller.</summary>
+    /// <summary>Shared pendant artwork and buttons. One instance per station retains its teaching session.</summary>
     public sealed class LabStation1PendantView : MonoBehaviour
     {
         [SerializeField] string lastButtonId = "";
@@ -21,14 +21,17 @@ namespace RoboticsLab
 
         readonly Dictionary<string, Button> buttons = new Dictionary<string, Button>();
         LabTrainingApp app;
+        LabRobotStation station;
         GameObject canvasObject;
         RectTransform keyLayer;
 
         public void Open(LabTrainingApp owner, GameObject prefab)
         {
-            if (!owner || !owner.ActiveStation || !owner.ActiveStation.IsTracing || !owner.ActiveStation.IsOperating) return;
+            if (!owner || !owner.ActiveStation || !owner.ActiveStation.IsOperating) return;
+            if (station && station != owner.ActiveStation) return;
             if (!prefab) { owner.Notify("示教器外观资源未配置。"); return; }
             app = owner;
+            station = owner.ActiveStation;
             if (!canvasObject) Build(prefab);
             canvasObject.SetActive(true);
             Programming.Activate(owner.ActiveStation);
@@ -43,7 +46,7 @@ namespace RoboticsLab
         void Update()
         {
             if (Visible && (!app || app.panel != "operate" || !app.ActiveStation
-                || !app.ActiveStation.IsTracing || !app.ActiveStation.IsOperating)) Close();
+                || app.ActiveStation != station || !app.ActiveStation.IsOperating)) Close();
         }
 
         void OnDisable() { Close(); }
@@ -51,7 +54,7 @@ namespace RoboticsLab
 
         void Build(GameObject prefab)
         {
-            canvasObject = new GameObject("Station1PendantCanvas", typeof(RectTransform), typeof(Canvas),
+            canvasObject = new GameObject("Station" + (station.stationIndex + 1) + "PendantCanvas", typeof(RectTransform), typeof(Canvas),
                 typeof(CanvasScaler), typeof(GraphicRaycaster));
             canvasObject.SetActive(false);
             canvasObject.transform.SetParent(transform, false);
@@ -64,7 +67,7 @@ namespace RoboticsLab
             scaler.screenMatchMode = CanvasScaler.ScreenMatchMode.Expand;
 
             var root = Instantiate(prefab, canvasObject.transform, false).GetComponent<RectTransform>();
-            root.name = "Station1TeachingPendant";
+            root.name = "Station" + (station.stationIndex + 1) + "TeachingPendant";
             root.anchorMin = root.anchorMax = new Vector2(.5f, .5f);
             // Right-middle column; leave the left menu and robot view unobstructed.
             root.anchoredPosition = new Vector2(6, -7);
@@ -96,7 +99,7 @@ namespace RoboticsLab
             keyLayer.localScale = housing.localScale;
             BuildKeys();
 
-            var programObject = new GameObject("Station1Programming");
+            var programObject = new GameObject("Station" + (station.stationIndex + 1) + "Programming");
             programObject.transform.SetParent(transform, false);
             Programming = programObject.AddComponent<LabStation1Programming>();
             Programming.Initialize(app, this, screen.GetComponent<RectTransform>());
@@ -189,7 +192,7 @@ namespace RoboticsLab
             if (EventSystem.current) EventSystem.current.SetSelectedGameObject(null);
             lastButtonId = id;
             clickCount++;
-            Debug.Log("[Station1 示教器] 点击 " + id + "（累计 " + clickCount + " 次）", this);
+            Debug.Log("[Station" + (station.stationIndex + 1) + " 示教器] 点击 " + id + "（累计 " + clickCount + " 次）", this);
             ButtonClicked?.Invoke(id);
         }
     }

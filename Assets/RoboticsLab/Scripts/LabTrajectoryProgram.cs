@@ -149,11 +149,11 @@ namespace RoboticsLab
         public void Stop()
         {
             // An idle legacy editor must not lift the pen of a different execution owner.
-            if(!IsExecuting&&PendantBusy()){Error("L/C 示教程序占用运动控制；请在示教器按 RESET 停止");return;}
+            if(!IsExecuting&&PendantBusy()){Error("L/C 示教程序占用运动控制；请在示教器用 FCTN → ABORT 终止");return;}
             if(Station)Station.SetPen(false);
             execution=null;ResetCursor();StatusText="程序已停止，步骤保留";
         }
-        public void Reset(){if(PendantBusy()){Error("L/C 示教程序占用运动控制；请先在示教器按 RESET 停止");return;}Stop();if(Station)Station.ResetExercise();StatusText="工位已复位，程序保留";}
+        public void Reset(){if(PendantBusy()){Error("L/C 示教程序占用运动控制；请先在示教器用 FCTN → ABORT 终止");return;}Stop();if(Station)Station.ResetExercise();StatusText="工位已复位，程序保留";}
         void ResetCursor(){CurrentStepIndex=0;State=LabTrajectoryState.Ready;instructionStarted=false;singleStep=false;LastError="";}
 
         void Update()
@@ -239,7 +239,7 @@ namespace RoboticsLab
         void OnDisable(){if(IsExecuting)Stop();}
         bool ReadyToOperate()
         {
-            if(PendantBusy())return Error("L/C 示教程序正在运行或暂停，请先在示教器按 RESET 停止，再运行高级轨迹");
+            if(PendantBusy())return Error("L/C 示教程序正在运行或暂停，请先在示教器用 FCTN → ABORT 终止，再运行高级轨迹");
             if(!Station||!Station.IsOperating||!Station.toolTarget||!Station.endEffector)return Error("请先进入已解锁的机械臂工位");
             if(Station.IsTracing)return Error("01 工位只使用专用循迹控制，请在循迹面板选择图形");
             if(Station.EmergencyStopped)return Error("请先解除急停");

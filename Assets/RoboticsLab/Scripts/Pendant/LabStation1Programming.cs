@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace RoboticsLab
 {
-    /// <summary>Station 1 teaching workflow; the shared executor owns motion and collision checks.</summary>
+    /// <summary>Shared teaching workflow; each station owns an instance. The executor retains all motion checks.</summary>
     public sealed class LabStation1Programming : MonoBehaviour
     {
         enum Page { Program, Programs, Create, Motion, Functions }
@@ -23,6 +23,7 @@ namespace RoboticsLab
         LabTrainingApp app;
         LabStation1PendantView view;
         LabRobotStation station;
+        LabPendantStationProfile profile;
         LabTracingExercise trace;
         InputField nameInput;
         Page page = Page.Programs;
@@ -33,12 +34,13 @@ namespace RoboticsLab
         string[] names = Array.Empty<string>();
         Vector3 heldJog;
         // Lab speed is fixed. Do not expose feed editing or override controls.
-        const float SpeedMm = 20;
+        const float SpeedMm = LabPendantStationProfile.SpeedMm;
+        int StationIndex => station ? station.stationIndex : 0;
 
         public void Initialize(LabTrainingApp owner, LabStation1PendantView shell, RectTransform lcd)
         {
             app = owner; view = shell;
-            Executor = gameObject.AddComponent<LabPendantExecutor>(); Executor.AllowTracing = true;
+            Executor = gameObject.AddComponent<LabPendantExecutor>();
             Screen = gameObject.AddComponent<LabPendantScreenView>();
             var font = app.uiFont ? app.uiFont : Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             Screen.Initialize(lcd, font); nameInput = Screen.ConfigureStation1(font);
@@ -59,7 +61,7 @@ namespace RoboticsLab
         bool SaveCurrent()
         {
             if (!dirty || string.IsNullOrEmpty(ProgramName)) return true;
-            if (!LabPendantProgramStorage.Save(0, ProgramName, Model, out string error))
+            if (!LabPendantProgramStorage.Save(StationIndex, ProgramName, Model, out string error))
             {
                 storageError = error; saveAfter = Time.unscaledTime + 5;
                 return false;
@@ -69,11 +71,14 @@ namespace RoboticsLab
 
         public void Activate(LabRobotStation target)
         {
-            station = target; trace = target.GetComponent<LabTracingExercise>();
+            if (station && station != target) throw new InvalidOperationException("A teaching session belongs to one station.");
+            station = target; profile = new LabPendantStationProfile(target);
+            trace = target.IsTracing ? target.GetComponent<LabTracingExercise>() : null;
+            Executor.AllowTracing = target.IsTracing;
             if (trace) trace.StopAutomatic();
             Executor.Bind(station, Model);
             page = string.IsNullOrEmpty(ProgramName) ? Page.Programs : Page.Program;
-            names = LabPendantProgramStorage.Names(0); selection = 0; cursor = 0;
+            names = LabPendantProgramStorage.Names(StationIndex); selection = 0; cursor = 0;
             number = ""; heldJog = Vector3.zero; shiftLatched = false;
             Message = page == Page.Programs ? "F2 CREATE 新建；上下选择后 ENTER 打开" : "程序保留；选起始行后 SHIFT+FWD";
             Refresh();
@@ -89,13 +94,13 @@ namespace RoboticsLab
         public Vector3 ManualDirection()
         {
             if (!view || !view.Visible || !station || !station.IsOperating || station.EmergencyStopped
-                || IsBusy || !ShiftActive || TextEntryFocused) return Vector3.zero;
+                || IsBusy || OtherProgramBusy || !ShiftActive || TextEntryFocused) return Vector3.zero;
             // Arrow keys navigate the program even while SHIFT is latched; only WASD/QE jog.
             Vector3 keyboard = new Vector3((Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0),
                 (Input.GetKey(KeyCode.Q) ? 1 : 0) - (Input.GetKey(KeyCode.E) ? 1 : 0),
                 (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0));
             return station.transform.TransformDirection(Vector3.ClampMagnitude(heldJog + keyboard, 1))
-                * Mathf.Min(1, .012f / Mathf.Max(.0001f, station.moveSpeed));
+                * (station.IsTracing ? Mathf.Min(1, .012f / Mathf.Max(.0001f, station.moveSpeed)) : 1f);
         }
         public void SetJog(Vector3 direction) { heldJog = direction; }
         public void Pause() { if (Executor) Executor.Pause(); heldJog = Vector3.zero; }
@@ -194,43 +199,55 @@ namespace RoboticsLab
             }
             if (id == "F5") { SetMessage("按 SHIFT+F5 更新选中点；C 可用左右键选经过点/终点"); return; }
             if (id.StartsWith("J", StringComparison.Ordinal)) { SetMessage("SHIFT 配合 ±X/±Y/±Z 点动"); return; }
-            if (id == "COORD" || id == "POSN") { SetMessage("USER：X 左右 / Y 前后 / Z 升降；固定探针姿态"); return; }
+            if (id == "IO") { TogglePen(); return; }
+            if (id == "COORD" || id == "POSN") { SetMessage(profile.CoordinateHint); return; }
             if (id.Contains("OVERRIDE")) { SetMessage("实验室速度固定，不提供调速操作"); return; }
-            SetMessage("当前按键暂未接入循迹编程");
+            SetMessage("当前按键暂未接入 L/C 编程");
+        }
+
+        bool OtherProgramBusy => app && ((app.trajectoryProgram && app.trajectoryProgram.IsExecuting)
+            || (app.pendantController && app.pendantController.Executor && app.pendantController.Executor.IsExecuting));
+        public void TogglePen()
+        {
+            if (!station || !station.IsDrawing) { SetMessage("当前工位不使用绘图落笔"); return; }
+            if (page != Page.Program || !Editable()) return;
+            if (Model.HasPendingArc) { SetMessage("先补齐 C 终点；该圆弧沿用经过点录制时的笔状态"); return; }
+            station.SetPen(!station.PenDown);
+            SetMessage(station.PenDown ? "新录指令：落笔；IO / P 切换抬笔" : "新录指令：抬笔；IO / P 切换落笔");
         }
 
         void LeaveNameInput() { if (nameInput) nameInput.DeactivateInputField(); }
         void OpenPrograms()
         {
             if (!SaveCurrent()) { Refresh(); return; }
-            LeaveNameInput(); page = Page.Programs; names = LabPendantProgramStorage.Names(0);
+            LeaveNameInput(); page = Page.Programs; names = LabPendantProgramStorage.Names(StationIndex);
             selection = Mathf.Max(0, Array.IndexOf(names, ProgramName)); number = "";
             SetMessage("F2 CREATE 新建；上下选择，ENTER 打开");
         }
         void OpenCreate()
         {
             int index = 1;
-            while (Array.Exists(names, item => string.Equals(item, "TRACE" + index.ToString("000"), StringComparison.OrdinalIgnoreCase))) index++;
-            nameInput.text = "TRACE" + index.ToString("000"); page = Page.Create;
+            while (Array.Exists(names, item => string.Equals(item, profile.NamePrefix + index.ToString("000"), StringComparison.OrdinalIgnoreCase))) index++;
+            nameInput.text = profile.NamePrefix + index.ToString("000"); page = Page.Create;
             SetMessage("键盘输入字母、数字、下划线；F1 完成创建");
             nameInput.ActivateInputField(); nameInput.Select();
         }
         void CreateProgram()
         {
             string name = nameInput.text.Trim().ToUpperInvariant();
-            if (Array.Exists(LabPendantProgramStorage.Names(0), item => string.Equals(item, name, StringComparison.OrdinalIgnoreCase)))
+            if (Array.Exists(LabPendantProgramStorage.Names(StationIndex), item => string.Equals(item, name, StringComparison.OrdinalIgnoreCase)))
             { SetMessage("同名程序已存在，请换一个名称"); return; }
             var model = new LabPendantProgramModel();
             if (!SaveCurrent()) { Refresh(); return; }
-            if (!LabPendantProgramStorage.Save(0, name, model, out string error)) { SetMessage(error); return; }
+            if (!LabPendantProgramStorage.Save(StationIndex, name, model, out string error)) { SetMessage(error); return; }
             LeaveNameInput(); SetModel(model, name); page = Page.Program;
-            SetMessage("先点动到安全点；F1 选 L 并录点");
+            SetMessage(station.IsTracing ? "先点动到安全点；F1 选 L 并录点" : "F1 选 L 并记录起点；按 SHIFT 点动");
         }
         void LoadSelected()
         {
             if (names.Length == 0) { SetMessage("暂无程序，按 F2 CREATE 新建"); return; }
             if (!SaveCurrent()) { Refresh(); return; }
-            if (!LabPendantProgramStorage.Load(0, names[selection], out var model, out string error)) { SetMessage(error); return; }
+            if (!LabPendantProgramStorage.Load(StationIndex, names[selection], out var model, out string error)) { SetMessage(error); return; }
             foreach (var row in model.Instructions)
                 if (Mathf.Abs(row.SpeedMm - SpeedMm) > .0001f) { SetMessage("程序速度与实验室固定速度不符，未加载"); return; }
             SetModel(model, names[selection]); page = Page.Program; cursor = 0;
@@ -249,7 +266,7 @@ namespace RoboticsLab
         }
         bool Editable()
         {
-            if (!view.Visible || !station || !station.IsOperating || station.EmergencyStopped || IsBusy)
+            if (!view.Visible || !station || !station.IsOperating || station.EmergencyStopped || IsBusy || OtherProgramBusy)
             { SetMessage("先 ABORT 终止程序、解除急停，再编辑"); return false; }
             if (string.IsNullOrEmpty(ProgramName)) { SetMessage("先 SELECT → CREATE 新建程序"); return false; }
             if (trace && trace.IsAutomatic) { SetMessage("先停止预设自动循迹"); return false; }
@@ -257,9 +274,7 @@ namespace RoboticsLab
         }
         Vector3 ActualLocal()
         {
-            var point = station.transform.InverseTransformPoint(station.ActualToolPosition);
-            if (Mathf.Abs(point.y - station.drawingHeight) <= .0002f) point.y = station.drawingHeight;
-            return point;
+            return profile.CapturePosition();
         }
         void RecordPoint()
         {
@@ -267,11 +282,11 @@ namespace RoboticsLab
             if (Model.HasPendingArc) { SetMessage("C 经过点已录；到终点后 SHIFT+F5"); return; }
             if (cursor != Model.Instructions.Count) { SetMessage("到 End 追加录点；修改已有点请用 TOUCHUP"); return; }
             Vector3 position = ActualLocal();
-            if (Model.Points.Count == 0 && (arcMode || position.y < station.drawingHeight + .005f))
-            { SetMessage("课堂要求：首点为 L 安全点，高于纸面至少 5mm"); return; }
-            bool ok = arcMode ? Model.RecordCircularPoint(position, SpeedMm) : Model.AddLinear(position, SpeedMm);
+            if (Model.Points.Count == 0 && !profile.ValidateFirstPoint(arcMode, position, out string error))
+            { SetMessage(error); return; }
+            bool ok = arcMode ? Model.RecordCircularPoint(position, SpeedMm, profile.RecordPenDown) : Model.AddLinear(position, SpeedMm, profile.RecordPenDown);
             cursor = Model.HasPendingArc ? Model.Instructions.Count - 1 : Model.Instructions.Count; editVia = false;
-            SetMessage(!ok ? Model.StatusText : Model.Points.Count == 1 ? "安全点 P[1] 已记录；继续点动到循迹起点" : Model.HasPendingArc
+            SetMessage(!ok ? Model.StatusText : Model.Points.Count == 1 ? (station.IsTracing ? "安全点 P[1] 已记录；继续点动到循迹起点" : "起点 P[1] 已记录；继续示教 L/C 轨迹") : Model.HasPendingArc
                 ? "C 经过点已录；到终点后 SHIFT+F5" : "L 终点已记录；SHIFT+F1 继续录点");
         }
         void TouchUp()
@@ -279,14 +294,14 @@ namespace RoboticsLab
             if (!Editable()) return;
             if (Model.HasPendingArc && cursor == Model.Instructions.Count - 1 && !editVia)
             {
-                bool ok = Model.RecordCircularPoint(ActualLocal(), SpeedMm);
+                bool ok = Model.RecordCircularPoint(ActualLocal(), SpeedMm, profile.RecordPenDown);
                 if (ok) cursor = Model.Instructions.Count;
                 SetMessage(ok ? "C 终点已记录，一条圆弧完成" : Model.StatusText);
             }
             else if (cursor < Model.Instructions.Count)
             {
                 var row = Model.Instructions[cursor]; int point = editVia ? row.ViaPoint : row.TargetPoint;
-                if (point == 1 && ActualLocal().y < station.drawingHeight + .005f) { SetMessage("课堂安全点需高于纸面至少 5mm"); return; }
+                if (!profile.ValidateTouchPoint(point, ActualLocal(), out string error)) { SetMessage(error); return; }
                 Model.TouchUpPoint(point, ActualLocal()); SetMessage(Model.StatusText);
             }
             else SetMessage("先用上下键选中程序行，再 TOUCHUP");
@@ -309,29 +324,19 @@ namespace RoboticsLab
             {
                 bool ok = cursor < Model.Instructions.Count
                     ? editVia ? Model.SetViaReference(cursor, point) : Model.SetTargetReference(cursor, point)
-                    : !Model.HasPendingArc && Model.AddLinearReference(point, SpeedMm);
+                    : !Model.HasPendingArc && Model.AddLinearReference(point, SpeedMm, profile.RecordPenDown);
                 number = ""; if (ok) { cursor = Model.Instructions.Count; editVia = false; }
                 SetMessage(ok ? "已引用 P[" + point + "]；无需重新录点" : "引用失败：检查点号与 L/C 类型");
             }
         }
         bool ValidateProgram(out string error)
         {
-            error = ""; var safe = Model.FindPoint(1);
-            if (safe == null || safe.LocalPosition.y < station.drawingHeight + .005f) error = "课堂要求：先录高于纸面至少 5mm 的安全点 P[1]";
-            else if (Model.HasPendingArc) error = "C 缺终点：到终点后 SHIFT+F5";
-            else if (Model.Instructions.Count < 3 || Model.Instructions[0].Type != LabPendantInstructionType.Linear || Model.Instructions[0].TargetPoint != 1)
-                error = "课堂要求：程序从 L P[1] 开始";
-            else
-            {
-                var last = Model.Instructions[Model.Instructions.Count - 1];
-                if (last.Type != LabPendantInstructionType.Linear || last.TargetPoint != 1) error = "课堂要求：末尾追加 L P[1] 返回安全点";
-            }
-            foreach (var row in Model.Instructions) if (Mathf.Abs(row.SpeedMm - SpeedMm) > .0001f) error = "程序速度不符合实验室固定速度";
-            return error.Length == 0;
+            return profile.ValidateProgram(Model, out error);
         }
         void Run()
         {
             if (!ShiftActive) { SetMessage("先按住或锁定 SHIFT，再按 FWD"); return; }
+            if (OtherProgramBusy) { SetMessage("先终止其他轨迹程序，再运行本示教程序"); return; }
             if (station.EmergencyStopped || resetRequired) { SetMessage("先解除急停并 RESET，再 SHIFT+FWD"); return; }
             if (!Executor.IsPaused && !ValidateProgram(out string error)) { SetMessage(error); return; }
             if (!Executor.IsPaused && cursor >= Model.Instructions.Count) { SetMessage("End 不执行；上下键选择起始行，再 FWD"); return; }
@@ -356,7 +361,7 @@ namespace RoboticsLab
         void Refresh()
         {
             if (!Screen || Model == null) return;
-            Screen.Header.text = (string.IsNullOrEmpty(ProgramName) ? "SELECT" : ProgramName) + (dirty ? " *" : "") + "  "
+            Screen.Header.text = "S" + (StationIndex + 1) + " " + (string.IsNullOrEmpty(ProgramName) ? "SELECT" : ProgramName) + (dirty ? " *" : "") + "  "
                 + (IsBusy ? Executor.IsPaused ? "HOLD" : "RUN" : "EDIT") + (ShiftActive ? " SHIFT" : "") + (StepMode ? " STEP" : "");
             nameInput.gameObject.SetActive(page == Page.Create);
             string rows; int active = cursor;
@@ -382,11 +387,14 @@ namespace RoboticsLab
             else
             {
                 var lines = Model.GetRows();
+                if (station && station.IsDrawing)
+                    for (int i = 0; i < lines.Length; i++) lines[i] += Model.Instructions[i].PenDown ? " DOWN" : " UP";
                 for (int i = 0; i < lines.Length; i++) lines[i] = (IsBusy && i == Executor.CurrentInstructionIndex ? "▶" : cursor == i ? ">" : " ") + lines[i];
                 rows = string.Join("\n", lines) + "\n" + (cursor == lines.Length ? ">" : " ") + "[End]";
                 if (number.Length > 0) rows += "\n引用 P[" + number + "]  ENTER";
                 else if (cursor < lines.Length && Model.Instructions[cursor].Type == LabPendantInstructionType.Circular)
                     rows += "\n当前编辑：" + (editVia ? "经过点" : "终点") + "（左右键切换）";
+                if (station && station.IsDrawing) rows += "\n新录：" + (station.PenDown ? "落笔 DOWN" : "抬笔 UP") + "  IO/P 切换";
                 Screen.SetFunctionKeys("POINT", "", "", cursor < lines.Length ? "CHOICE" : "", "TOUCHUP");
             }
             Screen.ProgramRows.text = rows;
@@ -424,6 +432,7 @@ namespace RoboticsLab
                 if (Input.GetKeyDown(KeyCode.F2)) HandleButton("F2");
                 if (Input.GetKeyDown(KeyCode.F4)) HandleButton("F4");
                 if (Input.GetKeyDown(KeyCode.F5)) HandleButton("F5");
+                if (Input.GetKeyDown(KeyCode.P) && station && station.IsDrawing) TogglePen();
                 if (Input.GetKeyDown(KeyCode.UpArrow)) HandleButton("UP");
                 if (Input.GetKeyDown(KeyCode.DownArrow)) HandleButton("DOWN");
                 if (Input.GetKeyDown(KeyCode.LeftArrow)) HandleButton("LEFT");
@@ -432,7 +441,7 @@ namespace RoboticsLab
                 if (Input.GetKeyDown(KeyCode.Backspace)) HandleButton("BACKSPACE");
                 for (int i = 0; i <= 9; i++) if (Input.GetKeyDown(KeyCode.Alpha0 + i) || Input.GetKeyDown(KeyCode.Keypad0 + i)) HandleButton(i.ToString(CultureInfo.InvariantCulture));
             }
-            if (station) Screen.SetPose(ActualLocal() - new Vector3(station.exerciseCenter.x, station.drawingHeight, station.exerciseCenter.z));
+            if (station) Screen.SetPose(ActualLocal() - profile.UserOrigin);
         }
         void OnApplicationFocus(bool focused) { if (!focused) { shiftLatched = false; Pause(); SaveCurrent(); Refresh(); } }
         void OnApplicationQuit() { SaveCurrent(); }

@@ -14,17 +14,17 @@
 
 各工位的使用步骤和 AI 修改说明统一放在 [操作说明](操作说明/README.md)。后面大家用 AI 做完功能后，请让 AI 把入口、操作步骤、修改内容、验证结果和未完成项写进这个文件夹，和代码一起提交。有问题直接联系本次提交者。
 
-**Station1 示教器循迹编程**支持 SELECT 新建/打开程序、L/C 录点、选行执行，以及返回同一个安全点 P[1]；速度固定 20 mm/sec。操作步骤见 [Station1 循迹编程](操作说明/Station1循迹编程.md)，本次改动和验证边界见 [AI 修改说明](操作说明/2026-11-08_Station1示教器_AI修改说明.md)。Station1 的按键流程与下面的 02/03 工位不同。
+**三台示教器**共用第一台的 SELECT 新建/打开、POINT 选 L/C、TOUCHUP、选行运行和 SHIFT 使能流程，指令固定 20 mm/sec。每台保留独立程序；任务和运动约束仍按工位区分。
 
-## 控制器 L/C 编程（02/03 工位）
+## 控制器 L/C 编程
 
-在 02 或 03 工位打开“示教器 / L・C 编程”。F1 记录 L 终点，F2 依次记录 C 中间点和终点，数据出现在组员原控制器的 LCD 内。
+进入工位后点击“示教器 / L・C 编程”。正式使用步骤见 [Station1 循迹编程](操作说明/Station1循迹编程.md) 和 [Station2 套圈、Station3 画图编程](操作说明/Station2和Station3示教器编程.md)。本次修改和检查边界见 [2026-11-09 三工位接入说明](操作说明/2026-11-09_三工位示教器接入_AI修改说明.md)。
 
-**FWD** 运行/恢复，**HOLD** 暂停，**STEP** 单步执行一条完整指令，**RESET** 停止但保留程序，**DATA** 保存/加载或追加返回首点的 L 指令。C 使用经过中间点的三点圆弧；运动继续经过原工位的 IK 和碰撞适配器。
+**SHIFT + FWD** 从选中行运行/恢复，**HOLD** 暂停，**STEP** 切换单步，**FCTN → ABORT** 终止，**RESET** 复位已排除的故障。SELECT 管理程序，修改后自动保存。原 F1/F2 直录、RESET 停止、DATA 文件菜单只保留给历史录像与兼容接口。
 
-“抬笔”目前控制是否生成笔迹，不会自动升高末端。先抬笔再添加返回 P[1]，即可无痕回程。
+03 用 **IO/P** 设置新录行的 UP/DOWN，抬笔只控制不留线，不会自动升高工具。02 使用真实圆环中心，没有纸面安全点或强制返回 P[1] 的要求；两台继续使用原 IK 与碰撞检查。
 
-详细步骤及模块职责见[控制器 L/C 编程说明](Documentation/控制器L-C编程接入.md)，验证记录见[验收说明](Documentation/控制器编程验收.md)。
+模块职责见[控制器接入索引](Documentation/控制器L-C编程接入.md)，当前与历史测试分开列在[验收索引](Documentation/控制器编程验收.md)。
 
 ## 比赛当天：90 秒循环展播
 
@@ -34,6 +34,8 @@
 
 ## 构建与慢速演示
 
-在 Unity 中使用 `Robot Lab > Build Windows Demo` 构建正常 Windows 演示，再运行根目录 `Play Demo.cmd`。只录制编程时，使用 `Robot Lab > Build L-C Recording Demo`，再运行 `Play L-C Recording.cmd`。后者会直接进入 03 工位，用字幕和按钮标记逐步展示完整 L/C 流程，约 3 分 40 秒。
+在 Unity 中使用 `Robot Lab > Build Windows Demo` 构建正常 Windows 演示，再运行根目录 `Play Demo.cmd`。
+
+`Robot Lab > Build L-C Recording Demo` 和 `Play L-C Recording.cmd` 保留约 3 分 40 秒的**历史按键流程**录制：直接进入 03 工位，以旧 F1/F2、RESET、DATA 接口展示 L/C。它不展示本次 SELECT / POINT / TOUCHUP 交互；验收新流程请使用普通主场景或 Windows 演示入口。
 
 `Builds`、`Deliverables` 和 Unity 缓存不进入 Git；组员拉取源码后在本机构建。`Assets/ControllerUI` 已包含主场景所需的控制器依赖。`kongzhiqi` 为保留的原控制器工程，不需再次复制进主 Assets。
