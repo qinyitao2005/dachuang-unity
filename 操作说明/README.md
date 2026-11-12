@@ -8,6 +8,7 @@
 |---|---|---|
 | Station1 示教器 L/C 循迹编程 | [从新建程序到录点、运行](Station1循迹编程.md) | [2026-11-08 本次成果与 AI 修改说明](2026-11-08_Station1示教器_AI修改说明.md) |
 | Station2 套圈、Station3 画图示教器 | [共用 SELECT / POINT / TOUCHUP 流程](Station2和Station3示教器编程.md) | [2026-11-09 三工位接入与 AI 修改说明](2026-11-09_三工位示教器接入_AI修改说明.md) |
+| Station1 Xbox 手柄适配与程序删除 | [游荡、点动、录点、运行和删除](Station1_Xbox手柄.md) | [2026-11-12 AI 修改与验证记录](2026-11-12_Station1手柄与程序删除_AI修改说明.md) |
 
 三台普通入口现共用第一台的 SELECT、POINT、TOUCHUP、SHIFT + FWD 工作流。任务仍有区别：01 要按课堂要求返回安全点并评分；02 保留套圈约束；03 按每行 UP/DOWN 控制笔迹。旧 F1/F2 直录、RESET 停止、DATA 文件菜单仅用于历史录像和兼容接口，不要与现在的步骤混用。
 

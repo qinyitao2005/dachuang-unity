@@ -276,6 +276,13 @@ namespace RoboticsLab
 
             if(Input.GetKeyDown(KeyCode.E) && !ActiveStation && panel=="") Interact();
 
+            var station1Pad=UnityEngine.InputSystem.Gamepad.current;
+            if(station1Pad!=null && station1Pad.buttonSouth.wasPressedThisFrame)
+            {
+                if(!ActiveStation && panel=="") InteractStation1Gamepad();
+                else if(ActiveStation && ActiveStation.stationIndex==0 && panel=="operate" && !Part1接管中 && !Station1PendantVisible) ToggleStation1Pendant();
+            }
+
             if(ActiveStation && !Part1接管中)
 
             {
@@ -297,6 +304,12 @@ namespace RoboticsLab
                 {
 
                     Vector3 dir=typing?Vector3.zero:new Vector3(Input.GetAxisRaw("Horizontal"),(Input.GetKey(KeyCode.Q)?1:0)-(Input.GetKey(KeyCode.E)?1:0),Input.GetAxisRaw("Vertical"));
+                    if(ActiveStation.stationIndex==0 && station1Pad!=null && !Station1PendantVisible)
+                        dir=new Vector3((Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow)?1:0),
+                            (Input.GetKey(KeyCode.Q)?1:0)-(Input.GetKey(KeyCode.E)?1:0),
+                            (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow)?1:0));
+                    if(ActiveStation.stationIndex==0 && station1Pad!=null && station1Pad.rightShoulder.isPressed && !Station1PendantVisible && !typing)
+                        dir+=ActiveStation.transform.TransformDirection(LabStation1Gamepad.JogLocal());
 
                     heldDirection=typing?Vector3.zero:PointerJogDirection();
 
@@ -468,7 +481,9 @@ namespace RoboticsLab
                 ActiveTracing.SelectShape(0);
             }
 
-            Notify("已进入"+ActiveStation.RoleLabel+"工位。WASD 平移，Q / E 升降，空格急停。",6);return true;
+            Notify(ActiveStation.stationIndex==0 && UnityEngine.InputSystem.Gamepad.current!=null
+                ?"已进入 Station1；按 A 展开示教器，按住 RB 用左摇杆和扳机点动。"
+                :"已进入"+ActiveStation.RoleLabel+"工位。WASD 平移，Q / E 升降，空格急停。",6);return true;
 
         }
 
@@ -599,6 +614,16 @@ namespace RoboticsLab
 
         }
 
+        void InteractStation1Gamepad()
+        {
+            if(player && player.IsEquippingHelmet)return;
+            if(!HelmetWorn && NearestHelmet){EquipHelmet();return;}
+            if(Near(teachingPoint,4.4f)){OpenLesson();return;}
+            if(stations!=null && stations.Length>0 && stations[0] && Near(stations[0].transform,4f))
+            {TryStartStation(0);return;}
+            Notify("靠近安全装备架、教学屏或 Station1 后按 A 交互。");
+        }
+
         bool Near(Transform t,float distance) { if(!t||!player)return false; var a=t.position; var b=player.transform.position;a.y=b.y=0;return Vector3.Distance(a,b)<distance; }
 
         static bool ValidBank(LabQuestionBank b)
@@ -627,12 +652,15 @@ namespace RoboticsLab
 
             if(player && player.IsEquippingHelmet)return "正在佩戴安全帽  ·  请稍候";
 
-            if(!HelmetWorn && NearestHelmet)return "E  ·  领取面前最近的安全帽";
+            bool station1Pad=UnityEngine.InputSystem.Gamepad.current!=null;
+            if(!HelmetWorn && NearestHelmet)return station1Pad?"A / E  ·  领取面前最近的安全帽":"E  ·  领取面前最近的安全帽";
 
-            if(Near(teachingPoint,4.4f))return "E  ·  打开教学屏";
+            if(Near(teachingPoint,4.4f))return station1Pad?"A / E  ·  打开教学屏":"E  ·  打开教学屏";
 
-            if(stations!=null)for(int i=0;i<stations.Length;i++)if(Near(stations[i].transform,4))return "E  ·  操作 "+stations[i].displayName;
+            if(stations!=null)for(int i=0;i<stations.Length;i++)if(Near(stations[i].transform,4))
+                return (station1Pad&&stations[i].stationIndex==0?"A / E":"E")+"  ·  操作 "+stations[i].displayName;
 
+            if(station1Pad)return "左摇杆移动    右摇杆转视角    靠近 Station1 后按 A 交互";
             return player&&player.pointerReleased?"光标已释放  ·  Tab 恢复鼠标转视角":"W A S D  移动    鼠标转视角    Tab 释放光标    Shift 快走";
 
         }

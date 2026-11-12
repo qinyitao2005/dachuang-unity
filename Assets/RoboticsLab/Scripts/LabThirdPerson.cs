@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RoboticsLab
 {
@@ -46,12 +47,27 @@ namespace RoboticsLab
                 yaw += Input.GetAxis("Mouse X") * 3f;
                 pitch = Mathf.Clamp(pitch - Input.GetAxis("Mouse Y") * 2.1f, 5, 65);
             }
+            var roamingPad = canMove ? Gamepad.current : null;
+            if (roamingPad != null)
+            {
+                Vector2 look = roamingPad.rightStick.ReadValue();
+                if (look.sqrMagnitude >= .0225f)
+                {
+                    yaw += look.x * 120f * Time.deltaTime;
+                    pitch = Mathf.Clamp(pitch - look.y * 90f * Time.deltaTime, 5, 65);
+                }
+            }
             if (inputEnabled) distance = Mathf.Clamp(distance - Input.mouseScrollDelta.y * .25f, 2.0f, 5f);
             if (focusMode&&focusZoomEnabled) operationZoom=Mathf.Clamp(operationZoom-Input.mouseScrollDelta.y*.06f,.65f,1.3f);
             Vector3 direction = Vector3.zero;
             if (canMove)
             {
-                direction = Quaternion.Euler(0, yaw, 0) * new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical"));
+                Vector2 walk = roamingPad != null ? roamingPad.leftStick.ReadValue()
+                    : new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+                if (roamingPad != null && walk.sqrMagnitude < .0225f)
+                    walk = new Vector2((Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow)?1:0),
+                        (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow)?1:0));
+                direction = Quaternion.Euler(0, yaw, 0) * new Vector3(walk.x,0,walk.y);
                 direction = Vector3.ClampMagnitude(direction,1);
             }
             if (controller.isGrounded && vertical < 0) vertical = -2;

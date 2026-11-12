@@ -213,6 +213,27 @@ namespace RoboticsLab
             return names.ToArray();
         }
 
+        public static bool Delete(int stationIndex, string name, out string error)
+        {
+            error = null;
+            try
+            {
+                string path = PathFor(stationIndex, name);
+                if (!File.Exists(path))
+                {
+                    error = "程序文件不存在，请刷新程序列表。";
+                    return false;
+                }
+                File.Delete(path);
+                return true;
+            }
+            catch (Exception exception) when (StorageException(exception))
+            {
+                error = "删除程序失败：" + exception.Message;
+                return false;
+            }
+        }
+
         static string ValidatedName(string name)
         {
             if (name == null) throw new ArgumentException("请输入程序名称。", "name");

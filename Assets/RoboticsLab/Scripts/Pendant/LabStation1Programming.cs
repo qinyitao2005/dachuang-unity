@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace RoboticsLab
@@ -9,14 +10,15 @@ namespace RoboticsLab
     /// <summary>Shared teaching workflow; each station owns an instance. The executor retains all motion checks.</summary>
     public sealed class LabStation1Programming : MonoBehaviour
     {
-        enum Page { Program, Programs, Create, Motion, Functions }
+        enum Page { Program, Programs, Create, Motion, Functions, DeleteConfirm }
         public LabPendantProgramModel Model { get; private set; }
         public LabPendantExecutor Executor { get; private set; }
         public LabPendantScreenView Screen { get; private set; }
         public string ProgramName { get; private set; } = "";
         public bool IsBusy => Executor && Executor.IsExecuting;
         public bool TextEntryFocused => page == Page.Create;
-        public bool ShiftActive => shiftLatched || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        public bool ShiftActive => shiftLatched || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)
+            || (StationIndex == 0 && Gamepad.current != null && Gamepad.current.rightShoulder.isPressed);
         public bool StepMode { get; private set; }
         public string Message { get; private set; } = "SELECT 新建或选择程序";
 
@@ -29,8 +31,10 @@ namespace RoboticsLab
         Page page = Page.Programs;
         int selection, cursor;
         bool shiftLatched, arcMode, scoring, modifyingMotion, editVia, dirty, resetRequired;
-        float saveAfter;
-        string number = "", storageError = "";
+        float saveAfter, clearHoldStarted = -1;
+        int openedFrame = -1;
+        bool clearHoldTriggered;
+        string number = "", storageError = "", pendingDeleteName = "";
         string[] names = Array.Empty<string>();
         Vector3 heldJog;
         // Lab speed is fixed. Do not expose feed editing or override controls.
@@ -80,12 +84,16 @@ namespace RoboticsLab
             page = string.IsNullOrEmpty(ProgramName) ? Page.Programs : Page.Program;
             names = LabPendantProgramStorage.Names(StationIndex); selection = 0; cursor = 0;
             number = ""; heldJog = Vector3.zero; shiftLatched = false;
-            Message = page == Page.Programs ? "F2 CREATE 新建；上下选择后 ENTER 打开" : "程序保留；选起始行后 SHIFT+FWD";
+            pendingDeleteName = "";
+            openedFrame = Time.frameCount; clearHoldStarted = -1; clearHoldTriggered = false;
+            Message = page == Page.Programs ? (StationIndex == 0 ? "F2 CREATE 新建；F3 DELETE 删除；ENTER 打开" : "F2 CREATE 新建；上下选择后 ENTER 打开") : "程序保留；选起始行后 SHIFT+FWD";
             Refresh();
         }
         public void Deactivate()
         {
             heldJog = Vector3.zero; shiftLatched = false;
+            pendingDeleteName = "";
+            clearHoldStarted = -1; clearHoldTriggered = false;
             if (Executor) Executor.Stop();
             EndScoring(); SaveCurrent();
             if (nameInput) nameInput.DeactivateInputField();
@@ -99,7 +107,8 @@ namespace RoboticsLab
             Vector3 keyboard = new Vector3((Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0),
                 (Input.GetKey(KeyCode.Q) ? 1 : 0) - (Input.GetKey(KeyCode.E) ? 1 : 0),
                 (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0));
-            return station.transform.TransformDirection(Vector3.ClampMagnitude(heldJog + keyboard, 1))
+            Vector3 gamepadJog = StationIndex == 0 ? LabStation1Gamepad.JogLocal() : Vector3.zero;
+            return station.transform.TransformDirection(Vector3.ClampMagnitude(heldJog + keyboard + gamepadJog, 1))
                 * (station.IsTracing ? Mathf.Min(1, .012f / Mathf.Max(.0001f, station.moveSpeed)) : 1f);
         }
         public void SetJog(Vector3 direction) { heldJog = direction; }
@@ -126,6 +135,17 @@ namespace RoboticsLab
                 if (Executor.State == LabTrajectoryState.Faulted) Executor.Stop();
                 resetRequired = false;
                 SetMessage(IsBusy ? "RESET 不终止程序；HOLD 暂停，FCTN 中 ABORT 终止" : "可复位故障已清除；选择起始行再运行"); return;
+            }
+            if (page == Page.DeleteConfirm)
+            {
+                if (id == "F4") ConfirmDelete();
+                else if (id == "F5" || id == "PREV" || id == "SELECT")
+                {
+                    pendingDeleteName = ""; page = Page.Programs;
+                    SetMessage("已取消删除，程序保留");
+                }
+                else SetMessage("删除整个程序：F4 YES 确认，F5 NO 取消");
+                return;
             }
             if (id == "FCTN") { LeaveNameInput(); page = Page.Functions; selection = 0; number = ""; Refresh(); return; }
             if (id == "PREV")
@@ -163,6 +183,7 @@ namespace RoboticsLab
             if (page == Page.Programs)
             {
                 if (id == "F2") { OpenCreate(); return; }
+                if (id == "F3" && StationIndex == 0) { StartDelete(); return; }
                 if (id == "UP" || id == "DOWN") selection = Mathf.Clamp(selection + (id == "UP" ? -1 : 1), 0, Mathf.Max(0, names.Length - 1));
                 else if (id == "ENTER") { LoadSelected(); return; }
                 Refresh(); return;
@@ -198,6 +219,7 @@ namespace RoboticsLab
                 page = Page.Motion; Refresh(); return;
             }
             if (id == "F5") { SetMessage("按 SHIFT+F5 更新选中点；C 可用左右键选经过点/终点"); return; }
+            if (id == "F3" && StationIndex == 0) { SetMessage("F3 DELETE 仅在 SELECT 程序列表中删除整个程序"); return; }
             if (id.StartsWith("J", StringComparison.Ordinal)) { SetMessage("SHIFT 配合 ±X/±Y/±Z 点动"); return; }
             if (id == "IO") { TogglePen(); return; }
             if (id == "COORD" || id == "POSN") { SetMessage(profile.CoordinateHint); return; }
@@ -222,7 +244,31 @@ namespace RoboticsLab
             if (!SaveCurrent()) { Refresh(); return; }
             LeaveNameInput(); page = Page.Programs; names = LabPendantProgramStorage.Names(StationIndex);
             selection = Mathf.Max(0, Array.IndexOf(names, ProgramName)); number = "";
-            SetMessage("F2 CREATE 新建；上下选择，ENTER 打开");
+            SetMessage(StationIndex == 0 ? "F2 CREATE 新建；F3 DELETE 删除选中程序；ENTER 打开" : "F2 CREATE 新建；上下选择，ENTER 打开");
+        }
+        void StartDelete()
+        {
+            if (StationIndex != 0) return;
+            if (names.Length == 0) { SetMessage("程序列表为空，没有可删除的程序"); return; }
+            if (!SaveCurrent()) { Refresh(); return; }
+            pendingDeleteName = names[selection]; page = Page.DeleteConfirm;
+            SetMessage("确认删除 " + pendingDeleteName + "？F4 YES / F5 NO");
+        }
+        void ConfirmDelete()
+        {
+            if (string.IsNullOrEmpty(pendingDeleteName)) { page = Page.Programs; Refresh(); return; }
+            string deletedName = pendingDeleteName;
+            if (!LabPendantProgramStorage.Delete(0, deletedName, out string error))
+            { SetMessage(error); return; }
+            if (string.Equals(ProgramName, deletedName, StringComparison.OrdinalIgnoreCase))
+            {
+                Stop();
+                SetModel(new LabPendantProgramModel(), "");
+            }
+            pendingDeleteName = ""; page = Page.Programs;
+            names = LabPendantProgramStorage.Names(0);
+            selection = Mathf.Clamp(selection, 0, Mathf.Max(0, names.Length - 1));
+            SetMessage("已删除程序 " + deletedName + "；程序和点位文件已移除");
         }
         void OpenCreate()
         {
@@ -361,7 +407,7 @@ namespace RoboticsLab
         void Refresh()
         {
             if (!Screen || Model == null) return;
-            Screen.Header.text = "S" + (StationIndex + 1) + " " + (string.IsNullOrEmpty(ProgramName) ? "SELECT" : ProgramName) + (dirty ? " *" : "") + "  "
+            Screen.Header.text = "S" + (StationIndex + 1) + " " + (page == Page.DeleteConfirm ? "SELECT DELETE" : string.IsNullOrEmpty(ProgramName) ? "SELECT" : ProgramName) + (dirty ? " *" : "") + "  "
                 + (IsBusy ? Executor.IsPaused ? "HOLD" : "RUN" : "EDIT") + (ShiftActive ? " SHIFT" : "") + (StepMode ? " STEP" : "");
             nameInput.gameObject.SetActive(page == Page.Create);
             string rows; int active = cursor;
@@ -370,7 +416,12 @@ namespace RoboticsLab
                 rows = "SELECT PROGRAM\n"; active = selection + 1;
                 for (int i = 0; i < names.Length; i++) rows += (i == selection ? "> " : "  ") + names[i] + "\n";
                 if (names.Length == 0) rows += "暂无程序，F2 CREATE";
-                Screen.SetFunctionKeys("", "CREATE", "", "", "");
+                Screen.SetFunctionKeys("", "CREATE", StationIndex == 0 && names.Length > 0 ? "DELETE" : "", "", "");
+            }
+            else if (page == Page.DeleteConfirm)
+            {
+                rows = "DELETE PROGRAM\n\n" + pendingDeleteName + "\n\n删除程序及全部点位？\nF4 YES / F5 NO";
+                Screen.SetFunctionKeys("", "", "", "YES", "NO");
             }
             else if (page == Page.Create) { rows = "CREATE PROGRAM\n\n\n\n\nF1 END / PREV 返回"; Screen.SetFunctionKeys("END", "", "", "", ""); }
             else if (page == Page.Motion)
@@ -415,6 +466,7 @@ namespace RoboticsLab
         void Update()
         {
             if (!view || !view.Visible) return;
+            if (StationIndex == 0) HandleGamepad();
             if (station && station.EmergencyStopped) resetRequired = true;
             if (Executor.State == LabTrajectoryState.Running && !ShiftActive) Pause();
             if (dirty && Time.unscaledTime >= saveAfter) { SaveCurrent(); Refresh(); }
@@ -430,6 +482,7 @@ namespace RoboticsLab
                 if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift)) Refresh();
                 if (Input.GetKeyDown(KeyCode.F1)) HandleButton("F1");
                 if (Input.GetKeyDown(KeyCode.F2)) HandleButton("F2");
+                if (Input.GetKeyDown(KeyCode.F3)) HandleButton("F3");
                 if (Input.GetKeyDown(KeyCode.F4)) HandleButton("F4");
                 if (Input.GetKeyDown(KeyCode.F5)) HandleButton("F5");
                 if (Input.GetKeyDown(KeyCode.P) && station && station.IsDrawing) TogglePen();
@@ -443,6 +496,51 @@ namespace RoboticsLab
             }
             if (station) Screen.SetPose(ActualLocal() - profile.UserOrigin);
         }
+        void HandleGamepad()
+        {
+            var pad = Gamepad.current;
+            if (pad == null) { clearHoldStarted = -1; clearHoldTriggered = false; return; }
+            if (pad.rightShoulder.wasPressedThisFrame || pad.rightShoulder.wasReleasedThisFrame) Refresh();
+            if (page != Page.DeleteConfirm && pad.selectButton.isPressed)
+            {
+                if (clearHoldStarted < 0) clearHoldStarted = Time.unscaledTime;
+                if (!clearHoldTriggered && Time.unscaledTime - clearHoldStarted >= 3f)
+                {
+                    clearHoldTriggered = true;
+                    ClearCurrentProgram();
+                }
+            }
+            else { clearHoldStarted = -1; clearHoldTriggered = false; }
+            if (Time.frameCount == openedFrame) return;
+            if (page == Page.DeleteConfirm)
+            {
+                // If both confirmation buttons arrive in one frame, cancellation wins.
+                if (pad.buttonNorth.wasPressedThisFrame) { HandleButton("F5"); return; }
+                if (pad.buttonWest.wasPressedThisFrame) { HandleButton("F4"); return; }
+            }
+            if (pad.dpad.up.wasPressedThisFrame) HandleButton("UP");
+            if (pad.dpad.down.wasPressedThisFrame) HandleButton("DOWN");
+            if (pad.dpad.left.wasPressedThisFrame) HandleButton("FCTN");
+            if (pad.dpad.right.wasPressedThisFrame) HandleButton("ENTER");
+            if (pad.buttonSouth.wasPressedThisFrame) HandleButton("F1");
+            if (pad.buttonEast.wasPressedThisFrame) HandleButton("F2");
+            if (pad.rightStickButton.wasPressedThisFrame) HandleButton("F3");
+            if (pad.buttonWest.wasPressedThisFrame) HandleButton("F4");
+            if (pad.buttonNorth.wasPressedThisFrame) HandleButton("F5");
+            if (pad.startButton.wasPressedThisFrame) HandleButton("SELECT");
+            if (pad.leftStickButton.wasPressedThisFrame) HandleButton("1");
+            if (pad.leftShoulder.wasPressedThisFrame) HandleButton("FWD");
+        }
+        void ClearCurrentProgram()
+        {
+            if (string.IsNullOrEmpty(ProgramName)) { SetMessage("先创建或打开 Station1 程序"); return; }
+            Stop();
+            Model.Clear();
+            page = Page.Program; cursor = 0; selection = 0;
+            arcMode = false; modifyingMotion = false; editVia = false; number = "";
+            if (SaveCurrent()) SetMessage("View 长按：已清空本程序的全部指令和点位，从 P[1] 重新录入");
+            else Refresh();
+        }
         void OnApplicationFocus(bool focused) { if (!focused) { shiftLatched = false; Pause(); SaveCurrent(); Refresh(); } }
         void OnApplicationQuit() { SaveCurrent(); }
         void OnDisable() { if (Executor) Deactivate(); }
@@ -452,6 +550,21 @@ namespace RoboticsLab
             if (view) view.ButtonClicked -= HandleButton;
             if (Executor) Executor.Changed -= ExecutionChanged;
             if (Model != null) Model.Changed -= ModelChanged;
+        }
+    }
+
+    // Station1 only: USER X/Y on the left stick, USER Z on the triggers.
+    internal static class LabStation1Gamepad
+    {
+        public static Vector3 JogLocal()
+        {
+            var pad = Gamepad.current;
+            if (pad == null) return Vector3.zero;
+            Vector2 stick = pad.leftStick.ReadValue();
+            if (stick.sqrMagnitude < .0225f) stick = Vector2.zero;
+            float z = pad.rightTrigger.ReadValue() - pad.leftTrigger.ReadValue();
+            if (Mathf.Abs(z) < .15f) z = 0;
+            return Vector3.ClampMagnitude(new Vector3(stick.x, z, stick.y), 1);
         }
     }
 }
