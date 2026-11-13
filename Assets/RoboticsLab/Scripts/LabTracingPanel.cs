@@ -82,7 +82,11 @@ namespace RoboticsLab
                 "平均偏差  " + trace.MeanErrorMm.ToString("F2") + " mm\n" +
                 "当前偏差  " + trace.CurrentErrorMm.ToString("F2") + " mm", text);
             GUI.Label(new Rect(42, 740, 234, 69), trace.Status, text);
-            GUI.Label(new Rect(42, 815, 234, 58), trace.IsManual
+            if (pendantVisible)
+            {
+                if (Button(new Rect(42, 827, 234, 42), "退出工位  [Esc]")) app.ClosePanel();
+            }
+            else GUI.Label(new Rect(42, 815, 234, 58), trace.IsManual
                 ? "抬起探针移到绿色起点。\n开始后贴纸沿 J 线移动，\n不留新线，按轨迹评分。"
                 : "沿印线循迹，不留新线。\n空格急停；R 清空成绩。", text);
         }

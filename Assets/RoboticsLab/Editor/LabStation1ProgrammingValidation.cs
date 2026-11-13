@@ -85,7 +85,6 @@ namespace RoboticsLab.Editor
             station = app.ActiveStation;
             var trace = station.GetComponent<LabTracingExercise>();
             trace.SelectShape(1);
-            app.ToggleStation1Pendant();
             program = app.station1Pendant.Programming;
             Require(program && program.Executor.AllowTracing, "Separate tracing executor is bound.");
             Require(!app.pendantController.Executor.AllowTracing, "Stations2/3 executor keeps its original defaults.");
@@ -210,18 +209,17 @@ namespace RoboticsLab.Editor
             Click("FCTN"); Click("ENTER");
             Require(!program.IsBusy && program.Model.Instructions.Count == 5, "ABORT terminates motion while preserving taught instructions.");
             Click("FWD");
-            app.ToggleStation1Pendant();
-            Require(!program.IsBusy && !app.Station1PendantVisible && app.TracingPaperVisible, "Closing the pendant stops execution and restores ordinary layout.");
-            Require(program.Model.Instructions.Count == 5, "Closing keeps the taught program.");
+            app.ClosePanel();
+            Require(!program.IsBusy && !app.Station1PendantVisible, "Exiting the station stops execution and closes the pendant.");
+            Require(program.Model.Instructions.Count == 5, "Exiting keeps the taught program.");
             Require(app.TryStartStation(1), "Station2 remains enterable after Station1 programming.");
-            app.ToggleTeachingPendant();
-            Require(app.TeachingPendantVisible && !program.IsBusy, "Shared Station2 pendant is available after Station1.");
+            Require(app.TeachingPendantVisible && !program.IsBusy, "Shared Station2 pendant opens with its station.");
             Require(app.TryStartStation(2), "Station3 remains enterable after Station1 programming.");
             app.ToggleTeachingPendant();
             Require(app.TeachingPendantVisible && app.ActiveTeachingPendant.Programming.Model.Points.Count == 0,
                 "Shared Station3 pendant remains independent of the Station1 program.");
             Require(app.TryStartStation(0), "Can return to Station1 for a new teaching attempt.");
-            station = app.ActiveStation; app.ToggleStation1Pendant();
+            station = app.ActiveStation;
             for (int i = 0; i < 3; i++) yield return null;
             for (int i = 0; i < 5; i++) { Click("FCTN"); Click("DOWN"); Click("ENTER"); }
             Require(program.Model.Points.Count == 0 && program.Model.NextPointNumber == 1,

@@ -15,6 +15,7 @@ namespace RoboticsLab
         float inkLength;
 
         public float Progress { get; private set; }
+        public IReadOnlyList<LineRenderer> Strokes => strokes;
 
         public LabDrawingExercise(Group0927Station station)
         {
@@ -32,7 +33,7 @@ namespace RoboticsLab
             Progress = 0;
         }
 
-        /// <summary>抬笔、急停和离开工位时结束当前笔画。</summary>
+        /// <summary>笔尖离纸、急停和离开工位时结束当前笔画。</summary>
         public void EndStroke()
         {
             currentStroke = null;
@@ -44,16 +45,17 @@ namespace RoboticsLab
                 if (stroke) stroke.gameObject.SetActive(visible);
         }
 
-        public void Tick(bool penDown)
+        public void Tick(bool canDraw)
         {
-            if (!penDown || !station.endEffector)
+            if (!canDraw || !station.endEffector)
             {
                 EndStroke();
                 return;
             }
 
             Vector3 point = station.transform.InverseTransformPoint(station.ActualToolPosition);
-            if (Mathf.Abs(point.y - station.drawingHeight) > .0008f || station.DrawingTiltDegrees > 1f)
+            float gap = point.y - station.drawingHeight;
+            if (gap < -.0002f || gap > .01f)
             {
                 EndStroke();
                 return;

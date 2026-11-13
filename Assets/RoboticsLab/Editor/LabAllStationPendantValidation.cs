@@ -164,7 +164,7 @@ namespace RoboticsLab.Editor
             report.drawingReturnErrorMm = Vector3.Distance(Actual(), first) * 1000;
             Require(report.drawingReturnErrorMm <= 1.1f && report.arcViaErrorMm <= 1.2f,
                 "Real TCP passes the C via point and returns to saved P1; errors mm=" + report.arcViaErrorMm + "/" + report.drawingReturnErrorMm);
-            Require(InkVertices() == 0, "Pen-up L/C execution leaves no drawing strokes.");
+            Require(InkVertices() == 0, "Raised L/C execution outside the 10 mm band leaves no drawing strokes.");
             string raisedContent = ProgramContent(program.Model);
             Click("SELECT"); Click("ENTER");
             Require(program.ProgramName == drawingName && ProgramContent(program.Model) == raisedContent,
@@ -204,9 +204,14 @@ namespace RoboticsLab.Editor
                 && program.Model.Instructions[2].TargetPoint == convertedEnd,
                 "F4 converts C back to two L rows while retaining both point references.");
 
-            // Teach paper-contact ink with the same button workflow; no transforms are teleported.
+            // Teach a safe point, contact-height L/C and a return to the same safe point.
             station.ResetExercise();
             CreateProgram();
+            Vector3 safePoint = Actual();
+            if (!program.ShiftActive) Click("SHIFT_LEFT");
+            Click("F1");
+            Require(program.Model.Points.Count == 1 && safePoint.y >= station.drawingHeight + .015f,
+                "Station03 begins at a safe point at least 15 mm above paper.");
             Vector3 paperA = station.exerciseCenter; paperA.y = station.drawingHeight;
             Vector3 paperB = paperA + Vector3.right * .02f;
             Vector3 paperVia = paperB + new Vector3(.01f, 0, .01f);
@@ -214,14 +219,15 @@ namespace RoboticsLab.Editor
             yield return MoveTo(paperA);
             if (!program.ShiftActive) Click("SHIFT_LEFT");
             Click("F1"); Click("IO");
-            Require(station.PenDown, "Drawing IO enables pen-down teaching.");
+            Require(!station.PenDown, "Drawing IO does not latch pen state; clearance determines ink.");
             yield return MoveTo(paperB); Click("F1");
             yield return MoveTo(paperVia);
             Click("SHIFT_LEFT"); Click("F1"); Click("DOWN"); Click("ENTER"); Click("SHIFT_LEFT");
-            yield return MoveTo(paperEnd); Click("F5"); Click("IO"); Click("1"); Click("ENTER");
-            Require(program.Model.Instructions.Count == 4 && !program.Model.Instructions[0].PenDown
-                && program.Model.Instructions[1].PenDown && program.Model.Instructions[2].PenDown && !program.Model.Instructions[3].PenDown,
-                "Recorded L and C preserve pen-down while approach and return remain pen-up.");
+            yield return MoveTo(paperEnd); Click("F5"); Click("1"); Click("ENTER");
+            Require(program.Model.Instructions.Count == 5 && program.Model.Instructions[4].TargetPoint == 1,
+                "Station03 returns to the original safe point P[1].");
+            foreach(var row in program.Model.Instructions) Require(!row.PenDown,
+                "Station03 records motion without IO pen state.");
             station.ClearDrawing(); yield return null;
             FirstRow(); Click("FWD");
             int returnInk = -1;
@@ -229,12 +235,12 @@ namespace RoboticsLab.Editor
             while (program.Executor.State == LabTrajectoryState.Running && Time.realtimeSinceStartup < until)
             {
                 yield return null;
-                if (program.Executor.CurrentInstructionIndex == 3 && returnInk < 0) returnInk = InkVertices();
-                else if (returnInk >= 0) Require(InkVertices() == returnInk, "Pen-up return does not add ink vertices.");
+                if (program.Executor.CurrentInstructionIndex == 4 && returnInk < 0) returnInk = InkVertices();
             }
             Require(program.Executor.State == LabTrajectoryState.Completed, "Paper L/C run completes: " + program.Executor.StatusText);
             report.drawingInkVertices = InkVertices();
-            Require(report.drawingInkVertices >= 8 && returnInk >= 8 && !station.PenDown, "Paper line and arc create visible ink; return lifts the pen.");
+            Require(report.drawingInkVertices >= 8 && returnInk >= 8 && !station.PenDown,
+                "Actual TCP within 10 mm draws line and arc; return reaches safe clearance.");
             string paperName = program.ProgramName, paperContent = ProgramContent(program.Model);
             yield return Capture("SharedPendant_Station03Paper.png");
 
@@ -299,7 +305,7 @@ namespace RoboticsLab.Editor
         {
             Require(app.TryStartStation(index), "Enter Station" + (index + 1) + " through ordinary app entry.");
             station = app.ActiveStation;
-            app.ToggleTeachingPendant();
+            Require(app.TeachingPendantVisible, "Station" + (index + 1) + " opens its pendant automatically.");
             for (int i = 0; i < 8; i++) yield return null;
             view = app.ActiveTeachingPendant; program = view ? view.Programming : null;
             Require(view && view.Visible && program && app.TeachingPendantVisible, "Shared pendant is visible for Station" + (index + 1));

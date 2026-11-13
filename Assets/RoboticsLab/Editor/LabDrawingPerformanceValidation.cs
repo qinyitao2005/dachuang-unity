@@ -51,9 +51,11 @@ namespace RoboticsLab.Editor
             var collision = (LabDrawingCollision)type.GetField("drawingCollision", PrivateInstance).GetValue(station);
             var report = new Report { unityVersion = Application.unityVersion, movingParts = collision.ProxyCount,
                 staticParts = collision.StaticProxyCount, phases = new Phase[5] };
-            Action frame = () => { tick(FrameTime); ink.Tick(station.PenDown); };
+            Action frame = () => { tick(FrameTime); ink.Tick(true); };
             report.phases[0] = Measure("idle_air", 60, station, collision, frame, null);
-            station.SetPen(true);
+            Vector3 paperTarget = station.toolTarget.localPosition;
+            paperTarget.y = station.drawingHeight;
+            station.toolTarget.localPosition = paperTarget;
             report.phases[1] = Measure("lower", 30, station, collision, frame, null);
             Vector3 center = station.toolTarget.localPosition;
             report.phases[2] = Measure("contact_idle", 60, station, collision, frame, null);
@@ -76,7 +78,7 @@ namespace RoboticsLab.Editor
                 "Known drawing path must remain clear and produce a single continuous stroke");
             // With a 1/600 s tick the allowed translation is smaller than the authored IK
             // tolerance. The physical TCP must still traverse the requested 12 mm safely.
-            station.SetPen(false);
+            ink.EndStroke();
             Vector3 fastStart = station.ActualToolPosition;
             station.toolTarget.position = fastStart + station.transform.forward * .012f;
             for (int i = 0; i < 150; i++) tick(1f / 600);

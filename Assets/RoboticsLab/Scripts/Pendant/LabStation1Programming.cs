@@ -18,7 +18,7 @@ namespace RoboticsLab
         public bool IsBusy => Executor && Executor.IsExecuting;
         public bool TextEntryFocused => page == Page.Create;
         public bool ShiftActive => shiftLatched || Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)
-            || (StationIndex == 0 && Gamepad.current != null && Gamepad.current.rightShoulder.isPressed);
+            || (Gamepad.current != null && Gamepad.current.rightShoulder.isPressed);
         public bool StepMode { get; private set; }
         public string Message { get; private set; } = "SELECT 新建或选择程序";
 
@@ -33,7 +33,7 @@ namespace RoboticsLab
         bool shiftLatched, arcMode, scoring, modifyingMotion, editVia, dirty, resetRequired;
         float saveAfter, clearHoldStarted = -1;
         int openedFrame = -1;
-        bool clearHoldTriggered;
+        bool clearHoldTriggered, clearHoldEligible;
         string number = "", storageError = "", pendingDeleteName = "";
         string[] names = Array.Empty<string>();
         Vector3 heldJog;
@@ -85,15 +85,15 @@ namespace RoboticsLab
             names = LabPendantProgramStorage.Names(StationIndex); selection = 0; cursor = 0;
             number = ""; heldJog = Vector3.zero; shiftLatched = false;
             pendingDeleteName = "";
-            openedFrame = Time.frameCount; clearHoldStarted = -1; clearHoldTriggered = false;
-            Message = page == Page.Programs ? (StationIndex == 0 ? "F2 CREATE 新建；F3 DELETE 删除；ENTER 打开" : "F2 CREATE 新建；上下选择后 ENTER 打开") : "程序保留；选起始行后 SHIFT+FWD";
+            openedFrame = Time.frameCount; clearHoldStarted = -1; clearHoldTriggered = clearHoldEligible = false;
+            Message = page == Page.Programs ? "F2 CREATE 新建；F3 DELETE 删除；ENTER 打开" : "程序保留；选起始行后 SHIFT+FWD";
             Refresh();
         }
         public void Deactivate()
         {
             heldJog = Vector3.zero; shiftLatched = false;
             pendingDeleteName = "";
-            clearHoldStarted = -1; clearHoldTriggered = false;
+            clearHoldStarted = -1; clearHoldTriggered = clearHoldEligible = false;
             if (Executor) Executor.Stop();
             EndScoring(); SaveCurrent();
             if (nameInput) nameInput.DeactivateInputField();
@@ -107,7 +107,7 @@ namespace RoboticsLab
             Vector3 keyboard = new Vector3((Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0),
                 (Input.GetKey(KeyCode.Q) ? 1 : 0) - (Input.GetKey(KeyCode.E) ? 1 : 0),
                 (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0));
-            Vector3 gamepadJog = StationIndex == 0 ? LabStation1Gamepad.JogLocal() : Vector3.zero;
+            Vector3 gamepadJog = LabTeachingGamepad.JogLocal();
             return station.transform.TransformDirection(Vector3.ClampMagnitude(heldJog + keyboard + gamepadJog, 1))
                 * (station.IsTracing ? Mathf.Min(1, .012f / Mathf.Max(.0001f, station.moveSpeed)) : 1f);
         }
@@ -147,6 +147,11 @@ namespace RoboticsLab
                 else SetMessage("删除整个程序：F4 YES 确认，F5 NO 取消");
                 return;
             }
+            if (id == "SELECT")
+            {
+                if (IsBusy) { SetMessage("程序占用控制；先 FCTN → ABORT，再切换程序"); return; }
+                OpenPrograms(); return;
+            }
             if (id == "FCTN") { LeaveNameInput(); page = Page.Functions; selection = 0; number = ""; Refresh(); return; }
             if (id == "PREV")
             {
@@ -183,7 +188,7 @@ namespace RoboticsLab
             if (page == Page.Programs)
             {
                 if (id == "F2") { OpenCreate(); return; }
-                if (id == "F3" && StationIndex == 0) { StartDelete(); return; }
+                if (id == "F3") { StartDelete(); return; }
                 if (id == "UP" || id == "DOWN") selection = Mathf.Clamp(selection + (id == "UP" ? -1 : 1), 0, Mathf.Max(0, names.Length - 1));
                 else if (id == "ENTER") { LoadSelected(); return; }
                 Refresh(); return;
@@ -219,7 +224,7 @@ namespace RoboticsLab
                 page = Page.Motion; Refresh(); return;
             }
             if (id == "F5") { SetMessage("按 SHIFT+F5 更新选中点；C 可用左右键选经过点/终点"); return; }
-            if (id == "F3" && StationIndex == 0) { SetMessage("F3 DELETE 仅在 SELECT 程序列表中删除整个程序"); return; }
+            if (id == "F3") { SetMessage("F3 DELETE 仅在 SELECT 程序列表中删除整个程序"); return; }
             if (id.StartsWith("J", StringComparison.Ordinal)) { SetMessage("SHIFT 配合 ±X/±Y/±Z 点动"); return; }
             if (id == "IO") { TogglePen(); return; }
             if (id == "COORD" || id == "POSN") { SetMessage(profile.CoordinateHint); return; }
@@ -231,7 +236,8 @@ namespace RoboticsLab
             || (app.pendantController && app.pendantController.Executor && app.pendantController.Executor.IsExecuting));
         public void TogglePen()
         {
-            if (!station || !station.IsDrawing) { SetMessage("当前工位不使用绘图落笔"); return; }
+            if (station && station.IsDrawing) { SetMessage("笔尖距纸面 0–10mm 自动留线，无需 IO / P 切换"); return; }
+            if (!station) { SetMessage("当前工位不使用绘图落笔"); return; }
             if (page != Page.Program || !Editable()) return;
             if (Model.HasPendingArc) { SetMessage("先补齐 C 终点；该圆弧沿用经过点录制时的笔状态"); return; }
             station.SetPen(!station.PenDown);
@@ -244,11 +250,10 @@ namespace RoboticsLab
             if (!SaveCurrent()) { Refresh(); return; }
             LeaveNameInput(); page = Page.Programs; names = LabPendantProgramStorage.Names(StationIndex);
             selection = Mathf.Max(0, Array.IndexOf(names, ProgramName)); number = "";
-            SetMessage(StationIndex == 0 ? "F2 CREATE 新建；F3 DELETE 删除选中程序；ENTER 打开" : "F2 CREATE 新建；上下选择，ENTER 打开");
+            SetMessage("F2 CREATE 新建；F3 DELETE 删除选中程序；ENTER 打开");
         }
         void StartDelete()
         {
-            if (StationIndex != 0) return;
             if (names.Length == 0) { SetMessage("程序列表为空，没有可删除的程序"); return; }
             if (!SaveCurrent()) { Refresh(); return; }
             pendingDeleteName = names[selection]; page = Page.DeleteConfirm;
@@ -258,7 +263,7 @@ namespace RoboticsLab
         {
             if (string.IsNullOrEmpty(pendingDeleteName)) { page = Page.Programs; Refresh(); return; }
             string deletedName = pendingDeleteName;
-            if (!LabPendantProgramStorage.Delete(0, deletedName, out string error))
+            if (!LabPendantProgramStorage.Delete(StationIndex, deletedName, out string error))
             { SetMessage(error); return; }
             if (string.Equals(ProgramName, deletedName, StringComparison.OrdinalIgnoreCase))
             {
@@ -266,7 +271,7 @@ namespace RoboticsLab
                 SetModel(new LabPendantProgramModel(), "");
             }
             pendingDeleteName = ""; page = Page.Programs;
-            names = LabPendantProgramStorage.Names(0);
+            names = LabPendantProgramStorage.Names(StationIndex);
             selection = Mathf.Clamp(selection, 0, Mathf.Max(0, names.Length - 1));
             SetMessage("已删除程序 " + deletedName + "；程序和点位文件已移除");
         }
@@ -416,7 +421,7 @@ namespace RoboticsLab
                 rows = "SELECT PROGRAM\n"; active = selection + 1;
                 for (int i = 0; i < names.Length; i++) rows += (i == selection ? "> " : "  ") + names[i] + "\n";
                 if (names.Length == 0) rows += "暂无程序，F2 CREATE";
-                Screen.SetFunctionKeys("", "CREATE", StationIndex == 0 && names.Length > 0 ? "DELETE" : "", "", "");
+                Screen.SetFunctionKeys("", "CREATE", names.Length > 0 ? "DELETE" : "", "", "");
             }
             else if (page == Page.DeleteConfirm)
             {
@@ -438,14 +443,12 @@ namespace RoboticsLab
             else
             {
                 var lines = Model.GetRows();
-                if (station && station.IsDrawing)
-                    for (int i = 0; i < lines.Length; i++) lines[i] += Model.Instructions[i].PenDown ? " DOWN" : " UP";
                 for (int i = 0; i < lines.Length; i++) lines[i] = (IsBusy && i == Executor.CurrentInstructionIndex ? "▶" : cursor == i ? ">" : " ") + lines[i];
                 rows = string.Join("\n", lines) + "\n" + (cursor == lines.Length ? ">" : " ") + "[End]";
                 if (number.Length > 0) rows += "\n引用 P[" + number + "]  ENTER";
                 else if (cursor < lines.Length && Model.Instructions[cursor].Type == LabPendantInstructionType.Circular)
                     rows += "\n当前编辑：" + (editVia ? "经过点" : "终点") + "（左右键切换）";
-                if (station && station.IsDrawing) rows += "\n新录：" + (station.PenDown ? "落笔 DOWN" : "抬笔 UP") + "  IO/P 切换";
+                if (station && station.IsDrawing) rows += "\n笔尖距纸 0–10mm 时自动留线";
                 Screen.SetFunctionKeys("POINT", "", "", cursor < lines.Length ? "CHOICE" : "", "TOUCHUP");
             }
             Screen.ProgramRows.text = rows;
@@ -466,7 +469,8 @@ namespace RoboticsLab
         void Update()
         {
             if (!view || !view.Visible) return;
-            if (StationIndex == 0) HandleGamepad();
+            HandleGamepad();
+            if (!view.Visible) return;
             if (station && station.EmergencyStopped) resetRequired = true;
             if (Executor.State == LabTrajectoryState.Running && !ShiftActive) Pause();
             if (dirty && Time.unscaledTime >= saveAfter) { SaveCurrent(); Refresh(); }
@@ -499,19 +503,33 @@ namespace RoboticsLab
         void HandleGamepad()
         {
             var pad = Gamepad.current;
-            if (pad == null) { clearHoldStarted = -1; clearHoldTriggered = false; return; }
+            if (pad == null) { clearHoldStarted = -1; clearHoldTriggered = clearHoldEligible = false; return; }
             if (pad.rightShoulder.wasPressedThisFrame || pad.rightShoulder.wasReleasedThisFrame) Refresh();
-            if (page != Page.DeleteConfirm && pad.selectButton.isPressed)
-            {
-                if (clearHoldStarted < 0) clearHoldStarted = Time.unscaledTime;
-                if (!clearHoldTriggered && Time.unscaledTime - clearHoldStarted >= 3f)
-                {
-                    clearHoldTriggered = true;
-                    ClearCurrentProgram();
-                }
-            }
-            else { clearHoldStarted = -1; clearHoldTriggered = false; }
             if (Time.frameCount == openedFrame) return;
+            if (pad.selectButton.wasPressedThisFrame)
+            {
+                clearHoldStarted = Time.unscaledTime;
+                clearHoldTriggered = false;
+                clearHoldEligible = page == Page.Program && !string.IsNullOrEmpty(ProgramName);
+            }
+            if (pad.selectButton.wasReleasedThisFrame && clearHoldStarted >= 0)
+            {
+                float held = Time.unscaledTime - clearHoldStarted;
+                bool clear = !clearHoldTriggered && clearHoldEligible && page == Page.Program && held >= 5f;
+                bool prev = !clearHoldTriggered && held < 5f;
+                clearHoldStarted = -1;
+                clearHoldTriggered = clearHoldEligible = false;
+                if (clear) ClearCurrentProgram();
+                else if (prev) HandleButton("PREV");
+                return;
+            }
+            if (pad.selectButton.isPressed && clearHoldStarted >= 0 && clearHoldEligible && page == Page.Program
+                && !clearHoldTriggered && Time.unscaledTime - clearHoldStarted >= 5f)
+            {
+                clearHoldTriggered = true;
+                ClearCurrentProgram();
+                return;
+            }
             if (page == Page.DeleteConfirm)
             {
                 // If both confirmation buttons arrive in one frame, cancellation wins.
@@ -527,21 +545,26 @@ namespace RoboticsLab
             if (pad.rightStickButton.wasPressedThisFrame) HandleButton("F3");
             if (pad.buttonWest.wasPressedThisFrame) HandleButton("F4");
             if (pad.buttonNorth.wasPressedThisFrame) HandleButton("F5");
-            if (pad.startButton.wasPressedThisFrame) HandleButton("SELECT");
             if (pad.leftStickButton.wasPressedThisFrame) HandleButton("1");
             if (pad.leftShoulder.wasPressedThisFrame) HandleButton("FWD");
         }
+        public void HandleGamepadMenuShort()
+        {
+            if (!view || !view.Visible || !station || !station.IsOperating) return;
+            if (page == Page.Programs) app.ClosePanel();
+            else HandleButton("SELECT");
+        }
         void ClearCurrentProgram()
         {
-            if (string.IsNullOrEmpty(ProgramName)) { SetMessage("先创建或打开 Station1 程序"); return; }
+            if (string.IsNullOrEmpty(ProgramName)) { SetMessage("先创建或打开当前工位程序"); return; }
             Stop();
             Model.Clear();
             page = Page.Program; cursor = 0; selection = 0;
             arcMode = false; modifyingMotion = false; editVia = false; number = "";
-            if (SaveCurrent()) SetMessage("View 长按：已清空本程序的全部指令和点位，从 P[1] 重新录入");
+            if (SaveCurrent()) SetMessage("View 长按 5 秒：已清空本程序的全部指令和点位，从 P[1] 重新录入");
             else Refresh();
         }
-        void OnApplicationFocus(bool focused) { if (!focused) { shiftLatched = false; Pause(); SaveCurrent(); Refresh(); } }
+        void OnApplicationFocus(bool focused) { if (!focused) { shiftLatched = false; clearHoldStarted = -1; clearHoldTriggered = clearHoldEligible = false; Pause(); SaveCurrent(); Refresh(); } }
         void OnApplicationQuit() { SaveCurrent(); }
         void OnDisable() { if (Executor) Deactivate(); }
         void OnDestroy()
@@ -553,8 +576,8 @@ namespace RoboticsLab
         }
     }
 
-    // Station1 only: USER X/Y on the left stick, USER Z on the triggers.
-    internal static class LabStation1Gamepad
+    // All three stations: USER X/Y on the left stick, USER Z on the triggers.
+    internal static class LabTeachingGamepad
     {
         public static Vector3 JogLocal()
         {

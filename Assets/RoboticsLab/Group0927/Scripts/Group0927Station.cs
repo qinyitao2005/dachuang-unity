@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RoboticsLab
@@ -14,6 +15,7 @@ namespace RoboticsLab
         // 触纸状态也用于循迹评分；只有第三台自由画图工位生成笔迹。
         bool LeavesInk => stationIndex == 2 && TrainingMode == 0;
         public float Progress => TrainingMode == 0 ? (drawing?.Progress ?? 0) : (ringExercise?.Progress ?? 0);
+        public IReadOnlyList<LineRenderer> DrawingStrokes => drawing?.Strokes;
         public int Contacts => ringExercise?.Contacts ?? 0;
         public float Elapsed { get; private set; }
         public Transform modelRoot, toolTarget, endEffector;
@@ -151,7 +153,8 @@ namespace RoboticsLab
 
         public void SetPen(bool down)
         {
-            PenDown = down && IsOperating && !EmergencyStopped && TrainingMode == 0;
+            // Station03 ink depends on the real TCP height, never on a latched IO pen state.
+            PenDown = down && stationIndex != 2 && IsOperating && !EmergencyStopped && TrainingMode == 0;
             if (PenDown && toolTarget)
             {
                 Vector3 p = toolTarget.localPosition;
@@ -229,7 +232,7 @@ namespace RoboticsLab
             tools.UpdatePose(CurrentRingFrame);
             if (IsOperating && !EmergencyStopped)
             {
-                if (TrainingMode == 0) drawing.Tick(LeavesInk && PenDown);
+                if (TrainingMode == 0) drawing.Tick(LeavesInk);
                 else
                 {
                     ringExercise.Tick(ringMotion.RimBlocked, Time.deltaTime);

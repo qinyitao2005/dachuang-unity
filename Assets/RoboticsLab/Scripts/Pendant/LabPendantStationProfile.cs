@@ -10,7 +10,7 @@ namespace RoboticsLab
 
         public LabPendantStationProfile(LabRobotStation station) { this.station = station; }
         public string NamePrefix => station.IsTracing ? "TRACE" : station.IsRing ? "RING" : "DRAW";
-        public bool RecordPenDown => station.IsDrawing && station.PenDown;
+        public bool RecordPenDown => false;
         public Vector3 UserOrigin => station.IsRing ? station.exerciseCenter
             : new Vector3(station.exerciseCenter.x, station.drawingHeight, station.exerciseCenter.z);
         public string CoordinateHint => station.IsRing
@@ -29,15 +29,16 @@ namespace RoboticsLab
         public bool ValidateFirstPoint(bool circular, Vector3 point, out string error)
         {
             error = circular ? "首条指令请使用 L，作为后续圆弧的起点" : "";
-            if (station.IsTracing && (circular || point.y < station.drawingHeight + .005f))
-                error = "课堂要求：首点为 L 安全点，高于纸面至少 5mm";
+            if ((station.IsTracing || station.IsDrawing) && (circular || point.y < station.drawingHeight + (station.IsDrawing ? .015f : .005f)))
+                error = station.IsDrawing ? "画图首点需为 L 安全点，距纸至少 15mm" : "课堂要求：首点为 L 安全点，高于纸面至少 5mm";
             return error.Length == 0;
         }
 
         public bool ValidateTouchPoint(int pointNumber, Vector3 point, out string error)
         {
-            error = station.IsTracing && pointNumber == 1 && point.y < station.drawingHeight + .005f
-                ? "课堂安全点需高于纸面至少 5mm" : "";
+            error = (station.IsTracing || station.IsDrawing) && pointNumber == 1
+                && point.y < station.drawingHeight + (station.IsDrawing ? .015f : .005f)
+                ? station.IsDrawing ? "画图安全点需距纸至少 15mm" : "课堂安全点需高于纸面至少 5mm" : "";
             return error.Length == 0;
         }
 
@@ -48,12 +49,12 @@ namespace RoboticsLab
             else if (model.HasPendingArc) error = "C 缺终点：到终点后 SHIFT+F5";
             else if (model.Instructions[0].Type != LabPendantInstructionType.Linear)
                 error = "程序首行需为 L 起点";
-            else if (station.IsTracing)
+            else if (station.IsTracing || station.IsDrawing)
             {
                 var safe = model.FindPoint(1);
                 var last = model.Instructions[model.Instructions.Count - 1];
-                if (safe == null || safe.LocalPosition.y < station.drawingHeight + .005f)
-                    error = "课堂要求：先录高于纸面至少 5mm 的安全点 P[1]";
+                if (safe == null || safe.LocalPosition.y < station.drawingHeight + (station.IsDrawing ? .015f : .005f))
+                    error = station.IsDrawing ? "画图需先录距纸至少 15mm 的安全点 P[1]" : "课堂要求：先录高于纸面至少 5mm 的安全点 P[1]";
                 else if (model.Instructions.Count < 3 || model.Instructions[0].TargetPoint != 1)
                     error = "课堂要求：程序从 L P[1] 开始";
                 else if (last.Type != LabPendantInstructionType.Linear || last.TargetPoint != 1)

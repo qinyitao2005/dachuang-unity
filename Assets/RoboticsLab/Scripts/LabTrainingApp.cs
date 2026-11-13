@@ -98,10 +98,17 @@ namespace RoboticsLab
         string helpReturnPanel="";
 
         Vector3 heldDirection;
+        float menuHoldStarted = -1f;
+        bool menuLongTriggered;
+        LabRobotStation safetyTrackedStation;
+        bool safetyContactArmed = true;
+        float safetyWarningUntil;
+        bool drawingPaperViewVisible = true;
 
         public int LastMode;
 
         readonly LabTracingPanel tracingPanel = new LabTracingPanel();
+        readonly LabDrawingPaperView drawingPaperView = new LabDrawingPaperView();
 
         public LabTracingExercise ActiveTracing => ActiveStation && ActiveStation.IsTracing ? ActiveStation.GetComponent<LabTracingExercise>() : null;
         public bool TracingPaperVisible => ActiveTracing && tracingPanel.PaperViewVisible;
@@ -145,7 +152,7 @@ namespace RoboticsLab
             if(!ActiveStation||!ActiveStation.IsOperating||panel!="operate"||Part1接管中)return;
             int index=ActiveStation.stationIndex;
             if(index<0||index>=teachingPendants.Length)return;
-            if(TeachingPendantVisible){ActiveTeachingPendant.Close();return;}
+            if(TeachingPendantVisible)return;
             EnsureProgramming();
             if((trajectoryProgram&&trajectoryProgram.IsExecuting)||(pendantController.Executor&&pendantController.Executor.IsExecuting))
             {Notify("已有程序正在运行或暂停；先终止当前程序，再打开示教器。",6);return;}
@@ -276,11 +283,12 @@ namespace RoboticsLab
 
             if(Input.GetKeyDown(KeyCode.E) && !ActiveStation && panel=="") Interact();
 
-            var station1Pad=UnityEngine.InputSystem.Gamepad.current;
-            if(station1Pad!=null && station1Pad.buttonSouth.wasPressedThisFrame)
+            var teachingPad=UnityEngine.InputSystem.Gamepad.current;
+            HandleTeachingMenu(teachingPad);
+            if(teachingPad!=null && teachingPad.buttonSouth.wasPressedThisFrame)
             {
-                if(!ActiveStation && panel=="") InteractStation1Gamepad();
-                else if(ActiveStation && ActiveStation.stationIndex==0 && panel=="operate" && !Part1接管中 && !Station1PendantVisible) ToggleStation1Pendant();
+                if(!ActiveStation && panel=="") InteractTeachingGamepad();
+                else if(ActiveStation && panel=="operate" && !Part1接管中 && !TeachingPendantVisible) ToggleTeachingPendant();
             }
 
             if(ActiveStation && !Part1接管中)
@@ -297,19 +305,19 @@ namespace RoboticsLab
 
                 if(!typing&&Input.GetKeyDown(KeyCode.R)) ResetActiveExercise();
 
-                if(panel=="operate"&&!TeachingPendantVisible&&!typing&&!automatic&&Input.GetKeyDown(KeyCode.P)&&(!trace||trace.IsManual)) ActiveStation.SetPen(!ActiveStation.PenDown);
+                if(panel=="operate"&&!TeachingPendantVisible&&!typing&&!automatic&&Input.GetKeyDown(KeyCode.P)&&!ActiveStation.IsDrawing&&(!trace||trace.IsManual)) ActiveStation.SetPen(!ActiveStation.PenDown);
 
                 if(panel=="operate"&&!automatic&&(TeachingPendantVisible||!trace||trace.IsManual))
 
                 {
 
                     Vector3 dir=typing?Vector3.zero:new Vector3(Input.GetAxisRaw("Horizontal"),(Input.GetKey(KeyCode.Q)?1:0)-(Input.GetKey(KeyCode.E)?1:0),Input.GetAxisRaw("Vertical"));
-                    if(ActiveStation.stationIndex==0 && station1Pad!=null && !Station1PendantVisible)
+                    if(teachingPad!=null && !TeachingPendantVisible)
                         dir=new Vector3((Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow)?1:0),
                             (Input.GetKey(KeyCode.Q)?1:0)-(Input.GetKey(KeyCode.E)?1:0),
                             (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow)?1:0)-(Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow)?1:0));
-                    if(ActiveStation.stationIndex==0 && station1Pad!=null && station1Pad.rightShoulder.isPressed && !Station1PendantVisible && !typing)
-                        dir+=ActiveStation.transform.TransformDirection(LabStation1Gamepad.JogLocal());
+                    if(teachingPad!=null && teachingPad.rightShoulder.isPressed && !TeachingPendantVisible && !typing)
+                        dir+=ActiveStation.transform.TransformDirection(LabTeachingGamepad.JogLocal());
 
                     heldDirection=typing?Vector3.zero:PointerJogDirection();
 
@@ -320,6 +328,7 @@ namespace RoboticsLab
             }
 
             CloseFailedStation();
+            UpdatePaperContactWarning();
 
             if(player)
 
@@ -479,10 +488,14 @@ namespace RoboticsLab
             {
                 if(!ActiveTracing){ClosePanel();Notify("循迹训练组件未配置，请检查 01 工位。",6);return false;}
                 ActiveTracing.SelectShape(0);
+                tracingPanel.PaperViewVisible=true;
             }
+            if(ActiveStation.IsDrawing)drawingPaperViewVisible=true;
 
-            Notify(ActiveStation.stationIndex==0 && UnityEngine.InputSystem.Gamepad.current!=null
-                ?"已进入 Station1；按 A 展开示教器，按住 RB 用左摇杆和扳机点动。"
+            ToggleTeachingPendant();
+
+            Notify(UnityEngine.InputSystem.Gamepad.current!=null
+                ?"已进入 "+ActiveStation.RoleLabel+"工位；示教器已打开，按住 RB 用左摇杆和扳机点动。"
                 :"已进入"+ActiveStation.RoleLabel+"工位。WASD 平移，Q / E 升降，空格急停。",6);return true;
 
         }
@@ -614,14 +627,70 @@ namespace RoboticsLab
 
         }
 
-        void InteractStation1Gamepad()
+        public void ClearStation3Ink()
+        {
+            if(stations==null || stations.Length<3 || !stations[2])return;
+            stations[2].ClearDrawing();
+            Notify("Station3 纸上轨迹已擦除；示教程序和点位保留。",4);
+        }
+
+        void UpdatePaperContactWarning()
+        {
+            LabRobotStation watched = panel=="operate" && ActiveStation && ActiveStation.IsOperating
+                && (ActiveStation.IsTracing || ActiveStation.IsDrawing) ? ActiveStation : null;
+            if(watched!=safetyTrackedStation)
+            {
+                safetyTrackedStation=watched;
+                safetyContactArmed=true;
+                safetyWarningUntil=0f;
+            }
+            if(!watched || watched.EmergencyStopped)return;
+            float gapMm=(watched.transform.InverseTransformPoint(watched.ActualToolPosition).y-watched.drawingHeight)*1000f;
+            if(gapMm>2f)safetyContactArmed=true;
+            else if(safetyContactArmed && gapMm<=.5f)
+            {
+                safetyContactArmed=false;
+                safetyWarningUntil=Time.unscaledTime+1f;
+            }
+        }
+
+        void HandleTeachingMenu(UnityEngine.InputSystem.Gamepad pad)
+        {
+            if(pad==null){menuHoldStarted=-1f;menuLongTriggered=false;return;}
+            if(pad.startButton.wasPressedThisFrame){menuHoldStarted=Time.unscaledTime;menuLongTriggered=false;}
+            if(menuHoldStarted<0f)return;
+            if(pad.startButton.isPressed && !menuLongTriggered && Time.unscaledTime-menuHoldStarted>=3f)
+            {
+                menuLongTriggered=true;
+                ClearStation3Ink();
+            }
+            if(pad.startButton.wasReleasedThisFrame)
+            {
+                bool shortPress=!menuLongTriggered && Time.unscaledTime-menuHoldStarted<3f;
+                if(!shortPress && !menuLongTriggered)ClearStation3Ink();
+                menuHoldStarted=-1f;menuLongTriggered=false;
+                if(shortPress && TeachingPendantVisible && ActiveTeachingPendant.Programming)
+                    ActiveTeachingPendant.Programming.HandleGamepadMenuShort();
+            }
+        }
+
+        void InteractTeachingGamepad()
         {
             if(player && player.IsEquippingHelmet)return;
+            if(!player)return;
             if(!HelmetWorn && NearestHelmet){EquipHelmet();return;}
             if(Near(teachingPoint,4.4f)){OpenLesson();return;}
-            if(stations!=null && stations.Length>0 && stations[0] && Near(stations[0].transform,4f))
-            {TryStartStation(0);return;}
-            Notify("靠近安全装备架、教学屏或 Station1 后按 A 交互。");
+            int nearest=-1; float distance=4f;
+            if(stations!=null)for(int i=0;i<stations.Length && i<3;i++)
+            {
+                if(!stations[i])continue;
+                Vector3 delta=stations[i].transform.position-player.transform.position;
+                delta.y=0;
+                float candidate=delta.magnitude;
+                if(candidate<distance){distance=candidate;nearest=i;}
+            }
+            if(nearest>=0){TryStartStation(nearest);return;}
+            Notify("靠近安全装备架、教学屏或机械臂工位后按 A 交互。");
         }
 
         bool Near(Transform t,float distance) { if(!t||!player)return false; var a=t.position; var b=player.transform.position;a.y=b.y=0;return Vector3.Distance(a,b)<distance; }
@@ -652,15 +721,15 @@ namespace RoboticsLab
 
             if(player && player.IsEquippingHelmet)return "正在佩戴安全帽  ·  请稍候";
 
-            bool station1Pad=UnityEngine.InputSystem.Gamepad.current!=null;
-            if(!HelmetWorn && NearestHelmet)return station1Pad?"A / E  ·  领取面前最近的安全帽":"E  ·  领取面前最近的安全帽";
+            bool teachingPad=UnityEngine.InputSystem.Gamepad.current!=null;
+            if(!HelmetWorn && NearestHelmet)return teachingPad?"A / E  ·  领取面前最近的安全帽":"E  ·  领取面前最近的安全帽";
 
-            if(Near(teachingPoint,4.4f))return station1Pad?"A / E  ·  打开教学屏":"E  ·  打开教学屏";
+            if(Near(teachingPoint,4.4f))return teachingPad?"A / E  ·  打开教学屏":"E  ·  打开教学屏";
 
             if(stations!=null)for(int i=0;i<stations.Length;i++)if(Near(stations[i].transform,4))
-                return (station1Pad&&stations[i].stationIndex==0?"A / E":"E")+"  ·  操作 "+stations[i].displayName;
+                return (teachingPad?"A / E":"E")+"  ·  操作 "+stations[i].displayName;
 
-            if(station1Pad)return "左摇杆移动    右摇杆转视角    靠近 Station1 后按 A 交互";
+            if(teachingPad)return "左摇杆移动    右摇杆转视角    靠近机械臂工位后按 A 交互";
             return player&&player.pointerReleased?"光标已释放  ·  Tab 恢复鼠标转视角":"W A S D  移动    鼠标转视角    Tab 释放光标    Shift 快走";
 
         }
@@ -745,6 +814,14 @@ namespace RoboticsLab
 
             if(panel=="help") HelpUI();
 
+            if(Time.unscaledTime<safetyWarningUntil && panel=="operate" && ActiveStation==safetyTrackedStation)
+            {
+                Box(new Rect(365,95,850,112),new Color(.95f,.13f,.16f,.98f));
+                Box(new Rect(370,100,840,102),new Color(.31f,.025f,.04f,.98f));
+                Txt(new Rect(394,111,790,35),"⚠ 注意碰撞风险",heading);
+                Txt(new Rect(394,151,790,42),"笔尖已接近纸面（Z≈0）。现实操作请确认安全间隙，保护机械臂与教学零件。",small);
+            }
+
         }
 
         void OperationUI()
@@ -754,6 +831,22 @@ namespace RoboticsLab
             var s=ActiveStation;
 
             var trace=ActiveTracing;
+
+            if(s.stationIndex<=2)
+            {
+                if(trace)tracingPanel.Draw(this,trace,font,true);
+                else
+                {
+                    TeachingStationStatus(s);
+                    if(s.IsDrawing)
+                    {
+                        if(drawingPaperViewVisible)drawingPaperView.Draw(s,font);
+                        if(Btn(new Rect(1435,166,124,32),drawingPaperViewVisible?"收起俯视":"展开俯视",drawingPaperViewVisible))
+                            drawingPaperViewVisible=!drawingPaperViewVisible;
+                    }
+                }
+                return;
+            }
 
             bool manual=!TeachingProgramBusy&&(!trajectoryProgram||!trajectoryProgram.IsExecuting)&&(!pendantController||!pendantController.Executor||!pendantController.Executor.IsExecuting)&&(!trace||(trace.IsManual&&!trace.IsAutomatic));
 
@@ -828,16 +921,18 @@ namespace RoboticsLab
 
         void TeachingStationStatus(LabRobotStation station)
         {
-            Box(new Rect(24,336,270,442),navy);
+            Box(new Rect(24,336,270,station.IsDrawing?508:442),navy);
             Txt(new Rect(44,354,230,30),station.RoleLabel,heading);
             Txt(new Rect(44,398,230,74),"进度  "+Mathf.RoundToInt(station.Progress*100)+"%\n接触  "+station.Contacts+" 次     用时  "+station.Elapsed.ToString("F1")+"s",small);
+            float tipGapMm=(station.transform.InverseTransformPoint(station.ActualToolPosition).y-station.drawingHeight)*1000f;
             string state=station.EmergencyStopped?"■ 已急停；解除后 RESET":station.IsRing
                 ?station.RobotWireBlocked?"机械臂接近钢丝，请反向调整":station.ToolInContact?"● 触及圈边，沿线调整或退回":station.RingMovementBlocked?"已到边界，可反向退回":"沿钢丝逐步前进"
-                :!string.IsNullOrEmpty(station.DrawingBlockReason)?station.DrawingBlockReason:station.PenDown?"● 正在落笔":"○ 抬笔移动中";
+                :!string.IsNullOrEmpty(station.DrawingBlockReason)?station.DrawingBlockReason:"笔尖距纸 "+tipGapMm.ToString("F1")+" mm\n"+(tipGapMm>=0&&tipGapMm<=10?"● 当前高度可留线":"○ 当前高度不留线");
             Txt(new Rect(44,473,230,64),state,small);
-            Txt(new Rect(44,545,230,116),station.IsRing?"SHIFT + ±X/±Y/±Z 点动\nPOINT / TOUCHUP 录点\n套圈沿钢丝运动，不使用落笔":"SHIFT + ±X/±Y/±Z 点动\nIO / P 切换抬笔、落笔\n每条 L/C 保存录点时笔状态",small);
-            Txt(new Rect(44,670,230,62),"HOLD 暂停 · FCTN → ABORT\nRESET 复位故障，Esc 退出",tiny);
-            if(Btn(new Rect(44,733,230,30),"退出工位  [Esc]"))ClosePanel();
+            Txt(new Rect(44,545,230,116),station.IsRing?"SHIFT + ±X/±Y/±Z 点动\nPOINT / TOUCHUP 录点\n套圈沿钢丝运动，不使用落笔":"SHIFT + ±X/±Y/±Z 点动\n距纸 0–10mm 自动留线\n录点后按 L/C 程序复现",small);
+            Txt(new Rect(44,670,230,62),station.IsDrawing?"Menu 长按 3 秒擦线\n仅清笔迹，不删程序": "HOLD 暂停 · FCTN → ABORT\nRESET 复位故障，Esc 退出",tiny);
+            if(station.IsDrawing && Btn(new Rect(44,735,230,38),"擦除纸上轨迹"))ClearStation3Ink();
+            if(Btn(new Rect(44,station.IsDrawing?788:733,230,30),"退出工位  [Esc]"))ClosePanel();
         }
 
         void HelpUI()
@@ -846,7 +941,7 @@ namespace RoboticsLab
 
             Box(new Rect(360,180,880,570),navy);Txt(new Rect(400,214,800,44),"实训室操作指南",title);
 
-            Txt(new Rect(400,276,785,364),"漫游：WASD 移动，鼠标转视角；Tab 释放/捕获光标。\n流程：佩戴安全帽 → 墙屏学习与问答 → 靠近工位按 E。\n01 循迹：移至 J 型绿色起点，点“开始手动”，沿参考线移动；\n完成后点评估。圆、三角形、正方形和复杂图形由自动循迹演示。\n02 套圈：沿钢丝前进，碰线与端点会阻挡，可反向调整。\n03 画图：自由绘图，或用示教点 / MOVE 指令编程。\n机械臂：WASD 平移，Q/E 升降，P 抬笔 / 落笔，R 重置。\n空格急停，Esc 退出。自动循迹时手动移动锁定；帮助会停止自动。\n循迹显示覆盖率、精度与成功程度，按真实笔尖轨迹评分。",body);
+            Txt(new Rect(400,276,785,364),"漫游：WASD 移动，鼠标转视角；Tab 释放/捕获光标。\n流程：佩戴安全帽 → 墙屏学习与问答 → 靠近工位按 E。\n01 循迹：移至 J 型绿色起点，点“开始手动”，沿参考线移动；\n完成后点评估。圆、三角形、正方形和复杂图形由自动循迹演示。\n02 套圈：沿钢丝前进，碰线与端点会阻挡，可反向调整。\n03 画图：笔尖距纸 0–10mm 时自动留线；示教录点与复现沿用 L/C。\n机械臂：WASD 平移，Q/E 升降，R 重置；Station3 可用 Menu 长按 3 秒擦线。\n空格急停，Esc 退出。自动循迹时手动移动锁定；帮助会停止自动。\n循迹显示覆盖率、精度与成功程度，按真实笔尖轨迹评分。",body);
 
             if(Btn(new Rect(400,664,785,52),"返回",true))panel=helpReturnPanel;
 
@@ -858,7 +953,7 @@ namespace RoboticsLab
 
         void OnDestroy(){tracingPanel.Dispose();if(font&&!uiFont)Destroy(font);}
 
-        void OnApplicationFocus(bool focus){if(!focus)heldDirection=Vector3.zero;}
+        void OnApplicationFocus(bool focus){if(!focus){heldDirection=Vector3.zero;menuHoldStarted=-1f;menuLongTriggered=false;}}
 
     }
 

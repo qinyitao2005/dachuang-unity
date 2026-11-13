@@ -418,7 +418,8 @@ namespace RoboticsLab
                 }
                 else { error = prefix + "未知运动类型"; return false; }
 
-                bool pen = !Station.IsTracing && instruction.PenDown;
+                // Station03 uses actual pen-tip clearance during all motion, including legacy programs.
+                bool pen = !Station.IsTracing && !Station.IsDrawing && instruction.PenDown;
                 if (pen && Station.IsRing) { error = prefix + "套圈工位不能落笔"; return false; }
                 Vector3 minimum, maximum;
                 if (!path.TryGetBounds(out minimum, out maximum) || !InsideWorkspace(minimum) || !InsideWorkspace(maximum))

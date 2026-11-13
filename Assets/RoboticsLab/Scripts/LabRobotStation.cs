@@ -25,6 +25,7 @@ namespace RoboticsLab
         public bool PenDown { get { return UsesGroup0927 ? group0927.PenDown : penDown; } private set { penDown = value; } }
         public int TrainingMode { get { return UsesGroup0927 ? group0927.TrainingMode : trainingMode; } private set { trainingMode = value; } }
         public float Progress { get { return UsesGroup0927 ? group0927.Progress : progress; } private set { progress = value; } }
+        public IReadOnlyList<LineRenderer> DrawingStrokes => UsesGroup0927 ? group0927.DrawingStrokes : strokes;
         public int Contacts { get { return UsesGroup0927 ? group0927.Contacts : contacts; } private set { contacts = value; } }
         public float Elapsed { get { return UsesGroup0927 ? group0927.Elapsed : elapsed; } private set { elapsed = value; } }
         public Transform modelRoot, toolTarget, endEffector;
