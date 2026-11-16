@@ -68,6 +68,13 @@ namespace RoboticsLab
         {
             Transform gear = transform.Find(GearChild);
             if (!gear) return;
+            var rect = gear as RectTransform;
+            if (rect)
+            {
+                rect.anchorMin = rect.anchorMax = Vector2.one;
+                rect.pivot = Vector2.one;
+                rect.anchoredPosition = new Vector2(-4f, -85f);
+            }
             var image = gear.GetComponent<Image>();
             if (image) image.raycastTarget = true;
             var button = gear.GetComponent<Button>();

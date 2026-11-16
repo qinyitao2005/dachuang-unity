@@ -651,6 +651,8 @@ namespace RoboticsLab
             {
                 safetyContactArmed=false;
                 safetyWarningUntil=Time.unscaledTime+1f;
+                foreach(var light in watched.GetComponentsInChildren<LightControl>(true))
+                    light.RaisePaperContactWarning(gapMm*.001f);
             }
         }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Renderer))]
+[DefaultExecutionOrder(500)]
 public class LightControl : MonoBehaviour
 {
     [Header("引用")]
@@ -9,7 +10,7 @@ public class LightControl : MonoBehaviour
     [Header("颜色配置")]
     public Color movingColor = Color.green;   // armIsMoving = true
     public Color idleColor = Color.yellow;  // armIsMoving = false
-    public Color faultColor = Color.red;     // 备用，故障用
+    public Color faultColor = Color.red;     // 纸面碰撞警告，抬笔后恢复
     [Range(0f, 10f)] public float intensity = 2f;
 
     static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
@@ -17,12 +18,17 @@ public class LightControl : MonoBehaviour
     Renderer stripRenderer;
     MaterialPropertyBlock mpb;
     bool lastMoving;
+    bool lastFault;
     bool inited;
+    RoboticsLab.LabRobotStation station;
+    bool paperContactWarning;
+    float lowestWarningZ;
 
     void Awake()
     {
         stripRenderer = GetComponent<Renderer>();
         mpb = new MaterialPropertyBlock();
+        station = GetComponentInParent<RoboticsLab.LabRobotStation>();
     }
 
     void Start()
@@ -31,14 +37,30 @@ public class LightControl : MonoBehaviour
         ApplyByState();
     }
 
-    void Update()
+    public void RaisePaperContactWarning(float zMeters)
     {
-        if (arm == null) return;
+        paperContactWarning = true;
+        lowestWarningZ = zMeters;
+    }
+
+    void LateUpdate()
+    {
+        if (paperContactWarning && station)
+        {
+            float z = station.transform.InverseTransformPoint(station.ActualToolPosition).y - station.drawingHeight;
+            // The existing warning starts at +0.5 mm. Require an actual lift
+            // before clearing there; after contact, crossing Z=0 clears it.
+            lowestWarningZ = Mathf.Min(lowestWarningZ, z);
+            if (z > 0f && z > lowestWarningZ + .000001f)
+                paperContactWarning = false;
+        }
 
         // 只在状态变化时刷新，省性能
-        if (!inited || arm.armIsMoving != lastMoving)
+        bool moving = arm != null && arm.armIsMoving;
+        if (!inited || moving != lastMoving || paperContactWarning != lastFault)
         {
-            lastMoving = arm.armIsMoving;
+            lastMoving = moving;
+            lastFault = paperContactWarning;
             inited = true;
             ApplyByState();
         }
@@ -46,7 +68,7 @@ public class LightControl : MonoBehaviour
 
     void ApplyByState()
     {
-        Color c = (arm != null && arm.armIsMoving) ? movingColor : idleColor;
+        Color c = paperContactWarning ? faultColor : (arm != null && arm.armIsMoving) ? movingColor : idleColor;
         ApplyColor(c);
     }
 
