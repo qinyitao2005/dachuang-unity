@@ -1,0 +1,48 @@
+Station1 new assessment rules - 2026-11-16
+44/44 PASS; actual Unity managed math + assessment code, standalone Mono.
+This is offline rule validation, not a Unity Play Mode or UI acceptance report.
+
+PASS Shape 0: FWD/movement alone cannot start scoring
+PASS Shape 0: explicit start arms once
+PASS Shape 0: safe height and exactly 10 mm wait
+PASS Shape 0: ideal course auto-finishes with full score
+PASS Shape 0: result enters the correct history row
+PASS Shape 0: result freezes without duplicate history
+PASS Shape 1: FWD/movement alone cannot start scoring
+PASS Shape 1: explicit start arms once
+PASS Shape 1: safe height and exactly 10 mm wait
+PASS Shape 1: ideal course auto-finishes with full score
+PASS Shape 1: result enters the correct history row
+PASS Shape 1: result freezes without duplicate history
+PASS Shape 2: FWD/movement alone cannot start scoring
+PASS Shape 2: explicit start arms once
+PASS Shape 2: safe height and exactly 10 mm wait
+PASS Shape 2: ideal course auto-finishes with full score
+PASS Shape 2: result enters the correct history row
+PASS Shape 2: result freezes without duplicate history
+PASS Shape 3: FWD/movement alone cannot start scoring
+PASS Shape 3: explicit start arms once
+PASS Shape 3: safe height and exactly 10 mm wait
+PASS Shape 3: ideal course auto-finishes with full score
+PASS Shape 3: result enters the correct history row
+PASS Shape 3: result freezes without duplicate history
+PASS Shape 4: FWD/movement alone cannot start scoring
+PASS Shape 4: explicit start arms once
+PASS Shape 4: safe height and exactly 10 mm wait
+PASS Shape 4: ideal course auto-finishes with full score
+PASS Shape 4: result enters the correct history row
+PASS Shape 4: result freezes without duplicate history
+PASS Exactly 10 mm keeps active assessment sampling
+PASS Lift before completion settles a partial score
+PASS Lower score increases attempts but cannot replace a best score
+PASS New/reset attempt clears current work, preserves best
+PASS Cancelling/resetting does not publish an incomplete result
+PASS Standing still cannot earn coverage, score or finish
+PASS Teleport from start to end cannot finish
+PASS Reverse traversal cannot bypass course order
+PASS Far-off course lowers score; early lift still settles
+PASS 3 mm offset can complete with 60 percent accuracy
+PASS Closed course start/end overlap cannot instantly finish
+PASS Paused samples do not improve accuracy or coverage
+PASS Invalid coordinates cannot start or corrupt assessment
+PASS New game clears every shape and attempt count

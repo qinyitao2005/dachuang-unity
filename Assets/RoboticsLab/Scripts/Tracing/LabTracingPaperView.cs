@@ -16,7 +16,7 @@ namespace RoboticsLab
         static readonly Color Start = new Color(.02f, .59f, .27f);
         static readonly Color End = new Color(.82f, .16f, .16f);
         static readonly Color Tip = new Color(.98f, .43f, .04f);
-        static readonly string[] Labels = { "J / 手动", "1 圆形", "2 三角形", "3 正方形", "4 复合曲线" };
+        static readonly string[] Labels = { "J 型", "1 圆形", "2 三角形", "3 正方形", "4 复合曲线" };
         static readonly Vector2[] LabelPositions = {
             new Vector2(-.31f, .455f), new Vector2(.025f, .405f),
             new Vector2(.30f, .405f), new Vector2(.025f, .115f), new Vector2(.27f, -.15f)
@@ -53,6 +53,19 @@ namespace RoboticsLab
                             shape == trace.CurrentShape ? 2.1f : 1.4f, paper);
                 }
 
+                // Show the required direction on the selected course, including closed figures.
+                Vector2[] selectedPath = paths[trace.CurrentShape];
+                for (int mark = 1; mark <= 3; mark++)
+                {
+                    int index = Mathf.Clamp(selectedPath.Length * mark / 4, 1, selectedPath.Length - 1);
+                    Vector2 tip = Project(selectedPath[index], trace.layoutOffset, paper, scale);
+                    Vector2 from = Project(selectedPath[index - 1], trace.layoutOffset, paper, scale);
+                    Vector2 direction = (tip - from).normalized;
+                    Vector2 side = new Vector2(-direction.y, direction.x);
+                    PaperLine(tip, tip - direction * 8 + side * 4, Selected, 2, paper);
+                    PaperLine(tip, tip - direction * 8 - side * 4, Selected, 2, paper);
+                }
+
                 for (int shape = 0; shape < paths.Length; shape++)
                 {
                     Vector2[] path = paths[shape];
@@ -72,8 +85,7 @@ namespace RoboticsLab
                 Line(visible - Vector2.right * 10, visible + Vector2.right * 10, Tip, 1.5f);
                 Line(visible - Vector2.up * 10, visible + Vector2.up * 10, Tip, 1.5f);
                 Dot(visible, 4, Tip);
-                bool probeOnPaper = (trace.IsProgrammed || trace.station.PenDown)
-                    && Mathf.Abs(trace.station.transform.InverseTransformPoint(trace.station.ActualToolPosition).y - trace.station.drawingHeight) <= trace.contactTolerance;
+                bool probeOnPaper = trace.Sampling;
                 if (!probeOnPaper) Dot(visible, 2, Paper);
                 if ((actual - visible).sqrMagnitude > 100)
                 {
@@ -93,9 +105,7 @@ namespace RoboticsLab
                 Text(new Rect(bounds.xMax - 100, legendY, 98, 18), "+Z ↑  +X →");
                 Vector2 paperPoint = trace.WorldToPaper(trace.station.ActualToolPosition) - trace.layoutOffset;
                 bool outside = Mathf.Abs(paperPoint.x) > size.x * .5f || Mathf.Abs(paperPoint.y) > size.y * .5f;
-                float contactHeight = trace.station.transform.InverseTransformPoint(trace.station.ActualToolPosition).y;
-                bool sampling = (trace.IsProgrammed || trace.station.PenDown) && Mathf.Abs(contactHeight - trace.station.drawingHeight) <= trace.contactTolerance;
-                string probeState = sampling ? "触纸采样" : "未采样";
+                string probeState = trace.Sampling ? "评分采样中" : trace.HasResult ? "已结算" : "未采样";
                 Dot(new Vector2(bounds.x + 13, legendY + 29), 4, Tip);
                 Text(new Rect(bounds.x + 22, legendY + 20, bounds.width - 26, 20),
                     "实际探针：" + probeState + (outside ? " · 在纸面范围外，箭头指示方向" : " · 循迹不留新线"));

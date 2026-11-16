@@ -6,86 +6,78 @@ using UnityEngine;
 
 namespace RoboticsLab.Editor
 {
-    /// <summary>Deterministic geometry/scoring checks; motion itself is verified in Play Mode.</summary>
+    /// <summary>New explicit-assessment rules, independent of robot motion.</summary>
     public static class LabTracingValidation
     {
-        [MenuItem("Robot Lab/Diagnostics/Validate Tracing Rules")]
+        [MenuItem("Robot Lab/Diagnostics/Validate Station1 Assessment")]
         public static void Run() { Debug.Log(Validate()); }
-
         public static string Validate()
         {
-            var report = new List<string>();
-            var size = new Vector2(.19f, .27f);
-            int failures = 0;
-            Action<bool, string> check = (ok, label) => { report.Add((ok ? "PASS " : "FAIL ") + label); if (!ok) failures++; };
-            for (int shape = 0; shape < 5; shape++)
-            {
-                var path = LabTracingPaths.Create(shape, size, Vector2.zero);
-                bool bounds = path.Length > 20;
-                foreach (var p in path) bounds &= Mathf.Abs(p.x) < size.x * .49f && Mathf.Abs(p.y) < size.y * .49f;
-                check(bounds, "Shape " + shape + " lies inside paper layout");
-                check(shape == 0 || Vector2.Distance(path[0], path[path.Length - 1]) < 1e-6f, "Automatic shape " + shape + " closes");
-                var score = new LabTracingScore(path, .003f);
-                foreach (var p in path) score.Sample(p, true);
-                check(score.Completed && score.Coverage > 99.9f && score.Score > 99,
-                    "Ideal path " + shape + " completion=" + score.Coverage.ToString("F1") + " score=" + score.Score.ToString("F1"));
-            }
-            var circle = LabTracingPaths.Create(1, size, Vector2.zero);
-            var center = Vector2.Scale(new Vector2(.04f, .255f), size);
-            float rmin = float.MaxValue, rmax = 0;
-            foreach (var p in circle) { float r = Vector2.Distance(p, center); rmin = Mathf.Min(rmin, r); rmax = Mathf.Max(rmax, r); }
-            check(rmax - rmin < .0001f, "Circle remains circular on rectangular paper");
-            var square = LabTracingPaths.Create(3, size, Vector2.zero);
-            Vector2 lo = square[0], hi = square[0];
-            foreach (var p in square) { lo = Vector2.Min(lo, p); hi = Vector2.Max(hi, p); }
-            check(Mathf.Abs((hi.x - lo.x) - (hi.y - lo.y)) < 1e-6f, "Square sides have equal physical lengths");
-            var complex = LabTracingPaths.Create(4, size, Vector2.zero);
-            lo = hi = complex[0];
-            foreach (var p in complex) { lo = Vector2.Min(lo, p); hi = Vector2.Max(hi, p); }
-            check((hi.x - lo.x) / (hi.y - lo.y) > 2, "Photo curve is a broad outline rather than a distorted tall contour");
-
-            var j = LabTracingPaths.Create(0, size, Vector2.zero);
-            var partial = new LabTracingScore(j, .003f);
-            for (int i = 0; i < j.Length / 4; i++) partial.Sample(j[i], true);
-            check(partial.Coverage > 15 && partial.Coverage < 35 && partial.Score < 35, "Incomplete work cannot receive a high success score");
-            var stationary = new LabTracingScore(j, .003f);
-            for (int i = 0; i < 1000; i++) stationary.Sample(j[0], true);
-            check(stationary.Coverage == 0 && stationary.Score == 0, "Stationary samples cannot farm coverage or accuracy");
-            var airborne = new LabTracingScore(j, .003f);
-            foreach (var p in j) airborne.Sample(p, false);
-            check(airborne.Coverage == 0 && airborne.Score == 0, "Pen-up movement earns no progress");
-            var shortcut = new LabTracingScore(j, .003f);
-            shortcut.Sample(j[0], true); shortcut.Sample(j[j.Length - 1], true);
-            check(shortcut.Coverage == 0, "Jump from start to finish does not complete ordered checkpoints");
-            var reverse = new LabTracingScore(circle, .003f);
-            reverse.Sample(circle[0], true);
-            for (int i = circle.Length - 1; i >= 0; i--) reverse.Sample(circle[i], true);
-            check(reverse.Coverage < 10, "Traversing a closed path in reverse cannot skip its ordered course");
-            var off = new LabTracingScore(j, .003f);
-            off.Sample(j[0], true);
-            foreach (var p in j) off.Sample(p + new Vector2(.012f, 0), true);
-            check(off.Score < 35 && off.Accuracy < 50, "Off-path movement lowers accuracy and success");
-            var backtrack = new LabTracingScore(j, .003f);
-            for (int i = 0; i < j.Length / 3; i++) backtrack.Sample(j[i], true);
-            for (int i = j.Length / 3 - 1; i >= 0; i--) backtrack.Sample(j[i], true);
-            foreach (var p in j) backtrack.Sample(p, true);
-            check(backtrack.Completed && backtrack.Score > 99, "Safe backtracking permits later completion without duplicate coverage");
-
-            var straight = new Vector2[101];
-            for (int i = 0; i < straight.Length; i++) straight[i] = new Vector2(i * .001f, 0);
-            var errorScore = new LabTracingScore(straight, .003f);
-            errorScore.Sample(straight[0], true);
-            for (int i = 1; i < straight.Length; i++) errorScore.Sample(straight[i] + Vector2.up * .0015f, true);
-            check(Mathf.Abs(errorScore.Accuracy - 50) < .1f && Mathf.Abs(errorScore.MeanErrorMm - 1.5f) < .01f,
-                "Known 1.5 mm deviation with 3 mm tolerance yields 50% accuracy");
-            float before = errorScore.Accuracy;
-            for (int i = 0; i < 1000; i++) errorScore.Sample(straight[100] + Vector2.up * .0015f, true);
-            check(Mathf.Abs(before - errorScore.Accuracy) < 1e-6f, "Paused samples do not change distance-weighted accuracy");
+            string[] lines = CheckRules();
             Directory.CreateDirectory("Documentation");
-            File.WriteAllLines("Documentation/TracingValidation.txt", report);
-            string result = "TRACING_RULES " + (report.Count - failures) + "/" + report.Count + " checks passed";
-            if (failures > 0) throw new Exception(result + "\n" + string.Join("\n", report));
-            return result;
+            File.WriteAllLines("Documentation/Station1AssessmentValidation.txt", lines);
+            foreach (string line in lines) if (line.StartsWith("FAIL")) throw new Exception(string.Join("\n", lines));
+            return "STATION1_ASSESSMENT " + lines.Length + "/" + lines.Length + " checks passed";
+        }
+        public static string[] CheckRules()
+        {
+            var results = new List<string>();
+            Action<bool,string> check = (ok,label) => results.Add((ok ? "PASS " : "FAIL ") + label);
+            var history = new LabTracingSessionHistory();
+            var size = new Vector2(.19f,.27f);
+            for (int shape=0; shape<5; shape++)
+            {
+                Vector2[] path = LabTracingPaths.Create(shape,size,Vector2.zero);
+                var a = new LabTracingAssessment(path,shape,history);
+                a.Tick(path[0],0);
+                check(a.State==LabTracingAssessment.Phase.Ready && a.Score==0,"Shape "+shape+": FWD/movement alone cannot start scoring");
+                check(a.Arm() && !a.Arm(),"Shape "+shape+": explicit start arms once");
+                a.Tick(path[0],.020f); a.Tick(path[0],.010f);
+                check(a.State==LabTracingAssessment.Phase.Waiting,"Shape "+shape+": safe height and exactly 10 mm wait");
+                foreach (Vector2 point in path) a.Tick(point,.009f);
+                check(a.HasResult && a.Completed && a.Score>99.9f,"Shape "+shape+": ideal course auto-finishes with full score");
+                check(history.Attempts(shape)==1 && history.Best(shape)>99.9f,"Shape "+shape+": result enters the correct history row");
+                a.Tick(path[0],0); a.Tick(path[0],.020f);
+                check(history.Attempts(shape)==1 && a.Score>99.9f,"Shape "+shape+": result freezes without duplicate history");
+            }
+            Vector2[] j=LabTracingPaths.Create(0,size,Vector2.zero);
+            var partial=new LabTracingAssessment(j,0,history);partial.Arm();
+            for(int i=0;i<j.Length/4;i++)partial.Tick(j[i],.005f);
+            partial.Tick(j[j.Length/4-1],.010f);
+            check(partial.State==LabTracingAssessment.Phase.Sampling,"Exactly 10 mm keeps active assessment sampling");
+            partial.Tick(j[j.Length/4-1],.0101f);
+            check(partial.HasResult && !partial.Completed && partial.Score>15 && partial.Score<35,"Lift before completion settles a partial score");
+            check(history.Attempts(0)==2 && history.Best(0)>99.9f,"Lower score increases attempts but cannot replace a best score");
+            var reset=new LabTracingAssessment(j,0,history);
+            check(reset.Score==0 && !reset.Active && history.Best(0)>99.9f,"New/reset attempt clears current work, preserves best");
+            reset.Arm();reset.Tick(j[0],0);reset.Cancel();reset.Tick(j[1],.020f);
+            check(!reset.HasResult && history.Attempts(0)==2,"Cancelling/resetting does not publish an incomplete result");
+            var stationary=new LabTracingAssessment(j,0);stationary.Arm();
+            for(int i=0;i<1000;i++)stationary.Tick(j[0],0);
+            check(stationary.Coverage<1 && stationary.Score==0 && !stationary.HasResult,"Standing still cannot earn coverage, score or finish");
+            var jump=new LabTracingAssessment(j,0);jump.Arm();jump.Tick(j[0],0);jump.Tick(j[j.Length-1],0);
+            check(jump.Coverage<1 && !jump.Completed,"Teleport from start to end cannot finish");
+            var circle=LabTracingPaths.Create(1,size,Vector2.zero);
+            var reverse=new LabTracingAssessment(circle,1);reverse.Arm();
+            for(int i=circle.Length-1;i>=0;i--)reverse.Tick(circle[i],0);
+            check(reverse.Coverage<10 && !reverse.Completed,"Reverse traversal cannot bypass course order");
+            var off=new LabTracingAssessment(j,0);off.Arm();foreach(Vector2 point in j)off.Tick(point+new Vector2(.012f,0),0);
+            off.Tick(j[j.Length-1],.02f);
+            check(off.Score<35 && off.HasResult,"Far-off course lowers score; early lift still settles");
+            var line=new Vector2[101];for(int i=0;i<line.Length;i++)line[i]=new Vector2(i*.001f,0);
+            var approximate=new LabTracingAssessment(line,0);approximate.Arm();
+            foreach(Vector2 point in line)approximate.Tick(point+Vector2.up*.003f,0);
+            check(approximate.Completed && Mathf.Abs(approximate.Accuracy-60)<.1f,"3 mm offset can complete with 60 percent accuracy");
+            var close=new LabTracingAssessment(circle,1);close.Arm();close.Tick(circle[0],0);
+            check(!close.Completed && close.Coverage<1,"Closed course start/end overlap cannot instantly finish");
+            var pause=new LabTracingAssessment(j,0);pause.Arm();for(int i=0;i<j.Length/4;i++)pause.Tick(j[i],0);
+            float before=pause.Score;for(int i=0;i<1000;i++)pause.Tick(j[j.Length/4-1],0);
+            check(Mathf.Abs(before-pause.Score)<.0001f,"Paused samples do not improve accuracy or coverage");
+            var invalid=new LabTracingAssessment(j,0);invalid.Arm();invalid.Tick(new Vector2(float.NaN,0),0);invalid.Tick(j[0],float.NaN);
+            check(invalid.State==LabTracingAssessment.Phase.Waiting,"Invalid coordinates cannot start or corrupt assessment");
+            history.Clear();bool empty=true;for(int i=0;i<5;i++)empty &= history.Attempts(i)==0 && history.Best(i)==0;
+            check(empty,"New game clears every shape and attempt count");
+            return results.ToArray();
         }
     }
 }

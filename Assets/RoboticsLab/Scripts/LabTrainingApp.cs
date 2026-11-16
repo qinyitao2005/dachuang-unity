@@ -305,9 +305,9 @@ namespace RoboticsLab
 
                 if(!typing&&Input.GetKeyDown(KeyCode.R)) ResetActiveExercise();
 
-                if(panel=="operate"&&!TeachingPendantVisible&&!typing&&!automatic&&Input.GetKeyDown(KeyCode.P)&&!ActiveStation.IsDrawing&&(!trace||trace.IsManual)) ActiveStation.SetPen(!ActiveStation.PenDown);
+                if(panel=="operate"&&!TeachingPendantVisible&&!typing&&!automatic&&Input.GetKeyDown(KeyCode.P)&&!ActiveStation.IsDrawing&&!trace) ActiveStation.SetPen(!ActiveStation.PenDown);
 
-                if(panel=="operate"&&!automatic&&(TeachingPendantVisible||!trace||trace.IsManual))
+                if(panel=="operate"&&!automatic)
 
                 {
 
@@ -488,7 +488,7 @@ namespace RoboticsLab
             {
                 if(!ActiveTracing){ClosePanel();Notify("循迹训练组件未配置，请检查 01 工位。",6);return false;}
                 ActiveTracing.SelectShape(0);
-                tracingPanel.PaperViewVisible=true;
+                tracingPanel.ResetView();
             }
             if(ActiveStation.IsDrawing)drawingPaperViewVisible=true;
 
@@ -594,6 +594,7 @@ namespace RoboticsLab
 
         public void ResetActiveExercise()
         {
+            if(ActiveTracing) { ActiveTracing.ResetAttempt(); return; }
             if(ActiveTeachingPendant&&ActiveTeachingPendant.Programming)ActiveTeachingPendant.Programming.Stop();
             if(!ActiveStation)return;
             if(pendantController)pendantController.StopProgram();
@@ -605,7 +606,7 @@ namespace RoboticsLab
         public void ToggleEmergencyStop()
         {
             if(!ActiveStation)return;
-            if(!ActiveStation.EmergencyStopped&&ActiveTracing&&!ActiveTracing.IsProgrammed)ActiveTracing.StopAutomatic();
+            if(!ActiveStation.EmergencyStopped&&ActiveTracing&&ActiveTracing.IsAutomatic)ActiveTracing.StopAutomatic();
             ActiveStation.SetEmergencyStop(!ActiveStation.EmergencyStopped);
             if(ActiveStation.EmergencyStopped&&ActiveTeachingPendant&&ActiveTeachingPendant.Programming)ActiveTeachingPendant.Programming.Pause();
             if(ActiveStation.EmergencyStopped&&pendantController)pendantController.PauseProgram();
@@ -796,7 +797,7 @@ namespace RoboticsLab
 
                 Box(new Rect(24,102,270,148),navy);Txt(new Rect(44,120,234,30),"当前任务",heading);
 
-                string task=!HelmetWorn?"前往入口右侧装备架\n领取安全帽并佩戴":!LessonCompleted?"沿右侧前往教学大屏\n观看机械臂基础课程":!QuizPassed?"完成教学屏上的问答\n解锁机械臂操作":ActiveStation?(ActiveStation.IsTracing?"手动循迹 J 型\n自动循迹右侧四图":ActiveStation.IsRing?"沿钢丝移动圆环\n避开圈边与机械臂碰撞":"移动末端画笔\n自由绘图或编程轨迹"):"01 循迹  ·  02 套圈\n03 自由画图";
+                string task=!HelmetWorn?"前往入口右侧装备架\n领取安全帽并佩戴":!LessonCompleted?"沿右侧前往教学大屏\n观看机械臂基础课程":!QuizPassed?"完成教学屏上的问答\n解锁机械臂操作":ActiveStation?(ActiveStation.IsTracing?"选择图形并开始评分\n沿参考线完成轨迹":ActiveStation.IsRing?"沿钢丝移动圆环\n避开圈边与机械臂碰撞":"移动末端画笔\n自由绘图或编程轨迹"):"01 循迹  ·  02 套圈\n03 自由画图";
 
                 Txt(new Rect(44,164,234,72),task,small);
 
@@ -850,7 +851,7 @@ namespace RoboticsLab
                 return;
             }
 
-            bool manual=!TeachingProgramBusy&&(!trajectoryProgram||!trajectoryProgram.IsExecuting)&&(!pendantController||!pendantController.Executor||!pendantController.Executor.IsExecuting)&&(!trace||(trace.IsManual&&!trace.IsAutomatic));
+            bool manual=!TeachingProgramBusy&&(!trajectoryProgram||!trajectoryProgram.IsExecuting)&&(!pendantController||!pendantController.Executor||!pendantController.Executor.IsExecuting)&&(!trace||!trace.IsAutomatic);
 
             if(Btn(new Rect(1200,100,375,43),TeachingPendantVisible?"收起示教器":"示教器 / L・C 编程",true))ToggleTeachingPendant();
 

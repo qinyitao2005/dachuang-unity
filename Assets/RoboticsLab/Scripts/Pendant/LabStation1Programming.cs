@@ -30,7 +30,7 @@ namespace RoboticsLab
         InputField nameInput;
         Page page = Page.Programs;
         int selection, cursor;
-        bool shiftLatched, arcMode, scoring, modifyingMotion, editVia, dirty, resetRequired;
+        bool shiftLatched, arcMode, modifyingMotion, editVia, dirty, resetRequired;
         float saveAfter, clearHoldStarted = -1;
         int openedFrame = -1;
         bool clearHoldTriggered, clearHoldEligible;
@@ -95,7 +95,7 @@ namespace RoboticsLab
             pendingDeleteName = "";
             clearHoldStarted = -1; clearHoldTriggered = clearHoldEligible = false;
             if (Executor) Executor.Stop();
-            EndScoring(); SaveCurrent();
+            SaveCurrent();
             if (nameInput) nameInput.DeactivateInputField();
             Refresh();
         }
@@ -113,7 +113,7 @@ namespace RoboticsLab
         }
         public void SetJog(Vector3 direction) { heldJog = direction; }
         public void Pause() { if (Executor) Executor.Pause(); heldJog = Vector3.zero; }
-        public void Stop() { heldJog = Vector3.zero; if (Executor) Executor.Stop(); EndScoring(); }
+        public void Stop() { heldJog = Vector3.zero; if (Executor) Executor.Stop(); }
 
         public void HandleButton(string id)
         {
@@ -393,20 +393,16 @@ namespace RoboticsLab
             if (!Executor.IsPaused && cursor >= Model.Instructions.Count) { SetMessage("End 不执行；上下键选择起始行，再 FWD"); return; }
             if (!SaveCurrent()) { Refresh(); return; }
             page = Page.Program; number = ""; heldJog = Vector3.zero;
-            bool starting = !Executor.IsExecuting;
-            bool ok = StepMode ? Executor.Step(cursor) : Executor.Run(cursor);
-            if (ok && starting && trace) { trace.BeginProgrammed(); scoring = true; }
+            if (StepMode) Executor.Step(cursor); else Executor.Run(cursor);
             SetMessage(Executor.StatusText);
         }
         void ExecutionChanged()
         {
-            if (Executor.State == LabTrajectoryState.Completed || Executor.State == LabTrajectoryState.Faulted || Executor.State == LabTrajectoryState.Ready) EndScoring();
             if (Executor.State == LabTrajectoryState.Faulted) resetRequired = true;
             if (Executor.State == LabTrajectoryState.Completed) cursor = 0;
             else if (Executor.IsExecuting || Executor.State == LabTrajectoryState.Faulted) cursor = Executor.CurrentInstructionIndex;
             Message = Executor.StatusText; Refresh();
         }
-        void EndScoring() { if (scoring && trace) trace.FinishAttempt(); scoring = false; }
         void SetMessage(string message) { Message = message; Refresh(); }
 
         void Refresh()

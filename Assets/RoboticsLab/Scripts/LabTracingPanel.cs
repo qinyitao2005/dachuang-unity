@@ -44,16 +44,24 @@ namespace RoboticsLab
             return pressed;
         }
 
+        bool historyVisible;
+        public void ResetView() { historyVisible = false; PaperViewVisible = true; }
+
         public void Draw(LabTrainingApp app, LabTracingExercise trace, Font font, bool pendantVisible = false)
         {
             Styles(font);
             DrawPaperView(trace, font, pendantVisible);
             Box(new Rect(24, 336, 270, 544), background);
-            GUI.Label(new Rect(42, 352, 234, 30), "循迹训练 / 成功程度", heading);
+            if (historyVisible) DrawHistory();
+            else DrawAssessment(trace);
+            if (Button(new Rect(42, 827, 234, 42), "退出工位  [Esc]")) app.ClosePanel();
+        }
 
-            bool canSelect = !trace.IsAutomatic && !app.Station1ProgramBusy;
-            if (Button(new Rect(42, 391, 234, 35), "J 型 · 手动循迹", trace.CurrentShape == 0, canSelect))
-                trace.SelectShape(0);
+        void DrawAssessment(LabTracingExercise trace)
+        {
+            GUI.Label(new Rect(42, 352, 234, 30), "轨迹评分 / Station1", heading);
+            bool canSelect = !trace.AttemptActive && !trace.IsAutomatic;
+            if (Button(new Rect(42, 391, 234, 35), "J 型", trace.CurrentShape == 0, canSelect)) trace.SelectShape(0);
             for (int i = 1; i < LabTracingExercise.ShapeNames.Length; i++)
             {
                 float x = 42 + ((i - 1) % 2) * 122;
@@ -61,34 +69,33 @@ namespace RoboticsLab
                 if (Button(new Rect(x, y, 112, 33), LabTracingExercise.ShapeNames[i], trace.CurrentShape == i, canSelect))
                     trace.SelectShape(i);
             }
-
-            bool ready = trace.station && trace.station.IsOperating && !trace.station.EmergencyStopped && !app.Station1PendantVisible;
-            if (trace.IsManual)
-            {
-                if (Button(new Rect(42, 519, 234, 36), trace.AttemptActive ? "重新开始手动 J" : "开始手动 J", true, ready))
-                    trace.BeginManual();
-            }
-            else if (Button(new Rect(42, 519, 234, 36), trace.IsAutomatic ? "停止自动循迹" : "开始自动循迹", true, ready || trace.IsAutomatic))
-            {
-                if (trace.IsAutomatic) trace.StopAutomatic(); else trace.StartAutomatic();
-            }
-            if (Button(new Rect(42, 564, 112, 34), "重置成绩 [R]")) app.ResetActiveExercise();
-            if (Button(new Rect(164, 564, 112, 34), "结束并评估", false, trace.IsManual && trace.AttemptActive && !app.Station1ProgramBusy))
-                trace.FinishAttempt();
-
-            GUI.Label(new Rect(42, 610, 234, 30), "成功程度  " + trace.Score.ToString("F1") + " / 100", heading);
-            GUI.Label(new Rect(42, 647, 234, 91),
+            bool ready = trace.station && trace.station.IsOperating && !trace.station.EmergencyStopped
+                && !trace.AttemptActive && !trace.HasResult && !trace.IsAutomatic;
+            if (Button(new Rect(42, 519, 112, 36), "开始评分", true, ready)) trace.BeginAssessment();
+            if (Button(new Rect(164, 519, 112, 36), "重置评分")) trace.ResetAttempt();
+            if (Button(new Rect(42, 565, 234, 34), "历史得分")) historyVisible = true;
+            GUI.Label(new Rect(42, 610, 234, 30), (trace.HasResult ? "本次得分  " : "当前得分  ") + trace.Score.ToString("F1") + " / 100", heading);
+            GUI.Label(new Rect(42, 648, 234, 82),
                 "覆盖率  " + trace.Coverage.ToString("F1") + "%    精度  " + trace.Accuracy.ToString("F1") + "%\n" +
                 "平均偏差  " + trace.MeanErrorMm.ToString("F2") + " mm\n" +
                 "当前偏差  " + trace.CurrentErrorMm.ToString("F2") + " mm", text);
-            GUI.Label(new Rect(42, 740, 234, 69), trace.Status, text);
-            if (pendantVisible)
+            GUI.Label(new Rect(42, 736, 234, 79), trace.Status, text);
+        }
+
+        void DrawHistory()
+        {
+            GUI.Label(new Rect(42, 352, 234, 30), "历史得分 / 本次游戏", heading);
+            GUI.Label(new Rect(42, 393, 234, 43), "各图形最高分；重启游戏清空\n重置评分会保留这里的成绩", text);
+            for (int i = 0; i < LabTracingExercise.ShapeNames.Length; i++)
             {
-                if (Button(new Rect(42, 827, 234, 42), "退出工位  [Esc]")) app.ClosePanel();
+                float y = 453 + i * 60;
+                int count = LabTracingExercise.History.Attempts(i);
+                Box(new Rect(42, y, 234, 50), muted);
+                GUI.Label(new Rect(50, y + 4, 112, 25), LabTracingExercise.ShapeNames[i], text);
+                GUI.Label(new Rect(161, y + 4, 109, 25), count == 0 ? "暂无成绩" : LabTracingExercise.History.Best(i).ToString("F1") + " 分", text);
+                GUI.Label(new Rect(50, y + 27, 210, 22), "已完成评测：" + count + " 次", text);
             }
-            else GUI.Label(new Rect(42, 815, 234, 58), trace.IsManual
-                ? "抬起探针移到绿色起点。\n开始后贴纸沿 J 线移动，\n不留新线，按轨迹评分。"
-                : "沿印线循迹，不留新线。\n空格急停；R 清空成绩。", text);
+            if (Button(new Rect(42, 773, 234, 35), "返回评分")) historyVisible = false;
         }
 
         void DrawPaperView(LabTracingExercise trace, Font font, bool pendantVisible)

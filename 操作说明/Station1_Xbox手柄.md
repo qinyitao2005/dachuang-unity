@@ -1,5 +1,7 @@
 # Station1 Xbox 手柄操作
 
+轨迹评测使用左侧的五种形状和「开始评分」「重置评分」「历史得分」按钮；先 STEP + SHIFT/FWD 到高于 10 mm 的安全点，选图并开始评分后继续程序。完整步骤见 [Station1 轨迹评分](Station1轨迹评分.md)。
+
 适用范围：Station1 循迹工位。进入工位前的安全帽和教学问答仍按现有界面完成；Station2、Station3 已按相同示教按键逻辑接入，分别见 [Station2 手柄操作](Station2_Xbox手柄.md)与 [Station3 手柄操作](Station3_Xbox手柄.md)。键鼠和鼠标示教器仍可使用。
 
 ## 进入与点动
