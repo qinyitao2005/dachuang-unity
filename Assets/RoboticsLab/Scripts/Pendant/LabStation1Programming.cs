@@ -101,6 +101,7 @@ namespace RoboticsLab
         }
         public Vector3 ManualDirection()
         {
+            if (app && app.DemoInputBlocked) return Vector3.zero;
             if (!view || !view.Visible || !station || !station.IsOperating || station.EmergencyStopped
                 || IsBusy || OtherProgramBusy || !ShiftActive || TextEntryFocused) return Vector3.zero;
             // Arrow keys navigate the program even while SHIFT is latched; only WASD/QE jog.
@@ -117,6 +118,7 @@ namespace RoboticsLab
 
         public void HandleButton(string id)
         {
+            if (app && app.DemoInputBlocked) return;
             if (!view || !view.Visible) return;
             if (id == "SHIFT_LEFT" || id == "SHIFT_RIGHT")
             {
@@ -236,12 +238,9 @@ namespace RoboticsLab
             || (app.pendantController && app.pendantController.Executor && app.pendantController.Executor.IsExecuting));
         public void TogglePen()
         {
+            if (app && app.DemoInputBlocked) return;
             if (station && station.IsDrawing) { SetMessage("笔尖距纸面 0–10mm 自动留线，无需 IO / P 切换"); return; }
-            if (!station) { SetMessage("当前工位不使用绘图落笔"); return; }
-            if (page != Page.Program || !Editable()) return;
-            if (Model.HasPendingArc) { SetMessage("先补齐 C 终点；该圆弧沿用经过点录制时的笔状态"); return; }
-            station.SetPen(!station.PenDown);
-            SetMessage(station.PenDown ? "新录指令：落笔；IO / P 切换抬笔" : "新录指令：抬笔；IO / P 切换落笔");
+            SetMessage("当前工位不使用绘图落笔");
         }
 
         void LeaveNameInput() { if (nameInput) nameInput.DeactivateInputField(); }
@@ -464,6 +463,13 @@ namespace RoboticsLab
 
         void Update()
         {
+            if (app && app.DemoInputBlocked)
+            {
+                clearHoldStarted = -1f;
+                clearHoldTriggered = clearHoldEligible = false;
+                heldJog = Vector3.zero;
+                return;
+            }
             if (!view || !view.Visible) return;
             HandleGamepad();
             if (!view.Visible) return;

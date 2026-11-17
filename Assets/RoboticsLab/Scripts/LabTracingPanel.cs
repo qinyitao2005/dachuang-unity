@@ -17,13 +17,18 @@ namespace RoboticsLab
         {
             if (text != null && currentFont == font) return;
             currentFont = font;
-            text = new GUIStyle(GUI.skin.label)
+            // Do not inherit the current skin's fixed height/padding. Some skins leave
+            // too little room for the ascent/descent of the Chinese training font.
+            text = new GUIStyle
             {
                 font = font, fontSize = 16, wordWrap = true,
+                alignment = TextAnchor.UpperLeft, clipping = TextClipping.Clip,
                 normal = { textColor = new Color(.88f, .93f, .95f) }
             };
-            heading = new GUIStyle(text) { fontSize = 21, fontStyle = FontStyle.Bold };
-            button = new GUIStyle(text) { alignment = TextAnchor.MiddleCenter };
+            heading = new GUIStyle(text) { fontSize = 20, fontStyle = FontStyle.Bold, wordWrap = false };
+            button = new GUIStyle(text) { alignment = TextAnchor.MiddleCenter, wordWrap = false,
+                normal = { textColor = Color.white }, hover = { textColor = Color.white },
+                active = { textColor = Color.white } };
         }
 
         static void Box(Rect rect, Color color)
@@ -39,9 +44,30 @@ namespace RoboticsLab
             bool previous = GUI.enabled;
             GUI.enabled = previous && enabled;
             Box(rect, active ? accent : muted);
+            int originalSize = button.fontSize;
+            FitFont(button, label, rect, 14);
             bool pressed = GUI.Button(rect, label, button);
+            button.fontSize = originalSize;
             GUI.enabled = previous;
             return pressed;
+        }
+
+        static void FitFont(GUIStyle style, string value, Rect rect, int minimumSize)
+        {
+            var content = new GUIContent(value);
+            // Leave two pixels for font rasterisation at non-integer GUI scales.
+            while (style.fontSize > minimumSize &&
+                (style.CalcHeight(content, rect.width) > rect.height - 2 ||
+                 (!style.wordWrap && style.CalcSize(content).x > rect.width - 2)))
+                style.fontSize--;
+        }
+
+        void Label(Rect rect, string value, GUIStyle style, int minimumSize = 14)
+        {
+            int originalSize = style.fontSize;
+            FitFont(style, value, rect, minimumSize);
+            GUI.Label(rect, value, style);
+            style.fontSize = originalSize;
         }
 
         bool historyVisible;
@@ -59,7 +85,7 @@ namespace RoboticsLab
 
         void DrawAssessment(LabTracingExercise trace)
         {
-            GUI.Label(new Rect(42, 352, 234, 30), "轨迹评分 / Station1", heading);
+            Label(new Rect(42, 350, 234, 34), "轨迹评分 / Station1", heading, 17);
             bool canSelect = !trace.AttemptActive && !trace.IsAutomatic;
             if (Button(new Rect(42, 391, 234, 35), "J 型", trace.CurrentShape == 0, canSelect)) trace.SelectShape(0);
             for (int i = 1; i < LabTracingExercise.ShapeNames.Length; i++)
@@ -74,26 +100,27 @@ namespace RoboticsLab
             if (Button(new Rect(42, 519, 112, 36), "开始评分", true, ready)) trace.BeginAssessment();
             if (Button(new Rect(164, 519, 112, 36), "重置评分")) trace.ResetAttempt();
             if (Button(new Rect(42, 565, 234, 34), "历史得分")) historyVisible = true;
-            GUI.Label(new Rect(42, 610, 234, 30), (trace.HasResult ? "本次得分  " : "当前得分  ") + trace.Score.ToString("F1") + " / 100", heading);
-            GUI.Label(new Rect(42, 648, 234, 82),
+            Label(new Rect(42, 608, 234, 34), (trace.HasResult ? "本次得分  " : "当前得分  ") + trace.Score.ToString("F1") + " / 100", heading, 17);
+            Label(new Rect(42, 648, 234, 76),
                 "覆盖率  " + trace.Coverage.ToString("F1") + "%    精度  " + trace.Accuracy.ToString("F1") + "%\n" +
                 "平均偏差  " + trace.MeanErrorMm.ToString("F2") + " mm\n" +
                 "当前偏差  " + trace.CurrentErrorMm.ToString("F2") + " mm", text);
-            GUI.Label(new Rect(42, 736, 234, 79), trace.Status, text);
+            // Reserve all remaining space for a complete, wrapped status sentence.
+            Label(new Rect(42, 730, 234, 87), trace.Status, text);
         }
 
         void DrawHistory()
         {
-            GUI.Label(new Rect(42, 352, 234, 30), "历史得分 / 本次游戏", heading);
-            GUI.Label(new Rect(42, 393, 234, 43), "各图形最高分；重启游戏清空\n重置评分会保留这里的成绩", text);
+            Label(new Rect(42, 350, 234, 34), "历史得分 / 本次游戏", heading, 17);
+            Label(new Rect(42, 391, 234, 49), "各图形最高分；重启游戏清空\n重置评分会保留这里的成绩", text);
             for (int i = 0; i < LabTracingExercise.ShapeNames.Length; i++)
             {
                 float y = 453 + i * 60;
                 int count = LabTracingExercise.History.Attempts(i);
-                Box(new Rect(42, y, 234, 50), muted);
-                GUI.Label(new Rect(50, y + 4, 112, 25), LabTracingExercise.ShapeNames[i], text);
-                GUI.Label(new Rect(161, y + 4, 109, 25), count == 0 ? "暂无成绩" : LabTracingExercise.History.Best(i).ToString("F1") + " 分", text);
-                GUI.Label(new Rect(50, y + 27, 210, 22), "已完成评测：" + count + " 次", text);
+                Box(new Rect(42, y, 234, 54), muted);
+                Label(new Rect(50, y + 3, 112, 25), LabTracingExercise.ShapeNames[i], text);
+                Label(new Rect(161, y + 3, 109, 25), count == 0 ? "暂无成绩" : LabTracingExercise.History.Best(i).ToString("F1") + " 分", text);
+                Label(new Rect(50, y + 28, 210, 24), "已完成评测：" + count + " 次", text);
             }
             if (Button(new Rect(42, 773, 234, 35), "返回评分")) historyVisible = false;
         }
@@ -107,7 +134,7 @@ namespace RoboticsLab
             if (PaperViewVisible)
             {
                 Box(panel, background);
-                GUI.Label(title, "纸面俯视 / 实际探针", heading);
+                Label(title, "纸面俯视 / 实际探针", heading, 17);
                 paperView.Draw(trace, paper, font);
             }
             string caption = pendantVisible ? (PaperViewVisible ? "收起俯视" : "展开俯视")

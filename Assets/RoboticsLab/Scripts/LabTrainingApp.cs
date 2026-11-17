@@ -2,6 +2,8 @@ using System;
 
 using System.IO;
 
+using System.Collections.Generic;
+
 using UnityEngine;
 
 using UnityEngine.Video;
@@ -36,6 +38,17 @@ namespace RoboticsLab
 
         public LabWallLearningDisplay wallLearningDisplay;
 
+        LabDemoVideoViewer demoVideoViewer;
+        public LabDemoVideoViewer DemoVideoViewer => demoVideoViewer;
+        public bool DemoVideoVisible => demoVideoViewer && demoVideoViewer.Visible;
+        public bool DemoInputBlocked => demoVideoViewer && (demoVideoViewer.Visible || demoVideoViewer.ClosedFrame == Time.frameCount);
+
+        public void OpenDemoVideo()
+        {
+            if (!demoVideoViewer) demoVideoViewer = gameObject.AddComponent<LabDemoVideoViewer>();
+            demoVideoViewer.Open(this, ActiveStation ? ActiveStation.stationIndex + 1 : 0);
+        }
+
         public LabTrajectoryProgram trajectoryProgram;
 
         public LabTrajectoryPanel trajectoryPanel;
@@ -65,6 +78,8 @@ namespace RoboticsLab
 
         public bool HelmetWorn, LessonCompleted, QuizPassed;
 
+        public bool QuizSkipped { get; private set; }
+
         public int CorrectAnswers;
 
         public LabRobotStation ActiveStation;
@@ -86,6 +101,8 @@ namespace RoboticsLab
         Font font;
 
         GUIStyle body, small, title, heading, button, tiny;
+
+        readonly Dictionary<GUIStyle, GUIStyle> fittedLabels = new Dictionary<GUIStyle, GUIStyle>();
 
         Texture2D pixel;
 
@@ -264,6 +281,15 @@ namespace RoboticsLab
         void Update()
 
         {
+
+            if (DemoInputBlocked)
+            {
+                heldDirection = Vector3.zero;
+                menuHoldStarted = -1f;
+                menuLongTriggered = false;
+                if (player) { player.inputEnabled = false; player.UpdatePointerCapture(); }
+                return;
+            }
 
             elapsed += Time.deltaTime;
 
@@ -548,8 +574,19 @@ namespace RoboticsLab
 
             questionIndex++; answered=false;feedback="";
 
-            if(questionIndex>=bank.questions.Length){ QuizPassed=true;panel="";Notify("问答通过！左侧三台机械臂已开放，走近任一工位按 E。",8); }
+            if(questionIndex>=bank.questions.Length){ QuizPassed=true;QuizSkipped=false;panel="";Notify("问答通过！左侧三台机械臂已开放，走近任一工位按 E。",8); }
 
+        }
+
+        public void SkipQuiz()
+        {
+            if (panel != "quiz" || !HelmetWorn || !LessonCompleted || DemoInputBlocked) return;
+            QuizSkipped = true;
+            QuizPassed = true;
+            answered = false;
+            feedback = "";
+            panel = "";
+            Notify("已跳过知识问答。三台机械臂已开放，走近工位按 E 开始实操。", 8);
         }
 
         public void StartQuiz()
@@ -745,7 +782,7 @@ namespace RoboticsLab
 
             font=uiFont?uiFont:Font.CreateDynamicFontFromOSFont(new[]{"Microsoft YaHei","SimHei","Arial"},20);
 
-            body=new GUIStyle(GUI.skin.label){font=font,fontSize=21,wordWrap=true,normal={textColor=new Color(.88f,.93f,.95f)}};
+            body=new GUIStyle(GUI.skin.label){font=font,fontSize=21,wordWrap=true,padding=new RectOffset(),fixedHeight=0,normal={textColor=new Color(.88f,.93f,.95f)}};
 
             small=new GUIStyle(body){fontSize=17};tiny=new GUIStyle(body){fontSize=14};
 
@@ -761,7 +798,19 @@ namespace RoboticsLab
 
         void Box(Rect r,Color c){GUI.color=c;GUI.DrawTexture(r,pixel);GUI.color=Color.white;}
 
-        void Txt(Rect r,string text,GUIStyle style=null){GUI.Label(r,text,style??body);}
+        void Txt(Rect r,string text,GUIStyle style=null)
+        {
+            var basis = style ?? body;
+            if (!fittedLabels.TryGetValue(basis, out var fit))
+            {
+                fit = new GUIStyle(basis);
+                fittedLabels.Add(basis, fit);
+            }
+            fit.fontSize = basis.fontSize;
+            var content = new GUIContent(text);
+            while (fit.fontSize > 13 && fit.CalcHeight(content, r.width) > r.height) fit.fontSize--;
+            GUI.Label(r, content, fit);
+        }
 
         bool Btn(Rect r,string label, bool primary=false)
 
@@ -777,13 +826,13 @@ namespace RoboticsLab
 
         {
 
+            if (DemoVideoVisible) return;
+
             Styles();GUI.matrix=Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(Screen.width/1600f,Screen.height/900f,1));
 
             Box(new Rect(0,0,1600,76),navy);Box(new Rect(28,23,6,30),teal);
 
             Txt(new Rect(48,17,390,40),"ROBOT LAB  /  机械臂实训室",heading);
-
-            Txt(new Rect(1240,27,330,35),TeachingPendantVisible?"SHIFT + POINT  ·  TOUCHUP  ·  FWD":PendantProgrammingVisible?"F1 直线  ·  F2 圆弧  ·  Enter 记录":"VIRTUAL TRAINING    •    F1 帮助",small);
 
             string[] steps={"01  安全准备","02  教学学习","03  知识问答","04  实操训练"};
 
@@ -801,7 +850,7 @@ namespace RoboticsLab
 
                 Txt(new Rect(44,164,234,72),task,small);
 
-                Box(new Rect(24,268,270,46),navy);Txt(new Rect(44,279,230,30),HelmetWorn?"●  安全帽已佩戴":"○  尚未佩戴安全帽",small);
+                if (Btn(new Rect(24,268,270,46), "▶  演示视频", true)) OpenDemoVideo();
 
             }
 
@@ -944,7 +993,7 @@ namespace RoboticsLab
 
             Box(new Rect(360,180,880,570),navy);Txt(new Rect(400,214,800,44),"实训室操作指南",title);
 
-            Txt(new Rect(400,276,785,364),"漫游：WASD 移动，鼠标转视角；Tab 释放/捕获光标。\n流程：佩戴安全帽 → 墙屏学习与问答 → 靠近工位按 E。\n01 循迹：移至 J 型绿色起点，点“开始手动”，沿参考线移动；\n完成后点评估。圆、三角形、正方形和复杂图形由自动循迹演示。\n02 套圈：沿钢丝前进，碰线与端点会阻挡，可反向调整。\n03 画图：笔尖距纸 0–10mm 时自动留线；示教录点与复现沿用 L/C。\n机械臂：WASD 平移，Q/E 升降，R 重置；Station3 可用 Menu 长按 3 秒擦线。\n空格急停，Esc 退出。自动循迹时手动移动锁定；帮助会停止自动。\n循迹显示覆盖率、精度与成功程度，按真实笔尖轨迹评分。",body);
+            Txt(new Rect(400,276,785,364),"漫游：WASD 移动，鼠标转视角；Tab 释放/捕获光标。\n流程：佩戴安全帽 → 墙屏学习与20题问答 → 靠近工位按 E。\n左侧“演示视频”可查看三台工位的操作、编程与运行。\n01 循迹：选图形，点击“开始评分”；沿参考线顺序移动。\n走完自动结算，抬笔 Z>10mm 可提前结算；循迹不留新线。\n02 套圈：沿钢丝前进，碰线与端点会阻挡，可反向调整。\n03 画图：笔尖距纸 0–10mm 自动留线；先抬高，再空中返回。\n示教器：SHIFT 配合 WASD/QE 或 ±X/±Y/±Z 点动；POINT/TOUCHUP 录 L/C。\nSHIFT+FWD 运行，HOLD 暂停；指令固定20mm/sec。\n空格急停，Esc 退出；第三台 Menu 长按3秒仅擦线，不删程序。",body);
 
             if(Btn(new Rect(400,664,785,52),"返回",true))panel=helpReturnPanel;
 

@@ -1,0 +1,42 @@
+{
+    "passed": true,
+    "unityVersion": "2022.3.61f1c1",
+    "exception": "",
+    "wallSeconds": 13.803518295288086,
+    "checks": [
+        "PASS Normal scene retains exactly three assigned robot stations.",
+        "PASS Player, physical learning point, wall lesson UI and video remain assigned.",
+        "PASS Original helmet pickup is active and still assigned.",
+        "PASS Twenty-question bank is still loaded.",
+        "PASS Each station retains its distinct original detailed equipment model.",
+        "PASS Each station retains its distinct original detailed equipment model.",
+        "PASS Each station retains its distinct original detailed equipment model.",
+        "PASS Finished interior layer is present in the normal scene.",
+        "PASS User BGM is installed with two streaming playback sources.",
+        "PASS The supplied full 182-second track uses streaming import.",
+        "PASS Real BGM samples: sourcePeak=0.02661255; listenerPeak=0.02661255",
+        "PASS Global volume zero silences listener samples; peak=0",
+        "PASS An audible source is active before pause check.",
+        "PASS Music advances with real output while gameplay timeScale is zero.",
+        "PASS Wall-video state smoothly ducks background music.",
+        "PASS Music returns to room balance after video closes.",
+        "PASS Seek schedules the real end-of-track crossfade.",
+        "PASS Crossfade hands off with actual output; loops=1; peak=0.02997443",
+        "PASS Rendered room image contains visible scene detail: RoomRefinish_01_Entrance.png",
+        "PASS Rendered room image contains visible scene detail: RoomRefinish_02_Workstations.png",
+        "PASS Rendered room image contains visible scene detail: RoomRefinish_03_LearningWall.png",
+        "PASS Rendered room image contains visible scene detail: RoomRefinish_04_Overview.png"
+    ],
+    "screenshots": [
+        "D:\\dachuang-unity-controller-20261109\\Documentation\\Screenshots\\RoomRefinish_01_Entrance.png",
+        "D:\\dachuang-unity-controller-20261109\\Documentation\\Screenshots\\RoomRefinish_02_Workstations.png",
+        "D:\\dachuang-unity-controller-20261109\\Documentation\\Screenshots\\RoomRefinish_03_LearningWall.png",
+        "D:\\dachuang-unity-controller-20261109\\Documentation\\Screenshots\\RoomRefinish_04_Overview.png"
+    ],
+    "cameraPoses": [
+        "RoomRefinish_01_Entrance.png: position=(1.00, 2.02, 2.25); lookAt=(-1.00, 1.95, 11.20); FOV=67",
+        "RoomRefinish_02_Workstations.png: position=(1.50, 2.35, 5.80); lookAt=(-4.20, 1.72, 12.50); FOV=66",
+        "RoomRefinish_03_LearningWall.png: position=(1.70, 2.18, 8.50); lookAt=(7.50, 2.35, 10.70); FOV=64",
+        "RoomRefinish_04_Overview.png: position=(5.60, 3.55, 20.25); lookAt=(-2.40, 1.80, 8.00); FOV=68"
+    ]
+}

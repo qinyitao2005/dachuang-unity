@@ -17,6 +17,9 @@ namespace RoboticsLab
         [SerializeField] Text playbackLabel;
         [SerializeField] Button[] optionButtons = new Button[4];
         [SerializeField] Text[] optionLabels = new Text[4];
+        [SerializeField] LabQuizAnswerReveal answerReveal;
+        [SerializeField] Button skipQuizButton;
+        [SerializeField] Text passedTitle;
         bool wired;
         float nextRefresh;
         int lastQuestion = -1, attemptedOption = -1;
@@ -51,10 +54,69 @@ namespace RoboticsLab
                 wired=false;
             }
             ConfigureCanvas();
+            EnsureQuizLayout();
             if (!wired) WireButtons();
             EnsureEventSystem();
             Transform graphics=transform.parent?transform.parent.Find("TeachingDisplayGraphics"):null;
             if(graphics)graphics.gameObject.SetActive(false);
+        }
+
+        // Existing scenes already contain a serialized canvas, so upgrade that
+        // canvas as well as canvases created at runtime. Do not rebuild the screen.
+        void EnsureQuizLayout()
+        {
+            if (!quizPage) return;
+            if (!passedTitle && passedPage)
+            {
+                var title = passedPage.transform.Find("PassedTitle");
+                if (title) passedTitle = title.GetComponent<Text>();
+            }
+            if (!skipQuizButton)
+            {
+                var existing = quizPage.transform.Find("SkipAllQuestions");
+                skipQuizButton = existing ? existing.GetComponent<Button>() :
+                    ButtonAt("SkipAllQuestions", quizPage.transform, "跳过全部20题，去实操", 510, 750, 452, 66, new Color(.09f, .23f, .29f), 26);
+                Bind(skipQuizButton, () => app.SkipQuiz());
+            }
+            if (feedbackText)
+            {
+                Place(feedbackText.rectTransform, 68, 676, 1464, 65);
+                feedbackText.resizeTextForBestFit = true;
+                feedbackText.resizeTextMinSize = 21;
+                feedbackText.resizeTextMaxSize = 25;
+            }
+            if (nextButton) Place((RectTransform)nextButton.transform, 64, 750, 418, 66);
+            foreach (Text label in optionLabels)
+            {
+                if (!label) continue;
+                label.resizeTextForBestFit = true;
+                label.resizeTextMinSize = 23;
+                label.resizeTextMaxSize = 29;
+            }
+            if (!answerReveal)
+            {
+                Transform existing = quizPage.transform.Find("CoveredCorrectAnswer");
+                Image background = existing ? existing.GetComponent<Image>() :
+                    ImageAt("CoveredCorrectAnswer", quizPage.transform, 990, 748, 546, 70, Panel);
+                if (!background) return;
+                background.raycastTarget = true;
+                Text label = background.GetComponentInChildren<Text>();
+                if (!label) label = Label("AnswerLabel", background.transform, "", 14, 5, 518, 60, 24, Light, TextAnchor.MiddleCenter);
+                label.resizeTextForBestFit = true;
+                label.resizeTextMinSize = 19;
+                label.resizeTextMaxSize = 24;
+                answerReveal = background.GetComponent<LabQuizAnswerReveal>();
+                if (!answerReveal) answerReveal = background.gameObject.AddComponent<LabQuizAnswerReveal>();
+                answerReveal.Configure(label, background);
+            }
+        }
+
+        static void Place(RectTransform rect, float x, float y, float width, float height)
+        {
+            rect.anchorMin = rect.anchorMax = new Vector2(0, 1);
+            rect.pivot = new Vector2(0, 1);
+            rect.anchoredPosition = new Vector2(x, -y);
+            rect.sizeDelta = new Vector2(width, height);
         }
 
         void ConfigureCanvas()
@@ -198,10 +260,11 @@ namespace RoboticsLab
             welcomePage.SetActive(!learning&&!app.QuizPassed);
             passedPage.SetActive(!learning&&app.QuizPassed);
             videoPage.SetActive(video);textPage.SetActive(text);quizPage.SetActive(quiz);toolbar.SetActive(learning);
-            headerStatus.text=app.QuizPassed?"学习完成  ·  实操已开放":app.LessonCompleted?"课程已完成  ·  请完成知识检查":app.HelmetWorn?"安全帽已佩戴  ·  开始学习":"请先领取并戴好安全帽";
+            headerStatus.text=app.QuizPassed?(app.QuizSkipped?"问答已跳过  ·  实操已开放":"学习完成  ·  实操已开放"):app.LessonCompleted?"课程已完成  ·  请完成知识检查":app.HelmetWorn?"安全帽已佩戴  ·  开始学习":"请先领取并戴好安全帽";
             welcomeInfo.text=app.HelmetWorn?"安全准备已完成。观看视频或阅读文字课程，再参加问答。":"请先在入口右侧领取并戴好安全帽，再开始墙面课程。";
             beginButton.interactable=!(app.player&&app.player.IsEquippingHelmet);
-            passedInfo.text="已完成 "+app.QuestionCount+" 道知识检查题。\n左侧三台机械臂已开放：轨迹绘制与钢丝套圈。";
+            if (passedTitle) passedTitle.text = app.QuizSkipped ? "已跳过问答，开始实操。" : "问答通过，开始实操。";
+            passedInfo.text=(app.QuizSkipped ? "本轮答对 "+app.CorrectAnswers+" 题，其余已跳过。" : "已完成 "+app.QuestionCount+" 道知识检查题。")+"\n左侧三台机械臂已开放：循迹、钢丝套圈与画图。";
             quizButton.interactable=app.LessonCompleted&&!quiz;
             textButton.interactable=!text;
             playbackLabel.text=video?(app.lessonVideo&&app.lessonVideo.isPlaying?"暂停视频":"播放视频"):"返回视频";
@@ -216,6 +279,7 @@ namespace RoboticsLab
             if(!quiz)return;
             if(lastQuestion!=app.questionIndex){lastQuestion=app.questionIndex;attemptedOption=-1;}
             LabQuestion q=app.CurrentQuestion;
+            if(answerReveal)answerReveal.SetQuestion(app.questionIndex, q);
             questionCounter.text="知识检查  /  "+Mathf.Min(app.questionIndex+1,app.QuestionCount)+" / "+app.QuestionCount;
             questionText.text=q!=null?q.question:"正在读取题目…";
             for(int i=0;i<4;i++)

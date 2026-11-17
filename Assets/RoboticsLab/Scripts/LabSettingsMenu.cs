@@ -60,6 +60,7 @@ namespace RoboticsLab
 
         void Update()
         {
+            if (app && app.DemoInputBlocked) return;
             if (Input.GetKeyDown(KeyCode.F2)) Toggle();
             if (panel && panel.activeSelf && Input.GetKeyDown(KeyCode.Escape)) Close();
         }
@@ -113,6 +114,7 @@ namespace RoboticsLab
 
         void Toggle()
         {
+            if (app && app.DemoInputBlocked) return;
             if (!panel) return;
             if (panel.activeSelf) { Close(); return; }
             if (!app) app = FindObjectOfType<LabTrainingApp>();

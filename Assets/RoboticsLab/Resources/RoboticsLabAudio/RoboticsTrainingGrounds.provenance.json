@@ -1,0 +1,22 @@
+{
+  "title": "Robotics Training Grounds (96 BPM)",
+  "providedBy": "Project owner",
+  "sourceFileName": "Robotics Training Grounds (96 BPM).wav",
+  "sourceFileSha256": "32746883214ce000b9b25709cfcab9fe651b9acb4ff7f876a617758510358b27",
+  "assetFileName": "RoboticsTrainingGrounds.wav",
+  "assetFileSha256": "7138e5e4e317afb596e95618330c3aa38801b91cb70599d18b37c1adfa5e08e6",
+  "pcmSha256BothFiles": "99b62bb38d1221d38ff7e4611e81e194fbd938a2166e791eb336fd706a659f3c",
+  "durationSeconds": 182.464,
+  "sampleRateHz": 48000,
+  "channels": 2,
+  "sourceEncoding": "PCM signed 16-bit little-endian",
+  "preparation": "Copy the entire first audio stream without re-encoding; omit the embedded MJPEG cover and source metadata. Original source remains unchanged.",
+  "unityImport": {
+    "compressionFormat": "Vorbis",
+    "quality": 0.7,
+    "loadType": "Streaming",
+    "sampleRate": "PreserveSampleRate",
+    "loadInBackground": true,
+    "preloadAudioData": false
+  }
+}

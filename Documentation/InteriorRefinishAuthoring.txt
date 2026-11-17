@@ -1,0 +1,11 @@
+Interior refinish / 2026-11-17T07:53:51.6671295Z
+Scene=Assets/RoboticsLab/Scenes/RoboticsTrainingRoom.unity
+Root=InteriorRefinish
+Combined geometry renderers=40; geometric parts=253
+Static label renderers=16; original room renderers adjusted=184
+Existing colliders preserved=189; existing lights=12; added lights=0; added colliders=0
+Station labels: 01 循迹 / 02 套圈 / 03 画图. Existing RoomPolish/WorkcellSigns hidden.
+Equipment, joint transforms, robot scripts, helmets, wall learning UI and original CAD rack are preserved.
+White wall panels; seamless warm mineral floor; workcell pads and clear aisle; acoustic ceiling rafts; wood/graphite learning wall; perimeter plants.
+Lighting: existing directional daylight, soft contact shadows, lower indirect fill. No new packages or realtime lights.
+Scene marked dirty, not saved by this authoring tool.

@@ -1,0 +1,49 @@
+{
+  "allOriginalObjectsRetained": true,
+  "originalObjectCount": 4255,
+  "newObjectCount": 4511,
+  "removedIds": [],
+  "collidersOrRigidbodiesChanged": [],
+  "scriptComponentsChanged": [
+    [
+      1334804024,
+      114
+    ],
+    [
+      1334804025,
+      114
+    ],
+    [
+      1567215207,
+      114
+    ],
+    [
+      1567215208,
+      114
+    ],
+    [
+      1567215210,
+      114
+    ],
+    [
+      1924524822,
+      114
+    ],
+    [
+      2033625143,
+      114
+    ]
+  ],
+  "changedCountsByType": {
+    "4": 1,
+    "23": 241,
+    "104": 1,
+    "108": 12,
+    "114": 7,
+    "1001": 1,
+    "1660057539": 1
+  },
+  "reviewedChanges": "LabWallLearningDisplay serializes three previously added runtime-upgrade references at fileID 0; LabTrainingApp serializes existing station1Pendant field at fileID 0. No existing script value or collider changed. Only existing transform change is daylight light rotation. One prefab serializes its same two disabled-component overrides in reversed order.",
+  "beforeSha256": "bbaab685c48dd7ad06602d159c1e274c8ae7b77fcbc5c07ce6ba97ce81f6d3c1",
+  "afterSha256": "23ccfc3620d10cb72b0b46efe3f5eadf6957d3ba30cd81e2f9be003c1b00f512"
+}
