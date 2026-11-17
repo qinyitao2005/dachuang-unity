@@ -39,6 +39,15 @@ namespace RoboticsLab
         public LabWallLearningDisplay wallLearningDisplay;
 
         LabDemoVideoViewer demoVideoViewer;
+        LabGamepadGuide gamepadGuide;
+        public bool GamepadGuideVisible => gamepadGuide && gamepadGuide.Visible;
+        bool GamepadGuidePointerBlocked => gamepadGuide && gamepadGuide.PointerBlocked;
+        public void OpenGamepadGuide()
+        {
+            if (!gamepadGuide) gamepadGuide = gameObject.AddComponent<LabGamepadGuide>();
+            gamepadGuide.Open();
+            if (player) { player.pointerReleased = true; player.UpdatePointerCapture(); }
+        }
         public LabDemoVideoViewer DemoVideoViewer => demoVideoViewer;
         public bool DemoVideoVisible => demoVideoViewer && demoVideoViewer.Visible;
         public bool DemoInputBlocked => demoVideoViewer && (demoVideoViewer.Visible || demoVideoViewer.ClosedFrame == Time.frameCount);
@@ -538,6 +547,7 @@ namespace RoboticsLab
 
         Vector3 PointerJogDirection()
         {
+            if (GamepadGuidePointerBlocked) return Vector3.zero;
             // The old jog-button area now contains the read-only paper view.
             if(TeachingPendantVisible)return Vector3.zero;
             if(!Input.GetMouseButton(0) || Screen.width<=0 || Screen.height<=0)return Vector3.zero;
@@ -826,7 +836,10 @@ namespace RoboticsLab
 
         {
 
-            if (DemoVideoVisible) return;
+            if (GamepadGuidePointerBlocked && Event.current.isMouse) Event.current.Use();
+            // IMGUI renders independently of Canvas sortingOrder. Yield the HUD to the guide
+            // so the paper view, score panel and roaming hint cannot paint over its image.
+            if (GamepadGuideVisible || DemoVideoVisible) return;
 
             Styles();GUI.matrix=Matrix4x4.TRS(Vector3.zero,Quaternion.identity,new Vector3(Screen.width/1600f,Screen.height/900f,1));
 
@@ -839,6 +852,8 @@ namespace RoboticsLab
             int current=!HelmetWorn?0:!LessonCompleted?1:!QuizPassed?2:3;
 
             for(int i=0;i<4;i++){float x=460+i*184;Box(new Rect(x,18,172,40),i==current?teal:muted);Txt(new Rect(x+10,26,162,30),(i<current?"✓ ":"")+steps[i],small);}
+
+            if (Btn(new Rect(1360,18,216,40), "手柄键位指南", true)) OpenGamepadGuide();
 
             if(panel=="" || (panel=="operate"&&(!ProgrammingVisible||TeachingPendantVisible)))
 
